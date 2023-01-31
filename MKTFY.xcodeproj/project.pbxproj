@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6548391C2988DBB3007FE40C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6548391B2988DBB3007FE40C /* Main.storyboard */; };
 		6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E0FE2988AACF001482AB /* AppDelegate.swift */; };
 		6568E1012988AACF001482AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E1002988AACF001482AB /* SceneDelegate.swift */; };
 		6568E1032988AACF001482AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E1022988AACF001482AB /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6548391B2988DBB3007FE40C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6568E0FB2988AACF001482AB /* MKTFY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKTFY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6568E0FE2988AACF001482AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6568E1002988AACF001482AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				6568E1162988B860001482AB /* LoginScreen.storyboard */,
+				6548391B2988DBB3007FE40C /* Main.storyboard */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				6568E10B2988AACF001482AB /* LaunchScreen.storyboard in Resources */,
 				6568E1082988AACF001482AB /* Assets.xcassets in Resources */,
 				6568E1172988B860001482AB /* LoginScreen.storyboard in Resources */,
+				6548391C2988DBB3007FE40C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

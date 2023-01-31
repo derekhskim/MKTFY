@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="09x-pW-8Ge" userLabel="Title &amp; Subtitle Stack View">
-                                <rect key="frame" x="70" y="251.00000000000003" width="253" height="85.333333333333343"/>
+                                <rect key="frame" x="70" y="231.00000000000003" width="253" height="85.333333333333343"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MKTFY_purple" translatesAutoresizingMaskIntoConstraints="NO" id="PmD-Kt-C94">
                                         <rect key="frame" x="0.0" y="0.0" width="253" height="52"/>
@@ -32,7 +32,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mrt-OQ-fmz" userLabel="Email &amp; Password Stack View">
-                                <rect key="frame" x="20" y="395.33333333333331" width="353" height="168.66666666666669"/>
+                                <rect key="frame" x="20" y="375.33333333333331" width="353" height="168.66666666666669"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="16a-gR-rTf" userLabel="Email TextField Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="76.333333333333329"/>
@@ -77,7 +77,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0D-OO-yQ3" userLabel="I forgot my password">
-                                <rect key="frame" x="20" y="580" width="353" height="19"/>
+                                <rect key="frame" x="20" y="560" width="353" height="19"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJK-FM-clo">
                                         <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="19"/>
@@ -97,6 +97,9 @@
                                             </attributedString>
                                             <color key="baseForegroundColor" name="WarningYellow"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="forgotPasswordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Iwm-dg-Pr3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -104,10 +107,10 @@
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clouds_combined" translatesAutoresizingMaskIntoConstraints="NO" id="ubR-PJ-yIh">
-                                <rect key="frame" x="0.0" y="623" width="393" height="238"/>
+                                <rect key="frame" x="0.0" y="603" width="393" height="249"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Qia-M2-Uca">
-                                <rect key="frame" x="15" y="689" width="363" height="132"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Qia-M2-Uca" userLabel="Button Stack View">
+                                <rect key="frame" x="15" y="679" width="363" height="132"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Eq-vo-rRB" customClass="Button" customModule="MKTFY" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="363" height="64"/>
@@ -132,6 +135,9 @@
                                                 <real key="value" value="28"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cZ9-dr-SUt"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kE2-5l-ovP" customClass="Button" customModule="MKTFY" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="363" height="44"/>
@@ -149,6 +155,9 @@
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="createAccountButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Z1E-Qy-438"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -163,16 +172,29 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Qia-M2-Uca" secondAttribute="trailing" constant="15" id="NAu-tT-XP9"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ubR-PJ-yIh" secondAttribute="trailing" id="Q6g-sP-dkD"/>
                             <constraint firstAttribute="trailing" secondItem="q0D-OO-yQ3" secondAttribute="trailing" constant="20" id="ROs-9p-KV1"/>
-                            <constraint firstItem="Qia-M2-Uca" firstAttribute="top" secondItem="mrt-OQ-fmz" secondAttribute="bottom" constant="125" id="TiG-ng-6hz"/>
+                            <constraint firstItem="Qia-M2-Uca" firstAttribute="top" secondItem="mrt-OQ-fmz" secondAttribute="bottom" constant="135" id="TiG-ng-6hz"/>
+                            <constraint firstAttribute="bottom" secondItem="ubR-PJ-yIh" secondAttribute="bottom" id="avV-FA-P7d"/>
                             <constraint firstItem="mrt-OQ-fmz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="f3x-do-OwB"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="09x-pW-8Ge" secondAttribute="trailing" constant="70" id="fvE-KD-SgL"/>
-                            <constraint firstItem="09x-pW-8Ge" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="192" id="ip7-py-LyP"/>
+                            <constraint firstItem="09x-pW-8Ge" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="172" id="ip7-py-LyP"/>
                             <constraint firstItem="ubR-PJ-yIh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="kjR-I7-0bj"/>
                             <constraint firstItem="09x-pW-8Ge" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="70" id="nVe-4U-o9S"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mrt-OQ-fmz" secondAttribute="trailing" constant="20" id="sxR-8i-H84"/>
                             <constraint firstItem="q0D-OO-yQ3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="uT5-I9-lhs"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Qia-M2-Uca" secondAttribute="bottom" constant="7" id="x3Q-0D-TxS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cloudsImageView" destination="ubR-PJ-yIh" id="dpY-Yh-zSe"/>
+                        <outlet property="emailLabel" destination="swA-Sq-fi8" id="Qxt-V2-ITT"/>
+                        <outlet property="emailTextField" destination="uaX-td-CNP" id="ldb-Xx-yGA"/>
+                        <outlet property="forgotPasswordButton" destination="CYR-FQ-mzE" id="jPO-ze-gXA"/>
+                        <outlet property="imageView" destination="PmD-Kt-C94" id="AbC-GT-a28"/>
+                        <outlet property="passwordLabel" destination="ELm-LG-I2L" id="7rw-N6-yVb"/>
+                        <outlet property="passwordTextField" destination="4IB-pt-78H" id="4PR-Bf-oOf"/>
+                        <outlet property="subTitleLabel" destination="UZb-us-MPZ" id="njs-5l-hIu"/>
+                        <outlet property="titleImageView" destination="PmD-Kt-C94" id="eyi-2D-LFL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
