@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorMessageLabel: UILabel!
     
     @IBAction func forgotPasswordButton(_ sender: Any) {
+        print("Too bad..")
     }
     
     @IBOutlet weak var cloudsImageView: UIImageView!
@@ -26,6 +27,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func createAccountButton(_ sender: Any) {
+        print("You cannot make an account yet.")
     }
     
     override func viewDidLoad() {
@@ -34,6 +36,11 @@ class LoginViewController: UIViewController {
         initializeHideKeyboard()
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
+        passwordTextField.isSecureTextEntry = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
 }
@@ -54,6 +61,7 @@ extension LoginViewController {
         
         if emailTextField.text == "d" && passwordTextField.text == "d" {
             print("It's correct...maybe?")
+            errorMessageLabel.isHidden = true
         } else {
             configureView(withMessage: "Incorrect Username and/or password")
         }
@@ -96,3 +104,12 @@ extension LoginViewController: UITextFieldDelegate {
     }
 }
 
+extension LoginViewController {
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
+}
