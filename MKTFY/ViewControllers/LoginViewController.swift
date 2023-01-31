@@ -22,7 +22,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var cloudsImageView: UIImageView!
     
-    @IBAction func loginButton(_ sender: Any) {
+    @IBOutlet weak var loginButton: UIButton!
+    @IBAction func loginButtonTapped(_ sender: Any) {
         login()
     }
     
@@ -37,6 +38,8 @@ class LoginViewController: UIViewController {
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = true
+        
+        loginButton.backgroundColor = .blue
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
 
@@ -57,11 +60,15 @@ extension LoginViewController {
         if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             configureView(withMessage: "Username and/or password cannot be blank")
             return
+        } else {
+
         }
         
         if emailTextField.text == "d" && passwordTextField.text == "d" {
             print("It's correct...maybe?")
+            
             errorMessageLabel.isHidden = true
+            
         } else {
             configureView(withMessage: "Incorrect Username and/or password")
         }

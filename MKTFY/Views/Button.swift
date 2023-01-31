@@ -34,8 +34,7 @@ class Button: UIButton {
         }
     }
     
-    @IBInspectable
-    var cornerRadius: CGFloat = 0 {
+    @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             layer.cornerRadius = cornerRadius
             self.clipsToBounds = true
@@ -59,9 +58,7 @@ class Button: UIButton {
     
     
     @IBInspectable var shadowColor: UIColor = UIColor.clear {
-        
         didSet {
-            
             layer.shadowColor = shadowColor.cgColor
             layer.masksToBounds = false
             layer.shadowOffset = CGSize(width: 0,height: 3)
@@ -71,9 +68,7 @@ class Button: UIButton {
     
     
     @IBInspectable var shadowOpacity: CGFloat = 0.0 {
-        
         didSet {
-            
 //            layer.shadowOpacity = Float(shadowOpacity.hashValue)
 //            layer.masksToBounds = false
         }
