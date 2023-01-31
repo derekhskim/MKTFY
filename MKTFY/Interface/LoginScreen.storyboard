@@ -39,15 +39,15 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Eq-vo-rRB" customClass="Button" customModule="MKTFY" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="64"/>
+                                        <color key="backgroundColor" name="DisabledGray"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="MSP-4L-q3d"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Login">
-                                            <fontDescription key="titleFontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
-                                            <color key="baseForegroundColor" name="VoidWhite"/>
-                                            <color key="baseBackgroundColor" name="DisabledGray"/>
-                                        </buttonConfiguration>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" name="VoidWhite"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="28"/>
@@ -203,7 +203,7 @@
     </scenes>
     <designables>
         <designable name="8Eq-vo-rRB">
-            <size key="intrinsicContentSize" width="67.666666666666671" height="32.666666666666664"/>
+            <size key="intrinsicContentSize" width="44" height="31"/>
         </designable>
         <designable name="kE2-5l-ovP">
             <size key="intrinsicContentSize" width="293" height="30.333333333333332"/>

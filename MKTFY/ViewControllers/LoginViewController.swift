@@ -39,7 +39,11 @@ class LoginViewController: UIViewController {
         self.passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = true
         
-        loginButton.backgroundColor = .blue
+        if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
+            loginButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .disabled)
+        } else {
+            loginButton.setBackgroundColor(UIColor.appColor(LPColor.WarningYellow), forState: .normal)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
 
@@ -60,13 +64,12 @@ extension LoginViewController {
         if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             configureView(withMessage: "Username and/or password cannot be blank")
             return
-        } else {
-
         }
         
         if emailTextField.text == "d" && passwordTextField.text == "d" {
             print("It's correct...maybe?")
-            
+            loginButton.configuration?.showsActivityIndicator = true
+
             errorMessageLabel.isHidden = true
             
         } else {
@@ -81,6 +84,19 @@ extension LoginViewController {
     }
 }
 
+// Simple extension with a method to control the color state of the button.
+extension LoginViewController {
+    func changeLoginButtonColor(){
+        if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
+            loginButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
+            return
+        } else {
+            loginButton.setBackgroundColor(UIColor.appColor(LPColor.WarningYellow), forState: .normal)
+        }
+ 
+    }
+}
+
 // Enable dismiss of keyboard when the user taps anywhere from the screen
 extension LoginViewController {
     func initializeHideKeyboard(){
@@ -92,6 +108,7 @@ extension LoginViewController {
     
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
+        changeLoginButtonColor()
     }
 }
 
@@ -99,6 +116,7 @@ extension LoginViewController {
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        changeLoginButtonColor()
         return false
     }
     
@@ -119,4 +137,14 @@ extension LoginViewController {
     @objc func keyboardWillHide(sender: NSNotification) {
          self.view.frame.origin.y = 0 // Move view to original position
     }
+}
+
+extension UIButton {
+  func setBackgroundColor(_ color: UIColor, forState controlState: UIControl.State) {
+    let colorImage = UIGraphicsImageRenderer(size: CGSize(width: 1, height: 1)).image { _ in
+      color.setFill()
+      UIBezierPath(rect: CGRect(x: 0, y: 0, width: 1, height: 1)).fill()
+    }
+    setBackgroundImage(colorImage, for: controlState)
+  }
 }
