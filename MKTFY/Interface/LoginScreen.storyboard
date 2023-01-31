@@ -188,8 +188,6 @@
                         <outlet property="cloudsImageView" destination="ubR-PJ-yIh" id="dpY-Yh-zSe"/>
                         <outlet property="emailLabel" destination="swA-Sq-fi8" id="Qxt-V2-ITT"/>
                         <outlet property="emailTextField" destination="uaX-td-CNP" id="ldb-Xx-yGA"/>
-                        <outlet property="forgotPasswordButton" destination="CYR-FQ-mzE" id="jPO-ze-gXA"/>
-                        <outlet property="imageView" destination="PmD-Kt-C94" id="AbC-GT-a28"/>
                         <outlet property="passwordLabel" destination="ELm-LG-I2L" id="7rw-N6-yVb"/>
                         <outlet property="passwordTextField" destination="4IB-pt-78H" id="4PR-Bf-oOf"/>
                         <outlet property="subTitleLabel" destination="UZb-us-MPZ" id="njs-5l-hIu"/>
