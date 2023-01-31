@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
-    let errorMessageLabel = UILabel()
+    @IBOutlet weak var errorMessageLabel: UILabel!
     
     @IBAction func forgotPasswordButton(_ sender: Any) {
     }
@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var cloudsImageView: UIImageView!
     
     @IBAction func loginButton(_ sender: Any) {
+        login()
     }
     
     @IBAction func createAccountButton(_ sender: Any) {
@@ -37,11 +38,8 @@ class LoginViewController: UIViewController {
     
 }
 
+// Validating the Login Process
 extension LoginViewController {
-    
-    @objc func loginButton(sender: UIButton) {
-        login()
-    }
     
     private func login() {
         guard let emailTextField = emailTextField, let passwordTextField = passwordTextField else {
@@ -54,8 +52,8 @@ extension LoginViewController {
             return
         }
         
-        if emailTextField.text == "" && passwordTextField.text == "" {
-            
+        if emailTextField.text == "d" && passwordTextField.text == "d" {
+            print("It's correct...maybe?")
         } else {
             configureView(withMessage: "Incorrect Username and/or password")
         }

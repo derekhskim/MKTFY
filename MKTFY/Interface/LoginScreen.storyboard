@@ -54,6 +54,12 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your email is incorrect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rI-OR-D3S">
+                                        <rect key="frame" x="0.0" y="84.333333333333371" width="353" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" name="MistakeRed"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="iiy-a4-EZu" userLabel="Password TextField Stack View">
                                         <rect key="frame" x="0.0" y="92.333333333333371" width="353" height="76.333333333333314"/>
                                         <subviews>
@@ -188,6 +194,7 @@
                         <outlet property="cloudsImageView" destination="ubR-PJ-yIh" id="dpY-Yh-zSe"/>
                         <outlet property="emailLabel" destination="swA-Sq-fi8" id="Qxt-V2-ITT"/>
                         <outlet property="emailTextField" destination="uaX-td-CNP" id="ldb-Xx-yGA"/>
+                        <outlet property="errorMessageLabel" destination="6rI-OR-D3S" id="H7a-fV-VrO"/>
                         <outlet property="passwordLabel" destination="ELm-LG-I2L" id="7rw-N6-yVb"/>
                         <outlet property="passwordTextField" destination="4IB-pt-78H" id="4PR-Bf-oOf"/>
                         <outlet property="subTitleLabel" destination="UZb-us-MPZ" id="njs-5l-hIu"/>
@@ -215,6 +222,9 @@
         </namedColor>
         <namedColor name="LightestPurple">
             <color red="0.57647058823529407" green="0.28627450980392155" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MistakeRed">
+            <color red="1" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="OccasionalPurple">
             <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
