@@ -2,17 +2,18 @@
 //  ForgotPasswordViewController.swift
 //  MKTFY
 //
-//  Created by Derek Kim on 2023/01/31.
+//  Created by Derek Kim on 2023/02/01.
 //
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController {
-    
-    @IBOutlet weak var emailTextField: UITextField!
+class ForgotPasswordVerificationViewController: UIViewController {
+    @IBOutlet weak var verificationTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
-    @IBAction func sendButtonTapped(_ sender: Any) {
-        print("Ouch")
+    
+    @IBOutlet weak var verifyButton: Button!
+    
+    @IBAction func verifyButtonTapped(_ sender: Any) {
     }
     
     override func viewDidLoad() {
@@ -20,7 +21,7 @@ class ForgotPasswordViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         initializeHideKeyboard()
-        self.emailTextField.delegate = self
+        self.verificationTextField.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
 
@@ -34,7 +35,7 @@ class ForgotPasswordViewController: UIViewController {
 }
 
 // Enable dismiss of keyboard when the user taps anywhere from the screen
-extension ForgotPasswordViewController {
+extension ForgotPasswordVerificationViewController {
     func initializeHideKeyboard(){
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
@@ -44,7 +45,8 @@ extension ForgotPasswordViewController {
     
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
-        if emailTextField.text!.isEmpty {
+        changeButtonColor()
+        if verificationTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Username and/or password cannot be blank")
         } else {
@@ -55,10 +57,11 @@ extension ForgotPasswordViewController {
 }
 
 // Enable dismiss of keyboard when the user taps "return"
-extension ForgotPasswordViewController: UITextFieldDelegate {
+extension ForgotPasswordVerificationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        if emailTextField.text!.isEmpty {
+        changeButtonColor()
+        if verificationTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Username and/or password cannot be blank")
         } else {
@@ -78,21 +81,21 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
 }
 
 // Extension to customize border color to indicate whether a textfield is empty or not
-extension ForgotPasswordViewController {
+extension ForgotPasswordVerificationViewController {
     func setBorderColor() {
         let errorColor: UIColor = UIColor.appColor(LPColor.MistakeRed)
-        emailTextField.layer.borderWidth = 1
-        emailTextField.layer.borderColor = errorColor.cgColor
+        verificationTextField.layer.borderWidth = 1
+        verificationTextField.layer.borderColor = errorColor.cgColor
     }
     
     func removeBorderColor() {
-        emailTextField.layer.borderWidth = 0
-        emailTextField.layer.borderColor = nil
+        verificationTextField.layer.borderWidth = 0
+        verificationTextField.layer.borderColor = nil
     }
 }
 
 // Extension to shift the view upward or downward when system keyboard appears
-extension ForgotPasswordViewController {
+extension ForgotPasswordVerificationViewController {
     @objc func keyboardWillShow(sender: NSNotification) {
          self.view.frame.origin.y = -100 // Move view 100 points upward
     }
@@ -102,3 +105,15 @@ extension ForgotPasswordViewController {
     }
 }
 
+// Simple extension with a method to control the color state of the button.
+extension ForgotPasswordVerificationViewController {
+    func changeButtonColor(){
+        if verificationTextField.text!.isEmpty {
+            verifyButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
+            return
+        } else {
+            verifyButton.setBackgroundColor(UIColor.appColor(LPColor.OccasionalPurple), forState: .normal)
+        }
+ 
+    }
+}

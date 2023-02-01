@@ -87,7 +87,7 @@ extension LoginViewController {
 
 // Simple extension with a method to control the color state of the button.
 extension LoginViewController {
-    func changeLoginButtonColor(){
+    func changeButtonColor(){
         if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             loginButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
             return
@@ -109,7 +109,7 @@ extension LoginViewController {
     
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
-        changeLoginButtonColor()
+        changeButtonColor()
         if emailTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Username and/or password cannot be blank")
@@ -124,7 +124,7 @@ extension LoginViewController {
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        changeLoginButtonColor()
+        changeButtonColor()
         if emailTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Username and/or password cannot be blank")
