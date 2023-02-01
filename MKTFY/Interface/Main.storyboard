@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="Y6W-OH-hqX" customClass="LoginViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="LoginViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,11 +138,11 @@
                                         <rect key="frame" x="0.0" y="178.66666666666669" width="353" height="19"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJK-FM-clo">
-                                                <rect key="frame" x="0.0" y="0.0" width="184.33333333333334" height="19"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="184.66666666666666" height="19"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYR-FQ-mzE">
-                                                <rect key="frame" x="184.33333333333337" y="0.0" width="168.66666666666663" height="19"/>
+                                                <rect key="frame" x="184.66666666666663" y="0.0" width="168.33333333333337" height="19"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <attributedString key="attributedTitle">
@@ -212,7 +212,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="kBW-Tn-MK2">
-                                <rect key="frame" x="20" y="219" width="353" height="294"/>
+                                <rect key="frame" x="20" y="179" width="353" height="294"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="gL3-gA-YUf" userLabel="Image and Label Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="185"/>
@@ -283,7 +283,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="sendButtonTapped:" destination="c0U-DS-GSD" eventType="touchUpInside" id="ffz-kM-2cC"/>
-                                    <segue destination="66f-fL-5wx" kind="show" id="Xj7-RY-djf"/>
+                                    <segue destination="its-Zd-MP1" kind="show" id="LLU-pl-raM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -294,7 +294,7 @@
                             <constraint firstItem="kBW-Tn-MK2" firstAttribute="leading" secondItem="0fx-hn-GwU" secondAttribute="leading" constant="20" id="Meb-bv-yDo"/>
                             <constraint firstAttribute="trailing" secondItem="kBW-Tn-MK2" secondAttribute="trailing" constant="20" id="NrB-sM-urL"/>
                             <constraint firstItem="vBa-wD-vZv" firstAttribute="trailing" secondItem="aY2-3q-7XE" secondAttribute="trailing" constant="20" id="dz6-xV-9SZ"/>
-                            <constraint firstItem="kBW-Tn-MK2" firstAttribute="centerY" secondItem="0fx-hn-GwU" secondAttribute="centerY" constant="-60" id="ehT-3Q-YMl"/>
+                            <constraint firstItem="kBW-Tn-MK2" firstAttribute="centerY" secondItem="0fx-hn-GwU" secondAttribute="centerY" constant="-100" id="ehT-3Q-YMl"/>
                             <constraint firstItem="aY2-3q-7XE" firstAttribute="leading" secondItem="vBa-wD-vZv" secondAttribute="leading" constant="20" id="iKw-1t-Rjf"/>
                             <constraint firstItem="vBa-wD-vZv" firstAttribute="bottom" secondItem="aY2-3q-7XE" secondAttribute="bottom" constant="107" id="lzu-7L-cuq"/>
                         </constraints>
@@ -325,10 +325,11 @@
             </objects>
             <point key="canvasLocation" x="2079" y="344"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main Navigation Controller-->
         <scene sceneID="kmD-dG-rWO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6b2-mR-pJg" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6b2-mR-pJg" customClass="MainNavigationController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sjy-Jq-N9J">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -349,10 +350,10 @@
             </objects>
             <point key="canvasLocation" x="100" y="-27.464788732394368"/>
         </scene>
-        <!--Forgot Password-->
+        <!--Forgot Password Verification-->
         <scene sceneID="oF4-SY-NRX">
             <objects>
-                <viewController id="66f-fL-5wx" customClass="ForgotPasswordVerificationViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="66f-fL-5wx" userLabel="Forgot Password Verification" customClass="ForgotPasswordVerificationViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="redraw" id="4ld-KI-eEy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -383,7 +384,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="a2M-Xd-qYs" userLabel="Email TextField Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="a2M-Xd-qYs" userLabel="Verification Code TextField Stack View">
                                                 <rect key="frame" x="0.0" y="219" width="353" height="79"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verification Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CZ-TG-nPa">
@@ -404,7 +405,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your email is incorrect" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qi3-CF-4SZ">
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your verification code is incorrect" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qi3-CF-4SZ">
                                                         <rect key="frame" x="0.0" y="79" width="353" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" name="MistakeRed"/>
@@ -414,7 +415,7 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wre-RZ-981" userLabel="I forgot my password">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wre-RZ-981" userLabel="Receive Code Again Stack View">
                                         <rect key="frame" x="0.0" y="308" width="353" height="19"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEf-7m-lWS">
@@ -489,7 +490,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XND-SR-KqP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2975" y="-382"/>
+            <point key="canvasLocation" x="4192" y="-382"/>
+        </scene>
+        <!--Loading Confirmation Viewcontroller-->
+        <scene sceneID="wXy-Vw-mgd">
+            <objects>
+                <viewController id="its-Zd-MP1" customClass="LoadingConfirmationViewcontroller" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ztV-ve-Oy2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="AM3-l2-d4D"/>
+                        <color key="backgroundColor" name="OccasionalPurple"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GV3-hB-Tnu"/>
+                    <connections>
+                        <outlet property="navItem" destination="GV3-hB-Tnu" id="TlV-J3-WCL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jmd-Jn-Lfi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3139.6946564885493" y="-382.3943661971831"/>
         </scene>
     </scenes>
     <designables>

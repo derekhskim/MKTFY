@@ -48,7 +48,7 @@ extension ForgotPasswordVerificationViewController {
         changeButtonColor()
         if verificationTextField.text!.isEmpty {
             setBorderColor()
-            configureView(withMessage: "Username and/or password cannot be blank")
+            configureView(withMessage: "Your verification code is incorrect")
         } else {
             removeBorderColor()
             errorMessageLabel.isHidden = true
@@ -63,7 +63,7 @@ extension ForgotPasswordVerificationViewController: UITextFieldDelegate {
         changeButtonColor()
         if verificationTextField.text!.isEmpty {
             setBorderColor()
-            configureView(withMessage: "Username and/or password cannot be blank")
+            configureView(withMessage: "Your verification code is incorrect")
         } else {
             removeBorderColor()
             errorMessageLabel.isHidden = true

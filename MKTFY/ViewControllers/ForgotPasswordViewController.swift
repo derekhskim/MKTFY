@@ -22,6 +22,9 @@ class ForgotPasswordViewController: UIViewController {
         initializeHideKeyboard()
         self.emailTextField.delegate = self
         
+//        navigationController?.view.backgroundColor = UIColor.appColor(LPColor.VoidWhite)
+        view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
@@ -102,3 +105,10 @@ extension ForgotPasswordViewController {
     }
 }
 
+
+extension ForgotPasswordViewController {
+    override func viewWillAppear(_ animated: Bool) {
+     super.viewWillAppear(animated)
+     navigationController?.setNavigationBarHidden(false, animated: animated)
+   }
+}
