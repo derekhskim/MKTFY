@@ -72,7 +72,6 @@ extension LoginViewController {
         if emailTextField.text == "d" && passwordTextField.text == "d" {
             print("It's correct...maybe?")
             loginButton.configuration?.showsActivityIndicator = true
-            errorMessageLabel.isHidden = true
             
         } else {
             configureView(withMessage: "Incorrect Username and/or password")
@@ -116,7 +115,7 @@ extension LoginViewController {
             configureView(withMessage: "Username and/or password cannot be blank")
         } else {
             removeBorderColor()
-            configureView(withMessage: "")
+            errorMessageLabel.isHidden = true
         }
     }
 }
@@ -131,7 +130,7 @@ extension LoginViewController: UITextFieldDelegate {
             configureView(withMessage: "Username and/or password cannot be blank")
         } else {
             removeBorderColor()
-            configureView(withMessage: "")
+            errorMessageLabel.isHidden = true
         }
         return false
     }
