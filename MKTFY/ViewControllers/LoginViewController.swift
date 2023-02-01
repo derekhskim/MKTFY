@@ -62,14 +62,16 @@ extension LoginViewController {
         }
         
         if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
-            configureView(withMessage: "Username and/or password cannot be blank")
+            
             return
+        } else if emailTextField.text!.isEmpty == false {
+            
         }
         
+        // Simple Tester
         if emailTextField.text == "d" && passwordTextField.text == "d" {
             print("It's correct...maybe?")
             loginButton.configuration?.showsActivityIndicator = true
-
             errorMessageLabel.isHidden = true
             
         } else {
@@ -109,6 +111,13 @@ extension LoginViewController {
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
         changeLoginButtonColor()
+        if emailTextField.text!.isEmpty {
+            setBorderColor()
+            configureView(withMessage: "Username and/or password cannot be blank")
+        } else {
+            removeBorderColor()
+            configureView(withMessage: "")
+        }
     }
 }
 
@@ -117,6 +126,13 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         changeLoginButtonColor()
+        if emailTextField.text!.isEmpty {
+            setBorderColor()
+            configureView(withMessage: "Username and/or password cannot be blank")
+        } else {
+            removeBorderColor()
+            configureView(withMessage: "")
+        }
         return false
     }
     
@@ -129,6 +145,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
 }
 
+// Extension to shift the view upward or downward when system keyboard appears
 extension LoginViewController {
     @objc func keyboardWillShow(sender: NSNotification) {
          self.view.frame.origin.y = -150 // Move view 150 points upward
@@ -139,6 +156,21 @@ extension LoginViewController {
     }
 }
 
+// Extension to customize border color to indicate whether a textfield is empty or not
+extension LoginViewController {
+    func setBorderColor() {
+        let errorColor: UIColor = UIColor.appColor(LPColor.MistakeRed)
+        emailTextField.layer.borderWidth = 1
+        emailTextField.layer.borderColor = errorColor.cgColor
+    }
+    
+    func removeBorderColor() {
+        emailTextField.layer.borderWidth = 0
+        emailTextField.layer.borderColor = nil
+    }
+}
+
+// Extension to change background color of UIButton
 extension UIButton {
   func setBackgroundColor(_ color: UIColor, forState controlState: UIControl.State) {
     let colorImage = UIGraphicsImageRenderer(size: CGSize(width: 1, height: 1)).image { _ in
