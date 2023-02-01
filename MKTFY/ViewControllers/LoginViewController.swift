@@ -147,7 +147,7 @@ extension LoginViewController: UITextFieldDelegate {
 // Extension to shift the view upward or downward when system keyboard appears
 extension LoginViewController {
     @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -150 // Move view 150 points upward
+         self.view.frame.origin.y = -100 // Move view 100 points upward
     }
 
     @objc func keyboardWillHide(sender: NSNotification) {

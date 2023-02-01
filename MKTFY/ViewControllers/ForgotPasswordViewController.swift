@@ -21,6 +21,10 @@ class ForgotPasswordViewController: UIViewController {
         
         initializeHideKeyboard()
         self.emailTextField.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
     private func configureView(withMessage message: String){
@@ -90,7 +94,7 @@ extension ForgotPasswordViewController {
 // Extension to shift the view upward or downward when system keyboard appears
 extension ForgotPasswordViewController {
     @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -150 // Move view 150 points upward
+         self.view.frame.origin.y = -100 // Move view 100 points upward
     }
 
     @objc func keyboardWillHide(sender: NSNotification) {
