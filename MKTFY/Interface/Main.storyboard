@@ -353,7 +353,7 @@
         <!--Forgot Password Verification-->
         <scene sceneID="oF4-SY-NRX">
             <objects>
-                <viewController id="66f-fL-5wx" userLabel="Forgot Password Verification" customClass="ForgotPasswordVerificationViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPasswordVerificationViewController" id="66f-fL-5wx" userLabel="Forgot Password Verification" customClass="ForgotPasswordVerificationViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="redraw" id="4ld-KI-eEy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -403,7 +403,7 @@
                                                         </constraints>
                                                         <color key="textColor" name="TextGray"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your verification code is incorrect" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qi3-CF-4SZ">
                                                         <rect key="frame" x="0.0" y="79" width="353" height="0.0"/>
@@ -499,11 +499,18 @@
                     <view key="view" contentMode="scaleToFill" id="ztV-ve-Oy2">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circular_indicator" translatesAutoresizingMaskIntoConstraints="NO" id="WiK-7x-5i2">
+                                <rect key="frame" x="76" y="321" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="AM3-l2-d4D"/>
                         <color key="backgroundColor" name="OccasionalPurple"/>
                     </view>
                     <navigationItem key="navigationItem" id="GV3-hB-Tnu"/>
                     <connections>
+                        <outlet property="circularIndicator" destination="WiK-7x-5i2" id="vFd-HC-N2J"/>
                         <outlet property="navItem" destination="GV3-hB-Tnu" id="TlV-J3-WCL"/>
                     </connections>
                 </viewController>
@@ -529,6 +536,7 @@
     <color key="tintColor" name="LightestPurple"/>
     <resources>
         <image name="MKTFY_purple" width="235" height="52"/>
+        <image name="circular_indicator" width="300" height="300"/>
         <image name="clouds_combined" width="375" height="238"/>
         <image name="email_verification" width="102.66666412353516" height="108"/>
         <namedColor name="DisabledGray">
