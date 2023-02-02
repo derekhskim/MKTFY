@@ -110,14 +110,22 @@
 			path = MainController;
 			sourceTree = "<group>";
 		};
+		65B0F499298C376200BADC72 /* LoadingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6587F35A298AF37200EF5100 /* LoadingConfirmationViewController.swift */,
+			);
+			path = LoadingViewController;
+			sourceTree = "<group>";
+		};
 		65C28FC52988BA0D00A3BBEE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				65B0F499298C376200BADC72 /* LoadingViewController */,
 				6587F35C298AFA9E00EF5100 /* MainController */,
 				65C28FC62988BA1D00A3BBEE /* LoginViewController.swift */,
 				65EBA0BD298A1E5200202C02 /* ForgotPasswordViewController.swift */,
 				651218BB298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift */,
-				6587F35A298AF37200EF5100 /* LoadingConfirmationViewController.swift */,
 				65313CDD298B08630016BE11 /* NoNavBarViewController.swift */,
 			);
 			path = ViewControllers;

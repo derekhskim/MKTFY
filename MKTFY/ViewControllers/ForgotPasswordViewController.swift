@@ -11,6 +11,7 @@ class ForgotPasswordViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
+    @IBOutlet weak var backgroundView: UIView!
     @IBAction func sendButtonTapped(_ sender: Any) {
         print("Ouch")
     }
@@ -22,9 +23,10 @@ class ForgotPasswordViewController: UIViewController {
         initializeHideKeyboard()
         self.emailTextField.delegate = self
         
-//        navigationController?.view.backgroundColor = UIColor.appColor(LPColor.VoidWhite)
-        view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
-        
+        view.backgroundColor = UIColor.appColor(LPColor.VoidWhite)
+        backgroundView.layer.cornerRadius = CGFloat(20)
+        backgroundView.clipsToBounds = true
+                
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);

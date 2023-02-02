@@ -14,9 +14,8 @@ class MainNavigationController: UINavigationController {
         
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.backgroundColor = UIColor.appColor(LPColor.VoidWhite)
+        navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.appColor(LPColor.OccasionalPurple)!]
         UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
                         
         // Do any additional setup after loading the view.
     }

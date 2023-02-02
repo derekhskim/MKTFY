@@ -13,6 +13,12 @@ class LoadingConfirmationViewcontroller: UIViewController {
     @IBOutlet weak var circularIndicator: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
                 
         circularIndicator?.animationRepeatCount = 1
         circularIndicator?.startAnimating()

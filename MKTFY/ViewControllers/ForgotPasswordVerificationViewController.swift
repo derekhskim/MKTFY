@@ -10,6 +10,7 @@ import UIKit
 class ForgotPasswordVerificationViewController: UIViewController {
     @IBOutlet weak var verificationTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
+    @IBOutlet weak var backgroundView: UIView!
     
     @IBOutlet weak var verifyButton: Button!
     
@@ -22,6 +23,10 @@ class ForgotPasswordVerificationViewController: UIViewController {
         
         initializeHideKeyboard()
         self.verificationTextField.delegate = self
+        
+        view.backgroundColor = UIColor.appColor(LPColor.VoidWhite)
+        backgroundView.layer.cornerRadius = CGFloat(20)
+        backgroundView.clipsToBounds = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
 
