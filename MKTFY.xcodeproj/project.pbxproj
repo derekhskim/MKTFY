@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		651218BC298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651218BB298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift */; };
 		65313CDE298B08630016BE11 /* NoNavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65313CDD298B08630016BE11 /* NoNavBarViewController.swift */; };
+		653F2401298CBE7A0053C5E1 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653F2400298CBE7A0053C5E1 /* UIImage+.swift */; };
 		6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E0FE2988AACF001482AB /* AppDelegate.swift */; };
 		6568E1012988AACF001482AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E1002988AACF001482AB /* SceneDelegate.swift */; };
 		6568E1082988AACF001482AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6568E1072988AACF001482AB /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		651218BB298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVerificationViewController.swift; sourceTree = "<group>"; };
 		65313CDD298B08630016BE11 /* NoNavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNavBarViewController.swift; sourceTree = "<group>"; };
+		653F2400298CBE7A0053C5E1 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		6568E0FB2988AACF001482AB /* MKTFY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKTFY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6568E0FE2988AACF001482AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6568E1002988AACF001482AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				6568E1132988AF50001482AB /* UIColor+.swift */,
 				65C28FCB2988BB6500A3BBEE /* UIViewController+.swift */,
+				653F2400298CBE7A0053C5E1 /* UIImage+.swift */,
 			);
 			path = Helps;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */,
 				65EBA0BE298A1E5200202C02 /* ForgotPasswordViewController.swift in Sources */,
 				65C28FC72988BA1D00A3BBEE /* LoginViewController.swift in Sources */,
+				653F2401298CBE7A0053C5E1 /* UIImage+.swift in Sources */,
 				65313CDE298B08630016BE11 /* NoNavBarViewController.swift in Sources */,
 				6568E1012988AACF001482AB /* SceneDelegate.swift in Sources */,
 			);

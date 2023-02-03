@@ -10,7 +10,8 @@ import UIKit
 class LoadingConfirmationViewcontroller: UIViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     
-    @IBOutlet weak var circularIndicator: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,14 +19,21 @@ class LoadingConfirmationViewcontroller: UIViewController {
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
         UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-                
-        circularIndicator?.animationRepeatCount = 1
-        circularIndicator?.startAnimating()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + circularIndicator.animationDuration) {
+        imageView.image = UIImage.animatedGif(named: "confirmation_check")
+        viewWillDisappear(true)
+                
+        imageView?.animationRepeatCount = 1
+        imageView?.startAnimating()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
             let forgotPasswordVerificationViewController = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordVerificationViewController")
             self.show(forgotPasswordVerificationViewController!, sender: nil)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }

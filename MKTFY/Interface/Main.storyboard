@@ -288,7 +288,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="sendButtonTapped:" destination="c0U-DS-GSD" eventType="touchUpInside" id="ffz-kM-2cC"/>
-                                    <segue destination="66f-fL-5wx" kind="show" id="May-xm-vs5"/>
+                                    <segue destination="its-Zd-MP1" kind="show" id="hv3-yU-CpG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -513,22 +513,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circular_indicator" translatesAutoresizingMaskIntoConstraints="NO" id="WiK-7x-5i2">
-                                <rect key="frame" x="76" y="321" width="240" height="128"/>
+                                <rect key="frame" x="46" y="276" width="300" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AM3-l2-d4D"/>
                         <color key="backgroundColor" name="OccasionalPurple"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GV3-hB-Tnu"/>
+                    <navigationItem key="navigationItem" style="editor" id="GV3-hB-Tnu"/>
                     <connections>
-                        <outlet property="circularIndicator" destination="WiK-7x-5i2" id="vFd-HC-N2J"/>
+                        <outlet property="imageView" destination="WiK-7x-5i2" id="B7V-CO-rKK"/>
                         <outlet property="navItem" destination="GV3-hB-Tnu" id="TlV-J3-WCL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jmd-Jn-Lfi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3091" y="-382"/>
+            <point key="canvasLocation" x="3090.8396946564885" y="-382.3943661971831"/>
         </scene>
     </scenes>
     <designables>

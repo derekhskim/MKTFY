@@ -16,7 +16,6 @@ class NoNavBarViewController: UINavigationController {
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
         UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         
         let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backBarButton
