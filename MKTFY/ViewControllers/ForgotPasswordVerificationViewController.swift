@@ -20,7 +20,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+
         initializeHideKeyboard()
         self.verificationTextField.delegate = self
         
@@ -121,4 +121,12 @@ extension ForgotPasswordVerificationViewController {
         }
  
     }
+}
+
+extension ForgotPasswordVerificationViewController {
+    @objc func backButtonTapped() {
+        let viewController = ForgotPasswordViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
 }

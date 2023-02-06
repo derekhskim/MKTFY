@@ -9,6 +9,31 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Main Navigation Controller-->
+        <scene sceneID="kmD-dG-rWO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6b2-mR-pJg" customClass="MainNavigationController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sjy-Jq-N9J">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="LightestPurple"/>
+                        <color key="barTintColor" name="VoidWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <color key="textColor" name="LightestPurple"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="nGs-ZB-X1h"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8r8-Gm-uqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="-27.464788732394368"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
@@ -315,46 +340,34 @@
             </objects>
             <point key="canvasLocation" x="2079" y="-382"/>
         </scene>
-        <!--Create Account-->
-        <scene sceneID="Pop-ZU-34G">
+        <!--Loading Confirmation Viewcontroller-->
+        <scene sceneID="wXy-Vw-mgd">
             <objects>
-                <viewController id="OQS-o9-uMf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="szO-0x-7bs">
+                <viewController id="its-Zd-MP1" customClass="LoadingConfirmationViewcontroller" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ztV-ve-Oy2">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="xxe-2L-vQb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circular_indicator" translatesAutoresizingMaskIntoConstraints="NO" id="WiK-7x-5i2">
+                                <rect key="frame" x="46" y="276" width="300" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clouds_combined" translatesAutoresizingMaskIntoConstraints="NO" id="myi-wV-i3T">
+                                <rect key="frame" x="0.0" y="584" width="393" height="268"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="AM3-l2-d4D"/>
+                        <color key="backgroundColor" name="OccasionalPurple"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create Account" style="editor" id="ONW-oH-3xm"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KbO-xT-RWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2079" y="344"/>
-        </scene>
-        <!--Main Navigation Controller-->
-        <scene sceneID="kmD-dG-rWO">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6b2-mR-pJg" customClass="MainNavigationController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sjy-Jq-N9J">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="LightestPurple"/>
-                        <color key="barTintColor" name="VoidWhite"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                            <color key="textColor" name="LightestPurple"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                    <navigationItem key="navigationItem" style="editor" id="GV3-hB-Tnu"/>
                     <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="nGs-ZB-X1h"/>
+                        <outlet property="imageView" destination="WiK-7x-5i2" id="B7V-CO-rKK"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8r8-Gm-uqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jmd-Jn-Lfi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="3136.6412213740455" y="-382.3943661971831"/>
         </scene>
         <!--Forgot Password Verification-->
         <scene sceneID="oF4-SY-NRX">
@@ -504,30 +517,134 @@
             </objects>
             <point key="canvasLocation" x="4191.6030534351139" y="-382.3943661971831"/>
         </scene>
-        <!--Loading Confirmation Viewcontroller-->
-        <scene sceneID="wXy-Vw-mgd">
+        <!--Create Account-->
+        <scene sceneID="Pop-ZU-34G">
             <objects>
-                <viewController id="its-Zd-MP1" customClass="LoadingConfirmationViewcontroller" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ztV-ve-Oy2">
+                <viewController id="OQS-o9-uMf" customClass="CreateAccountViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="szO-0x-7bs">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circular_indicator" translatesAutoresizingMaskIntoConstraints="NO" id="WiK-7x-5i2">
-                                <rect key="frame" x="46" y="276" width="300" height="300"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZCB-Kg-bD3" userLabel="backgroundView">
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="BE5-VQ-ehK" userLabel="FirstName TextField Stack View">
+                                <rect key="frame" x="21" y="141" width="351" height="79"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqH-z6-ciw">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="mmu-jl-FYS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" name="TitleGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert your first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V2h-j2-5G6">
+                                        <rect key="frame" x="0.0" y="28" width="351" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="NyD-ev-6K5"/>
+                                        </constraints>
+                                        <color key="textColor" name="TextGray"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="xAQ-6W-NHu" userLabel="LastName TextField Stack View">
+                                <rect key="frame" x="21" y="244" width="351" height="79"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJr-Gc-b6H" userLabel="Last Name">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="6MU-q7-eIy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" name="TitleGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert your Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GoW-rk-ufR" userLabel="Insert Your Last Name">
+                                        <rect key="frame" x="0.0" y="28" width="351" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="XgF-9L-AcS"/>
+                                        </constraints>
+                                        <color key="textColor" name="TextGray"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="WiF-mP-5l3" userLabel="Email TextField Stack View">
+                                <rect key="frame" x="21" y="347" width="351" height="79"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ld-Yo-5Qa">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="lul-BH-gbr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" name="TitleGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="29K-sF-qju">
+                                        <rect key="frame" x="0.0" y="28" width="351" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="oh1-du-1Ap"/>
+                                        </constraints>
+                                        <color key="textColor" name="TextGray"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="TXj-cL-ZOV" userLabel="Phone TextField Stack View">
+                                <rect key="frame" x="128" y="386" width="135.33333333333334" height="79"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWw-z8-m8N" userLabel="Phone">
+                                        <rect key="frame" x="0.0" y="0.0" width="135.33333333333334" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="Llb-Lw-aF5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" name="TitleGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v31-yx-RFH" userLabel="Insert your phone #">
+                                        <rect key="frame" x="0.0" y="28" width="135.33333333333334" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="UhF-I3-hgb"/>
+                                        </constraints>
+                                        <color key="textColor" name="TextGray"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="AM3-l2-d4D"/>
-                        <color key="backgroundColor" name="OccasionalPurple"/>
+                        <viewLayoutGuide key="safeArea" id="xxe-2L-vQb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BE5-VQ-ehK" firstAttribute="leading" secondItem="xxe-2L-vQb" secondAttribute="leading" constant="21" id="1b9-6E-vpO"/>
+                            <constraint firstItem="WiF-mP-5l3" firstAttribute="top" secondItem="xAQ-6W-NHu" secondAttribute="bottom" constant="24" id="E6o-wM-kdj"/>
+                            <constraint firstItem="xxe-2L-vQb" firstAttribute="trailing" secondItem="WiF-mP-5l3" secondAttribute="trailing" constant="21" id="Q1R-5I-IDy"/>
+                            <constraint firstItem="xAQ-6W-NHu" firstAttribute="top" secondItem="BE5-VQ-ehK" secondAttribute="bottom" constant="24" id="VRQ-PX-xOi"/>
+                            <constraint firstItem="WiF-mP-5l3" firstAttribute="leading" secondItem="xxe-2L-vQb" secondAttribute="leading" constant="21" id="g5c-ar-Css"/>
+                            <constraint firstItem="xxe-2L-vQb" firstAttribute="trailing" secondItem="xAQ-6W-NHu" secondAttribute="trailing" constant="21" id="kF3-VY-Sd2"/>
+                            <constraint firstItem="BE5-VQ-ehK" firstAttribute="top" secondItem="xxe-2L-vQb" secondAttribute="top" constant="38" id="vNr-e7-4eZ"/>
+                            <constraint firstItem="xAQ-6W-NHu" firstAttribute="leading" secondItem="xxe-2L-vQb" secondAttribute="leading" constant="21" id="xk3-vr-D6T"/>
+                            <constraint firstItem="xxe-2L-vQb" firstAttribute="trailing" secondItem="BE5-VQ-ehK" secondAttribute="trailing" constant="21" id="zD5-ye-nOP"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" style="editor" id="GV3-hB-Tnu"/>
+                    <navigationItem key="navigationItem" title="Create Account" style="editor" id="ONW-oH-3xm"/>
                     <connections>
-                        <outlet property="imageView" destination="WiK-7x-5i2" id="B7V-CO-rKK"/>
+                        <outlet property="backgroundView" destination="ZCB-Kg-bD3" id="JzB-e6-g3Q"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jmd-Jn-Lfi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KbO-xT-RWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3138" y="-382"/>
+            <point key="canvasLocation" x="2078.6259541984732" y="343.66197183098592"/>
         </scene>
     </scenes>
     <designables>
@@ -544,7 +661,7 @@
             <size key="intrinsicContentSize" width="293" height="30.333333333333332"/>
         </designable>
     </designables>
-    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+    <color key="tintColor" name="LightestPurple"/>
     <resources>
         <image name="MKTFY_purple" width="235" height="52"/>
         <image name="circular_indicator" width="300" height="300"/>
