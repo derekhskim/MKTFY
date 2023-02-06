@@ -16,6 +16,10 @@ class ForgotPasswordViewController: UIViewController {
         print("Ouch")
     }
     
+    @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

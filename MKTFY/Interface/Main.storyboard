@@ -288,7 +288,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="sendButtonTapped:" destination="c0U-DS-GSD" eventType="touchUpInside" id="ffz-kM-2cC"/>
-                                    <segue destination="its-Zd-MP1" kind="show" id="hv3-yU-CpG"/>
+                                    <segue destination="its-Zd-MP1" kind="show" identifier="LoadingConfirmationViewcontroller" id="hv3-yU-CpG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -523,12 +523,11 @@
                     <navigationItem key="navigationItem" style="editor" id="GV3-hB-Tnu"/>
                     <connections>
                         <outlet property="imageView" destination="WiK-7x-5i2" id="B7V-CO-rKK"/>
-                        <outlet property="navItem" destination="GV3-hB-Tnu" id="TlV-J3-WCL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jmd-Jn-Lfi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3090.8396946564885" y="-382.3943661971831"/>
+            <point key="canvasLocation" x="3138" y="-382"/>
         </scene>
     </scenes>
     <designables>
