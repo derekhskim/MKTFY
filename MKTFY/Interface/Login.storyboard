@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clouds_combined" translatesAutoresizingMaskIntoConstraints="NO" id="ubR-PJ-yIh">
-                                <rect key="frame" x="0.0" y="614" width="393" height="238"/>
+                                <rect key="frame" x="0.0" y="614.66666666666663" width="393" height="237.33333333333337"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="09x-pW-8Ge" userLabel="Title &amp; Subtitle Stack View">
-                                <rect key="frame" x="70" y="183" width="253" height="85.333333333333314"/>
+                                <rect key="frame" x="70" y="182" width="253" height="85.333333333333314"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MKTFY_purple" translatesAutoresizingMaskIntoConstraints="NO" id="PmD-Kt-C94">
                                         <rect key="frame" x="9" y="0.0" width="235" height="52"/>
@@ -32,6 +32,76 @@
                                         <color key="textColor" name="LightestPurple"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="waf-s6-uHC">
+                                <rect key="frame" x="20" y="326.33333333333331" width="353" height="199.33333333333331"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mrt-OQ-fmz" userLabel="Email &amp; Password Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="170.33333333333334"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fD7-bX-a6X" customClass="CustomTextField" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="353" height="78"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your email"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="errorMessage" value="Your email is incorrect"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="iiy-a4-EZu" userLabel="Password TextField Stack View">
+                                                <rect key="frame" x="0.0" y="94" width="353" height="76.333333333333314"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELm-LG-I2L">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="19.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <color key="textColor" name="TitleGray"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4IB-pt-78H">
+                                                        <rect key="frame" x="0.0" y="25.333333333333371" width="353" height="51"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="51" id="pAB-vw-T6x"/>
+                                                        </constraints>
+                                                        <color key="textColor" name="TextGray"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0D-OO-yQ3" userLabel="I forgot my password">
+                                        <rect key="frame" x="0.0" y="180.33333333333337" width="353" height="19"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJK-FM-clo">
+                                                <rect key="frame" x="0.0" y="0.0" width="184.66666666666666" height="19"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYR-FQ-mzE">
+                                                <rect key="frame" x="184.66666666666663" y="0.0" width="168.33333333333337" height="19"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="I forgot my password">
+                                                            <attributes>
+                                                                <font key="NSFont" size="14" name="Helvetica-Bold"/>
+                                                                <integer key="NSUnderline" value="1"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="baseForegroundColor" name="WarningYellow"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="forgotPasswordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Iwm-dg-Pr3"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="ACr-ea-R0L"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Qia-M2-Uca" userLabel="Button Stack View">
@@ -79,96 +149,11 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="waf-s6-uHC">
-                                <rect key="frame" x="20" y="327.33333333333331" width="353" height="197.66666666666669"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mrt-OQ-fmz" userLabel="Email &amp; Password Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="168.66666666666666"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="16a-gR-rTf" userLabel="Email TextField Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="353" height="76.333333333333329"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swA-Sq-fi8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="19.333333333333332"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                        <color key="textColor" name="TitleGray"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uaX-td-CNP">
-                                                        <rect key="frame" x="0.0" y="25.333333333333371" width="353" height="51"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="51" id="l3l-VV-ce5"/>
-                                                        </constraints>
-                                                        <color key="textColor" name="TextGray"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your email is incorrect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rI-OR-D3S">
-                                                        <rect key="frame" x="0.0" y="76.333333333333371" width="353" height="0.0"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <color key="textColor" name="MistakeRed"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="iiy-a4-EZu" userLabel="Password TextField Stack View">
-                                                <rect key="frame" x="0.0" y="92.333333333333371" width="353" height="76.333333333333314"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELm-LG-I2L">
-                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="19.333333333333332"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                        <color key="textColor" name="TitleGray"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4IB-pt-78H">
-                                                        <rect key="frame" x="0.0" y="25.333333333333314" width="353" height="51"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="51" id="pAB-vw-T6x"/>
-                                                        </constraints>
-                                                        <color key="textColor" name="TextGray"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0D-OO-yQ3" userLabel="I forgot my password">
-                                        <rect key="frame" x="0.0" y="178.66666666666669" width="353" height="19"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJK-FM-clo">
-                                                <rect key="frame" x="0.0" y="0.0" width="184.66666666666666" height="19"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYR-FQ-mzE">
-                                                <rect key="frame" x="184.66666666666663" y="0.0" width="168.33333333333337" height="19"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="I forgot my password">
-                                                            <attributes>
-                                                                <font key="NSFont" size="14" name="Helvetica-Bold"/>
-                                                                <integer key="NSUnderline" value="1"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <color key="baseForegroundColor" name="WarningYellow"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="forgotPasswordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Iwm-dg-Pr3"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="19" id="ACr-ea-R0L"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ubR-PJ-yIh" firstAttribute="top" secondItem="waf-s6-uHC" secondAttribute="bottom" constant="89" id="I0e-4k-uGV"/>
                             <constraint firstItem="Qia-M2-Uca" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="KHi-So-VPR"/>
                             <constraint firstAttribute="trailing" secondItem="waf-s6-uHC" secondAttribute="trailing" constant="20" id="KZz-iE-fqM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ubR-PJ-yIh" secondAttribute="trailing" id="Q6g-sP-dkD"/>
@@ -187,9 +172,7 @@
                     <navigationItem key="navigationItem" id="phN-VH-Zas"/>
                     <connections>
                         <outlet property="cloudsImageView" destination="ubR-PJ-yIh" id="dpY-Yh-zSe"/>
-                        <outlet property="emailLabel" destination="swA-Sq-fi8" id="Qxt-V2-ITT"/>
-                        <outlet property="emailTextField" destination="uaX-td-CNP" id="ldb-Xx-yGA"/>
-                        <outlet property="errorMessageLabel" destination="6rI-OR-D3S" id="H7a-fV-VrO"/>
+                        <outlet property="emailView" destination="fD7-bX-a6X" id="9cP-oV-HhR"/>
                         <outlet property="loginButton" destination="8Eq-vo-rRB" id="cfW-wc-nOs"/>
                         <outlet property="passwordLabel" destination="ELm-LG-I2L" id="7rw-N6-yVb"/>
                         <outlet property="passwordTextField" destination="4IB-pt-78H" id="4PR-Bf-oOf"/>
@@ -572,7 +555,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="TXj-cL-ZOV" userLabel="Phone TextField Stack View">
-                                <rect key="frame" x="128" y="386" width="135.33333333333334" height="79"/>
+                                <rect key="frame" x="128" y="386" width="135.33333333333337" height="79"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWw-z8-m8N" userLabel="Phone">
                                         <rect key="frame" x="0.0" y="0.0" width="135.33333333333334" height="22"/>

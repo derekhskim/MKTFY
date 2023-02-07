@@ -9,12 +9,10 @@ import UIKit
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var titleImageView: UIImageView!
+    @IBOutlet weak var emailView: CustomTextField!
     @IBOutlet weak var subTitleLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var errorMessageLabel: UILabel!
     
     @IBAction func forgotPasswordButton(_ sender: Any) {
         let vc = ForgotPasswordViewController.storyboardInstance(storyboardName: "Login") as! ForgotPasswordViewController
@@ -37,11 +35,13 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         initializeHideKeyboard()
-        self.emailTextField.delegate = self
+        
+        self.emailView.inputTextField.delegate = self
         self.passwordTextField.delegate = self
+        
         passwordTextField.isSecureTextEntry = true
         
-        if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
+        if emailView.inputTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             loginButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .disabled)
         } else {
             loginButton.setBackgroundColor(UIColor.appColor(LPColor.WarningYellow), forState: .normal)
@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     
     private func login() {
-        guard let emailTextField = emailTextField, let passwordTextField = passwordTextField else {
+        guard let emailTextField = emailView.inputTextField, let passwordTextField = passwordTextField else {
             assertionFailure("Email and/or password should never be nil.")
             return
         }
@@ -72,7 +72,6 @@ extension LoginViewController {
         
         // Simple Tester
         if emailTextField.text == "d" && passwordTextField.text == "d" {
-            print("It's correct...maybe?")
             loginButton.configuration?.showsActivityIndicator = true
             
         } else {
@@ -82,15 +81,15 @@ extension LoginViewController {
     }
     
     private func configureView(withMessage message: String){
-        errorMessageLabel.isHidden = false
-        errorMessageLabel.text = message
+        emailView.showError = true
+        emailView.errorMessage = message
     }
 }
 
 // Simple extension with a method to control the color state of the button.
 extension LoginViewController {
     func changeButtonColor(){
-        if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
+        if emailView.inputTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             loginButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
             return
         } else {
@@ -112,12 +111,12 @@ extension LoginViewController {
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
         changeButtonColor()
-        if emailTextField.text!.isEmpty {
+        if emailView.inputTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Username and/or password cannot be blank")
         } else {
             removeBorderColor()
-            errorMessageLabel.isHidden = true
+            emailView.showError = false
         }
     }
 }
@@ -125,14 +124,17 @@ extension LoginViewController {
 // Enable dismiss of keyboard when the user taps "return"
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         self.view.endEditing(true)
+        
         changeButtonColor()
-        if emailTextField.text!.isEmpty {
+        
+        if emailView.inputTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Username and/or password cannot be blank")
         } else {
             removeBorderColor()
-            errorMessageLabel.isHidden = true
+            emailView.showError = false
         }
         return false
     }
@@ -161,13 +163,13 @@ extension LoginViewController {
 extension LoginViewController {
     func setBorderColor() {
         let errorColor: UIColor = UIColor.appColor(LPColor.MistakeRed)
-        emailTextField.layer.borderWidth = 1
-        emailTextField.layer.borderColor = errorColor.cgColor
+        emailView.inputTextField.layer.borderWidth = 1
+        emailView.inputTextField.layer.borderColor = errorColor.cgColor
     }
     
     func removeBorderColor() {
-        emailTextField.layer.borderWidth = 0
-        emailTextField.layer.borderColor = nil
+        emailView.inputTextField.layer.borderWidth = 0
+        emailView.inputTextField.layer.borderColor = nil
     }
 }
 
