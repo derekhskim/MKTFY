@@ -29,7 +29,8 @@ class LoginViewController: ViewController {
     }
     
     @IBAction func createAccountButton(_ sender: Any) {
-        print("You cannot make an account yet.")
+        let vc = CreateAccountViewController.storyboardInstance(storyboardName: "Login") as! CreateAccountViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLoad() {
