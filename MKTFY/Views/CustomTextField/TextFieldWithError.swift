@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-class CustomTextField: LPView {
+class TextFieldWithError: LPView {
     var view: UIView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -41,7 +41,7 @@ class CustomTextField: LPView {
     
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "CustomTextField", bundle: bundle)
+        let nib = UINib(nibName: "TextFieldWithError", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
         

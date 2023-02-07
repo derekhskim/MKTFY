@@ -17,7 +17,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomTextField" customModule="MKTFY" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
             <connections>
                 <outlet property="errorLabel" destination="c0W-nV-yvC" id="bBe-8u-kir"/>
                 <outlet property="inputTextField" destination="F6h-Ck-vxZ" id="uhD-W6-JDS"/>

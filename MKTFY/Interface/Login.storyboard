@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clouds_combined" translatesAutoresizingMaskIntoConstraints="NO" id="ubR-PJ-yIh">
-                                <rect key="frame" x="0.0" y="614.66666666666663" width="393" height="237.33333333333337"/>
+                                <rect key="frame" x="0.0" y="616.66666666666663" width="393" height="235.33333333333337"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="09x-pW-8Ge" userLabel="Title &amp; Subtitle Stack View">
-                                <rect key="frame" x="70" y="182" width="253" height="85.333333333333314"/>
+                                <rect key="frame" x="70" y="180.33333333333334" width="253" height="85.333333333333343"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MKTFY_purple" translatesAutoresizingMaskIntoConstraints="NO" id="PmD-Kt-C94">
                                         <rect key="frame" x="9" y="0.0" width="235" height="52"/>
@@ -35,12 +35,12 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="waf-s6-uHC">
-                                <rect key="frame" x="20" y="326.33333333333331" width="353" height="199.33333333333331"/>
+                                <rect key="frame" x="20" y="324.66666666666669" width="353" height="203.00000000000006"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mrt-OQ-fmz" userLabel="Email &amp; Password Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="170.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="174"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fD7-bX-a6X" customClass="CustomTextField" customModule="MKTFY" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fD7-bX-a6X" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="353" height="78"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -50,30 +50,22 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="iiy-a4-EZu" userLabel="Password TextField Stack View">
-                                                <rect key="frame" x="0.0" y="94" width="353" height="76.333333333333314"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELm-LG-I2L">
-                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="19.333333333333332"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                        <color key="textColor" name="TitleGray"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4IB-pt-78H">
-                                                        <rect key="frame" x="0.0" y="25.333333333333371" width="353" height="51"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="51" id="pAB-vw-T6x"/>
-                                                        </constraints>
-                                                        <color key="textColor" name="TextGray"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                </subviews>
-                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wY8-gB-65F" customClass="SecureTextField" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="94" width="353" height="80"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="dPV-rX-d11"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your password"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureEntry" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0D-OO-yQ3" userLabel="I forgot my password">
-                                        <rect key="frame" x="0.0" y="180.33333333333337" width="353" height="19"/>
+                                        <rect key="frame" x="0.0" y="184" width="353" height="19"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJK-FM-clo">
                                                 <rect key="frame" x="0.0" y="0.0" width="184.66666666666666" height="19"/>
@@ -174,8 +166,7 @@
                         <outlet property="cloudsImageView" destination="ubR-PJ-yIh" id="dpY-Yh-zSe"/>
                         <outlet property="emailView" destination="fD7-bX-a6X" id="9cP-oV-HhR"/>
                         <outlet property="loginButton" destination="8Eq-vo-rRB" id="cfW-wc-nOs"/>
-                        <outlet property="passwordLabel" destination="ELm-LG-I2L" id="7rw-N6-yVb"/>
-                        <outlet property="passwordTextField" destination="4IB-pt-78H" id="4PR-Bf-oOf"/>
+                        <outlet property="passwordView" destination="wY8-gB-65F" id="Rpt-ZS-x0a"/>
                         <outlet property="subTitleLabel" destination="UZb-us-MPZ" id="njs-5l-hIu"/>
                         <outlet property="titleImageView" destination="PmD-Kt-C94" id="eyi-2D-LFL"/>
                     </connections>
