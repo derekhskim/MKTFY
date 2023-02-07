@@ -38,8 +38,6 @@ class LoginViewController: UIViewController {
         self.emailView.inputTextField.delegate = self
         self.passwordView.isSecureTextField.delegate = self
         
-        passwordView.isSecureTextField.isSecureTextEntry = true
-
         if emailView.inputTextField.text!.isEmpty || passwordView.isSecureTextField.text!.isEmpty {
             loginButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .disabled)
         } else {
