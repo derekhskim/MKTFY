@@ -13,16 +13,18 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
     @IBAction func sendButtonTapped(_ sender: Any) {
-        print("Ouch")
-    }
-    
-    @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {
-        
+        let vc = LoadingConfirmationViewcontroller.storyboardInstance(storyboardName: "Login") as! LoadingConfirmationViewcontroller
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        // Controls the back button's action and style
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = UIColor.appColor(LPColor.LightestPurple)
+        self.navigationItem.leftBarButtonItem = backButton
         
         initializeHideKeyboard()
         self.emailTextField.delegate = self
@@ -117,4 +119,11 @@ extension ForgotPasswordViewController {
      super.viewWillAppear(animated)
      navigationController?.setNavigationBarHidden(false, animated: animated)
    }
+}
+
+// Determines where the back button should take the view controller to
+extension ForgotPasswordViewController {
+    @objc func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

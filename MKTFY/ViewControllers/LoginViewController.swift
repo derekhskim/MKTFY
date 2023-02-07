@@ -19,7 +19,6 @@ class LoginViewController: ViewController {
     @IBAction func forgotPasswordButton(_ sender: Any) {
         let vc = ForgotPasswordViewController.storyboardInstance(storyboardName: "Login") as! ForgotPasswordViewController
         self.navigationController?.pushViewController(vc, animated: true)
-        print("Too bad..")
     }
     
     @IBOutlet weak var cloudsImageView: UIImageView!

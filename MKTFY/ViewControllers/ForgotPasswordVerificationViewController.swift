@@ -20,7 +20,12 @@ class ForgotPasswordVerificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
+        
+        // Controls the back button's action and style
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = UIColor.appColor(LPColor.LightestPurple)
+        self.navigationItem.leftBarButtonItem = backButton
+        
         initializeHideKeyboard()
         self.verificationTextField.delegate = self
         
@@ -123,10 +128,9 @@ extension ForgotPasswordVerificationViewController {
     }
 }
 
+// Determines where the back button should take the view controller to
 extension ForgotPasswordVerificationViewController {
     @objc func backButtonTapped() {
-        let viewController = ForgotPasswordViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.popToViewController(self.navigationController!.children[1], animated: true)
     }
-
 }
