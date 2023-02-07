@@ -21,5 +21,20 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>OpenSans-SemiBold</string>
+		<string>OpenSans-Light</string>
+		<string>OpenSans-Italic</string>
+		<string>OpenSans-MediumItalic</string>
+		<string>OpenSans-ExtraBold</string>
+		<string>OpenSans-LightItalic</string>
+		<string>OpenSans-Bold</string>
+		<string>OpenSans-SemiBoldItalic</string>
+		<string>OpenSans-Medium</string>
+		<string>OpenSans-ExtraBoldItalic</string>
+		<string>OpenSans-Regular</string>
+		<string>OpenSans-BoldItalic</string>
+	</array>
 </dict>
 </plist>
