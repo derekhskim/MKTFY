@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: ViewController {
+class LoginViewController: UIViewController {
     @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
