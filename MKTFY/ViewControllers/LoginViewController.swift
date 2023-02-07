@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: ViewController {
     @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorMessageLabel: UILabel!
     
     @IBAction func forgotPasswordButton(_ sender: Any) {
+        let vc = ForgotPasswordViewController.storyboardInstance(storyboardName: "Login") as! ForgotPasswordViewController
+        self.navigationController?.pushViewController(vc, animated: true)
         print("Too bad..")
     }
     
