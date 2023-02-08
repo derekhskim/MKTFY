@@ -24,20 +24,20 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="89"/>
+            <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zGD-pO-naz">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="89"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzy-v8-BfF" userLabel="TitleLabel">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="39"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
                             <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Placeholder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XhR-co-18o" userLabel="Input TextField">
-                            <rect key="frame" x="0.0" y="39" width="393" height="50"/>
+                            <rect key="frame" x="0.0" y="40" width="393" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Mll-96-3fh"/>
                             </constraints>
@@ -45,6 +45,9 @@
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="90" id="1Pf-Zn-jLT"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -56,7 +59,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zGD-pO-naz" secondAttribute="trailing" id="mRq-Go-A44"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="84.732824427480907" y="410.91549295774649"/>
+            <point key="canvasLocation" x="84.732824427480907" y="393.66197183098592"/>
         </view>
     </objects>
     <resources>
