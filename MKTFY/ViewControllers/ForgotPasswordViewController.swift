@@ -9,8 +9,8 @@ import UIKit
 
 class ForgotPasswordViewController: UIViewController {
     
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var errorMessageLabel: UILabel!
+    
+    @IBOutlet weak var emailView: TextFieldWithError!
     @IBOutlet weak var backgroundView: UIView!
     @IBAction func sendButtonTapped(_ sender: Any) {
         let vc = LoadingConfirmationViewcontroller.storyboardInstance(storyboardName: "Login") as! LoadingConfirmationViewcontroller
@@ -21,13 +21,15 @@ class ForgotPasswordViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        emailView.view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        
         // Controls the back button's action and style
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped))
         backButton.tintColor = UIColor.appColor(LPColor.LightestPurple)
         self.navigationItem.leftBarButtonItem = backButton
         
         initializeHideKeyboard()
-        self.emailTextField.delegate = self
+        self.emailView.inputTextField.delegate = self
         
         view.backgroundColor = UIColor.appColor(LPColor.VoidWhite)
         backgroundView.layer.cornerRadius = CGFloat(20)
@@ -38,9 +40,10 @@ class ForgotPasswordViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
+    // Triggers the error message
     private func configureView(withMessage message: String){
-        errorMessageLabel.isHidden = false
-        errorMessageLabel.text = message
+        emailView.showError = true
+        emailView.errorMessage = message
     }
 }
 
@@ -55,12 +58,12 @@ extension ForgotPasswordViewController {
     
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
-        if emailTextField.text!.isEmpty {
+        if emailView.inputTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Username and/or password cannot be blank")
         } else {
             removeBorderColor()
-            errorMessageLabel.isHidden = true
+            emailView.showError = false
         }
     }
 }
@@ -69,12 +72,12 @@ extension ForgotPasswordViewController {
 extension ForgotPasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        if emailTextField.text!.isEmpty {
+        if emailView.inputTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Username and/or password cannot be blank")
         } else {
             removeBorderColor()
-            errorMessageLabel.isHidden = true
+            emailView.showError = false
         }
         return false
     }
@@ -92,13 +95,13 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
 extension ForgotPasswordViewController {
     func setBorderColor() {
         let errorColor: UIColor = UIColor.appColor(LPColor.MistakeRed)
-        emailTextField.layer.borderWidth = 1
-        emailTextField.layer.borderColor = errorColor.cgColor
+        emailView.inputTextField.layer.borderWidth = 1
+        emailView.inputTextField.layer.borderColor = errorColor.cgColor
     }
     
     func removeBorderColor() {
-        emailTextField.layer.borderWidth = 0
-        emailTextField.layer.borderColor = nil
+        emailView.inputTextField.layer.borderWidth = 0
+        emailView.inputTextField.layer.borderColor = nil
     }
 }
 

@@ -8,9 +8,8 @@
 import UIKit
 
 class ForgotPasswordVerificationViewController: UIViewController {
-    @IBOutlet weak var verificationTextField: UITextField!
-    @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var verificationTextField: TextFieldWithError!
     
     @IBOutlet weak var verifyButton: Button!
     
@@ -21,13 +20,15 @@ class ForgotPasswordVerificationViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        verificationTextField.view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        
         // Controls the back button's action and style
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped))
         backButton.tintColor = UIColor.appColor(LPColor.LightestPurple)
         self.navigationItem.leftBarButtonItem = backButton
         
         initializeHideKeyboard()
-        self.verificationTextField.delegate = self
+        self.verificationTextField.inputTextField.delegate = self
         
         view.backgroundColor = UIColor.appColor(LPColor.VoidWhite)
         backgroundView.layer.cornerRadius = CGFloat(20)
@@ -39,8 +40,8 @@ class ForgotPasswordVerificationViewController: UIViewController {
     }
     
     private func configureView(withMessage message: String){
-        errorMessageLabel.isHidden = false
-        errorMessageLabel.text = message
+        verificationTextField.showError = true
+        verificationTextField.errorMessage = message
     }
 }
 
@@ -56,12 +57,12 @@ extension ForgotPasswordVerificationViewController {
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
         changeButtonColor()
-        if verificationTextField.text!.isEmpty {
+        if verificationTextField.inputTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Your verification code is incorrect")
         } else {
             removeBorderColor()
-            errorMessageLabel.isHidden = true
+            verificationTextField.showError = false
         }
     }
 }
@@ -71,12 +72,12 @@ extension ForgotPasswordVerificationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         changeButtonColor()
-        if verificationTextField.text!.isEmpty {
+        if verificationTextField.inputTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Your verification code is incorrect")
         } else {
             removeBorderColor()
-            errorMessageLabel.isHidden = true
+            verificationTextField.showError = false
         }
         return false
     }
@@ -94,13 +95,13 @@ extension ForgotPasswordVerificationViewController: UITextFieldDelegate {
 extension ForgotPasswordVerificationViewController {
     func setBorderColor() {
         let errorColor: UIColor = UIColor.appColor(LPColor.MistakeRed)
-        verificationTextField.layer.borderWidth = 1
-        verificationTextField.layer.borderColor = errorColor.cgColor
+        verificationTextField.inputTextField.layer.borderWidth = 1
+        verificationTextField.inputTextField.layer.borderColor = errorColor.cgColor
     }
     
     func removeBorderColor() {
-        verificationTextField.layer.borderWidth = 0
-        verificationTextField.layer.borderColor = nil
+        verificationTextField.inputTextField.layer.borderWidth = 0
+        verificationTextField.inputTextField.layer.borderColor = nil
     }
 }
 
@@ -118,7 +119,7 @@ extension ForgotPasswordVerificationViewController {
 // Simple extension with a method to control the color state of the button.
 extension ForgotPasswordVerificationViewController {
     func changeButtonColor(){
-        if verificationTextField.text!.isEmpty {
+        if verificationTextField.inputTextField.text!.isEmpty {
             verifyButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
             return
         } else {
