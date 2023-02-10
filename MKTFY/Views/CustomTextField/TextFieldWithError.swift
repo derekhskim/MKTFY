@@ -39,6 +39,12 @@ class TextFieldWithError: LPView {
         }
     }
     
+    @IBInspectable var viewBackgroundColor: UIColor = .white {
+        didSet {
+            view.backgroundColor = viewBackgroundColor
+        }
+    }
+    
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "TextFieldWithError", bundle: bundle)
@@ -57,6 +63,7 @@ class TextFieldWithError: LPView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = viewBackgroundColor
         xibSetup()
         
     }
@@ -68,6 +75,7 @@ class TextFieldWithError: LPView {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
+        self.backgroundColor = viewBackgroundColor
         xibSetup()
         
     }
