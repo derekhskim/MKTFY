@@ -18,6 +18,10 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var addressField: TextFieldWithError!
     @IBOutlet weak var cityField: TextFieldWithError!
     
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        let vc = EmailVerificationSentViewController.storyboardInstance(storyboardName: "Login") as! EmailVerificationSentViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
