@@ -20,9 +20,7 @@ class ForgotPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        emailView.view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
-        
+                
         // Controls the back button's action and style
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped))
         backButton.tintColor = UIColor.appColor(LPColor.LightestPurple)
