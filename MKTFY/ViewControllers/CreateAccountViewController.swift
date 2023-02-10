@@ -38,6 +38,10 @@ class CreateAccountViewController: UIViewController {
         view.backgroundColor = UIColor.appColor(LPColor.VoidWhite)
         backgroundView.layer.cornerRadius = CGFloat(20)
         backgroundView.clipsToBounds = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
 }
