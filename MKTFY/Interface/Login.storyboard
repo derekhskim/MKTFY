@@ -588,7 +588,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Account" style="editor" id="ONW-oH-3xm"/>
                     <connections>
+                        <outlet property="addressField" destination="yRX-9T-RSq" id="Eji-v3-Jcc"/>
                         <outlet property="backgroundView" destination="ZCB-Kg-bD3" id="JzB-e6-g3Q"/>
+                        <outlet property="cityField" destination="pe9-m7-UUg" id="hf6-Qv-kLK"/>
+                        <outlet property="emailField" destination="82i-IU-h90" id="pZM-f2-mEx"/>
+                        <outlet property="firstNameField" destination="G6h-Uf-NJ3" id="bS1-qH-WTW"/>
+                        <outlet property="lastNameField" destination="G6h-Uf-NJ3" id="LEY-My-BPv"/>
+                        <outlet property="phoneField" destination="82i-IU-h90" id="Cpg-Bl-9LS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KbO-xT-RWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
