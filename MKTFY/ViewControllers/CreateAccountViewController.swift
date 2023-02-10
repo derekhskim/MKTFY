@@ -8,7 +8,7 @@
 import UIKit
 
 class CreateAccountViewController: UIViewController {
-
+    
     @IBOutlet weak var backgroundView: UIView!
     
     @IBOutlet weak var firstNameField: TextFieldWithError!
@@ -35,12 +35,10 @@ class CreateAccountViewController: UIViewController {
         backButton.tintColor = UIColor.appColor(LPColor.LightestPurple)
         self.navigationItem.leftBarButtonItem = backButton
         
-        view.backgroundColor = UIColor.appColor(LPColor.VoidWhite)
         backgroundView.layer.cornerRadius = CGFloat(20)
         backgroundView.clipsToBounds = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
@@ -55,11 +53,25 @@ extension CreateAccountViewController {
 
 extension CreateAccountViewController {
     @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -100 // Move view 100 points upward
-    }
-
+            let tags = [1, 2, 3]
+            if let view = findView(withTags: tags), view.isFirstResponder {
+                self.view.frame.origin.y = -100 // Move view 100 points upward
+            }
+        }
+    
     @objc func keyboardWillHide(sender: NSNotification) {
-         self.view.frame.origin.y = 0 // Move view to original position
+        self.view.frame.origin.y = 0 // Move view to original position
+    }
+}
+
+extension CreateAccountViewController {
+    func findView(withTags tags: [Int]) -> UIView? {
+        for subview in view.subviews {
+            if tags.contains(subview.tag) {
+                return subview
+            }
+        }
+        return nil
     }
 }
 

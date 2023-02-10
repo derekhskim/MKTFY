@@ -475,7 +475,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82i-IU-h90" userLabel="PhoneView" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82i-IU-h90" userLabel="PhoneView" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="344" width="353" height="78"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -487,7 +487,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRX-9T-RSq" userLabel="DefaultPickupAddressView" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRX-9T-RSq" userLabel="DefaultPickupAddressView" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="492" width="353" height="78"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -499,7 +499,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pe9-m7-UUg" userLabel="CityView" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pe9-m7-UUg" userLabel="CityView" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="594" width="353" height="78"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <userDefinedRuntimeAttributes>
