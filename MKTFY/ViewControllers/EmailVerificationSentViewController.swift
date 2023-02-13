@@ -12,5 +12,6 @@ class EmailVerificationSentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
     }
 }

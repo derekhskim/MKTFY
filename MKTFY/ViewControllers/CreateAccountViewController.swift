@@ -34,10 +34,7 @@ class CreateAccountViewController: UIViewController {
         self.addressField.inputTextField.delegate = self
         self.cityField.inputTextField.delegate = self
         
-        // Controls the back button's action and style
-        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped))
-        backButton.tintColor = UIColor.appColor(LPColor.LightestPurple)
-        self.navigationItem.leftBarButtonItem = backButton
+        setupNavigationBar()
         
         backgroundView.layer.cornerRadius = CGFloat(20)
         backgroundView.clipsToBounds = true
@@ -46,13 +43,6 @@ class CreateAccountViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
-}
-
-// Determines where the back button should take the view controller to
-extension CreateAccountViewController {
-    @objc func backButtonTapped() {
-        self.navigationController?.popViewController(animated: true)
-    }
 }
 
 extension CreateAccountViewController {

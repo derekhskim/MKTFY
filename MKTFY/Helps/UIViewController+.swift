@@ -14,3 +14,17 @@ extension UIViewController {
         return storyboard.instantiateViewController(withIdentifier: String(describing: self))
     }
 }
+
+extension UIViewController {
+    func setupNavigationBar() {
+        // Controls the back button's action and style
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = UIColor.appColor(LPColor.LightestPurple)
+        self.navigationItem.leftBarButtonItem = backButton
+    }
+    
+    // Determines where the back button should take the view controller to
+    @objc func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
