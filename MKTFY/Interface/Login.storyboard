@@ -340,14 +340,14 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wre-RZ-981" userLabel="Receive Code Again Stack View">
-                                        <rect key="frame" x="20" y="384.33333333333331" width="353" height="207.66666666666669"/>
+                                        <rect key="frame" x="20" y="384.33333333333331" width="353" height="20"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEf-7m-lWS">
-                                                <rect key="frame" x="0.0" y="0.0" width="76" height="207.66666666666666"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="76" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yy0-uP-XQU">
-                                                <rect key="frame" x="76" y="0.0" width="277" height="207.66666666666666"/>
+                                                <rect key="frame" x="76" y="0.0" width="277" height="20"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <attributedString key="attributedTitle">
@@ -366,12 +366,15 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="Iq6-Wv-wyW"/>
+                                        </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhz-u5-yTq" customClass="Button" customModule="MKTFY" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="692" width="353" height="51"/>
+                                        <rect key="frame" x="20" y="642" width="353" height="51"/>
                                         <color key="backgroundColor" name="DisabledGray"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="51" id="T5Y-pn-fYK"/>
+                                            <constraint firstAttribute="height" constant="51" id="MCj-YV-Hhu"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -390,28 +393,29 @@
                                 </subviews>
                                 <color key="backgroundColor" name="VerySubtleGray"/>
                                 <constraints>
-                                    <constraint firstItem="fhz-u5-yTq" firstAttribute="top" secondItem="Wre-RZ-981" secondAttribute="bottom" constant="100" id="6NU-Ar-2rh"/>
-                                    <constraint firstItem="Wre-RZ-981" firstAttribute="top" secondItem="jqg-JZ-x6o" secondAttribute="bottom" constant="10" id="Abe-70-0Qk"/>
-                                    <constraint firstAttribute="trailing" secondItem="yG5-RY-vSE" secondAttribute="trailing" constant="20" id="Hw5-b7-3lM"/>
-                                    <constraint firstItem="Wre-RZ-981" firstAttribute="leading" secondItem="tBQ-Nq-3Ot" secondAttribute="leading" constant="20" id="IWb-e0-XF2"/>
-                                    <constraint firstItem="jqg-JZ-x6o" firstAttribute="top" secondItem="yG5-RY-vSE" secondAttribute="bottom" constant="34" id="QQR-6Q-RVE"/>
-                                    <constraint firstItem="fhz-u5-yTq" firstAttribute="leading" secondItem="tBQ-Nq-3Ot" secondAttribute="leading" constant="20" id="aSW-mo-rO6"/>
-                                    <constraint firstAttribute="trailing" secondItem="jqg-JZ-x6o" secondAttribute="trailing" constant="20" id="eL8-tE-Wfq"/>
-                                    <constraint firstAttribute="trailing" secondItem="fhz-u5-yTq" secondAttribute="trailing" constant="20" id="mCd-mv-HVT"/>
-                                    <constraint firstItem="yG5-RY-vSE" firstAttribute="top" secondItem="tBQ-Nq-3Ot" secondAttribute="top" constant="70" id="sgm-xv-L02"/>
-                                    <constraint firstAttribute="trailing" secondItem="Wre-RZ-981" secondAttribute="trailing" constant="20" id="thl-P3-FNp"/>
-                                    <constraint firstItem="yG5-RY-vSE" firstAttribute="leading" secondItem="tBQ-Nq-3Ot" secondAttribute="leading" constant="20" id="x1i-t5-PW6"/>
-                                    <constraint firstItem="jqg-JZ-x6o" firstAttribute="leading" secondItem="tBQ-Nq-3Ot" secondAttribute="leading" constant="20" id="y1n-lJ-JtM"/>
+                                    <constraint firstAttribute="trailing" secondItem="fhz-u5-yTq" secondAttribute="trailing" constant="20" id="2vu-qY-SLw"/>
+                                    <constraint firstAttribute="trailing" secondItem="yG5-RY-vSE" secondAttribute="trailing" constant="20" id="3CV-D9-zke"/>
+                                    <constraint firstItem="jqg-JZ-x6o" firstAttribute="top" secondItem="yG5-RY-vSE" secondAttribute="bottom" constant="34" id="3rs-eR-od2"/>
+                                    <constraint firstItem="fhz-u5-yTq" firstAttribute="leading" secondItem="tBQ-Nq-3Ot" secondAttribute="leading" constant="20" id="4zk-ie-uPe"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wre-RZ-981" secondAttribute="trailing" constant="20" id="9xh-ml-n3i"/>
+                                    <constraint firstItem="yG5-RY-vSE" firstAttribute="leading" secondItem="tBQ-Nq-3Ot" secondAttribute="leading" constant="20" id="E0l-Iw-h3y"/>
+                                    <constraint firstItem="Wre-RZ-981" firstAttribute="leading" secondItem="tBQ-Nq-3Ot" secondAttribute="leading" constant="20" id="TlL-aI-Ms4"/>
+                                    <constraint firstAttribute="trailing" secondItem="jqg-JZ-x6o" secondAttribute="trailing" constant="20" id="dty-gy-nLv"/>
+                                    <constraint firstItem="Wre-RZ-981" firstAttribute="top" secondItem="jqg-JZ-x6o" secondAttribute="bottom" constant="10" id="eUJ-nl-yhk"/>
+                                    <constraint firstAttribute="bottom" secondItem="fhz-u5-yTq" secondAttribute="bottom" constant="100" id="o7i-qz-H0G"/>
+                                    <constraint firstItem="jqg-JZ-x6o" firstAttribute="leading" secondItem="tBQ-Nq-3Ot" secondAttribute="leading" constant="20" id="on9-z8-UZU"/>
+                                    <constraint firstItem="yG5-RY-vSE" firstAttribute="top" secondItem="tBQ-Nq-3Ot" secondAttribute="top" constant="70" id="xtg-59-wu7"/>
+                                    <constraint firstItem="fhz-u5-yTq" firstAttribute="top" secondItem="Wre-RZ-981" secondAttribute="bottom" priority="749" constant="237.66999999999999" id="zIW-Ib-AGi"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="X24-sk-LVB"/>
                         <color key="backgroundColor" name="VoidWhite"/>
                         <constraints>
-                            <constraint firstItem="tBQ-Nq-3Ot" firstAttribute="trailing" secondItem="X24-sk-LVB" secondAttribute="trailing" id="1Ql-Au-TgM"/>
-                            <constraint firstItem="tBQ-Nq-3Ot" firstAttribute="leading" secondItem="X24-sk-LVB" secondAttribute="leading" id="2Qg-QL-mNQ"/>
-                            <constraint firstAttribute="bottom" secondItem="tBQ-Nq-3Ot" secondAttribute="bottom" id="8aI-Yf-Eza"/>
-                            <constraint firstItem="tBQ-Nq-3Ot" firstAttribute="top" secondItem="X24-sk-LVB" secondAttribute="top" id="e01-BL-edz"/>
+                            <constraint firstItem="tBQ-Nq-3Ot" firstAttribute="trailing" secondItem="X24-sk-LVB" secondAttribute="trailing" id="1ko-se-laM"/>
+                            <constraint firstAttribute="bottom" secondItem="tBQ-Nq-3Ot" secondAttribute="bottom" id="3Mm-qe-4im"/>
+                            <constraint firstItem="tBQ-Nq-3Ot" firstAttribute="leading" secondItem="X24-sk-LVB" secondAttribute="leading" id="fL7-A3-BXK"/>
+                            <constraint firstItem="tBQ-Nq-3Ot" firstAttribute="top" secondItem="X24-sk-LVB" secondAttribute="top" id="hWm-LT-PnZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Forgot Password" style="editor" id="8VK-Gy-ANr"/>
