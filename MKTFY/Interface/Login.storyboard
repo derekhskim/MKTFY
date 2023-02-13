@@ -272,21 +272,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" image="clouds_combined" translatesAutoresizingMaskIntoConstraints="NO" id="myi-wV-i3T">
+                                <rect key="frame" x="0.0" y="614" width="393" height="238"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" image="circular_indicator" translatesAutoresizingMaskIntoConstraints="NO" id="WiK-7x-5i2">
                                 <rect key="frame" x="46.666666666666657" y="276" width="299.66666666666674" height="300"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="249" image="clouds_combined" translatesAutoresizingMaskIntoConstraints="NO" id="myi-wV-i3T">
-                                <rect key="frame" x="0.0" y="614" width="393" height="238"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AM3-l2-d4D"/>
                         <color key="backgroundColor" name="OccasionalPurple"/>
                         <constraints>
-                            <constraint firstItem="myi-wV-i3T" firstAttribute="top" secondItem="WiK-7x-5i2" secondAttribute="bottom" constant="38" id="8vQ-ze-HW0"/>
                             <constraint firstItem="WiK-7x-5i2" firstAttribute="leading" secondItem="AM3-l2-d4D" secondAttribute="leading" constant="46.670000000000002" id="AqB-VZ-MEP"/>
-                            <constraint firstItem="WiK-7x-5i2" firstAttribute="top" secondItem="AM3-l2-d4D" secondAttribute="top" priority="749" constant="217" id="EE2-5x-2ax"/>
                             <constraint firstItem="WiK-7x-5i2" firstAttribute="centerX" secondItem="ztV-ve-Oy2" secondAttribute="centerX" id="L6E-nY-rPf"/>
                             <constraint firstItem="AM3-l2-d4D" firstAttribute="trailing" secondItem="myi-wV-i3T" secondAttribute="trailing" id="LyB-97-0ob"/>
+                            <constraint firstItem="WiK-7x-5i2" firstAttribute="centerY" secondItem="ztV-ve-Oy2" secondAttribute="centerY" id="POO-uJ-fZe"/>
                             <constraint firstItem="myi-wV-i3T" firstAttribute="leading" secondItem="AM3-l2-d4D" secondAttribute="leading" id="Zbn-g1-ldO"/>
                             <constraint firstAttribute="bottom" secondItem="myi-wV-i3T" secondAttribute="bottom" id="bVS-fy-1mP"/>
                             <constraint firstItem="AM3-l2-d4D" firstAttribute="trailing" secondItem="WiK-7x-5i2" secondAttribute="trailing" constant="46.670000000000002" id="dwT-qz-1hM"/>
