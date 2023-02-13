@@ -21,13 +21,11 @@ class ForgotPasswordViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
+        setupBackgroundView(view: backgroundView)
         
         initializeHideKeyboard()
         self.emailView.inputTextField.delegate = self
         
-        view.backgroundColor = UIColor.appColor(LPColor.VoidWhite)
-        backgroundView.layer.cornerRadius = CGFloat(20)
-        backgroundView.clipsToBounds = true
                 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
 

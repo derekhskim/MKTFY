@@ -28,3 +28,11 @@ extension UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 }
+
+extension UIViewController {
+    func setupBackgroundView(view: UIView) {
+        let backgroundView = view
+        backgroundView.layer.cornerRadius = CGFloat(20)
+        backgroundView.clipsToBounds = true
+    }
+}
