@@ -22,137 +22,157 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="248" verticalCompressionResistancePriority="748" image="clouds_combined" translatesAutoresizingMaskIntoConstraints="NO" id="ubR-PJ-yIh">
-                                <rect key="frame" x="0.0" y="612" width="393" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="R7u-GF-2vt"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="246" verticalCompressionResistancePriority="746" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="09x-pW-8Ge" userLabel="Title &amp; Subtitle Stack View">
-                                <rect key="frame" x="20" y="129" width="353" height="87.333333333333314"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tju-TH-N4Q">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="MKTFY_purple" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PmD-Kt-C94">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="52"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="248" verticalCompressionResistancePriority="748" image="clouds_combined" translatesAutoresizingMaskIntoConstraints="NO" id="ubR-PJ-yIh">
+                                        <rect key="frame" x="0.0" y="563" width="393" height="230"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="900" constant="230" id="Ypp-hZ-otm"/>
+                                        </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy and sell stuff!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZb-us-MPZ">
-                                        <rect key="frame" x="0.0" y="68" width="353" height="19.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" name="LightestPurple"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="23q-Kb-Fol">
-                                <rect key="frame" x="20" y="276.33333333333331" width="353" height="218"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" verticalHuggingPriority="248" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="fD7-bX-a6X" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="78"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your email"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="errorMessage" value="Your email is incorrect"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wY8-gB-65F" customClass="SecureTextField" customModule="MKTFY" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="78" width="353" height="90"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your password"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureEntry" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="248" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="XDD-Yd-G5O" userLabel="I forgot Password Stack View">
-                                        <rect key="frame" x="0.0" y="168" width="353" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="246" verticalCompressionResistancePriority="746" axis="vertical" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="09x-pW-8Ge" userLabel="Title &amp; Subtitle Stack View">
+                                        <rect key="frame" x="79" y="70" width="235" height="87.333333333333314"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gd-bQ-r8f">
-                                                <rect key="frame" x="0.0" y="0.0" width="186" height="50"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="751" image="MKTFY_purple" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PmD-Kt-C94">
+                                                <rect key="frame" x="0.0" y="0.0" width="235" height="52"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Buy and sell stuff!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZb-us-MPZ">
+                                                <rect key="frame" x="52.666666666666657" y="68" width="130" height="19.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" name="LightestPurple"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="23q-Kb-Fol" userLabel="Input Fields Stack View">
+                                        <rect key="frame" x="20" y="197.33333333333331" width="353" height="250"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fD7-bX-a6X" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="353" height="78"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your email"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="errorMessage" value="Your email is incorrect"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYR-FQ-mzE">
-                                                <rect key="frame" x="186" y="0.0" width="167" height="50"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="I forgot my password">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.96078431610000004" green="0.74117654560000001" blue="0.25490197539999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <font key="NSFont" size="14" name="OpenSans-SemiBold"/>
-                                                                <integer key="NSUnderline" value="1"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <color key="baseForegroundColor" name="WarningYellow"/>
-                                                </buttonConfiguration>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wY8-gB-65F" customClass="SecureTextField" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="94" width="353" height="90"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your password"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureEntry" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDD-Yd-G5O" userLabel="I forgot Password Stack View">
+                                                <rect key="frame" x="0.0" y="200" width="353" height="50"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gd-bQ-r8f">
+                                                        <rect key="frame" x="0.0" y="0.0" width="186" height="50"/>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYR-FQ-mzE">
+                                                        <rect key="frame" x="186" y="0.0" width="167" height="50"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain">
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="I forgot my password">
+                                                                    <attributes>
+                                                                        <color key="NSColor" red="0.96078431610000004" green="0.74117654560000001" blue="0.25490197539999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <font key="NSFont" size="14" name="OpenSans-SemiBold"/>
+                                                                        <integer key="NSUnderline" value="1"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                            <color key="baseForegroundColor" name="WarningYellow"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="forgotPasswordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Iwm-dg-Pr3"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="fD7-bX-a6X" secondAttribute="trailing" id="IaN-6D-wJ5"/>
+                                            <constraint firstAttribute="trailing" secondItem="wY8-gB-65F" secondAttribute="trailing" id="VMt-iq-Om1"/>
+                                            <constraint firstItem="fD7-bX-a6X" firstAttribute="leading" secondItem="23q-Kb-Fol" secondAttribute="leading" id="cV1-PY-V58"/>
+                                            <constraint firstItem="XDD-Yd-G5O" firstAttribute="leading" secondItem="23q-Kb-Fol" secondAttribute="leading" id="gdN-vB-PYV"/>
+                                            <constraint firstItem="wY8-gB-65F" firstAttribute="leading" secondItem="23q-Kb-Fol" secondAttribute="leading" id="kFc-dP-V9H"/>
+                                            <constraint firstAttribute="trailing" secondItem="XDD-Yd-G5O" secondAttribute="trailing" id="mXK-wk-i6x"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Qia-M2-Uca" userLabel="Button Stack View">
+                                        <rect key="frame" x="20" y="630" width="353" height="138"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Eq-vo-rRB" customClass="Button" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="353" height="64"/>
+                                                <color key="backgroundColor" name="DisabledGray"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="64" id="Ubt-Qd-jJA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Login">
+                                                    <color key="titleColor" name="VoidWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="28"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="forgotPasswordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Iwm-dg-Pr3"/>
+                                                    <action selector="loginButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ywt-oT-MSs"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kE2-5l-ovP" customClass="Button" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="94" width="353" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="nB2-e6-Ofs"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Don't have an account? Create an account!">
+                                                    <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                                    <color key="baseForegroundColor" name="OccasionalPurple"/>
+                                                    <color key="baseBackgroundColor" name="VoidWhite"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="createAccountButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Z1E-Qy-438"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Qia-M2-Uca" userLabel="Button Stack View">
-                                <rect key="frame" x="20" y="689" width="353" height="138"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Eq-vo-rRB" customClass="Button" customModule="MKTFY" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="64"/>
-                                        <color key="backgroundColor" name="DisabledGray"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="64" id="Ubt-Qd-jJA"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Login">
-                                            <color key="titleColor" name="VoidWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="28"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="loginButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ywt-oT-MSs"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kE2-5l-ovP" customClass="Button" customModule="MKTFY" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="94" width="353" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="nB2-e6-Ofs"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Don't have an account? Create an account!">
-                                            <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                            <color key="baseForegroundColor" name="OccasionalPurple"/>
-                                            <color key="baseBackgroundColor" name="VoidWhite"/>
-                                        </buttonConfiguration>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="createAccountButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Z1E-Qy-438"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ubR-PJ-yIh" firstAttribute="top" secondItem="23q-Kb-Fol" secondAttribute="bottom" priority="750" constant="115.67" id="5Qp-ng-SeJ"/>
+                                    <constraint firstItem="23q-Kb-Fol" firstAttribute="top" secondItem="09x-pW-8Ge" secondAttribute="bottom" constant="40" id="A2y-jn-8kf"/>
+                                    <constraint firstItem="Qia-M2-Uca" firstAttribute="leading" secondItem="Tju-TH-N4Q" secondAttribute="leading" constant="20" id="Csx-qF-CjF"/>
+                                    <constraint firstItem="ubR-PJ-yIh" firstAttribute="bottom" secondItem="Qia-M2-Uca" secondAttribute="bottom" constant="25" id="Ogw-4E-dgl"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qia-M2-Uca" secondAttribute="trailing" constant="20" id="Rei-8T-S8S"/>
+                                    <constraint firstAttribute="trailing" secondItem="ubR-PJ-yIh" secondAttribute="trailing" id="TJm-v5-zNh"/>
+                                    <constraint firstAttribute="bottom" secondItem="ubR-PJ-yIh" secondAttribute="bottom" id="fEU-FF-cWS"/>
+                                    <constraint firstItem="09x-pW-8Ge" firstAttribute="centerX" secondItem="Tju-TH-N4Q" secondAttribute="centerX" id="fTK-cG-e3i"/>
+                                    <constraint firstItem="23q-Kb-Fol" firstAttribute="leading" secondItem="Tju-TH-N4Q" secondAttribute="leading" constant="20" id="gZX-7p-J4A"/>
+                                    <constraint firstAttribute="trailing" secondItem="23q-Kb-Fol" secondAttribute="trailing" constant="20" id="irt-Bt-j8J"/>
+                                    <constraint firstItem="09x-pW-8Ge" firstAttribute="top" secondItem="Tju-TH-N4Q" secondAttribute="top" constant="70" id="tyn-7Q-aWb"/>
+                                    <constraint firstItem="ubR-PJ-yIh" firstAttribute="leading" secondItem="Tju-TH-N4Q" secondAttribute="leading" id="wkP-p9-1xC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="23q-Kb-Fol" secondAttribute="trailing" constant="20" id="0Le-pP-DWY"/>
-                            <constraint firstAttribute="bottom" secondItem="ubR-PJ-yIh" secondAttribute="bottom" id="25i-M6-oIS"/>
-                            <constraint firstItem="ubR-PJ-yIh" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="3dI-Tg-KAB"/>
-                            <constraint firstItem="23q-Kb-Fol" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="BoI-3n-aaF"/>
-                            <constraint firstItem="ubR-PJ-yIh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="E4i-pS-ae1"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Qia-M2-Uca" secondAttribute="trailing" constant="20" id="Hhe-Ng-HQe"/>
-                            <constraint firstAttribute="bottom" secondItem="Qia-M2-Uca" secondAttribute="bottom" constant="25" id="Kw0-hH-XcT"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="09x-pW-8Ge" secondAttribute="trailing" constant="20" id="TZh-Za-i8L"/>
-                            <constraint firstItem="09x-pW-8Ge" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="70" id="UdH-pO-Y1z"/>
-                            <constraint firstItem="Qia-M2-Uca" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Z8u-OA-ZYY"/>
-                            <constraint firstItem="09x-pW-8Ge" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="g25-ZR-tiI"/>
-                            <constraint firstItem="23q-Kb-Fol" firstAttribute="top" secondItem="09x-pW-8Ge" secondAttribute="bottom" priority="250" constant="60" id="yvj-4l-cNE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Tju-TH-N4Q" secondAttribute="trailing" id="7wB-GI-hkW"/>
+                            <constraint firstAttribute="bottom" secondItem="Tju-TH-N4Q" secondAttribute="bottom" id="Jqn-H0-xsJ"/>
+                            <constraint firstItem="Tju-TH-N4Q" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ZEB-a1-XpJ"/>
+                            <constraint firstItem="Tju-TH-N4Q" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="amY-rm-bc7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="phN-VH-Zas"/>
@@ -628,7 +648,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KbO-xT-RWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2080" y="377"/>
+            <point key="canvasLocation" x="2078" y="545"/>
         </scene>
         <!--Verification Email Sent-->
         <scene sceneID="iWk-ZX-Zpg">
