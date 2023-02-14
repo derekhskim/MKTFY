@@ -34,7 +34,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="246" verticalCompressionResistancePriority="746" axis="vertical" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="09x-pW-8Ge" userLabel="Title &amp; Subtitle Stack View">
                                         <rect key="frame" x="79" y="70" width="235" height="87.333333333333314"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="751" image="MKTFY_purple" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PmD-Kt-C94">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" image="MKTFY_purple" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PmD-Kt-C94">
                                                 <rect key="frame" x="0.0" y="0.0" width="235" height="52"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Buy and sell stuff!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZb-us-MPZ">
@@ -45,11 +45,11 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="23q-Kb-Fol" userLabel="Input Fields Stack View">
-                                        <rect key="frame" x="20" y="197.33333333333331" width="353" height="250"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="23q-Kb-Fol" userLabel="Input Fields Stack View">
+                                        <rect key="frame" x="20" y="207.33333333333331" width="353" height="225"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fD7-bX-a6X" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="353" height="78"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="353" height="90"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
@@ -59,7 +59,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wY8-gB-65F" customClass="SecureTextField" customModule="MKTFY" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="94" width="353" height="90"/>
+                                                <rect key="frame" x="0.0" y="100" width="353" height="90"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your password"/>
@@ -67,13 +67,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDD-Yd-G5O" userLabel="I forgot Password Stack View">
-                                                <rect key="frame" x="0.0" y="200" width="353" height="50"/>
+                                                <rect key="frame" x="0.0" y="200" width="353" height="25"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gd-bQ-r8f">
-                                                        <rect key="frame" x="0.0" y="0.0" width="186" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="186" height="25"/>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYR-FQ-mzE">
-                                                        <rect key="frame" x="186" y="0.0" width="167" height="50"/>
+                                                        <rect key="frame" x="186" y="0.0" width="167" height="25"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain">
                                                             <attributedString key="attributedTitle">
@@ -92,6 +92,9 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="9s3-UD-2tH"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <constraints>
@@ -152,7 +155,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="ubR-PJ-yIh" firstAttribute="top" secondItem="23q-Kb-Fol" secondAttribute="bottom" priority="750" constant="115.67" id="5Qp-ng-SeJ"/>
-                                    <constraint firstItem="23q-Kb-Fol" firstAttribute="top" secondItem="09x-pW-8Ge" secondAttribute="bottom" constant="40" id="A2y-jn-8kf"/>
+                                    <constraint firstItem="23q-Kb-Fol" firstAttribute="top" secondItem="09x-pW-8Ge" secondAttribute="bottom" constant="50" id="A2y-jn-8kf"/>
                                     <constraint firstItem="Qia-M2-Uca" firstAttribute="leading" secondItem="Tju-TH-N4Q" secondAttribute="leading" constant="20" id="Csx-qF-CjF"/>
                                     <constraint firstItem="ubR-PJ-yIh" firstAttribute="bottom" secondItem="Qia-M2-Uca" secondAttribute="bottom" constant="25" id="Ogw-4E-dgl"/>
                                     <constraint firstAttribute="trailing" secondItem="Qia-M2-Uca" secondAttribute="trailing" constant="20" id="Rei-8T-S8S"/>
