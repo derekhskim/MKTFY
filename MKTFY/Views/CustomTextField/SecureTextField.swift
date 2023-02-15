@@ -26,6 +26,12 @@ class SecureTextField: LPView {
         }
     }
     
+    @IBInspectable var viewBackgroundColor: UIColor = .white {
+        didSet {
+            view.backgroundColor = viewBackgroundColor
+        }
+    }
+    
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "SecureTextField", bundle: bundle)
