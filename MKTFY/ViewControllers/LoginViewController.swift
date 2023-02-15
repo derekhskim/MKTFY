@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Auth0
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var titleImageView: UIImageView!
@@ -22,6 +23,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     @IBAction func loginButtonTapped(_ sender: Any) {
+        loginValidation()
         login()
     }
     
@@ -56,7 +58,7 @@ class LoginViewController: UIViewController {
 // Validating the Login Process
 extension LoginViewController {
     
-    private func login() {
+    private func loginValidation() {
         guard let emailTextField = emailView.inputTextField, let passwordTextField = passwordView.isSecureTextField else {
             assertionFailure("Email and/or password should never be nil.")
             return
@@ -185,5 +187,36 @@ extension LoginViewController {
      navigationController?.setNavigationBarHidden(false, animated: animated)
    }
     
+}
+
+extension LoginViewController {
+    
+    func login() {
+        
+        Auth0
+            .webAuth()
+            .start { result in
+                switch result {
+                case .success(let credentials):
+                    print("Obtained credentials: \(credentials)")
+                case .failure(let error):
+                    print("Failed with: \(error)")
+                }
+            }
+    }
+    
+    func logout() {
+        
+        Auth0
+            .webAuth()
+            .clearSession { result in
+                switch result {
+                case .success:
+                    print("Logged out")
+                case .failure(let error):
+                    print("Failed with: \(error)")
+                }
+            }
+    }
 }
 

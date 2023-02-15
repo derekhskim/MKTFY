@@ -2,6 +2,34 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>CFBundleURLName</key>
+			<string>auth0</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(derekkim.MKTFY)</string>
+			</array>
+		</dict>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>OpenSans-SemiBold</string>
+		<string>OpenSans-Light</string>
+		<string>OpenSans-Italic</string>
+		<string>OpenSans-MediumItalic</string>
+		<string>OpenSans-ExtraBold</string>
+		<string>OpenSans-LightItalic</string>
+		<string>OpenSans-Bold</string>
+		<string>OpenSans-SemiBoldItalic</string>
+		<string>OpenSans-Medium</string>
+		<string>OpenSans-ExtraBoldItalic</string>
+		<string>OpenSans-Regular</string>
+		<string>OpenSans-BoldItalic</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -21,20 +49,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>OpenSans-SemiBold</string>
-		<string>OpenSans-Light</string>
-		<string>OpenSans-Italic</string>
-		<string>OpenSans-MediumItalic</string>
-		<string>OpenSans-ExtraBold</string>
-		<string>OpenSans-LightItalic</string>
-		<string>OpenSans-Bold</string>
-		<string>OpenSans-SemiBoldItalic</string>
-		<string>OpenSans-Medium</string>
-		<string>OpenSans-ExtraBoldItalic</string>
-		<string>OpenSans-Regular</string>
-		<string>OpenSans-BoldItalic</string>
-	</array>
 </dict>
 </plist>
