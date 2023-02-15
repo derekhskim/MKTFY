@@ -9,6 +9,9 @@ import UIKit
 import Auth0
 
 class LoginViewController: UIViewController {
+    
+    let auth0Manager = Auth0Manager()
+
     @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var emailView: TextFieldWithError!
@@ -24,14 +27,22 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBAction func loginButtonTapped(_ sender: Any) {
         loginValidation()
-        login()
+        guard let email = emailView.inputTextField.text, let password = passwordView.isSecureTextField.text else { return }
+
+        auth0Manager.loginWithEmail(email, password: password) { success, error in
+            if success {
+                print("Login Successed!")
+            } else {
+                print("Failed to authenticate with Auth0: \(String(describing: error))")
+            }
+        }
     }
     
     @IBAction func createAccountButton(_ sender: Any) {
         let vc = CreateAccountViewController.storyboardInstance(storyboardName: "Login") as! CreateAccountViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -189,34 +200,35 @@ extension LoginViewController {
     
 }
 
-extension LoginViewController {
-    
-    func login() {
-        
-        Auth0
-            .webAuth()
-            .start { result in
-                switch result {
-                case .success(let credentials):
-                    print("Obtained credentials: \(credentials)")
-                case .failure(let error):
-                    print("Failed with: \(error)")
-                }
-            }
-    }
-    
-    func logout() {
-        
-        Auth0
-            .webAuth()
-            .clearSession { result in
-                switch result {
-                case .success:
-                    print("Logged out")
-                case .failure(let error):
-                    print("Failed with: \(error)")
-                }
-            }
-    }
-}
+/// Unnecessary because this is calling webAuth using separate window
+//extension LoginViewController {
+//
+//    func login() {
+//
+//        Auth0
+//            .webAuth()
+//            .start { result in
+//                switch result {
+//                case .success(let credentials):
+//                    print("Obtained credentials: \(credentials)")
+//                case .failure(let error):
+//                    print("Failed with: \(error)")
+//                }
+//            }
+//    }
+//
+//    func logout() {
+//
+//        Auth0
+//            .webAuth()
+//            .clearSession { result in
+//                switch result {
+//                case .success:
+//                    print("Logged out")
+//                case .failure(let error):
+//                    print("Failed with: \(error)")
+//                }
+//            }
+//    }
+//}
 

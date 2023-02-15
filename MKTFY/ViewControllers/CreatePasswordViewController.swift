@@ -11,14 +11,6 @@ class CreatePasswordViewController: UIViewController {
     
     @IBOutlet weak var backgroundView: UIView!
     
-    @IBAction func termsOfServiceTapped(_ sender: Any) {
-        print("It's Working.. I think?")
-    }
-    
-    @IBAction func privacyPolicyTapped(_ sender: Any) {
-        print("Is it though?")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
