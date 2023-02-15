@@ -32,4 +32,24 @@ class Auth0Manager {
         }
     }
     
+    func signup(_ email: String, password: String) {
+
+        let auth0 = Auth0.authentication()
+        let users = Users()
+
+        auth0.signup(
+            email: email,
+            password: password,
+            connection: "Username-Password-Authentication",
+            userMetadata: ["firstName" : users.firstName, "lastName" : users.lastName, "email" : users.email, "phone" : users.phone, "address" : users.address, "city" : users.city])
+            .start { result in
+                switch result {
+                case .success(let user):
+                    print("User signed up: \(user)")
+                case .failure(let error):
+                    print("Failed to signup: \(error)")
+                }
+            }
+    }
+    
 }

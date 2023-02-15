@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBAction func loginButtonTapped(_ sender: Any) {
         loginValidation()
+        
         guard let email = emailView.inputTextField.text, let password = passwordView.isSecureTextField.text else { return }
 
         auth0Manager.loginWithEmail(email, password: password) { success, error in
