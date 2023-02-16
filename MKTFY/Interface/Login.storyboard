@@ -530,7 +530,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
                                                         <color key="value" name="VerySubtleGray"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="(000) 000 - 0000"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="+1 (000) 000-0000"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAs-zd-p0K">
@@ -722,6 +722,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="createPasswordButtonTapped:" destination="yeB-qN-EYU" eventType="touchUpInside" id="FHm-ks-1FX"/>
                                             <action selector="verifyButtonTapped:" destination="66f-fL-5wx" eventType="touchUpInside" id="1rI-bh-N9C"/>
                                         </connections>
                                     </button>
@@ -875,6 +876,8 @@
                     <navigationItem key="navigationItem" id="2WH-9m-iAB"/>
                     <connections>
                         <outlet property="backgroundView" destination="THH-T1-OwG" id="ZP9-kD-qqy"/>
+                        <outlet property="confirmPasswordView" destination="2IX-aI-8ms" id="xCB-Hn-nCg"/>
+                        <outlet property="passwordView" destination="omn-UL-pAS" id="Aqj-X1-MfU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qc9-B5-qyr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
