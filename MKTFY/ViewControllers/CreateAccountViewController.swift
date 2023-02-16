@@ -22,7 +22,6 @@ class CreateAccountViewController: UIViewController {
         let vc = CreatePasswordViewController.storyboardInstance(storyboardName: "Login") as! CreatePasswordViewController
         self.navigationController?.pushViewController(vc, animated: true)
         
-        let user = Users()
         let auth0Manager = Auth0Manager()
         
         guard let firstName = firstNameField.inputTextField.text,
@@ -51,6 +50,8 @@ class CreateAccountViewController: UIViewController {
         self.phoneField.inputTextField.delegate = self
         self.addressField.inputTextField.delegate = self
         self.cityField.inputTextField.delegate = self
+        
+        phoneField.inputTextField.keyboardType = .numberPad
         
         setupNavigationBar()
         setupBackgroundView(view: backgroundView)
@@ -110,5 +111,21 @@ extension CreateAccountViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == phoneField.inputTextField {
+            let currentText = textField.text ?? ""
+            let newString = (currentText as NSString).replacingCharacters(in: range, with: string)
+            let formattedText = newString.applyPatternOnNumbers(pattern: "+# (###) ###-####", replacementCharacter: "#")
+            let countOfDigits = formattedText.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression).count
+            if countOfDigits > 11 {
+                return false
+            }
+            
+            textField.text = formattedText
+            return false
+        }
+        return true
     }
 }

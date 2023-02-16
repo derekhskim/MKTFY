@@ -53,10 +53,8 @@ class Auth0Manager {
     
     func signup(email: String, password: String, firstName: String, lastName: String, phone: String, address: String, city: String, completion: @escaping (Bool, Error?) -> Void) {
         
-        let metaData = ["firstName" : users.firstName, "lastName" : users.lastName, "email" : users.email, "phone" : users.phone, "address" : users.address, "city" : users.city]
-        
             let auth0 = Auth0.authentication()
-            let userMetadata = metaData
+            let userMetadata = ["firstName" : firstName, "lastName" : lastName, "email" : email, "phone" : phone, "address" : address, "city" : city]
             auth0.signup(email: email, password: password, connection: "Username-Password-Authentication", userMetadata: userMetadata)
                 .start { result in
                     switch result {
