@@ -24,21 +24,21 @@ class CreateAccountViewController: UIViewController {
         
         let user = Users()
         let auth0Manager = Auth0Manager()
-
-        guard case firstNameField.inputTextField.text = user.firstName,
-              case lastNameField.inputTextField.text = user.lastName,
-              case emailField.inputTextField.text = user.email,
-              case phoneField.inputTextField.text = user.phone,
-              case addressField.inputTextField.text = user.address,
-              case cityField.inputTextField.text = user.city else { return }
         
-        Auth0Manager.signup(){ success, error in
-            if success {
-                print("Signup Successed!")
-            } else {
-                print("Failed to signup: \(String(describing: error))")
-            }
-        }
+        guard let firstName = firstNameField.inputTextField.text,
+              let lastName = lastNameField.inputTextField.text,
+              let email = emailField.inputTextField.text,
+              let phone = phoneField.inputTextField.text,
+              let address = addressField.inputTextField.text,
+              let city = cityField.inputTextField.text else { return }
+        
+        auth0Manager.signup(email: email, password: "K123456_!", firstName: firstName, lastName: lastName, phone: phone, address: address, city: city) { success, error in
+                    if success {
+                        print("Sign up succeeded!")
+                    } else {
+                        print("Failed to sign up: \(error?.localizedDescription ?? "unknown error")")
+                    }
+                }
     }
     override func viewDidLoad() {
         super.viewDidLoad()

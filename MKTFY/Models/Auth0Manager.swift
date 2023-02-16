@@ -9,10 +9,12 @@ import Auth0
 
 class Auth0Manager {
     
+    let auth0 = Auth0.authentication()
+    let users = Users()
+    
+    
     func loginWithEmail(_ email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
-        
-        let auth0 = Auth0.authentication()
-        
+                
         auth0.login(
             usernameOrEmail: email,
             password: password,
@@ -32,10 +34,7 @@ class Auth0Manager {
         }
     }
     
-    func signup(_ email: String, password: String) {
-
-        let auth0 = Auth0.authentication()
-        let users = Users()
+    func signuptest(_ email: String, password: String) {
 
         auth0.signup(
             email: email,
@@ -51,5 +50,25 @@ class Auth0Manager {
                 }
             }
     }
+    
+    func signup(email: String, password: String, firstName: String, lastName: String, phone: String, address: String, city: String, completion: @escaping (Bool, Error?) -> Void) {
+        
+        let metaData = ["firstName" : users.firstName, "lastName" : users.lastName, "email" : users.email, "phone" : users.phone, "address" : users.address, "city" : users.city]
+        
+            let auth0 = Auth0.authentication()
+            let userMetadata = metaData
+            auth0.signup(email: email, password: password, connection: "Username-Password-Authentication", userMetadata: userMetadata)
+                .start { result in
+                    switch result {
+                    case .success(let user):
+                        print("User signed up: \(user)")
+                        completion(true, nil)
+                    case .failure(let error):
+                        print("Failed to sign up: \(error)")
+                        completion(false, error)
+                    }
+                }
+        }
+
     
 }
