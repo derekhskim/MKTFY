@@ -36,7 +36,6 @@ class Auth0Manager {
     
     func signup(email: String, password: String, firstName: String, lastName: String, phone: String, address: String, city: String, completion: @escaping (Bool, Error?) -> Void) {
         
-            let auth0 = Auth0.authentication()
             let userMetadata = ["firstName" : firstName, "lastName" : lastName, "email" : email, "phone" : phone, "address" : address, "city" : city]
             auth0.signup(email: email, password: password, connection: "Username-Password-Authentication", userMetadata: userMetadata)
                 .start { result in
@@ -50,6 +49,29 @@ class Auth0Manager {
                     }
                 }
         }
+    
+    func resetPassword(email: String) {
+        
+        auth0.startPasswordless(email: email, type: .code, connection: "Username-Password-Authentication")
+            .start { result in
+                switch result {
+                case .success:
+                    print("Reset password email sent successfully")
+                case .failure(let error):
+                    print("Failed to send reset password email: \(error.localizedDescription)")
+                }
+            }
+        
+//        auth0.resetPassword(email: email, connection: "Username-Password-Authentication")
+//            .start { result in
+//                switch result {
+//                case .success:
+//                    print("Reset password email sent successfully")
+//                case .failure(let error):
+//                    print("Failed to send reset password email: \(error.localizedDescription)")
+//                }
+//            }
+    }
 
     
 }

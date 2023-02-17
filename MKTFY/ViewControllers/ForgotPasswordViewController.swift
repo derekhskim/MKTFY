@@ -9,12 +9,17 @@ import UIKit
 
 class ForgotPasswordViewController: UIViewController {
     
+    let auth0Manager = Auth0Manager()
     
     @IBOutlet weak var emailView: TextFieldWithError!
     @IBOutlet weak var backgroundView: UIView!
     @IBAction func sendButtonTapped(_ sender: Any) {
         let vc = LoadingConfirmationViewcontroller.storyboardInstance(storyboardName: "Login") as! LoadingConfirmationViewcontroller
         self.navigationController?.pushViewController(vc, animated: true)
+        
+        guard let email = emailView.inputTextField.text else { return }
+        
+        auth0Manager.resetPassword(email: email)
     }
     
     override func viewDidLoad() {
