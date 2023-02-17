@@ -12,7 +12,6 @@ class Auth0Manager {
     let auth0 = Auth0.authentication()
     let users = Users()
     
-    
     func loginWithEmail(_ email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         
         auth0.login(
@@ -51,7 +50,6 @@ class Auth0Manager {
     }
     
     func resetPassword(email: String) {
-        
         auth0.startPasswordless(email: email, type: .code, connection: "email")
             .start { result in
                 switch result {
@@ -62,6 +60,4 @@ class Auth0Manager {
                 }
             }
     }
-    
-    
 }
