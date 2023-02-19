@@ -83,14 +83,6 @@ extension LoginViewController {
             
         }
         
-        // Simple Tester
-        if emailTextField.text == "d" && passwordTextField.text == "d" {
-            loginButton.configuration?.showsActivityIndicator = true
-            
-        } else {
-            configureView(withMessage: "Incorrect Username and/or password")
-        }
-        
     }
     
     // Triggers the error message
