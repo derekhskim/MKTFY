@@ -590,8 +590,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="nextButtonTapped:" destination="OQS-o9-uMf" eventType="touchUpInside" id="3oF-Kz-c0G"/>
                                                     <action selector="verifyButtonTapped:" destination="66f-fL-5wx" eventType="touchUpInside" id="3xk-WX-Uq2"/>
+                                                    <action selector="verifyButtonTapped:" destination="OQS-o9-uMf" eventType="touchUpInside" id="EC2-Av-HdY"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -655,6 +655,7 @@
                         <outlet property="firstNameField" destination="4k1-yt-wjo" id="KMS-gy-a4c"/>
                         <outlet property="lastNameField" destination="8ZG-tr-vQT" id="ecV-kO-RR4"/>
                         <outlet property="phoneField" destination="52N-h2-foO" id="h8Y-YH-g9O"/>
+                        <outlet property="verifyButton" destination="gwT-5Q-hnu" id="q3F-oQ-slK"/>
                         <outlet property="wholeView" destination="szO-0x-7bs" id="l9s-T5-47a"/>
                     </connections>
                 </viewController>

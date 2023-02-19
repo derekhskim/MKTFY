@@ -18,15 +18,31 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
     @IBOutlet weak var addressField: TextFieldWithError!
     @IBOutlet weak var cityField: TextFieldWithError!
     @IBOutlet var wholeView: UIView!
+    @IBOutlet weak var verifyButton: Button!
     
-    @IBAction func nextButtonTapped(_ sender: Any) {
+    @IBAction func verifyButtonTapped(_ sender: Any) {
+        guard let firstName = firstNameField.inputTextField.text,
+                      let lastName = lastNameField.inputTextField.text,
+                      let email = emailField.inputTextField.text,
+                      let phone = phoneField.inputTextField.text,
+                      let address = addressField.inputTextField.text,
+                      let city = cityField.inputTextField.text,
+                      !firstName.isEmpty,
+                      !lastName.isEmpty,
+                      !email.isEmpty,
+                      !phone.isEmpty,
+                      !address.isEmpty,
+                      !city.isEmpty else {
+                    return
+                }
+        
         let vc = CreatePasswordViewController.storyboardInstance(storyboardName: "Login") as! CreatePasswordViewController
         vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     var originalFrame: CGRect = .zero
-//    var shiftFactor: CGFloat = 0.5
+    var shiftFactor: CGFloat = 0.25
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +55,15 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
         self.phoneField.inputTextField.delegate = self
         self.addressField.inputTextField.delegate = self
         self.cityField.inputTextField.delegate = self
+        
+        /// Check if all textfields are not empty
+        [firstNameField.inputTextField, lastNameField.inputTextField, emailField.inputTextField, phoneField.inputTextField, addressField.inputTextField, cityField.inputTextField].forEach {
+                            $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+                        }
+
+
+                verifyButton.isEnabled = false
+                verifyButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
         
         phoneField.inputTextField.keyboardType = .numberPad
         
@@ -83,7 +108,7 @@ extension CreateAccountViewController {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
         var newFrame = originalFrame
-        newFrame.origin.y -= keyboardSize.height
+        newFrame.origin.y -= keyboardSize.height * shiftFactor
         wholeView.frame = newFrame
         
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -93,16 +118,16 @@ extension CreateAccountViewController {
         wholeView.frame = originalFrame
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-}
-
-extension CreateAccountViewController {
-    func findView(withTags tags: [Int]) -> UIView? {
-        for subview in view.subviews {
-            if tags.contains(subview.tag) {
-                return subview
-            }
+    
+    func changeButtonColor(){
+        let textField = TextFieldWithError()
+        
+        if textField.inputTextField.text!.isEmpty {
+            verifyButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
+        } else {
+            verifyButton.setBackgroundColor(UIColor.appColor(LPColor.OccasionalPurple), forState: .normal)
         }
-        return nil
+        
     }
 }
 
@@ -131,7 +156,11 @@ extension CreateAccountViewController: UITextFieldDelegate, UINavigationBarDeleg
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let allFieldsFilled = ![firstNameField, lastNameField, emailField, phoneField, addressField, cityField].contains { $0.inputTextField.text?.isEmpty ?? true }
+
+                verifyButton.isEnabled = allFieldsFilled
+                verifyButton.setBackgroundColor(allFieldsFilled ? UIColor.appColor(LPColor.OccasionalPurple) : UIColor.appColor(LPColor.DisabledGray), forState: .normal)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
