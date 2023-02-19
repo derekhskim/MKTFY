@@ -17,6 +17,7 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
     @IBOutlet weak var phoneField: TextFieldWithError!
     @IBOutlet weak var addressField: TextFieldWithError!
     @IBOutlet weak var cityField: TextFieldWithError!
+    @IBOutlet var wholeView: UIView!
     
     @IBAction func nextButtonTapped(_ sender: Any) {
         let vc = CreatePasswordViewController.storyboardInstance(storyboardName: "Login") as! CreatePasswordViewController
@@ -24,11 +25,14 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    var originalFrame: CGRect = .zero
+//    var shiftFactor: CGFloat = 0.5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initializeHideKeyboard()
-        
+
         self.firstNameField.inputTextField.delegate = self
         self.lastNameField.inputTextField.delegate = self
         self.emailField.inputTextField.delegate = self
@@ -41,8 +45,10 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
         setupNavigationBar()
         setupBackgroundView(view: backgroundView)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+        originalFrame = wholeView.frame
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
     func passwordCreated(_ password: String) {
@@ -73,12 +79,19 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
 }
 
 extension CreateAccountViewController {
-    @objc func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y = -100 // Move view 100 points upward
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        var newFrame = originalFrame
+        newFrame.origin.y -= keyboardSize.height
+        wholeView.frame = newFrame
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    @objc func keyboardWillHide(sender: NSNotification) {
-        self.view.frame.origin.y = 0 // Move view to original position
+    @objc func keyboardWillHide(notification: NSNotification) {
+        wholeView.frame = originalFrame
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 
@@ -108,9 +121,8 @@ extension CreateAccountViewController {
 }
 
 // Enable dismiss of keyboard when the user taps "return"
-extension CreateAccountViewController: UITextFieldDelegate {
+extension CreateAccountViewController: UITextFieldDelegate, UINavigationBarDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         self.view.endEditing(true)
         return false
     }
@@ -120,7 +132,6 @@ extension CreateAccountViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -138,4 +149,18 @@ extension CreateAccountViewController: UITextFieldDelegate {
         }
         return true
     }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+            if viewController == self {
+                // Check if any of the view's subviews are text fields
+                let containsTextFields = view.subviews.contains { $0 is UITextField }
+                if containsTextFields {
+                    // Hide the navigation bar if there are text fields in the view
+                    navigationController.setNavigationBarHidden(true, animated: true)
+                } else {
+                    // Show the navigation bar if there are no text fields in the view
+                    navigationController.setNavigationBarHidden(false, animated: true)
+                }
+            }
+        }
 }

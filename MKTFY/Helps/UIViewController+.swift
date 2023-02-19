@@ -36,7 +36,3 @@ extension UIViewController {
         backgroundView.clipsToBounds = true
     }
 }
-
-extension UIViewController {
-    
-}
