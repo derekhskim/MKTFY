@@ -85,15 +85,7 @@ extension LoginViewController {
         
     }
     
-    // Triggers the error message
-    private func configureView(withMessage message: String){
-        emailView.showError = true
-        emailView.errorMessage = message
-    }
-}
-
-// Simple extension with a method to control the color state of the button.
-extension LoginViewController {
+    // Simple method to control the color state of the button.
     func changeButtonColor(){
         if emailView.inputTextField.text!.isEmpty || passwordView.isSecureTextField.text!.isEmpty {
             loginButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
@@ -103,10 +95,8 @@ extension LoginViewController {
         }
  
     }
-}
-
-// Enable dismiss of keyboard when the user taps anywhere from the screen
-extension LoginViewController {
+    
+    // Enable dismiss of keyboard when the user taps anywhere from the screen
     func initializeHideKeyboard(){
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
@@ -124,6 +114,33 @@ extension LoginViewController {
             removeBorderColor()
             emailView.showError = false
         }
+    }
+    
+    // Triggers the error message
+    private func configureView(withMessage message: String){
+        emailView.showError = true
+        emailView.errorMessage = message
+    }
+    
+    // Extension to shift the view upward or downward when system keyboard appears
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -100 // Move view 100 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
+    
+    // Extension to customize border color to indicate whether a textfield is empty or not
+    func setBorderColor() {
+        let errorColor: UIColor = UIColor.appColor(LPColor.MistakeRed)
+        emailView.inputTextField.layer.borderWidth = 1
+        emailView.inputTextField.layer.borderColor = errorColor.cgColor
+    }
+    
+    func removeBorderColor() {
+        emailView.inputTextField.layer.borderWidth = 0
+        emailView.inputTextField.layer.borderColor = nil
     }
 }
 
@@ -153,75 +170,4 @@ extension LoginViewController: UITextFieldDelegate {
         
     }
 }
-
-// Extension to shift the view upward or downward when system keyboard appears
-extension LoginViewController {
-    @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -100 // Move view 100 points upward
-    }
-
-    @objc func keyboardWillHide(sender: NSNotification) {
-         self.view.frame.origin.y = 0 // Move view to original position
-    }
-}
-
-// Extension to customize border color to indicate whether a textfield is empty or not
-extension LoginViewController {
-    func setBorderColor() {
-        let errorColor: UIColor = UIColor.appColor(LPColor.MistakeRed)
-        emailView.inputTextField.layer.borderWidth = 1
-        emailView.inputTextField.layer.borderColor = errorColor.cgColor
-    }
-    
-    func removeBorderColor() {
-        emailView.inputTextField.layer.borderWidth = 0
-        emailView.inputTextField.layer.borderColor = nil
-    }
-}
-
-extension LoginViewController {
-    
-    override func viewWillAppear(_ animated: Bool) {
-     super.viewWillAppear(animated)
-     navigationController?.setNavigationBarHidden(true, animated: animated)
-   }
-
-   override func viewWillDisappear(_ animated: Bool) {
-     super.viewWillDisappear(animated)
-     navigationController?.setNavigationBarHidden(false, animated: animated)
-   }
-    
-}
-
-/// Unnecessary because this is calling webAuth using separate window
-//extension LoginViewController {
-//
-//    func login() {
-//
-//        Auth0
-//            .webAuth()
-//            .start { result in
-//                switch result {
-//                case .success(let credentials):
-//                    print("Obtained credentials: \(credentials)")
-//                case .failure(let error):
-//                    print("Failed with: \(error)")
-//                }
-//            }
-//    }
-//
-//    func logout() {
-//
-//        Auth0
-//            .webAuth()
-//            .clearSession { result in
-//                switch result {
-//                case .success:
-//                    print("Logged out")
-//                case .failure(let error):
-//                    print("Failed with: \(error)")
-//                }
-//            }
-//    }
-//}
 
