@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     
     let auth0Manager = Auth0Manager()
 
+    @IBOutlet var wholeView: UIView!
     @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var emailView: TextFieldWithError!
@@ -43,6 +44,9 @@ class LoginViewController: UIViewController {
         let vc = CreateAccountViewController.storyboardInstance(storyboardName: "Login") as! CreateAccountViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    var originalFrame: CGRect = .zero
+    var shiftFactor: CGFloat = 0.25
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,9 +64,11 @@ class LoginViewController: UIViewController {
             loginButton.setBackgroundColor(UIColor.appColor(LPColor.WarningYellow), forState: .normal)
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        originalFrame = wholeView.frame
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
 }
@@ -123,12 +129,16 @@ extension LoginViewController {
     }
     
     // Extension to shift the view upward or downward when system keyboard appears
-    @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -100 // Move view 100 points upward
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        var newFrame = originalFrame
+        newFrame.origin.y -= keyboardSize.height * shiftFactor
+        wholeView.frame = newFrame
     }
 
-    @objc func keyboardWillHide(sender: NSNotification) {
-         self.view.frame.origin.y = 0 // Move view to original position
+    @objc func keyboardWillHide(notification: NSNotification) {
+        wholeView.frame = originalFrame
     }
     
     // Extension to customize border color to indicate whether a textfield is empty or not

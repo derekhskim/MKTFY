@@ -193,6 +193,7 @@
                         <outlet property="passwordView" destination="wY8-gB-65F" id="Rpt-ZS-x0a"/>
                         <outlet property="subTitleLabel" destination="UZb-us-MPZ" id="njs-5l-hIu"/>
                         <outlet property="titleImageView" destination="PmD-Kt-C94" id="eyi-2D-LFL"/>
+                        <outlet property="wholeView" destination="5EZ-qb-Rvc" id="POp-JG-pda"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
