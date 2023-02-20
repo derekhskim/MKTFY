@@ -167,7 +167,7 @@ extension CreateAccountViewController: UITextFieldDelegate, UINavigationBarDeleg
         if textField == phoneField.inputTextField {
             let currentText = textField.text ?? ""
             let newString = (currentText as NSString).replacingCharacters(in: range, with: string)
-            let formattedText = newString.applyPatternOnNumbers(pattern: "+# (###) ###-####", replacementCharacter: "#")
+            let formattedText = newString.applyPatternOnNumbers(pattern: "+# (###) ###-####", replacementCharacter: "#", addCountryCodePrefix: true)
             let countOfDigits = formattedText.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression).count
             if countOfDigits > 11 {
                 return false
@@ -176,6 +176,7 @@ extension CreateAccountViewController: UITextFieldDelegate, UINavigationBarDeleg
             textField.text = formattedText
             return false
         }
+        
         return true
     }
     
