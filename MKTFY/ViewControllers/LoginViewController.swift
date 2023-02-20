@@ -27,9 +27,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     @IBAction func loginButtonTapped(_ sender: Any) {
-        loginValidation()
         
-        guard let email = emailView.inputTextField.text, let password = passwordView.isSecureTextField.text else { return }
+        guard let email = emailView.inputTextField.text,
+            let password = passwordView.isSecureTextField.text else { return }
         
         auth0Manager.loginWithEmail(email, password: password) { success, error in
             if success {
@@ -52,48 +52,25 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         initializeHideKeyboard()
-        
+                
         self.emailView.inputTextField.delegate = self
         self.passwordView.isSecureTextField.delegate = self
         
+        loginButton.isEnabled = false
+        
         passwordView.isSecureTextField.setRightPaddingInTextField(padding: passwordView.isSecureTextField.frame.size.height, imageName: "eye.slash")
         
-        if emailView.inputTextField.text!.isEmpty || passwordView.isSecureTextField.text!.isEmpty {
-            loginButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .disabled)
-        } else {
-            loginButton.setBackgroundColor(UIColor.appColor(LPColor.WarningYellow), forState: .normal)
-        }
-        
         originalFrame = wholeView.frame
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
 }
 
-// Validating the Login Process
 extension LoginViewController {
-    
-    private func loginValidation() {
-        guard let emailTextField = emailView.inputTextField, let passwordTextField = passwordView.isSecureTextField else {
-            assertionFailure("Email and/or password should never be nil.")
-            return
-        }
-        
-        if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
-            
-            return
-        } else if emailTextField.text!.isEmpty == false {
-            
-        }
-        
-    }
-    
     // Simple method to control the color state of the button.
     func changeButtonColor(){
-        if emailView.inputTextField.text!.isEmpty || passwordView.isSecureTextField.text!.isEmpty {
+        if emailView.inputTextField.text!.isEmpty || !emailView.inputTextField.text!.isValidEmail || passwordView.isSecureTextField.text!.isEmpty {
             loginButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
             return
         } else {
@@ -148,10 +125,11 @@ extension LoginViewController {
         if emailView.inputTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Username cannot be blank")
-        } else if emailView.inputTextField.text!.isValidEmail == false {
+        } else if !emailView.inputTextField.text!.isValidEmail {
             setBorderColor()
             configureView(withMessage: "Please enter a valid email address.")
         } else {
+            loginButton.isEnabled = true
             removeBorderColor()
             emailView.showError = false
         }
@@ -168,10 +146,11 @@ extension LoginViewController: UITextFieldDelegate {
         if emailView.inputTextField.text!.isEmpty {
             setBorderColor()
             configureView(withMessage: "Username cannot be blank")
-        } else if emailView.inputTextField.text!.isValidEmail == false {
+        } else if !emailView.inputTextField.text!.isValidEmail {
             setBorderColor()
             configureView(withMessage: "Please enter a valid email address.")
         } else {
+            loginButton.isEnabled = true
             removeBorderColor()
             emailView.showError = false
         }

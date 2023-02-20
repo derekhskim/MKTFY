@@ -32,9 +32,7 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
               !email.isEmpty && email.isValidEmail,
               !phone.isEmpty,
               !address.isEmpty,
-              !city.isEmpty else {
-            return
-        }
+              !city.isEmpty else { return }
         
         let vc = CreatePasswordViewController.storyboardInstance(storyboardName: "Login") as! CreatePasswordViewController
         vc.delegate = self
@@ -71,7 +69,6 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
         setupBackgroundView(view: backgroundView)
         
         originalFrame = wholeView.frame
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }

@@ -17,10 +17,14 @@ class ForgotPasswordViewController: UIViewController {
         let vc = LoadingConfirmationViewcontroller.storyboardInstance(storyboardName: "Login") as! LoadingConfirmationViewcontroller
         self.navigationController?.pushViewController(vc, animated: true)
         
-        guard let email = emailView.inputTextField.text else { return }
+        guard let email = emailView.inputTextField.text,
+        !email.isEmpty && email.isValidEmail else { return }
         
         auth0Manager.resetPassword(email: email)
     }
+    
+    var originalFrame: CGRect = .zero
+    var shiftFactor: CGFloat = 0.25
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +34,12 @@ class ForgotPasswordViewController: UIViewController {
         
         initializeHideKeyboard()
         self.emailView.inputTextField.delegate = self
-        
                 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+        originalFrame = view.frame
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
     // Triggers the error message
@@ -55,9 +60,15 @@ extension ForgotPasswordViewController {
     
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
-        if emailView.inputTextField.text!.isEmpty {
+        
+        guard let email = emailView.inputTextField.text else { return }
+        
+        if email.isEmpty {
             setBorderColor()
-            configureView(withMessage: "Username and/or password cannot be blank")
+            configureView(withMessage: "Username cannot be blank")
+        } else if !email.isValidEmail  {
+            setBorderColor()
+            configureView(withMessage: "Please enter a valid email address.")
         } else {
             removeBorderColor()
             emailView.showError = false
@@ -69,9 +80,15 @@ extension ForgotPasswordViewController {
 extension ForgotPasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        if emailView.inputTextField.text!.isEmpty {
+        
+        guard let email = emailView.inputTextField.text else { return false }
+
+        if email.isEmpty {
             setBorderColor()
-            configureView(withMessage: "Username and/or password cannot be blank")
+            configureView(withMessage: "Username cannot be blank")
+        } else if !email.isValidEmail {
+            setBorderColor()
+            configureView(withMessage: "Please enter a valid email address.")
         } else {
             removeBorderColor()
             emailView.showError = false
@@ -104,19 +121,18 @@ extension ForgotPasswordViewController {
 
 // Extension to shift the view upward or downward when system keyboard appears
 extension ForgotPasswordViewController {
-    @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -100 // Move view 100 points upward
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        var newFrame = originalFrame
+        newFrame.origin.y -= keyboardSize.height * shiftFactor
+        view.frame = newFrame
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
-
-    @objc func keyboardWillHide(sender: NSNotification) {
-         self.view.frame.origin.y = 0 // Move view to original position
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame = originalFrame
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
-}
-
-
-extension ForgotPasswordViewController {
-    override func viewWillAppear(_ animated: Bool) {
-     super.viewWillAppear(animated)
-     navigationController?.setNavigationBarHidden(false, animated: animated)
-   }
 }
