@@ -22,19 +22,19 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
     
     @IBAction func verifyButtonTapped(_ sender: Any) {
         guard let firstName = firstNameField.inputTextField.text,
-                      let lastName = lastNameField.inputTextField.text,
-                      let email = emailField.inputTextField.text,
-                      let phone = phoneField.inputTextField.text,
-                      let address = addressField.inputTextField.text,
-                      let city = cityField.inputTextField.text,
-                      !firstName.isEmpty,
-                      !lastName.isEmpty,
-                      !email.isEmpty,
-                      !phone.isEmpty,
-                      !address.isEmpty,
-                      !city.isEmpty else {
-                    return
-                }
+              let lastName = lastNameField.inputTextField.text,
+              let email = emailField.inputTextField.text,
+              let phone = phoneField.inputTextField.text,
+              let address = addressField.inputTextField.text,
+              let city = cityField.inputTextField.text,
+              !firstName.isEmpty,
+              !lastName.isEmpty,
+              !email.isEmpty && email.isValidEmail,
+              !phone.isEmpty,
+              !address.isEmpty,
+              !city.isEmpty else {
+            return
+        }
         
         let vc = CreatePasswordViewController.storyboardInstance(storyboardName: "Login") as! CreatePasswordViewController
         vc.delegate = self
@@ -48,7 +48,7 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
         super.viewDidLoad()
         
         initializeHideKeyboard()
-
+        
         self.firstNameField.inputTextField.delegate = self
         self.lastNameField.inputTextField.delegate = self
         self.emailField.inputTextField.delegate = self
@@ -58,12 +58,12 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
         
         /// Check if all textfields are not empty
         [firstNameField.inputTextField, lastNameField.inputTextField, emailField.inputTextField, phoneField.inputTextField, addressField.inputTextField, cityField.inputTextField].forEach {
-                            $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-                        }
-
-
-                verifyButton.isEnabled = false
-                verifyButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
+            $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        }
+        
+        
+        verifyButton.isEnabled = false
+        verifyButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
         
         phoneField.inputTextField.keyboardType = .numberPad
         
@@ -158,9 +158,9 @@ extension CreateAccountViewController: UITextFieldDelegate, UINavigationBarDeleg
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         let allFieldsFilled = ![firstNameField, lastNameField, emailField, phoneField, addressField, cityField].contains { $0.inputTextField.text?.isEmpty ?? true }
-
-                verifyButton.isEnabled = allFieldsFilled
-                verifyButton.setBackgroundColor(allFieldsFilled ? UIColor.appColor(LPColor.OccasionalPurple) : UIColor.appColor(LPColor.DisabledGray), forState: .normal)
+        
+        verifyButton.isEnabled = allFieldsFilled
+        verifyButton.setBackgroundColor(allFieldsFilled && emailField.inputTextField.text!.isValidEmail ? UIColor.appColor(LPColor.OccasionalPurple) : UIColor.appColor(LPColor.DisabledGray), forState: .normal)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -180,16 +180,13 @@ extension CreateAccountViewController: UITextFieldDelegate, UINavigationBarDeleg
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-            if viewController == self {
-                // Check if any of the view's subviews are text fields
-                let containsTextFields = view.subviews.contains { $0 is UITextField }
-                if containsTextFields {
-                    // Hide the navigation bar if there are text fields in the view
-                    navigationController.setNavigationBarHidden(true, animated: true)
-                } else {
-                    // Show the navigation bar if there are no text fields in the view
-                    navigationController.setNavigationBarHidden(false, animated: true)
-                }
+        if viewController == self {
+            let containsTextFields = view.subviews.contains { $0 is UITextField }
+            if containsTextFields {
+                navigationController.setNavigationBarHidden(true, animated: true)
+            } else {
+                navigationController.setNavigationBarHidden(false, animated: true)
             }
         }
+    }
 }
