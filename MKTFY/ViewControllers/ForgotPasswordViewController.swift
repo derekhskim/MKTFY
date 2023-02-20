@@ -13,6 +13,7 @@ class ForgotPasswordViewController: UIViewController {
     
     @IBOutlet weak var emailView: TextFieldWithError!
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var sendButton: Button!
     @IBAction func sendButtonTapped(_ sender: Any) {
         let vc = LoadingConfirmationViewcontroller.storyboardInstance(storyboardName: "Login") as! LoadingConfirmationViewcontroller
         self.navigationController?.pushViewController(vc, animated: true)
@@ -35,6 +36,7 @@ class ForgotPasswordViewController: UIViewController {
         initializeHideKeyboard()
         self.emailView.inputTextField.delegate = self
                 
+        sendButton.isEnabled = false
         originalFrame = view.frame
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
@@ -60,16 +62,18 @@ extension ForgotPasswordViewController {
     
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
+        changeButtonColor()
         
         guard let email = emailView.inputTextField.text else { return }
         
         if email.isEmpty {
             setBorderColor()
             configureView(withMessage: "Username cannot be blank")
-        } else if !email.isValidEmail  {
+        } else if !email.isValidEmail {
             setBorderColor()
             configureView(withMessage: "Please enter a valid email address.")
         } else {
+            sendButton.isEnabled = true
             removeBorderColor()
             emailView.showError = false
         }
@@ -80,6 +84,7 @@ extension ForgotPasswordViewController {
 extension ForgotPasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        changeButtonColor()
         
         guard let email = emailView.inputTextField.text else { return false }
 
@@ -90,6 +95,7 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
             setBorderColor()
             configureView(withMessage: "Please enter a valid email address.")
         } else {
+            sendButton.isEnabled = true
             removeBorderColor()
             emailView.showError = false
         }
@@ -116,6 +122,16 @@ extension ForgotPasswordViewController {
     func removeBorderColor() {
         emailView.inputTextField.layer.borderWidth = 0
         emailView.inputTextField.layer.borderColor = nil
+    }
+    
+    func changeButtonColor(){
+        if emailView.inputTextField.text!.isEmpty || !emailView.inputTextField.text!.isValidEmail {
+            sendButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
+            return
+        } else {
+            sendButton.setBackgroundColor(UIColor.appColor(LPColor.OccasionalPurple), forState: .normal)
+        }
+        
     }
 }
 

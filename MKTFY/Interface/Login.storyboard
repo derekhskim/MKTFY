@@ -245,7 +245,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aY2-3q-7XE" customClass="Button" customModule="MKTFY" customModuleProvider="target">
                                         <rect key="frame" x="20" y="642" width="353" height="51"/>
-                                        <color key="backgroundColor" name="OccasionalPurple"/>
+                                        <color key="backgroundColor" name="DisabledGray"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="51" id="vTU-6D-Epx"/>
                                         </constraints>
@@ -289,6 +289,7 @@
                     <connections>
                         <outlet property="backgroundView" destination="jga-Bw-cxg" id="aDu-oT-bXY"/>
                         <outlet property="emailView" destination="R8R-iL-n0d" id="Agm-ED-wBI"/>
+                        <outlet property="sendButton" destination="aY2-3q-7XE" id="9Xm-Mh-p4u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9p-1M-vfc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
