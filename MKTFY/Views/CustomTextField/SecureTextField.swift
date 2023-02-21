@@ -10,7 +10,7 @@ import UIKit
 @IBDesignable
 class SecureTextField: LPView {
     var view: UIView!
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var isSecureTextField: UITextField!
     
@@ -37,17 +37,17 @@ class SecureTextField: LPView {
     }
     
     override init(frame: CGRect) {
-            super.init(frame: frame)
-            xibSetup()
-            setupButton()
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            xibSetup()
-            setupButton()
-        }
-        
+        super.init(frame: frame)
+        xibSetup()
+        setupButton()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        xibSetup()
+        setupButton()
+    }
+    
     private func setupButton() {
         let buttonSize = CGSize(width: 24, height: 19.2)
         let buttonFrame = CGRect(x: isSecureTextField.bounds.width - buttonSize.width - 10, y: (isSecureTextField.bounds.height - buttonSize.height) / 2, width: buttonSize.width, height: buttonSize.height)
@@ -65,24 +65,24 @@ class SecureTextField: LPView {
         isSecureTextField.rightView = button
         isSecureTextField.rightViewMode = .always
     }
-
-        
-        @objc private func toggleSecureEntry() {
-            isSecureTextField.isSecureTextEntry.toggle()
-            button.setImage(isSecureTextField.isSecureTextEntry ? eyeSlashImage : eyeImage, for: .normal)
-        }
-        
-        func loadViewFromNib() -> UIView {
-            let bundle = Bundle(for: type(of: self))
-            let nib = UINib(nibName: "SecureTextField", bundle: bundle)
-            let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-            return view
-        }
-        
-        func xibSetup() {
-            view = loadViewFromNib()
-            view.frame = bounds
-            view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
-            addSubview(view)
-        }
+    
+    
+    @objc private func toggleSecureEntry() {
+        isSecureTextField.isSecureTextEntry.toggle()
+        button.setImage(isSecureTextField.isSecureTextEntry ? eyeSlashImage : eyeImage, for: .normal)
+    }
+    
+    func loadViewFromNib() -> UIView {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: "SecureTextField", bundle: bundle)
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        return view
+    }
+    
+    func xibSetup() {
+        view = loadViewFromNib()
+        view.frame = bounds
+        view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+        addSubview(view)
+    }
 }
