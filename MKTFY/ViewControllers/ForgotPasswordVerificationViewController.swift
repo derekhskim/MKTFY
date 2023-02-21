@@ -9,15 +9,14 @@ import UIKit
 import Auth0
 
 protocol ForgotPasswordVerificationDelegate: AnyObject {
-    func getEmail() -> String?
+    func getEmail(_ email: String)
 }
 
 class ForgotPasswordVerificationViewController: UIViewController {
     
-    var email: String?
-    
     weak var delegate: ForgotPasswordVerificationDelegate?
     let auth0Manager = Auth0Manager()
+    var email: String = ""
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var verificationTextField: TextFieldWithError!
@@ -25,19 +24,14 @@ class ForgotPasswordVerificationViewController: UIViewController {
     @IBOutlet weak var verifyButton: Button!
     
     @IBAction func verifyButtonTapped(_ sender: Any) {
-        guard let verificationCode = verificationTextField.inputTextField.text else {
-                return
-            }
-
-            let cleanVerificationCode = verificationCode.replacingOccurrences(of: "-", with: "")
-            
-        guard let email = email else { return }
-            
+        
+              let cleanVerificationCode = verificationTextField.inputTextField.text!.replacingOccurrences(of: "-", with: "")
+                        
             auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/", scope: "openid profile")
-                .start { result in
+            .start { result in
                     switch result {
                     case .success(let credentials):
-                        self.auth0Manager.resetPassword(email: email)
+                        self.auth0Manager.resetPassword(email: self.email)
                         let resetPasswordViewController = ResetPasswordViewController()
                         self.navigationController?.pushViewController(resetPasswordViewController, animated: true)
                     case .failure(let error):
