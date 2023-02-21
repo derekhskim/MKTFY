@@ -21,21 +21,16 @@ class ForgotPasswordVerificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        verificationTextField.view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
-        
-        verifyButton.isEnabled = false
-        originalFrame = view.frame
-        
+
         setupNavigationBar()
         setupBackgroundView(view: backgroundView)
         
         initializeHideKeyboard()
         self.verificationTextField.inputTextField.delegate = self
+        verificationTextField.inputTextField.keyboardType = .numberPad
         
+        originalFrame = view.frame
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
@@ -85,10 +80,49 @@ extension ForgotPasswordVerificationViewController: UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
+   
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let currentText = verificationTextField.inputTextField.text else { return false }
         
+        if string.isEmpty {
+            return true
+        }
+        
+        if !CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string)) {
+            return false
+        }
+        
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        let numericText = updatedText.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        
+        if numericText.count > 6 {
+            return false
+        }
+        
+        var formattedText = ""
+        var index = numericText.startIndex
+        for i in 0..<3 {
+            if index < numericText.endIndex {
+                let nextIndex = numericText.index(index, offsetBy: min(2, numericText.distance(from: index, to: numericText.endIndex)))
+                let substring = numericText[index..<nextIndex]
+                formattedText += substring
+                index = nextIndex
+            }
+            if i < 2 {
+                formattedText += "-"
+            }
+        }
+        
+        verificationTextField.inputTextField.text = formattedText
+        
+        if numericText.count == 6 {
+            verifyButton.isEnabled = true
+        } else {
+            verifyButton.isEnabled = false
+        }
+        return false
     }
+
 }
 
 // Extension to customize border color to indicate whether a textfield is empty or not

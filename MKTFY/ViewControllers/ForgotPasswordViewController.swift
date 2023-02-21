@@ -32,9 +32,10 @@ class ForgotPasswordViewController: UIViewController {
         
         setupNavigationBar()
         setupBackgroundView(view: backgroundView)
-        
         initializeHideKeyboard()
+        
         self.emailView.inputTextField.delegate = self
+        emailView.inputTextField.keyboardType = .emailAddress
                 
         sendButton.isEnabled = false
         originalFrame = view.frame

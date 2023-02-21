@@ -63,6 +63,7 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
         verifyButton.isEnabled = false
         verifyButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
         
+        emailField.inputTextField.keyboardType = .emailAddress
         phoneField.inputTextField.keyboardType = .numberPad
         
         setupNavigationBar()

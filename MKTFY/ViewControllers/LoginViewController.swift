@@ -56,6 +56,8 @@ class LoginViewController: UIViewController {
         self.emailView.inputTextField.delegate = self
         self.passwordView.isSecureTextField.delegate = self
         
+        emailView.inputTextField.keyboardType = .emailAddress
+        
         loginButton.isEnabled = false
         
         passwordView.isSecureTextField.setRightPaddingInTextField(padding: passwordView.isSecureTextField.frame.size.height, imageName: "eye.slash")
