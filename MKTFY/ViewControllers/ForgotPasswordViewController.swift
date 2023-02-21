@@ -7,11 +7,7 @@
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController, ForgotPasswordVerificationDelegate {
-    func getEmail(_ email: String) {
-        let email = emailView.inputTextField.text
-    }
-    
+class ForgotPasswordViewController: UIViewController {
     let auth0Manager = Auth0Manager()
     
     @IBOutlet weak var emailView: TextFieldWithError!
@@ -25,8 +21,13 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordVerification
         !email.isEmpty && email.isValidEmail else { return }
         
         UserDefaults.standard.set(email, forKey: "resetPasswordEmail")
-
         auth0Manager.resetPassword(email: email)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+            let verificationVC = ForgotPasswordVerificationViewController.storyboardInstance(storyboardName: "Login") as! ForgotPasswordVerificationViewController
+            verificationVC.email = email
+            self.navigationController?.pushViewController(verificationVC, animated: true)
+        }
     }
     
     var originalFrame: CGRect = .zero
@@ -54,16 +55,6 @@ class ForgotPasswordViewController: UIViewController, ForgotPasswordVerification
     private func configureView(withMessage message: String){
         emailView.showError = true
         emailView.errorMessage = message
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ForgotPasswordVerificationSegue" {
-                    let destinationVC = segue.destination as! ForgotPasswordVerificationViewController
-                    destinationVC.delegate = self
-                    if let email = emailView.inputTextField.text {
-                        destinationVC.email = email
-                    }
-                }
     }
 }
 

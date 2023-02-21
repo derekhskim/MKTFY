@@ -8,15 +8,10 @@
 import UIKit
 import Auth0
 
-protocol ForgotPasswordVerificationDelegate: AnyObject {
-    func getEmail(_ email: String)
-}
-
 class ForgotPasswordVerificationViewController: UIViewController {
     
-    weak var delegate: ForgotPasswordVerificationDelegate?
     let auth0Manager = Auth0Manager()
-    var email: String = ""
+    var email: String!
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var verificationTextField: TextFieldWithError!
@@ -25,19 +20,21 @@ class ForgotPasswordVerificationViewController: UIViewController {
     
     @IBAction func verifyButtonTapped(_ sender: Any) {
         
-              let cleanVerificationCode = verificationTextField.inputTextField.text!.replacingOccurrences(of: "-", with: "")
-                        
-            auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/", scope: "openid profile")
+        let cleanVerificationCode = verificationTextField.inputTextField.text!.replacingOccurrences(of: "-", with: "")
+        
+        guard let email = email else { return }
+        
+        auth0Manager.auth0.login(email: email, code: cleanVerificationCode, scope: "openid profile")
             .start { result in
-                    switch result {
-                    case .success(let credentials):
-                        self.auth0Manager.resetPassword(email: self.email)
-                        let resetPasswordViewController = ResetPasswordViewController()
-                        self.navigationController?.pushViewController(resetPasswordViewController, animated: true)
-                    case .failure(let error):
-                        self.configureView(withMessage: error.localizedDescription)
-                    }
+                switch result {
+                case .success(let credentials):
+                    self.auth0Manager.resetPassword(email: self.email)
+                    let resetPasswordViewController = ResetPasswordViewController()
+                    self.navigationController?.pushViewController(resetPasswordViewController, animated: true)
+                case .failure(let error):
+                    print("error: \(error.localizedDescription)")
                 }
+            }
     }
     
     var originalFrame: CGRect = .zero
@@ -104,7 +101,7 @@ extension ForgotPasswordVerificationViewController: UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
-   
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let currentText = verificationTextField.inputTextField.text else { return false }
         
@@ -146,7 +143,7 @@ extension ForgotPasswordVerificationViewController: UITextFieldDelegate {
         }
         return false
     }
-
+    
 }
 
 // Extension to customize border color to indicate whether a textfield is empty or not
