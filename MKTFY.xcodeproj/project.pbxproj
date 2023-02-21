@@ -14,6 +14,7 @@
 		6547D4D42992E0EB00701044 /* SecureTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6547D4D32992E0EB00701044 /* SecureTextField.xib */; };
 		6547D4D62992E0F700701044 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6547D4D52992E0F700701044 /* SecureTextField.swift */; };
 		65613AED29A5596B0002B90F /* PasswordToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65613AEC29A5596B0002B90F /* PasswordToggleButton.swift */; };
+		65613AEF29A56DD30002B90F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65613AEE29A56DD30002B90F /* DashboardViewController.swift */; };
 		6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E0FE2988AACF001482AB /* AppDelegate.swift */; };
 		6568E1012988AACF001482AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E1002988AACF001482AB /* SceneDelegate.swift */; };
 		6568E1082988AACF001482AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6568E1072988AACF001482AB /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		6547D4D32992E0EB00701044 /* SecureTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecureTextField.xib; sourceTree = "<group>"; };
 		6547D4D52992E0F700701044 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
 		65613AEC29A5596B0002B90F /* PasswordToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordToggleButton.swift; sourceTree = "<group>"; };
+		65613AEE29A56DD30002B90F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		6568E0FB2988AACF001482AB /* MKTFY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKTFY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6568E0FE2988AACF001482AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6568E1002988AACF001482AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				65E0B3012996E48000A85CBB /* EmailVerificationSentViewController.swift */,
 				65E7DE20299D4D5800926A1F /* EmptyTestingViewController.swift */,
 				6530780729A4915000856DB4 /* ResetPasswordViewController.swift */,
+				65613AEE29A56DD30002B90F /* DashboardViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65883775299C1AAC006D986F /* CreatePasswordViewController.swift in Sources */,
+				65613AEF29A56DD30002B90F /* DashboardViewController.swift in Sources */,
 				658145A52991B13000BC9067 /* TextFieldWithError.swift in Sources */,
 				6587F35E298AFAB500EF5100 /* MainNavigationController.swift in Sources */,
 				65C28FCC2988BB6500A3BBEE /* UIViewController+.swift in Sources */,

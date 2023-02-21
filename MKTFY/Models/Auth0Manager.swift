@@ -7,6 +7,7 @@
 
 import Auth0
 import UIKit
+import JWTDecode
 
 class Auth0Manager {
     
@@ -25,7 +26,9 @@ class Auth0Manager {
         .start { result in
             switch result {
             case .success(let credentials):
-                print("Authenticated with Auth0: \(credentials)")
+                guard let jwt = try? decode(jwt: credentials.idToken),
+                    let name = jwt["name"].string else { return }
+                print("Authenticated with Auth0: \(credentials) \nAccess Token: \(credentials.accessToken)")
                 completion(true, nil)
             case .failure(let error):
                 print("Failed to authenticate with Auth0: \(error)")
