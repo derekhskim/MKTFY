@@ -6,6 +6,7 @@
 //
 
 import Auth0
+import UIKit
 
 class Auth0Manager {
     

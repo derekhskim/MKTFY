@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: UIViewController, ForgotPasswordVerificationDelegate {
     
     let auth0Manager = Auth0Manager()
     
@@ -21,6 +21,8 @@ class ForgotPasswordViewController: UIViewController {
         guard let email = emailView.inputTextField.text,
         !email.isEmpty && email.isValidEmail else { return }
         
+        UserDefaults.standard.set(email, forKey: "resetPasswordEmail")
+
         auth0Manager.resetPassword(email: email)
     }
     
@@ -50,6 +52,10 @@ class ForgotPasswordViewController: UIViewController {
         emailView.showError = true
         emailView.errorMessage = message
     }
+    
+    func getEmail() -> String? {
+        return emailView.inputTextField.text
+        }
 }
 
 // Enable dismiss of keyboard when the user taps anywhere from the screen

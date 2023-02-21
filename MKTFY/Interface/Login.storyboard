@@ -375,11 +375,11 @@
                                         <rect key="frame" x="20" y="384.33333333333331" width="353" height="20"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEf-7m-lWS">
-                                                <rect key="frame" x="0.0" y="0.0" width="76" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="283" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yy0-uP-XQU">
-                                                <rect key="frame" x="76" y="0.0" width="277" height="20"/>
+                                                <rect key="frame" x="283" y="0.0" width="70" height="20"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <attributedString key="attributedTitle">
@@ -918,11 +918,11 @@
                                         <rect key="frame" x="20" y="303" width="353" height="24"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lwo-Od-Fj4">
-                                                <rect key="frame" x="0.0" y="0.0" width="76" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="283" height="24"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lov-oR-Yae">
-                                                <rect key="frame" x="76" y="0.0" width="277" height="24"/>
+                                                <rect key="frame" x="283" y="0.0" width="70" height="24"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <attributedString key="attributedTitle">
@@ -972,10 +972,10 @@
             </objects>
             <point key="canvasLocation" x="4265" y="344"/>
         </scene>
-        <!--Empty Testing View Controller-->
+        <!--Reset Password View Controller-->
         <scene sceneID="5oc-2j-GAF">
             <objects>
-                <viewController storyboardIdentifier="EmptyTestingViewController" id="5JI-zL-tmX" customClass="EmptyTestingViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmptyTestingViewController" id="5JI-zL-tmX" customClass="ResetPasswordViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ki3-ua-ecb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
