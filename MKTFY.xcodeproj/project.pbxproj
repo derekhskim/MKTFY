@@ -13,6 +13,7 @@
 		653F2401298CBE7A0053C5E1 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653F2400298CBE7A0053C5E1 /* UIImage+.swift */; };
 		6547D4D42992E0EB00701044 /* SecureTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6547D4D32992E0EB00701044 /* SecureTextField.xib */; };
 		6547D4D62992E0F700701044 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6547D4D52992E0F700701044 /* SecureTextField.swift */; };
+		65613AED29A5596B0002B90F /* PasswordToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65613AEC29A5596B0002B90F /* PasswordToggleButton.swift */; };
 		6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E0FE2988AACF001482AB /* AppDelegate.swift */; };
 		6568E1012988AACF001482AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E1002988AACF001482AB /* SceneDelegate.swift */; };
 		6568E1082988AACF001482AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6568E1072988AACF001482AB /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		653F2400298CBE7A0053C5E1 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		6547D4D32992E0EB00701044 /* SecureTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecureTextField.xib; sourceTree = "<group>"; };
 		6547D4D52992E0F700701044 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
+		65613AEC29A5596B0002B90F /* PasswordToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordToggleButton.swift; sourceTree = "<group>"; };
 		6568E0FB2988AACF001482AB /* MKTFY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKTFY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6568E0FE2988AACF001482AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6568E1002988AACF001482AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				658145A82991B27300BC9067 /* Base */,
 				658145A32991B12300BC9067 /* CustomTextField */,
 				65E90FEA2988CD8000ACDC0C /* Button.swift */,
+				65613AEC29A5596B0002B90F /* PasswordToggleButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				65EBA0BE298A1E5200202C02 /* ForgotPasswordViewController.swift in Sources */,
 				65C28FC72988BA1D00A3BBEE /* LoginViewController.swift in Sources */,
 				653F2401298CBE7A0053C5E1 /* UIImage+.swift in Sources */,
+				65613AED29A5596B0002B90F /* PasswordToggleButton.swift in Sources */,
 				65E0B3022996E48000A85CBB /* EmailVerificationSentViewController.swift in Sources */,
 				65A646F6299C1E8000262DB8 /* CheckBox.swift in Sources */,
 				658145AA2991B27B00BC9067 /* LPView.swift in Sources */,

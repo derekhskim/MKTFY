@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonTapped(_ sender: Any) {
         
         guard let email = emailView.inputTextField.text,
-            let password = passwordView.isSecureTextField.text else { return }
+              let password = passwordView.isSecureTextField.text else { return }
         
         auth0Manager.loginWithEmail(email, password: password) { success, error in
             if success {
@@ -52,15 +52,13 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         initializeHideKeyboard()
-                
+        
         self.emailView.inputTextField.delegate = self
         self.passwordView.isSecureTextField.delegate = self
         
         emailView.inputTextField.keyboardType = .emailAddress
         
         loginButton.isEnabled = false
-        
-        passwordView.isSecureTextField.setRightPaddingInTextField(padding: passwordView.isSecureTextField.frame.size.height, imageName: "eye.slash")
         
         originalFrame = wholeView.frame
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
