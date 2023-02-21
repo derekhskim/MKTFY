@@ -16,11 +16,17 @@ class ForgotPasswordVerificationViewController: UIViewController {
     @IBAction func verifyButtonTapped(_ sender: Any) {
     }
     
+    var originalFrame: CGRect = .zero
+    var shiftFactor: CGFloat = 0.25
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         verificationTextField.view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        
+        verifyButton.isEnabled = false
+        originalFrame = view.frame
         
         setupNavigationBar()
         setupBackgroundView(view: backgroundView)
@@ -28,9 +34,9 @@ class ForgotPasswordVerificationViewController: UIViewController {
         initializeHideKeyboard()
         self.verificationTextField.inputTextField.delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
     private func configureView(withMessage message: String){
@@ -101,12 +107,19 @@ extension ForgotPasswordVerificationViewController {
 
 // Extension to shift the view upward or downward when system keyboard appears
 extension ForgotPasswordVerificationViewController {
-    @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -100 // Move view 100 points upward
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        var newFrame = originalFrame
+        newFrame.origin.y -= keyboardSize.height * shiftFactor
+        view.frame = newFrame
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
-
-    @objc func keyboardWillHide(sender: NSNotification) {
-         self.view.frame.origin.y = 0 // Move view to original position
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame = originalFrame
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 
@@ -119,7 +132,7 @@ extension ForgotPasswordVerificationViewController {
         } else {
             verifyButton.setBackgroundColor(UIColor.appColor(LPColor.OccasionalPurple), forState: .normal)
         }
- 
+        
     }
 }
 
