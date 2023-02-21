@@ -840,7 +840,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="createPasswordButtonTapped:" destination="yeB-qN-EYU" eventType="touchUpInside" id="FHm-ks-1FX"/>
+                                            <action selector="createMyAccountButtonTapped:" destination="yeB-qN-EYU" eventType="touchUpInside" id="ToV-6c-iSV"/>
                                             <action selector="verifyButtonTapped:" destination="66f-fL-5wx" eventType="touchUpInside" id="1rI-bh-N9C"/>
                                         </connections>
                                     </button>
@@ -888,8 +888,12 @@
                     <navigationItem key="navigationItem" id="2WH-9m-iAB"/>
                     <connections>
                         <outlet property="backgroundView" destination="THH-T1-OwG" id="ZP9-kD-qqy"/>
+                        <outlet property="characterLengthValidationImage" destination="hIU-43-Th9" id="3sS-c7-az0"/>
                         <outlet property="confirmPasswordView" destination="2IX-aI-8ms" id="xCB-Hn-nCg"/>
+                        <outlet property="createMyAccountButton" destination="FL7-y9-AcI" id="ThU-Tx-T9a"/>
+                        <outlet property="numberValidationImage" destination="jEp-WE-2KK" id="Qhd-cj-hFg"/>
                         <outlet property="passwordView" destination="omn-UL-pAS" id="Aqj-X1-MfU"/>
+                        <outlet property="uppercaseValidationImage" destination="LmA-R0-TdX" id="gZa-HM-jwR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qc9-B5-qyr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1100,7 +1104,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="createPasswordButtonTapped:" destination="yeB-qN-EYU" eventType="touchUpInside" id="nn0-vr-xpG"/>
                                                     <action selector="verifyButtonTapped:" destination="66f-fL-5wx" eventType="touchUpInside" id="sW5-60-eoe"/>
                                                 </connections>
                                             </button>
