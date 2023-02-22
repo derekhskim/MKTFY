@@ -20,20 +20,54 @@ class ResetPasswordViewController: UIViewController {
     
     var originalFrame: CGRect = .zero
     var shiftFactor: CGFloat = 0.25
+    var accessToken: String = ""
+    var userId: String = ""
+    var email: String = ""
     
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
+        guard let newPassword = passwordView.isSecureTextField.text else { return }
+        
+        let headers = [
+          "content-type": "application/json",
+          "authorization": "Bearer \(accessToken)"
+        ]
+        let parameters = [
+          "password": newPassword,
+          "connection": "Username-Password-Authentication",
+        ] as [String : Any]
+        
+        let postData = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+        let request = NSMutableURLRequest(url: NSURL(string: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/users/email%7C63efe8729e6dc38af69783d6")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "PATCH"
+        request.allHTTPHeaderFields = headers
+        request.httpBody = postData! as Data
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+          if (error != nil) {
+              print(error as Any)
+          } else {
+            let httpResponse = response as? HTTPURLResponse
+              print(httpResponse as Any)
+          }
+        })
+        
+        dataTask.resume()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initializeHideKeyboard()
+        setupNavigationBar()
+        setupBackgroundView(view: backgroundView)
+        
         self.passwordView.isSecureTextField.delegate = self
         self.confirmPasswordView.isSecureTextField.delegate = self
         
         resetPasswordButton.isEnabled = false
-        
-        setupNavigationBar()
-        setupBackgroundView(view: backgroundView)
         
         validatePassword()
         
@@ -41,8 +75,6 @@ class ResetPasswordViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
-    
-    
 }
 
 // Determines where the back button should take the view controller to
@@ -98,14 +130,14 @@ extension ResetPasswordViewController: UITextFieldDelegate {
         } else {
             numberValidationImage.image = UIImage(named: "password_validation_unchecked")
         }
-            
+        
         if passwordsMatch && isLongEnough && hasCapitalLetter && hasNumber {
             resetPasswordButton.isEnabled = true
         } else {
             resetPasswordButton.isEnabled = false
         }
     }
-
+    
 }
 
 extension ResetPasswordViewController {

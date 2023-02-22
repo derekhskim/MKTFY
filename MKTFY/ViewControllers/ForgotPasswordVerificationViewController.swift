@@ -7,6 +7,7 @@
 
 import UIKit
 import Auth0
+import JWTDecode
 
 class ForgotPasswordVerificationViewController: UIViewController {
     
@@ -25,12 +26,24 @@ class ForgotPasswordVerificationViewController: UIViewController {
         
         guard let email = email else { return }
         
-        Auth0.authentication().login(email: email, code: cleanVerificationCode, scope: "openid profile")
+        auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/", scope: "openid profile")
             .start { result in
                 switch result {
                 case .success(let credentials):
+                    let accessToken = credentials.accessToken
+                    UserDefaults.standard.set(accessToken, forKey: "accessToken")
+                    
+                    print("accessToken: \(credentials.accessToken)")
+                    let jwt = try? decode(jwt: credentials.accessToken)
+                    print("jwt : \(jwt)")
+//                    let userId = 
+//                    UserDefaults.standard.set(userId, forKey: "idToken")
+
                     DispatchQueue.main.async {
                         let vc = ResetPasswordViewController.storyboardInstance(storyboardName: "Login") as! ResetPasswordViewController
+                        vc.email = email
+                        vc.accessToken = accessToken
+//                        vc.userId = userId
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 case .failure(let error):
