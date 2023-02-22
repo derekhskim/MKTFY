@@ -453,6 +453,7 @@
                     <navigationItem key="navigationItem" title="Forgot Password" style="editor" id="8VK-Gy-ANr"/>
                     <connections>
                         <outlet property="backgroundView" destination="tBQ-Nq-3Ot" id="8i4-ZK-jFg"/>
+                        <outlet property="codeSentLabel" destination="uow-td-zHv" id="y8t-AM-Bws"/>
                         <outlet property="verificationTextField" destination="jqg-JZ-x6o" id="0Gb-TC-dMp"/>
                         <outlet property="verifyButton" destination="fhz-u5-yTq" id="kWW-ms-Tuv"/>
                     </connections>
@@ -987,7 +988,7 @@
         <!--Reset Password View Controller-->
         <scene sceneID="5oc-2j-GAF">
             <objects>
-                <viewController storyboardIdentifier="EmptyTestingViewController" id="5JI-zL-tmX" customClass="ResetPasswordViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResetPasswordViewController" id="5JI-zL-tmX" customClass="ResetPasswordViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ki3-ua-ecb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1151,33 +1152,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9R-Fv-EOc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5324" y="-382"/>
-        </scene>
-        <!--Dashboard View Controller-->
-        <scene sceneID="S6m-nj-zBZ">
-            <objects>
-                <viewController storyboardIdentifier="DashboardViewController" id="ZXi-z0-ATu" customClass="DashboardViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RYh-eU-CXv">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dashboard UI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGC-uG-6Nf">
-                                <rect key="frame" x="144.66666666666666" y="415.66666666666669" width="104" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="h9a-Jy-yqv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="aGC-uG-6Nf" firstAttribute="centerY" secondItem="RYh-eU-CXv" secondAttribute="centerY" id="nKP-Yz-hpN"/>
-                            <constraint firstItem="aGC-uG-6Nf" firstAttribute="centerX" secondItem="RYh-eU-CXv" secondAttribute="centerX" id="x2Q-AJ-3bm"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fII-LG-VJ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6367" y="-87"/>
         </scene>
     </scenes>
     <designables>

@@ -15,6 +15,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var verificationTextField: TextFieldWithError!
+    @IBOutlet weak var codeSentLabel: UILabel!
     
     @IBOutlet weak var verifyButton: Button!
     
@@ -28,9 +29,10 @@ class ForgotPasswordVerificationViewController: UIViewController {
             .start { result in
                 switch result {
                 case .success(let credentials):
-                    self.auth0Manager.resetPassword(email: self.email)
-                    let resetPasswordViewController = ResetPasswordViewController()
-                    self.navigationController?.pushViewController(resetPasswordViewController, animated: true)
+                    DispatchQueue.main.async {
+                        let vc = ResetPasswordViewController.storyboardInstance(storyboardName: "Login") as! ResetPasswordViewController
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                 case .failure(let error):
                     print("error: \(error.localizedDescription)")
                 }
@@ -42,6 +44,11 @@ class ForgotPasswordVerificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let email = email {
+            let message = "A code has been sent to your email \(email), Please enter the verification code."
+            codeSentLabel.text = message
+        }
         
         setupNavigationBar()
         setupBackgroundView(view: backgroundView)

@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
             if success {
                 print("Login Successed!")
                 DispatchQueue.main.async {
-                    let vc = DashboardViewController.storyboardInstance(storyboardName: "Login") as! DashboardViewController
+                    let vc = DashboardViewController.storyboardInstance(storyboardName: "Dashboard") as! DashboardViewController
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             } else {
