@@ -36,3 +36,12 @@ extension UIViewController {
         backgroundView.clipsToBounds = true
     }
 }
+
+extension UIViewController {
+    func showAlert(title: String, message: String, buttonTitle: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: buttonTitle, style: .default, handler: nil)
+        alertController.addAction(okayAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+}

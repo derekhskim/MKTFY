@@ -40,6 +40,10 @@ class LoginViewController: UIViewController {
                 }
             } else {
                 print("Failed to authenticate with Auth0: \(String(describing: error))")
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Login Failed", message: "Please double check your email or password", buttonTitle: "Okay")
+                    
+                }
             }
         }
     }
