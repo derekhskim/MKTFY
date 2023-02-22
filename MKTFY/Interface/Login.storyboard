@@ -1105,6 +1105,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="resetPasswordButtonTapped:" destination="5JI-zL-tmX" eventType="touchUpInside" id="gk9-G8-Nb6"/>
                                                     <action selector="verifyButtonTapped:" destination="66f-fL-5wx" eventType="touchUpInside" id="sW5-60-eoe"/>
                                                 </connections>
                                             </button>
@@ -1150,6 +1151,12 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="lov-5H-Afr" id="e2A-Ua-BFI"/>
+                        <outlet property="characterLengthValidationImage" destination="2bb-XQ-ek8" id="rke-rC-OIY"/>
+                        <outlet property="confirmPasswordView" destination="Kmm-pU-Rcg" id="A9p-sQ-6Ok"/>
+                        <outlet property="numberValidationImage" destination="oKo-IE-2hK" id="zMh-Mo-wQa"/>
+                        <outlet property="passwordView" destination="Atg-oI-OEc" id="Smb-QT-oxW"/>
+                        <outlet property="resetPasswordButton" destination="4MS-vW-F0h" id="A60-ZK-P01"/>
+                        <outlet property="uppercaseValidationImage" destination="rFk-5F-uPw" id="CsR-zo-J13"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9R-Fv-EOc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
