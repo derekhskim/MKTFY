@@ -26,9 +26,8 @@ class Auth0Manager {
         .start { result in
             switch result {
             case .success(let credentials):
-                guard let jwt = try? decode(jwt: credentials.idToken),
-                    let name = jwt["name"].string else { return }
-                print("Authenticated with Auth0: \(credentials) \nAccess Token: \(credentials.accessToken)")
+                guard let idToken = try? decode(jwt: credentials.idToken), let accessToken = try? decode(jwt: credentials.accessToken) else { return }
+                print("Authenticated with Auth0: \(credentials) \nAccess Token: \(accessToken) \nidToken: \(idToken)")
                 completion(true, nil)
             case .failure(let error):
                 print("Failed to authenticate with Auth0: \(error)")

@@ -34,6 +34,10 @@ class LoginViewController: UIViewController {
         auth0Manager.loginWithEmail(email, password: password) { success, error in
             if success {
                 print("Login Successed!")
+                DispatchQueue.main.async {
+                    let vc = DashboardViewController.storyboardInstance(storyboardName: "Login") as! DashboardViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             } else {
                 print("Failed to authenticate with Auth0: \(String(describing: error))")
             }
