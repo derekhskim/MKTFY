@@ -18,11 +18,17 @@ class ResetPasswordViewController: UIViewController {
     @IBOutlet weak var numberValidationImage: UIImageView!
     @IBOutlet weak var resetPasswordButton: Button!
     
+    var originalFrame: CGRect = .zero
+    var shiftFactor: CGFloat = 0.25
+    
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.passwordView.isSecureTextField.delegate = self
+        self.confirmPasswordView.isSecureTextField.delegate = self
         
         resetPasswordButton.isEnabled = false
         
@@ -30,6 +36,10 @@ class ResetPasswordViewController: UIViewController {
         setupBackgroundView(view: backgroundView)
         
         validatePassword()
+        
+        originalFrame = view.frame
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
     
@@ -96,4 +106,32 @@ extension ResetPasswordViewController: UITextFieldDelegate {
         }
     }
 
+}
+
+extension ResetPasswordViewController {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        var newFrame = originalFrame
+        newFrame.origin.y -= keyboardSize.height * shiftFactor
+        view.frame = newFrame
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame = originalFrame
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    func initializeHideKeyboard(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissMyKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissMyKeyboard(){
+        view.endEditing(true)
+    }
 }

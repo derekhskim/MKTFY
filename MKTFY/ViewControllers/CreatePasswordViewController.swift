@@ -27,12 +27,16 @@ class CreatePasswordViewController: UIViewController {
         self.navigationController?.popToViewController(self.navigationController!.children[0], animated: true)
     }
     
+    var originalFrame: CGRect = .zero
+    var shiftFactor: CGFloat = 0.25
+    
     weak var delegate: CreatePasswordDelegate?
     @IBOutlet weak var backgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initializeHideKeyboard()
         setupNavigationBar()
         setupBackgroundView(view: backgroundView)
         
@@ -41,12 +45,15 @@ class CreatePasswordViewController: UIViewController {
         
         createMyAccountButton.isEnabled = false
         validatePassword()
+        
+        originalFrame = view.frame
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
 }
 
 extension CreatePasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         self.view.endEditing(true)
         return false
     }
@@ -98,4 +105,32 @@ extension CreatePasswordViewController: UITextFieldDelegate {
         }
     }
 
+}
+
+extension CreatePasswordViewController {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        var newFrame = originalFrame
+        newFrame.origin.y -= keyboardSize.height * shiftFactor
+        view.frame = newFrame
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame = originalFrame
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    func initializeHideKeyboard(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissMyKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissMyKeyboard(){
+        view.endEditing(true)
+    }
 }

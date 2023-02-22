@@ -25,7 +25,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
         
         guard let email = email else { return }
         
-        auth0Manager.auth0.login(email: email, code: cleanVerificationCode, scope: "openid profile")
+        Auth0.authentication().login(email: email, code: cleanVerificationCode, scope: "openid profile")
             .start { result in
                 switch result {
                 case .success(let credentials):

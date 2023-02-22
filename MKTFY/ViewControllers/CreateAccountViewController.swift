@@ -59,7 +59,6 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
             $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
         
-        
         verifyButton.isEnabled = false
         verifyButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
         
