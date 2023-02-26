@@ -37,60 +37,60 @@ class ForgotPasswordVerificationViewController: UIViewController {
                 self.mgmtAccessToken = accessToken
                 
                 let headers = ["authorization": "Bearer \(self.mgmtAccessToken)"]
-
+                
                 let request = NSMutableURLRequest(url: NSURL(string: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/users?q=email:%22\(email)%22&search_engine=v3")! as URL,
-                                                        cachePolicy: .useProtocolCachePolicy,
-                                                    timeoutInterval: 10.0)
+                                                  cachePolicy: .useProtocolCachePolicy,
+                                                  timeoutInterval: 10.0)
                 request.httpMethod = "GET"
                 request.allHTTPHeaderFields = headers
-
+                
                 let session = URLSession.shared
                 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-                  if (error != nil) {
-                      print("error: \(String(describing: error))")
-                  } else {
-                    if let httpResponse = response as? HTTPURLResponse {
-                      if let data = data {
-                        do {
-                          let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]]
-                          if let users = json {
-                            for user in users {
-                              if let identities = user["identities"] as? [[String:Any]] {
-                                for identity in identities {
-                                  if let provider = identity["provider"] as? String, provider == "auth0" {
-                                    if let user_id = identity["user_id"] as? String {
-                                        self.userId = user_id
-                                        UserDefaults.standard.set(self.userId, forKey: "user_id")
-                                        
-                                        self.auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/", scope: "openid profile")
-                                            .start { result in
-                                                switch result {
-                                                case .success(let credentials):
-                                                    UserDefaults.standard.set(self.mgmtAccessToken, forKey: "accessToken")
-                                                    
-                                                    DispatchQueue.main.async {
-                                                        let vc = ResetPasswordViewController.storyboardInstance(storyboardName: "Login") as! ResetPasswordViewController
-                                                        vc.email = email
-                                                        vc.mgmtAccessToken = self.mgmtAccessToken
-                                                        vc.userId = self.userId
-                                                        self.navigationController?.pushViewController(vc, animated: true)
+                    if (error != nil) {
+                        print("error: \(String(describing: error))")
+                    } else {
+                        if let httpResponse = response as? HTTPURLResponse {
+                            if let data = data {
+                                do {
+                                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]]
+                                    if let users = json {
+                                        for user in users {
+                                            if let identities = user["identities"] as? [[String:Any]] {
+                                                for identity in identities {
+                                                    if let provider = identity["provider"] as? String, provider == "auth0" {
+                                                        if let user_id = identity["user_id"] as? String {
+                                                            self.userId = user_id
+                                                            UserDefaults.standard.set(self.userId, forKey: "user_id")
+                                                            
+                                                            self.auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/", scope: "openid profile")
+                                                                .start { result in
+                                                                    switch result {
+                                                                    case .success(let credentials):
+                                                                        UserDefaults.standard.set(self.mgmtAccessToken, forKey: "accessToken")
+                                                                        
+                                                                        DispatchQueue.main.async {
+                                                                            let vc = ResetPasswordViewController.storyboardInstance(storyboardName: "Login") as! ResetPasswordViewController
+                                                                            vc.email = email
+                                                                            vc.mgmtAccessToken = self.mgmtAccessToken
+                                                                            vc.userId = self.userId
+                                                                            self.navigationController?.pushViewController(vc, animated: true)
+                                                                        }
+                                                                    case .failure(let error):
+                                                                        print("error: \(error.localizedDescription)")
+                                                                    }
+                                                                }
+                                                        }
                                                     }
-                                                case .failure(let error):
-                                                    print("error: \(error.localizedDescription)")
                                                 }
                                             }
+                                        }
                                     }
-                                  }
+                                } catch let error {
+                                    print("Error parsing JSON: \(error.localizedDescription)")
                                 }
-                              }
                             }
-                          }
-                        } catch let error {
-                          print("Error parsing JSON: \(error.localizedDescription)")
                         }
-                      }
                     }
-                  }
                 })
                 dataTask.resume()
             }
@@ -133,22 +133,22 @@ class ForgotPasswordVerificationViewController: UIViewController {
               let clientSecret = plist["clientSecret"] as? String else {
             fatalError("Could not read credentials from .plist file.")
         }
-              
+        
         
         let headers = ["content-type": "application/x-www-form-urlencoded"]
-
+        
         let postData = NSMutableData(data: "grant_type=client_credentials".data(using: String.Encoding.utf8)!)
         postData.append("&client_id=\(clientId)".data(using: String.Encoding.utf8)!)
         postData.append("&client_secret=\(clientSecret)".data(using: String.Encoding.utf8)!)
         postData.append("&audience=https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/".data(using: String.Encoding.utf8)!)
-
+        
         let request = NSMutableURLRequest(url: NSURL(string: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/oauth/token")! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
         request.httpMethod = "POST"
         request.allHTTPHeaderFields = headers
         request.httpBody = postData as Data
-
+        
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
             if let error = error {
