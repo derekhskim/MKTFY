@@ -416,7 +416,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="verifyButtonTapped:" destination="66f-fL-5wx" eventType="touchUpInside" id="3WZ-8X-5iF"/>
+                                            <action selector="verifyButtonTapped:" destination="66f-fL-5wx" eventType="touchUpInside" id="Z6u-kw-6bz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -838,7 +838,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="createMyAccountButtonTapped:" destination="yeB-qN-EYU" eventType="touchUpInside" id="ToV-6c-iSV"/>
-                                            <action selector="verifyButtonTapped:" destination="66f-fL-5wx" eventType="touchUpInside" id="1rI-bh-N9C"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1095,7 +1094,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="resetPasswordButtonTapped:" destination="5JI-zL-tmX" eventType="touchUpInside" id="gk9-G8-Nb6"/>
-                                            <action selector="verifyButtonTapped:" destination="66f-fL-5wx" eventType="touchUpInside" id="sW5-60-eoe"/>
                                         </connections>
                                     </button>
                                 </subviews>

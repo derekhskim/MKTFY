@@ -22,6 +22,7 @@ class ResetPasswordViewController: UIViewController {
     var shiftFactor: CGFloat = 0.25
     var mgmtAccessToken: String!
     var email: String = ""
+    var userId: String = ""
     
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
         guard let newPassword = passwordView.isSecureTextField.text else { return }
@@ -36,7 +37,7 @@ class ResetPasswordViewController: UIViewController {
         ] as [String : Any]
         
         let postData = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-        let request = NSMutableURLRequest(url: NSURL(string:  "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/users/auth0%7C63ed17dd2a7d55f8098d30ff")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string:  "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/users/auth0%7C\(userId)")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "PATCH"
