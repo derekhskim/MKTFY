@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         
         auth0Manager.loginWithEmail(email, password: password) { success, error in
             if success {
-                print("Login Successed!")
+                print("Login Successful!")
                 DispatchQueue.main.async {
                     let vc = DashboardViewController.storyboardInstance(storyboardName: "Dashboard") as! DashboardViewController
                     self.navigationController?.pushViewController(vc, animated: true)
