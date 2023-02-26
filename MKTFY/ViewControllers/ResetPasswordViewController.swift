@@ -26,10 +26,10 @@ class ResetPasswordViewController: UIViewController {
     
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
         guard let newPassword = passwordView.isSecureTextField.text else { return }
-                        
+        
         let headers = [
-          "content-type": "application/json",
-          "authorization": "Bearer \(mgmtAccessToken!)"
+            "content-type": "application/json",
+            "authorization": "Bearer \(mgmtAccessToken!)"
         ]
         let parameters = [
             "password": newPassword,
@@ -38,23 +38,27 @@ class ResetPasswordViewController: UIViewController {
         
         let postData = try? JSONSerialization.data(withJSONObject: parameters, options: [])
         let request = NSMutableURLRequest(url: NSURL(string:  "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/users/auth0%7C\(userId)")! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
         request.httpMethod = "PATCH"
         request.allHTTPHeaderFields = headers
         request.httpBody = postData! as Data
         
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-          if (error != nil) {
-              print(error as Any)
-          } else {
-            let httpResponse = response as? HTTPURLResponse
-              print(httpResponse as Any)
-          }
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse as Any)
+            }
         })
         
         dataTask.resume()
+        
+        DispatchQueue.main.async {
+            self.navigationController?.popToViewController(self.navigationController!.children[0], animated: true)
+        }
     }
     
     override func viewDidLoad() {
