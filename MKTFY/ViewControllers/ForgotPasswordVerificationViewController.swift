@@ -59,7 +59,26 @@ class ForgotPasswordVerificationViewController: UIViewController {
                                 for identity in identities {
                                   if let provider = identity["provider"] as? String, provider == "auth0" {
                                     if let user_id = identity["user_id"] as? String {
-                                      print("user_id: \(user_id)")
+                                        self.userId = user_id
+                                        UserDefaults.standard.set(self.userId, forKey: "user_id")
+                                        
+                                        self.auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/", scope: "openid profile")
+                                            .start { result in
+                                                switch result {
+                                                case .success(let credentials):
+                                                    UserDefaults.standard.set(self.mgmtAccessToken, forKey: "accessToken")
+                                                    
+                                                    DispatchQueue.main.async {
+                                                        let vc = ResetPasswordViewController.storyboardInstance(storyboardName: "Login") as! ResetPasswordViewController
+                                                        vc.email = email
+                                                        vc.mgmtAccessToken = self.mgmtAccessToken
+                                                        vc.userId = self.userId
+                                                        self.navigationController?.pushViewController(vc, animated: true)
+                                                    }
+                                                case .failure(let error):
+                                                    print("error: \(error.localizedDescription)")
+                                                }
+                                            }
                                     }
                                   }
                                 }
@@ -76,23 +95,6 @@ class ForgotPasswordVerificationViewController: UIViewController {
                 dataTask.resume()
             }
         }
-                
-        auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/", scope: "openid profile")
-            .start { result in
-                switch result {
-                case .success(let credentials):
-                    UserDefaults.standard.set(self.mgmtAccessToken, forKey: "accessToken")
-                    
-                    DispatchQueue.main.async {
-                        let vc = ResetPasswordViewController.storyboardInstance(storyboardName: "Login") as! ResetPasswordViewController
-                        vc.email = email
-                        vc.mgmtAccessToken = self.mgmtAccessToken
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                case .failure(let error):
-                    print("error: \(error.localizedDescription)")
-                }
-            }
     }
     
     var originalFrame: CGRect = .zero
