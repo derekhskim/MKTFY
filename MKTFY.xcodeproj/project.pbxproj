@@ -45,6 +45,8 @@
 		65A646F6299C1E8000262DB8 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A646F5299C1E8000262DB8 /* CheckBox.swift */; };
 		65A646F9299C854D00262DB8 /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = 65A646F8299C854D00262DB8 /* Auth0 */; };
 		65A646FB299C85AC00262DB8 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65A646FA299C85AC00262DB8 /* Auth0.plist */; };
+		65AB2A6329AB083B002B3D1B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 65AB2A6229AB083B002B3D1B /* .gitignore */; };
+		65AB2A6529AB0AF3002B3D1B /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65AB2A6429AB0AF3002B3D1B /* Config.plist */; };
 		65C28FC72988BA1D00A3BBEE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C28FC62988BA1D00A3BBEE /* LoginViewController.swift */; };
 		65C28FCC2988BB6500A3BBEE /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C28FCB2988BB6500A3BBEE /* UIViewController+.swift */; };
 		65CE01112991971F00772FCA /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE01102991971F00772FCA /* CreateAccountViewController.swift */; };
@@ -98,6 +100,8 @@
 		6597D0C82992C3AF00485932 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		65A646F5299C1E8000262DB8 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		65A646FA299C85AC00262DB8 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
+		65AB2A6229AB083B002B3D1B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		65AB2A6429AB0AF3002B3D1B /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		65C28FC62988BA1D00A3BBEE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		65C28FCB2988BB6500A3BBEE /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		65CE01102991971F00772FCA /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 				6568E0FC2988AACF001482AB /* Products */,
 				F5089CB3A16E5FEAC49987B3 /* Pods */,
 				8D9A30028F846909A9F4F05F /* Frameworks */,
+				65AB2A6229AB083B002B3D1B /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,6 +164,7 @@
 				6568E1092988AACF001482AB /* LaunchScreen.storyboard */,
 				6568E10C2988AACF001482AB /* Info.plist */,
 				65A646FA299C85AC00262DB8 /* Auth0.plist */,
+				65AB2A6429AB0AF3002B3D1B /* Config.plist */,
 			);
 			path = MKTFY;
 			sourceTree = "<group>";
@@ -366,6 +372,8 @@
 				6547D4D42992E0EB00701044 /* SecureTextField.xib in Resources */,
 				658145A72991B13C00BC9067 /* TextFieldWithError.xib in Resources */,
 				6597D0CC2992C3AF00485932 /* OpenSans-MediumItalic.ttf in Resources */,
+				65AB2A6529AB0AF3002B3D1B /* Config.plist in Resources */,
+				65AB2A6329AB083B002B3D1B /* .gitignore in Resources */,
 				6597D0CF2992C3AF00485932 /* OpenSans-Bold.ttf in Resources */,
 				6597D0D02992C3AF00485932 /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				6597D0CB2992C3AF00485932 /* OpenSans-Italic.ttf in Resources */,

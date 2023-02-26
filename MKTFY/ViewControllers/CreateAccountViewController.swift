@@ -18,9 +18,9 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
     @IBOutlet weak var addressField: TextFieldWithError!
     @IBOutlet weak var cityField: TextFieldWithError!
     @IBOutlet var wholeView: UIView!
-    @IBOutlet weak var verifyButton: Button!
+    @IBOutlet weak var nextButton: Button!
     
-    @IBAction func verifyButtonTapped(_ sender: Any) {
+    @IBAction func nextButtonTapped(_ sender: Any) {
         guard let firstName = firstNameField.inputTextField.text,
               let lastName = lastNameField.inputTextField.text,
               let email = emailField.inputTextField.text,
@@ -59,8 +59,8 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
             $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
         
-        verifyButton.isEnabled = false
-        verifyButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
+        nextButton.isEnabled = false
+        nextButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
         
         emailField.inputTextField.keyboardType = .emailAddress
         phoneField.inputTextField.keyboardType = .numberPad
@@ -120,9 +120,9 @@ extension CreateAccountViewController {
         let textField = TextFieldWithError()
         
         if textField.inputTextField.text!.isEmpty {
-            verifyButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
+            nextButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
         } else {
-            verifyButton.setBackgroundColor(UIColor.appColor(LPColor.OccasionalPurple), forState: .normal)
+            nextButton.setBackgroundColor(UIColor.appColor(LPColor.OccasionalPurple), forState: .normal)
         }
         
     }
@@ -156,8 +156,8 @@ extension CreateAccountViewController: UITextFieldDelegate, UINavigationBarDeleg
     @objc func textFieldDidChange(_ textField: UITextField) {
         let allFieldsFilled = ![firstNameField, lastNameField, emailField, phoneField, addressField, cityField].contains { $0.inputTextField.text?.isEmpty ?? true }
         
-        verifyButton.isEnabled = allFieldsFilled
-        verifyButton.setBackgroundColor(allFieldsFilled && emailField.inputTextField.text!.isValidEmail ? UIColor.appColor(LPColor.OccasionalPurple) : UIColor.appColor(LPColor.DisabledGray), forState: .normal)
+        nextButton.isEnabled = allFieldsFilled
+        nextButton.setBackgroundColor(allFieldsFilled && emailField.inputTextField.text!.isValidEmail ? UIColor.appColor(LPColor.OccasionalPurple) : UIColor.appColor(LPColor.DisabledGray), forState: .normal)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

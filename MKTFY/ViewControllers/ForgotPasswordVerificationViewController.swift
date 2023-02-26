@@ -7,12 +7,12 @@
 
 import UIKit
 import Auth0
-import JWTDecode
 
 class ForgotPasswordVerificationViewController: UIViewController {
     
     let auth0Manager = Auth0Manager()
     var email: String!
+    var mgmtAccessToken: String = ""
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var verificationTextField: TextFieldWithError!
@@ -22,6 +22,53 @@ class ForgotPasswordVerificationViewController: UIViewController {
     
     @IBAction func verifyButtonTapped(_ sender: Any) {
         
+        guard let plistPath = Bundle.main.path(forResource: "Config", ofType: "plist"),
+              let plistData = FileManager.default.contents(atPath: plistPath),
+              let plist = try? PropertyListSerialization.propertyList(from: plistData, options: [], format: nil) as? [String: Any],
+              let clientId = plist["clientId"] as? String,
+              let clientSecret = plist["clientSecret"] as? String else {
+            fatalError("Could not read credentials from .plist file.")
+        }
+              
+        
+        let headers = ["content-type": "application/x-www-form-urlencoded"]
+
+        let postData = NSMutableData(data: "grant_type=client_credentials".data(using: String.Encoding.utf8)!)
+        postData.append("&client_id=\(clientId)".data(using: String.Encoding.utf8)!)
+        postData.append("&client_secret=\(clientSecret)".data(using: String.Encoding.utf8)!)
+        postData.append("&audience=https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/".data(using: String.Encoding.utf8)!)
+
+        let request = NSMutableURLRequest(url: NSURL(string: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/oauth/token")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        request.httpBody = postData as Data
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    if let jsonData = data {
+                        do {
+                            let jsonDict = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any]
+                            if let accessToken = jsonDict?["access_token"] as? String {
+                                print("accessToken: \(accessToken)")
+                                self.mgmtAccessToken = accessToken
+                            }
+                        } catch {
+                            print("Error parsing JSON: \(error.localizedDescription)")
+                        }
+                    }
+                } else {
+                    print("HTTP response status code: \(httpResponse.statusCode)")
+                }
+            }
+        }
+        dataTask.resume()
+        
         let cleanVerificationCode = verificationTextField.inputTextField.text!.replacingOccurrences(of: "-", with: "")
         
         guard let email = email else { return }
@@ -30,20 +77,13 @@ class ForgotPasswordVerificationViewController: UIViewController {
             .start { result in
                 switch result {
                 case .success(let credentials):
-                    let accessToken = credentials.accessToken
-                    UserDefaults.standard.set(accessToken, forKey: "accessToken")
+                    UserDefaults.standard.set(self.mgmtAccessToken, forKey: "accessToken")
                     
-                    print("accessToken: \(credentials.accessToken)")
-                    let jwt = try? decode(jwt: credentials.accessToken)
-                    print("jwt : \(jwt)")
-//                    let userId = 
-//                    UserDefaults.standard.set(userId, forKey: "idToken")
-
                     DispatchQueue.main.async {
                         let vc = ResetPasswordViewController.storyboardInstance(storyboardName: "Login") as! ResetPasswordViewController
                         vc.email = email
-                        vc.accessToken = accessToken
-//                        vc.userId = userId
+                        vc.mgmtAccessToken = self.mgmtAccessToken
+                        print("mgmtAccessToken: \(self.mgmtAccessToken)")
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 case .failure(let error):

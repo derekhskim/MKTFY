@@ -20,24 +20,23 @@ class ResetPasswordViewController: UIViewController {
     
     var originalFrame: CGRect = .zero
     var shiftFactor: CGFloat = 0.25
-    var accessToken: String = ""
-    var userId: String = ""
+    var mgmtAccessToken: String!
     var email: String = ""
     
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
         guard let newPassword = passwordView.isSecureTextField.text else { return }
-        
+                        
         let headers = [
           "content-type": "application/json",
-          "authorization": "Bearer \(accessToken)"
+          "authorization": "Bearer \(mgmtAccessToken!)"
         ]
         let parameters = [
-          "password": newPassword,
-          "connection": "Username-Password-Authentication",
+            "password": newPassword,
+            "connection": "Username-Password-Authentication",
         ] as [String : Any]
         
         let postData = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-        let request = NSMutableURLRequest(url: NSURL(string: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/users/email%7C63efe8729e6dc38af69783d6")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string:  "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/users/auth0%7C63ed17dd2a7d55f8098d30ff")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "PATCH"

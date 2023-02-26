@@ -393,9 +393,6 @@
                                                     </attributedString>
                                                     <color key="baseForegroundColor" name="WarningYellow"/>
                                                 </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="forgotPasswordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cd3-W7-Sh2"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -583,7 +580,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Verify">
+                                                <state key="normal" title="Next">
                                                     <color key="titleColor" name="VoidWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -592,8 +589,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="verifyButtonTapped:" destination="66f-fL-5wx" eventType="touchUpInside" id="3xk-WX-Uq2"/>
-                                                    <action selector="verifyButtonTapped:" destination="OQS-o9-uMf" eventType="touchUpInside" id="EC2-Av-HdY"/>
+                                                    <action selector="nextButtonTapped:" destination="OQS-o9-uMf" eventType="touchUpInside" id="eHX-u4-i3t"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -656,8 +652,8 @@
                         <outlet property="emailField" destination="LEZ-l9-fLI" id="ia8-PV-5kI"/>
                         <outlet property="firstNameField" destination="4k1-yt-wjo" id="KMS-gy-a4c"/>
                         <outlet property="lastNameField" destination="8ZG-tr-vQT" id="ecV-kO-RR4"/>
+                        <outlet property="nextButton" destination="gwT-5Q-hnu" id="q3F-oQ-slK"/>
                         <outlet property="phoneField" destination="52N-h2-foO" id="h8Y-YH-g9O"/>
-                        <outlet property="verifyButton" destination="gwT-5Q-hnu" id="q3F-oQ-slK"/>
                         <outlet property="wholeView" destination="szO-0x-7bs" id="l9s-T5-47a"/>
                     </connections>
                 </viewController>
@@ -949,9 +945,6 @@
                                                     </attributedString>
                                                     <color key="baseForegroundColor" name="WarningYellow"/>
                                                 </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="forgotPasswordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ezm-bA-ZQV"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -1173,7 +1166,7 @@
             <size key="intrinsicContentSize" width="44" height="31"/>
         </designable>
         <designable name="gwT-5Q-hnu">
-            <size key="intrinsicContentSize" width="44" height="31"/>
+            <size key="intrinsicContentSize" width="35" height="31"/>
         </designable>
         <designable name="kE2-5l-ovP">
             <size key="intrinsicContentSize" width="293" height="30.333333333333332"/>
