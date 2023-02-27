@@ -38,8 +38,13 @@ class CreatePasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tapGestureRecognizer = NavigationTapGestureRecognizer(target: self, action: #selector(labelTapped))
+        tapGestureRecognizer.viewController = self
+        agreementLabel.addGestureRecognizer(tapGestureRecognizer)
+        agreementLabel.isUserInteractionEnabled = true
+        
         let string = NSMutableAttributedString(string: "By checking this box, you agree to our ")
-        let attributedTermsOfService = NSMutableAttributedString(string: "Terms of Service", attributes: [NSAttributedString.Key.link: URL(string: "https://www.medium.com/@treasure3210")!, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.appColor(LPColor.LightestPurple)!, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
+        let attributedTermsOfService = NSMutableAttributedString(string: "Terms of Service", attributes: [NSAttributedString.Key.link: NavigationTapGestureRecognizer(), NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.appColor(LPColor.LightestPurple)!, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
         let additionalString = NSMutableAttributedString(string: " and our ")
         let attributedPrivacyPolicy = NSMutableAttributedString(string: "Privacy Policy", attributes: [NSAttributedString.Key.link: URL(string: "https://www.github.com/treasure3210")!, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.appColor(LPColor.LightestPurple)!, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
         
@@ -62,6 +67,11 @@ class CreatePasswordViewController: UIViewController {
         originalFrame = view.frame
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+    }
+    
+    @objc func labelTapped() {
+        let vc = DashboardViewController.storyboardInstance(storyboardName: "Dashboard") as! DashboardViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
