@@ -10,7 +10,7 @@ import UIKit
 class ResetPasswordViewController: UIViewController {
     
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var passwordView: SecureTextField!
+    @IBOutlet weak var passwordView: SecureTextFieldWithLabel!
     @IBOutlet weak var confirmPasswordView: SecureTextField!
     
     @IBOutlet weak var characterLengthValidationImage: UIImageView!
@@ -71,6 +71,7 @@ class ResetPasswordViewController: UIViewController {
         self.passwordView.isSecureTextField.delegate = self
         self.confirmPasswordView.isSecureTextField.delegate = self
         
+        passwordView.showIndicator = false
         resetPasswordButton.isEnabled = false
         
         validatePassword()
@@ -135,11 +136,25 @@ extension ResetPasswordViewController: UITextFieldDelegate {
             numberValidationImage.image = UIImage(named: "password_validation_unchecked")
         }
         
+        if isLongEnough && hasCapitalLetter && hasNumber || passwordsMatch && isLongEnough && hasCapitalLetter && hasNumber {
+                configureView(withMessage: "Strong", withColor: UIColor.appColor(LPColor.GoodGreen))
+            } else if isLongEnough {
+                configureView(withMessage: "Weak", withColor: UIColor.appColor(LPColor.WarningYellow))
+            } else {
+                passwordView.showIndicator = false
+            }
+        
         if passwordsMatch && isLongEnough && hasCapitalLetter && hasNumber {
             resetPasswordButton.isEnabled = true
         } else {
             resetPasswordButton.isEnabled = false
         }
+    }
+    
+    private func configureView(withMessage message: String, withColor color: UIColor) {
+        passwordView.showIndicator = true
+        passwordView.indicatorText = message
+        passwordView.indicator.textColor = color
     }
     
 }

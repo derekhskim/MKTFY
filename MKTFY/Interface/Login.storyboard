@@ -994,7 +994,7 @@
                                         <color key="textColor" name="TextGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Atg-oI-OEc" customClass="SecureTextField" customModule="MKTFY" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Atg-oI-OEc" customClass="SecureTextFieldWithLabel" customModule="MKTFY" customModuleProvider="target">
                                         <rect key="frame" x="18" y="98.333333333333343" width="357" height="80"/>
                                         <color key="backgroundColor" name="VerySubtleGray"/>
                                         <constraints>
@@ -1006,6 +1006,7 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
                                                 <color key="value" name="VerySubtleGray"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showIndicator" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kmm-pU-Rcg" customClass="SecureTextField" customModule="MKTFY" customModuleProvider="target">

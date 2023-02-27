@@ -30,6 +30,12 @@ class SecureTextFieldWithLabel: LPView {
         }
     }
     
+    @IBInspectable var showIndicator: Bool = false {
+        didSet {
+            indicator.isHidden = !showIndicator
+        }
+    }
+    
     @IBInspectable var placeHolder: String = "Enter your text" {
         didSet {
             isSecureTextField.placeholder = placeHolder
@@ -80,7 +86,7 @@ class SecureTextFieldWithLabel: LPView {
     
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "SecureTextField", bundle: bundle)
+        let nib = UINib(nibName: "SecureTextFieldWithLabel", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
     }
