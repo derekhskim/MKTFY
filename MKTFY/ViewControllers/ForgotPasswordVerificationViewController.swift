@@ -64,7 +64,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
                                                             self.auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/", scope: "openid profile")
                                                                 .start { result in
                                                                     switch result {
-                                                                    case .success(let credentials):
+                                                                    case .success(_):
                                                                         UserDefaults.standard.set(self.mgmtAccessToken, forKey: "accessToken")
                                                                         
                                                                         DispatchQueue.main.async {
@@ -74,7 +74,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
                                                                             vc.userId = self.userId
                                                                             self.navigationController?.pushViewController(vc, animated: true)
                                                                         }
-                                                                    case .failure(let error):
+                                                                    case .failure(_):
                                                                         DispatchQueue.main.async {
                                                                             self.showAlert(title: "Code is not valid", message: "Please double check the code you have received and enter it again", buttonTitle: "Okay")
                                                                         }

@@ -887,6 +887,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2WH-9m-iAB"/>
                     <connections>
+                        <outlet property="agreementLabel" destination="Brd-rn-N94" id="c19-gs-e09"/>
                         <outlet property="backgroundView" destination="THH-T1-OwG" id="ZP9-kD-qqy"/>
                         <outlet property="characterLengthValidationImage" destination="hIU-43-Th9" id="3sS-c7-az0"/>
                         <outlet property="confirmPasswordView" destination="2IX-aI-8ms" id="xCB-Hn-nCg"/>
