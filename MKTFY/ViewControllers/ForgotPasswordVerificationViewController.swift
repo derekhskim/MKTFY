@@ -75,7 +75,9 @@ class ForgotPasswordVerificationViewController: UIViewController {
                                                                             self.navigationController?.pushViewController(vc, animated: true)
                                                                         }
                                                                     case .failure(let error):
-                                                                        print("error: \(error.localizedDescription)")
+                                                                        DispatchQueue.main.async {
+                                                                            self.showAlert(title: "Code is not valid", message: "Please double check the code you have received and enter it again", buttonTitle: "Okay")
+                                                                        }
                                                                     }
                                                                 }
                                                         }
@@ -97,8 +99,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
     }
     
     @IBAction func sendCodeAgainButtonTapped(_ sender: Any) {
-        guard let email = email,
-              !email.isEmpty && email.isValidEmail else { return }
+        guard let email = email else { return }
         
         auth0Manager.resetPassword(email: email)
         
