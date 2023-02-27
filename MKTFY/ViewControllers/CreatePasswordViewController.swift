@@ -20,7 +20,7 @@ class CreatePasswordViewController: UIViewController {
     @IBOutlet weak var uppercaseValidationImage: UIImageView!
     @IBOutlet weak var numberValidationImage: UIImageView!
     
-    @IBOutlet weak var agreementLabel: NSMutableAttributedString!
+    @IBOutlet weak var agreementLabel: UILabel!
     
     @IBOutlet weak var createMyAccountButton: Button!
     @IBAction func createMyAccountButtonTapped(_ sender: Any) {
@@ -38,16 +38,16 @@ class CreatePasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let string = NSMutableAttributedString(string: "By checking this box, you agree to our")
-        let attributedTermsOfService = NSMutableAttributedString(string: "Terms of Service", attributes: [NSAttributedString.Key.link: URL(string: "https://medium.com/@treasure3210")!, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
-        let additionalString = NSMutableAttributedString(string: "and our")
-        let attributedPrivacyPolicy = NSMutableAttributedString(string: "Privacy Policy", attributes: [NSAttributedString.Key.link: URL(string: "https://github.com/treasure3210")!, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
+        let string = NSMutableAttributedString(string: "By checking this box, you agree to our ")
+        let attributedTermsOfService = NSMutableAttributedString(string: "Terms of Service", attributes: [NSAttributedString.Key.link: URL(string: "https://www.medium.com/@treasure3210")!, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.appColor(LPColor.LightestPurple)!, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
+        let additionalString = NSMutableAttributedString(string: " and our ")
+        let attributedPrivacyPolicy = NSMutableAttributedString(string: "Privacy Policy", attributes: [NSAttributedString.Key.link: URL(string: "https://www.github.com/treasure3210")!, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.appColor(LPColor.LightestPurple)!, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
         
         string.append(attributedTermsOfService)
         string.append(additionalString)
         string.append(attributedPrivacyPolicy)
 
-        let agreementLabel = string
+        agreementLabel.attributedText = string
         
         initializeHideKeyboard()
         setupNavigationBar()
