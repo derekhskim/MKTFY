@@ -20,7 +20,6 @@ class ForgotPasswordVerificationViewController: UIViewController {
     @IBOutlet weak var codeSentLabel: UILabel!
     
     @IBOutlet weak var verifyButton: Button!
-    
     @IBAction func verifyButtonTapped(_ sender: Any) {
         
         let cleanVerificationCode = verificationTextField.inputTextField.text!.replacingOccurrences(of: "-", with: "")
@@ -96,6 +95,16 @@ class ForgotPasswordVerificationViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func sendCodeAgainButtonTapped(_ sender: Any) {
+        guard let email = email,
+              !email.isEmpty && email.isValidEmail else { return }
+        
+        auth0Manager.resetPassword(email: email)
+        
+        showAlert(title: "Success!", message: "Verification code has been resent to you!", buttonTitle: "Okay")
+    }
+    
     
     var originalFrame: CGRect = .zero
     var shiftFactor: CGFloat = 0.25
