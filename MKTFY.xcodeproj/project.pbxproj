@@ -13,6 +13,9 @@
 		6530780829A4915000856DB4 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6530780729A4915000856DB4 /* ResetPasswordViewController.swift */; };
 		653F2401298CBE7A0053C5E1 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653F2400298CBE7A0053C5E1 /* UIImage+.swift */; };
 		654444BE29AD4ED700E61F69 /* NavigationTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444BD29AD4ED700E61F69 /* NavigationTapGestureRecognizer.swift */; };
+		654444C129AD5FD500E61F69 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C029AD5FD500E61F69 /* Coordinator.swift */; };
+		654444C329AD60E300E61F69 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C229AD60E300E61F69 /* MainCoordinator.swift */; };
+		654444C529AD63C900E61F69 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C429AD63C900E61F69 /* Storyboard.swift */; };
 		6547D4D42992E0EB00701044 /* SecureTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6547D4D32992E0EB00701044 /* SecureTextField.xib */; };
 		6547D4D62992E0F700701044 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6547D4D52992E0F700701044 /* SecureTextField.swift */; };
 		65613AED29A5596B0002B90F /* PasswordToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65613AEC29A5596B0002B90F /* PasswordToggleButton.swift */; };
@@ -70,6 +73,9 @@
 		6530780729A4915000856DB4 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		653F2400298CBE7A0053C5E1 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		654444BD29AD4ED700E61F69 /* NavigationTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTapGestureRecognizer.swift; sourceTree = "<group>"; };
+		654444C029AD5FD500E61F69 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		654444C229AD60E300E61F69 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		654444C429AD63C900E61F69 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		6547D4D32992E0EB00701044 /* SecureTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecureTextField.xib; sourceTree = "<group>"; };
 		6547D4D52992E0F700701044 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
 		65613AEC29A5596B0002B90F /* PasswordToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordToggleButton.swift; sourceTree = "<group>"; };
@@ -136,6 +142,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		654444BF29AD5FBC00E61F69 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				654444C029AD5FD500E61F69 /* Coordinator.swift */,
+				654444C229AD60E300E61F69 /* MainCoordinator.swift */,
+				654444C429AD63C900E61F69 /* Storyboard.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		6568E0F22988AACF001482AB = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +174,7 @@
 		6568E0FD2988AACF001482AB /* MKTFY */ = {
 			isa = PBXGroup;
 			children = (
+				654444BF29AD5FBC00E61F69 /* Coordinator */,
 				65F846E7299C88090056B675 /* Models */,
 				6568E1122988AF44001482AB /* Helps */,
 				65E90FE92988CD5F00ACDC0C /* Views */,
@@ -454,6 +471,7 @@
 			files = (
 				65883775299C1AAC006D986F /* CreatePasswordViewController.swift in Sources */,
 				65613AEF29A56DD30002B90F /* DashboardViewController.swift in Sources */,
+				654444C129AD5FD500E61F69 /* Coordinator.swift in Sources */,
 				658145A52991B13000BC9067 /* TextFieldWithError.swift in Sources */,
 				6587F35E298AFAB500EF5100 /* MainNavigationController.swift in Sources */,
 				65C28FCC2988BB6500A3BBEE /* UIViewController+.swift in Sources */,
@@ -471,6 +489,8 @@
 				6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */,
 				65F9BF8329AD167800FADB2B /* SecureTextFieldWithLabel.swift in Sources */,
 				6547D4D62992E0F700701044 /* SecureTextField.swift in Sources */,
+				654444C529AD63C900E61F69 /* Storyboard.swift in Sources */,
+				654444C329AD60E300E61F69 /* MainCoordinator.swift in Sources */,
 				65EBA0BE298A1E5200202C02 /* ForgotPasswordViewController.swift in Sources */,
 				654444BE29AD4ED700E61F69 /* NavigationTapGestureRecognizer.swift in Sources */,
 				65C28FC72988BA1D00A3BBEE /* LoginViewController.swift in Sources */,
