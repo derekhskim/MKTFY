@@ -13,7 +13,7 @@ protocol CreatePasswordDelegate: AnyObject {
 
 class CreatePasswordViewController: UIViewController {
 
-    @IBOutlet weak var passwordView: SecureTextField!
+    @IBOutlet weak var passwordView: SecureTextFieldWithLabel!
     @IBOutlet weak var confirmPasswordView: SecureTextField!
     
     @IBOutlet weak var characterLengthValidationImage: UIImageView!
@@ -97,12 +97,26 @@ extension CreatePasswordViewController: UITextFieldDelegate {
         } else {
             numberValidationImage.image = UIImage(named: "password_validation_unchecked")
         }
-            
+        
+        if isLongEnough && hasCapitalLetter && hasNumber || passwordsMatch && isLongEnough && hasCapitalLetter && hasNumber {
+                configureView(withMessage: "Strong", withColor: UIColor.appColor(LPColor.GoodGreen))
+            } else if isLongEnough {
+                configureView(withMessage: "Weak", withColor: UIColor.appColor(LPColor.WarningYellow))
+            } else {
+                passwordView.showIndicator = false
+            }
+        
         if passwordsMatch && isLongEnough && hasCapitalLetter && hasNumber {
             createMyAccountButton.isEnabled = true
         } else {
             createMyAccountButton.isEnabled = false
         }
+    }
+    
+    private func configureView(withMessage message: String, withColor color: UIColor) {
+        passwordView.showIndicator = true
+        passwordView.indicatorText = message
+        passwordView.indicator.textColor = color
     }
 
 }
