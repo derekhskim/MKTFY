@@ -146,8 +146,10 @@ extension ResetPasswordViewController: UITextFieldDelegate {
         
         if passwordsMatch && isLongEnough && hasCapitalLetter && hasNumber {
             resetPasswordButton.isEnabled = true
+            resetPasswordButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
         } else {
             resetPasswordButton.isEnabled = false
+            resetPasswordButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
         }
     }
     

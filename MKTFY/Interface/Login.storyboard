@@ -664,7 +664,7 @@
             </objects>
             <point key="canvasLocation" x="2078" y="545"/>
         </scene>
-        <!--Create Password View Controller-->
+        <!--Create Password-->
         <scene sceneID="rfL-iT-cRc">
             <objects>
                 <viewController storyboardIdentifier="CreatePasswordViewController" id="yeB-qN-EYU" customClass="CreatePasswordViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
@@ -885,7 +885,7 @@
                             <constraint firstItem="yAC-rg-qou" firstAttribute="trailing" secondItem="THH-T1-OwG" secondAttribute="trailing" id="xaC-Qg-aaw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="2WH-9m-iAB"/>
+                    <navigationItem key="navigationItem" title="Create Password" style="editor" id="2WH-9m-iAB"/>
                     <connections>
                         <outlet property="agreementLabel" destination="Brd-rn-N94" id="c19-gs-e09"/>
                         <outlet property="backgroundView" destination="THH-T1-OwG" id="ZP9-kD-qqy"/>
@@ -982,7 +982,7 @@
             </objects>
             <point key="canvasLocation" x="4265" y="344"/>
         </scene>
-        <!--Reset Password View Controller-->
+        <!--Reset Password-->
         <scene sceneID="5oc-2j-GAF">
             <objects>
                 <viewController storyboardIdentifier="ResetPasswordViewController" id="5JI-zL-tmX" customClass="ResetPasswordViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
@@ -1138,6 +1138,7 @@
                             <constraint firstAttribute="bottom" secondItem="lov-5H-Afr" secondAttribute="bottom" id="vzA-He-czq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Reset Password" style="editor" id="soP-ih-9N8"/>
                     <connections>
                         <outlet property="backgroundView" destination="lov-5H-Afr" id="e2A-Ua-BFI"/>
                         <outlet property="characterLengthValidationImage" destination="2bb-XQ-ek8" id="rke-rC-OIY"/>
