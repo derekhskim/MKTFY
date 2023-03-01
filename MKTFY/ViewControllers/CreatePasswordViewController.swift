@@ -11,7 +11,7 @@ protocol CreatePasswordDelegate: AnyObject {
     func passwordCreated(_ password: String)
 }
 
-class CreatePasswordViewController: UIViewController {
+class CreatePasswordViewController: UIViewController, LoginStoryboard {
 
     @IBOutlet weak var passwordView: SecureTextFieldWithLabel!
     @IBOutlet weak var confirmPasswordView: SecureTextField!

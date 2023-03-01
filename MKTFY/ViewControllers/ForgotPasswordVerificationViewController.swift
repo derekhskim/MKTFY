@@ -8,7 +8,7 @@
 import UIKit
 import Auth0
 
-class ForgotPasswordVerificationViewController: UIViewController {
+class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboard {
     
     let auth0Manager = Auth0Manager()
     var email: String!

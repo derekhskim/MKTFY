@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateAccountViewController: UIViewController, CreatePasswordDelegate {
+class CreateAccountViewController: UIViewController, CreatePasswordDelegate, LoginStoryboard {
     
     @IBOutlet weak var backgroundView: UIView!
     

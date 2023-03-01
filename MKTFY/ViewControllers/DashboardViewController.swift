@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UIViewController, LoginStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

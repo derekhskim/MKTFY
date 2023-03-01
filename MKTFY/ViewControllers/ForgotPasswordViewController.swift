@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: UIViewController, LoginStoryboard {
     
     @IBOutlet weak var emailView: TextFieldWithError!
     @IBOutlet weak var backgroundView: UIView!

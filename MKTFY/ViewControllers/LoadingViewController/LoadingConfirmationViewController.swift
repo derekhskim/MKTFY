@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoadingConfirmationViewcontroller: UIViewController {
+class LoadingConfirmationViewcontroller: UIViewController, LoginStoryboard {
     
     @IBOutlet weak var imageView: UIImageView!
     

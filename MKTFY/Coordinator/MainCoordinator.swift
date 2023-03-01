@@ -18,35 +18,43 @@ class MainCoordinator: Coordinator {
     
     func start() {
         let vc = LoginViewController.instantiate()
+        vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
     
     func goToForgotPasswordVC() {
-        
+        let vc = ForgotPasswordViewController.instantiate()
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func goToLoadingConfirmationVC() {
-        
+        let vc = LoadingConfirmationViewcontroller.instantiate()
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func goToForgotPasswordVerificationVC() {
-        
+        let vc = ForgotPasswordVerificationViewController.instantiate()
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func goToResetPasswordVC() {
-        
+        let vc = ResetPasswordViewController.instantiate()
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func goToCreateAccountVC() {
-        
+        let vc = CreateAccountViewController.instantiate()
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func goToCreatePasswordVC() {
-        
+        let vc = CreatePasswordViewController.instantiate()
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func goToEmailVerifiationSentVC() {
-        
+        let vc = EmailVerificationSentViewController.instantiate()
+        navigationController.pushViewController(vc, animated: true)
     }
     
 }

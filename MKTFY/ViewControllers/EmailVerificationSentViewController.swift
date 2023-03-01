@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmailVerificationSentViewController: UIViewController {
+class EmailVerificationSentViewController: UIViewController, LoginStoryboard {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResetPasswordViewController: UIViewController {
+class ResetPasswordViewController: UIViewController, LoginStoryboard {
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var passwordView: SecureTextFieldWithLabel!
