@@ -662,7 +662,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KbO-xT-RWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2078" y="545"/>
+            <point key="canvasLocation" x="2077" y="360"/>
         </scene>
         <!--Create Password-->
         <scene sceneID="rfL-iT-cRc">
@@ -999,22 +999,104 @@ The information provided on the Site is not intended for distribution to or use 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hra-HY-wz6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2883" y="1130"/>
+            <point key="canvasLocation" x="2921" y="1253"/>
         </scene>
         <!--Privacy Policy View Controller-->
         <scene sceneID="dj2-hx-wWf">
             <objects>
                 <viewController storyboardIdentifier="PrivacyPolicyViewController" id="7gN-Mz-bSA" customClass="PrivacyPolicyViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pjQ-db-J1M">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQr-Js-u3R">
+                                <rect key="frame" x="0.0" y="59" width="393" height="1487"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43l-n6-wQE">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1480"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auC-Xq-DUN">
+                                                <rect key="frame" x="18" y="40" width="357" height="1318.6666666666667"/>
+                                                <mutableString key="text">Privacy is the ability of an individual or group to seclude themselves or information about themselves, and thereby express themselves selectively.
+When something is private to a person, it usually means that something is inherently special or sensitive to them. The domain of privacy partially overlaps with security, which can include the concepts of appropriate use, as well as protection of information. Privacy may also take the form of bodily integrity. The right not to be subjected to unsanctioned invasions of privacy by the government, corporations or individuals is part of many countries’ privacy laws, and in some cases, constitutions.
+In the business world, a person may volunteer personal details, including for advertising, in order to receive some sort of benefit. Public figures may be subject to rules on the public interest. Personal information which is voluntarily shared but subsequently stolen or misused can lead to identity theft.
+The concept of universal individual privacy is a modern concept primarily associated with Western culture, British and North American in particular, and remained virtually unknown in some cultures until recent times. Most cultures, however, recognize the ability of individuals to withhold certain parts of their personal information from wider society, such as closing the door to one’s home.
+
+Privacy is the ability of an individual or group to seclude themselves or information about themselves, and thereby express themselves selectively.
+When something is private to a person, it usually means that something is inherently special or sensitive to them. The domain of privacy partially overlaps with security, which can include the concepts of appropriate use, as well as protection of information. Privacy may also take the form of bodily integrity. The right not to be subjected to unsanctioned invasions of privacy by the government, corporations or individuals is part of many countries’ privacy laws, and in some cases, constitutions.
+In the business world, a person may volunteer personal details, including for advertising, in order to receive some sort of benefit. Public figures may be subject to rules on the public interest. Personal information which is voluntarily shared but subsequently stolen or misused can lead to identity theft.
+The concept of universal individual privacy is a modern concept primarily associated with Western culture, British and North American in particular, and remained virtually unknown in some cultures until recent times. Most cultures, however, recognize the ability of individuals to withhold certain parts of their personal information from wider society, such as closing the door to one’s home.</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCu-Od-fJE" customClass="Button" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="1384.6666666666667" width="357" height="51"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="51" id="l8Y-JW-lhh"/>
+                                                </constraints>
+                                                <color key="tintColor" name="OccasionalPurple"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Accept">
+                                                            <attributes>
+                                                                <font key="NSFont" size="16" name="OpenSans-Bold"/>
+                                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="28"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="acceptButtonTapped:" destination="7gN-Mz-bSA" eventType="touchUpInside" id="d4H-Gn-dVm"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" name="VerySubtleGray"/>
+                                        <constraints>
+                                            <constraint firstItem="QCu-Od-fJE" firstAttribute="leading" secondItem="43l-n6-wQE" secondAttribute="leading" constant="18" id="8xa-MI-R23"/>
+                                            <constraint firstAttribute="trailing" secondItem="auC-Xq-DUN" secondAttribute="trailing" constant="18" id="NSi-bY-aLh"/>
+                                            <constraint firstItem="QCu-Od-fJE" firstAttribute="top" secondItem="auC-Xq-DUN" secondAttribute="bottom" constant="26" id="c9I-CS-K56"/>
+                                            <constraint firstItem="auC-Xq-DUN" firstAttribute="top" secondItem="43l-n6-wQE" secondAttribute="top" constant="40" id="f9X-SK-aNA"/>
+                                            <constraint firstAttribute="trailing" secondItem="QCu-Od-fJE" secondAttribute="trailing" constant="18" id="fJI-Hq-hcH"/>
+                                            <constraint firstAttribute="height" constant="1480" id="tXD-JS-kUq"/>
+                                            <constraint firstItem="auC-Xq-DUN" firstAttribute="leading" secondItem="43l-n6-wQE" secondAttribute="leading" constant="18" id="xTn-Ex-U0k"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="43l-n6-wQE" firstAttribute="bottom" secondItem="iqQ-OK-wdU" secondAttribute="bottom" id="5T1-AZ-j2A"/>
+                                    <constraint firstItem="43l-n6-wQE" firstAttribute="leading" secondItem="iqQ-OK-wdU" secondAttribute="leading" id="QIa-0C-lck"/>
+                                    <constraint firstItem="43l-n6-wQE" firstAttribute="trailing" secondItem="iqQ-OK-wdU" secondAttribute="trailing" id="Ub4-Rw-4SJ"/>
+                                    <constraint firstItem="43l-n6-wQE" firstAttribute="top" secondItem="iqQ-OK-wdU" secondAttribute="top" id="Wnt-7c-kSS"/>
+                                    <constraint firstItem="43l-n6-wQE" firstAttribute="width" secondItem="j4b-Fd-OXF" secondAttribute="width" id="hYy-vh-DKv"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="iqQ-OK-wdU"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="j4b-Fd-OXF"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="a1w-jn-8O5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="a1w-jn-8O5" firstAttribute="bottom" secondItem="eQr-Js-u3R" secondAttribute="bottom" id="AOA-m7-QI5"/>
+                            <constraint firstItem="eQr-Js-u3R" firstAttribute="top" secondItem="a1w-jn-8O5" secondAttribute="top" id="LWf-wF-DVU"/>
+                            <constraint firstItem="eQr-Js-u3R" firstAttribute="leading" secondItem="a1w-jn-8O5" secondAttribute="leading" id="eZg-nU-7Bh"/>
+                            <constraint firstItem="a1w-jn-8O5" firstAttribute="trailing" secondItem="eQr-Js-u3R" secondAttribute="trailing" id="q9d-wi-4KY"/>
+                        </constraints>
                     </view>
+                    <size key="freeformSize" width="393" height="1580"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="43l-n6-wQE" id="Bc6-0b-NVg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NtI-nS-GVd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3731" y="1044"/>
+            <point key="canvasLocation" x="3746" y="1387"/>
         </scene>
         <!--Verification Email Sent-->
         <scene sceneID="iWk-ZX-Zpg">

@@ -11,6 +11,10 @@ class PrivacyPolicyViewController: UIViewController {
 
     @IBOutlet weak var backgroundView: UIView!
     
+    @IBAction func acceptButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
