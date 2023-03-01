@@ -8,7 +8,6 @@
 import UIKit
 
 class ForgotPasswordViewController: UIViewController {
-    let auth0Manager = Auth0Manager()
     
     @IBOutlet weak var emailView: TextFieldWithError!
     @IBOutlet weak var backgroundView: UIView!
@@ -21,7 +20,7 @@ class ForgotPasswordViewController: UIViewController {
         !email.isEmpty && email.isValidEmail else { return }
         
         UserDefaults.standard.set(email, forKey: "resetPasswordEmail")
-        auth0Manager.resetPassword(email: email)
+        Auth0Manager.shared.resetPassword(email: email)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
             let verificationVC = ForgotPasswordVerificationViewController.storyboardInstance(storyboardName: "Login") as! ForgotPasswordVerificationViewController

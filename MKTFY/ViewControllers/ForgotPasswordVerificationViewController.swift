@@ -10,10 +10,10 @@ import Auth0
 
 class ForgotPasswordVerificationViewController: UIViewController {
     
-    let auth0Manager = Auth0Manager()
     var email: String!
     var mgmtAccessToken: String = ""
     var userId: String = ""
+    let audience = "https://\(domain)/api/v2/"
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var verificationTextField: TextFieldWithError!
@@ -37,7 +37,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
                 
                 let headers = ["authorization": "Bearer \(self.mgmtAccessToken)"]
                 
-                let request = NSMutableURLRequest(url: NSURL(string: "https://\(domain)/api/v2/users?q=email:%22\(email)%22&search_engine=v3")! as URL,
+                let request = NSMutableURLRequest(url: NSURL(string: "\(audience)users?q=email:%22\(email)%22&search_engine=v3")! as URL,
                                                   cachePolicy: .useProtocolCachePolicy,
                                                   timeoutInterval: 10.0)
                 request.httpMethod = "GET"
@@ -61,7 +61,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
                                                             self.userId = user_id
                                                             UserDefaults.standard.set(self.userId, forKey: "user_id")
                                                             
-                                                            self.auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://\(domain)/api/v2/", scope: "openid profile")
+                                                            self.Auth0Manager.shared.login(email: email, code: cleanVerificationCode, audience: audience, scope: "openid profile")
                                                                 .start { result in
                                                                     switch result {
                                                                     case .success(_):
@@ -101,7 +101,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
     @IBAction func sendCodeAgainButtonTapped(_ sender: Any) {
         guard let email = email else { return }
         
-        auth0Manager.resetPassword(email: email)
+        Auth0Manager.shared.resetPassword(email: email)
         
         showAlert(title: "Success!", message: "Verification code has been resent to you!", buttonTitle: "Okay")
     }

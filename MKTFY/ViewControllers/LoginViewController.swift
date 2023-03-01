@@ -9,9 +9,7 @@ import UIKit
 import Auth0
 
 class LoginViewController: UIViewController {
-    
-    let auth0Manager = Auth0Manager()
-    
+        
     @IBOutlet var wholeView: UIView!
     @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var subTitleLabel: UILabel!
@@ -31,7 +29,7 @@ class LoginViewController: UIViewController {
         guard let email = emailView.inputTextField.text,
               let password = passwordView.isSecureTextField.text else { return }
         
-        auth0Manager.loginWithEmail(email, password: password) { success, error in
+        Auth0Manager.shared.loginWithEmail(email, password: password) { success, error in
             if success {
                 print("Login Successful!")
                 DispatchQueue.main.async {

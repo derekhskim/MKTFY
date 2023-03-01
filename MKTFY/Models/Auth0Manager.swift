@@ -11,9 +11,15 @@ import JWTDecode
 
 class Auth0Manager {
     
-    let auth0 = Auth0.authentication()
+    let audience = "https://\(domain)/api/v2/"
+    let auth0: Authentication!
     let users = Users()
     
+    static let shared = Auth0Manager()
+    
+    init() {
+        auth0 = Auth0.authentication()
+    }
     
     func loginWithEmail(_ email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         
@@ -21,7 +27,7 @@ class Auth0Manager {
             usernameOrEmail: email,
             password: password,
             realmOrConnection: databaseConnection,
-            audience: "https://\(domain)/api/v2/",
+            audience: audience,
             scope: "openid profile"
         )
         .start { result in
