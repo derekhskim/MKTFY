@@ -21,7 +21,16 @@ class Auth0Manager {
         auth0 = Auth0.authentication()
     }
     
-    func loginWithEmail(_ email: String, password: String, completion: @escaping (String?, Error?) -> Void) {
+    func loginWithEmail(_ email: String, password: String, completion: @escaping (Result<String?, Auth0Error>) -> Void) {
+        
+        if email.isEmpty {
+            completion(.failure(.missingEmail))
+            return
+        }
+        
+        if password.isEmpty {
+            completion(.failure(.missingPassword))
+        }
         
         auth0.login(
             usernameOrEmail: email,
@@ -33,10 +42,9 @@ class Auth0Manager {
         .start { result in
             switch result {
             case .success(let credentials):
-                print("accessToken : \(credentials.accessToken)")
-                completion("accessToken : \(credentials.accessToken)", nil)
+                completion(.success("accessToken : \(credentials.accessToken)"))
             case .failure(let error):
-                completion(error.localizedDescription, error)
+                print(error.localizedDescription)
             }
         }
     }
