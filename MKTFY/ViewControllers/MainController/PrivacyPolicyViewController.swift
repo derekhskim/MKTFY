@@ -9,9 +9,12 @@ import UIKit
 
 class PrivacyPolicyViewController: UIViewController {
 
+    @IBOutlet weak var backgroundView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupNavigationBar()
+        setupBackgroundView(view: backgroundView)
     }
 }

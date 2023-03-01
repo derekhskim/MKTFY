@@ -906,15 +906,100 @@
             <objects>
                 <viewController storyboardIdentifier="TermsOfServiceViewController" id="r1i-fR-tP0" customClass="TermsOfServiceViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kS1-yR-ygi">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKi-qK-vc8">
+                                <rect key="frame" x="0.0" y="59" width="393" height="1107"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZG-4y-xxW">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1100"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPA-pb-To7">
+                                                <rect key="frame" x="18" y="39.999999999999943" width="357" height="953.66666666666652"/>
+                                                <mutableString key="text">These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [business entity name] (“we,” “us” or “our”), concerning your access to and use of the [website name.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
+
+You agree that by accessing the Site, you have read, understood, and agree to be bound by all of these Terms of Service. If you do not agree with all of these Terms of Service, then you are expressly prohibited from using the Site and you must discontinue use immediately.
+
+Supplemental Terms of Service or documents that may be posted on the Site from time to time are hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make changes or modifications to these Terms of Service at any time and for any reason.
+
+We will alert you about any changes by updating the “Last updated” date of these Terms of Service, and you waive any right to receive specific notice of each such change.
+
+It is your responsibility to periodically review these Terms of Service to stay informed of updates. You will be subject to, and will be deemed to have been made aware of and to have accepted, the changes in any revised Terms of Service by your continued use of the Site after the date such revised Terms of Service are posted.
+
+The information provided on the Site is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country.</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FP-jz-hJr" customClass="Button" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="18" y="1019.6666666666667" width="357" height="51"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="51" id="PXU-f3-AAU"/>
+                                                </constraints>
+                                                <color key="tintColor" name="OccasionalPurple"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Accept">
+                                                            <attributes>
+                                                                <font key="NSFont" size="16" name="OpenSans-Bold"/>
+                                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="28"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cornerRadiusByHeight" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="acceptButtonTapped:" destination="r1i-fR-tP0" eventType="touchUpInside" id="qAB-zH-X2N"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" name="VerySubtleGray"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="6FP-jz-hJr" secondAttribute="trailing" constant="18" id="72j-wk-zoW"/>
+                                            <constraint firstItem="6FP-jz-hJr" firstAttribute="leading" secondItem="yZG-4y-xxW" secondAttribute="leading" constant="18" id="aQh-j9-c1Q"/>
+                                            <constraint firstAttribute="height" constant="1100" id="cGf-vH-xx3"/>
+                                            <constraint firstItem="WPA-pb-To7" firstAttribute="leading" secondItem="yZG-4y-xxW" secondAttribute="leading" constant="18" id="jji-zo-yWx"/>
+                                            <constraint firstItem="6FP-jz-hJr" firstAttribute="top" secondItem="WPA-pb-To7" secondAttribute="bottom" constant="26" id="uWc-JT-yLN"/>
+                                            <constraint firstItem="WPA-pb-To7" firstAttribute="top" secondItem="yZG-4y-xxW" secondAttribute="top" constant="40" id="xSR-s1-tJn"/>
+                                            <constraint firstAttribute="trailing" secondItem="WPA-pb-To7" secondAttribute="trailing" constant="18" id="yp5-bx-BSK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="yZG-4y-xxW" firstAttribute="leading" secondItem="vRl-mx-PTF" secondAttribute="leading" id="7cI-tO-btt"/>
+                                    <constraint firstItem="yZG-4y-xxW" firstAttribute="top" secondItem="vRl-mx-PTF" secondAttribute="top" id="VoK-KN-s2U"/>
+                                    <constraint firstItem="yZG-4y-xxW" firstAttribute="bottom" secondItem="vRl-mx-PTF" secondAttribute="bottom" id="bZo-pT-Tiz"/>
+                                    <constraint firstItem="vRl-mx-PTF" firstAttribute="trailing" secondItem="yZG-4y-xxW" secondAttribute="trailing" id="gGA-pi-pUB"/>
+                                    <constraint firstItem="yZG-4y-xxW" firstAttribute="width" secondItem="jJQ-BB-Vrk" secondAttribute="width" id="hkJ-uJ-AX8"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="vRl-mx-PTF"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="jJQ-BB-Vrk"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="h0E-re-Mad"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qKi-qK-vc8" firstAttribute="top" secondItem="h0E-re-Mad" secondAttribute="top" id="GI6-4y-VdJ"/>
+                            <constraint firstItem="h0E-re-Mad" firstAttribute="trailing" secondItem="qKi-qK-vc8" secondAttribute="trailing" id="MCD-9f-N1u"/>
+                            <constraint firstItem="qKi-qK-vc8" firstAttribute="leading" secondItem="h0E-re-Mad" secondAttribute="leading" id="bz1-qa-b5V"/>
+                            <constraint firstItem="h0E-re-Mad" firstAttribute="bottom" secondItem="qKi-qK-vc8" secondAttribute="bottom" id="ffj-FG-Kvo"/>
+                        </constraints>
                     </view>
+                    <size key="freeformSize" width="393" height="1200"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="yZG-4y-xxW" id="hFC-xb-aV7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hra-HY-wz6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2873" y="1044"/>
+            <point key="canvasLocation" x="2883" y="1130"/>
         </scene>
         <!--Privacy Policy View Controller-->
         <scene sceneID="dj2-hx-wWf">
