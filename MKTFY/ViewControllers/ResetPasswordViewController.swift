@@ -33,11 +33,11 @@ class ResetPasswordViewController: UIViewController {
         ]
         let parameters = [
             "password": newPassword,
-            "connection": "Username-Password-Authentication",
+            "connection": databaseConnection,
         ] as [String : Any]
         
         let postData = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-        let request = NSMutableURLRequest(url: NSURL(string:  "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/users/auth0%7C\(userId)")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string:  "https://\(domain)/api/v2/users/auth0%7C\(userId)")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "PATCH"

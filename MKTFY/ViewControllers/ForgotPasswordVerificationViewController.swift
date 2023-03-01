@@ -37,7 +37,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
                 
                 let headers = ["authorization": "Bearer \(self.mgmtAccessToken)"]
                 
-                let request = NSMutableURLRequest(url: NSURL(string: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/users?q=email:%22\(email)%22&search_engine=v3")! as URL,
+                let request = NSMutableURLRequest(url: NSURL(string: "https://\(domain)/api/v2/users?q=email:%22\(email)%22&search_engine=v3")! as URL,
                                                   cachePolicy: .useProtocolCachePolicy,
                                                   timeoutInterval: 10.0)
                 request.httpMethod = "GET"
@@ -61,7 +61,7 @@ class ForgotPasswordVerificationViewController: UIViewController {
                                                             self.userId = user_id
                                                             UserDefaults.standard.set(self.userId, forKey: "user_id")
                                                             
-                                                            self.auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/", scope: "openid profile")
+                                                            self.auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://\(domain)/api/v2/", scope: "openid profile")
                                                                 .start { result in
                                                                     switch result {
                                                                     case .success(_):
@@ -150,9 +150,9 @@ class ForgotPasswordVerificationViewController: UIViewController {
         let postData = NSMutableData(data: "grant_type=client_credentials".data(using: String.Encoding.utf8)!)
         postData.append("&client_id=\(clientId)".data(using: String.Encoding.utf8)!)
         postData.append("&client_secret=\(clientSecret)".data(using: String.Encoding.utf8)!)
-        postData.append("&audience=https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/".data(using: String.Encoding.utf8)!)
+        postData.append("&audience=https://\(domain)/api/v2/".data(using: String.Encoding.utf8)!)
         
-        let request = NSMutableURLRequest(url: NSURL(string: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/oauth/token")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://\(domain)/oauth/token")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "POST"
