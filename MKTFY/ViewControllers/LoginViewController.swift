@@ -8,7 +8,7 @@
 import UIKit
 import Auth0
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, LoginStoryboard {
         
     @IBOutlet var wholeView: UIView!
     @IBOutlet weak var titleImageView: UIImageView!
@@ -31,7 +31,6 @@ class LoginViewController: UIViewController {
         
         Auth0Manager.shared.loginWithEmail(email, password: password) { success, error in
             if success {
-                print("Login Successful!")
                 DispatchQueue.main.async {
                     let vc = DashboardViewController.storyboardInstance(storyboardName: "Dashboard") as! DashboardViewController
                     self.navigationController?.pushViewController(vc, animated: true)
