@@ -16,6 +16,10 @@ class MainCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
+    func popVC(childNumber: Int) {
+        self.navigationController.popToViewController(self.navigationController.children[childNumber], animated: true)
+    }
+    
     func start() {
         let vc = LoginViewController.instantiate()
         vc.coordinator = self

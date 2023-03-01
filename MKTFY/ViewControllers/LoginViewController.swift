@@ -19,8 +19,7 @@ class LoginViewController: UIViewController, LoginStoryboard {
     @IBOutlet weak var passwordView: SecureTextField!
     
     @IBAction func forgotPasswordButton(_ sender: Any) {
-        let vc = ForgotPasswordViewController.storyboardInstance(storyboardName: "Login") as! ForgotPasswordViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        coordinator?.goToForgotPasswordVC()
     }
     
     @IBOutlet weak var cloudsImageView: UIImageView!
@@ -48,8 +47,7 @@ class LoginViewController: UIViewController, LoginStoryboard {
     }
     
     @IBAction func createAccountButton(_ sender: Any) {
-        let vc = CreateAccountViewController.storyboardInstance(storyboardName: "Login") as! CreateAccountViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        coordinator?.goToCreateAccountVC()
     }
     
     var originalFrame: CGRect = .zero

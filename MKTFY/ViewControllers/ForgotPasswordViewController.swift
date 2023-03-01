@@ -9,12 +9,13 @@ import UIKit
 
 class ForgotPasswordViewController: UIViewController, LoginStoryboard {
     
+    weak var coordinator: MainCoordinator?
+    
     @IBOutlet weak var emailView: TextFieldWithError!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var sendButton: Button!
     @IBAction func sendButtonTapped(_ sender: Any) {
-        let vc = LoadingConfirmationViewcontroller.storyboardInstance(storyboardName: "Login") as! LoadingConfirmationViewcontroller
-        self.navigationController?.pushViewController(vc, animated: true)
+        coordinator?.goToLoadingConfirmationVC()
         
         guard let email = emailView.inputTextField.text,
         !email.isEmpty && email.isValidEmail else { return }
