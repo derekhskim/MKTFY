@@ -14,13 +14,14 @@ class Auth0Manager {
     let auth0 = Auth0.authentication()
     let users = Users()
     
+    
     func loginWithEmail(_ email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         
         auth0.login(
             usernameOrEmail: email,
             password: password,
-            realmOrConnection: "Username-Password-Authentication",
-            audience: "https://dev-vtoay0l3h78iuz2e.us.auth0.com/api/v2/",
+            realmOrConnection: databaseConnection,
+            audience: "https://\(domain)/api/v2/",
             scope: "openid profile"
         )
         .start { result in
@@ -38,7 +39,7 @@ class Auth0Manager {
         
         let userMetadata = ["firstName" : firstName, "lastName" : lastName, "email" : email, "phone" : phone, "address" : address, "city" : city]
         
-        auth0.signup(email: email, password: password, connection: "Username-Password-Authentication", userMetadata: userMetadata)
+        auth0.signup(email: email, password: password, connection: databaseConnection, userMetadata: userMetadata)
             .start { result in
                 switch result {
                 case .success(let user):
@@ -52,7 +53,7 @@ class Auth0Manager {
     }
     
     func resetPassword(email: String) {
-        auth0.startPasswordless(email: email, type: .code, connection: "email")
+        auth0.startPasswordless(email: email, type: .code, connection: emailConnection)
             .start { result in
                 switch result {
                 case .success:
