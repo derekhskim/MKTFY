@@ -10,7 +10,7 @@ import Auth0
 
 class LoginViewController: UIViewController, LoginStoryboard {
     
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: LoginCoordinator?
         
     @IBOutlet var wholeView: UIView!
     @IBOutlet weak var titleImageView: UIImageView!

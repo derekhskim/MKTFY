@@ -9,7 +9,7 @@ import UIKit
 
 class ForgotPasswordViewController: UIViewController, LoginStoryboard {
     
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: LoginCoordinator?
     
     @IBOutlet weak var emailView: TextFieldWithError!
     @IBOutlet weak var backgroundView: UIView!

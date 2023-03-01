@@ -8,16 +8,12 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator {
+class LoginCoordinator: Coordinator {
     var childCoordinator = [Coordinator]()
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-    }
-    
-    func popVC(childNumber: Int) {
-        self.navigationController.popToViewController(self.navigationController.children[childNumber], animated: true)
     }
     
     func start() {
