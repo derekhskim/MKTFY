@@ -15,9 +15,10 @@
 		654444BE29AD4ED700E61F69 /* NavigationTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444BD29AD4ED700E61F69 /* NavigationTapGestureRecognizer.swift */; };
 		654444C129AD5FD500E61F69 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C029AD5FD500E61F69 /* Coordinator.swift */; };
 		654444C329AD60E300E61F69 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C229AD60E300E61F69 /* MainCoordinator.swift */; };
-		654444C529AD63C900E61F69 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C429AD63C900E61F69 /* Storyboard.swift */; };
+		654444C529AD63C900E61F69 /* LoginStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C429AD63C900E61F69 /* LoginStoryboard.swift */; };
 		654444C729AF07BD00E61F69 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C629AF07BD00E61F69 /* Constant.swift */; };
 		654444C929AF18DC00E61F69 /* Auth0Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C829AF18DC00E61F69 /* Auth0Error.swift */; };
+		654444CB29AF1F3E00E61F69 /* DashboardStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444CA29AF1F3E00E61F69 /* DashboardStoryboard.swift */; };
 		6547D4D42992E0EB00701044 /* SecureTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6547D4D32992E0EB00701044 /* SecureTextField.xib */; };
 		6547D4D62992E0F700701044 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6547D4D52992E0F700701044 /* SecureTextField.swift */; };
 		65613AED29A5596B0002B90F /* PasswordToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65613AEC29A5596B0002B90F /* PasswordToggleButton.swift */; };
@@ -76,9 +77,10 @@
 		654444BD29AD4ED700E61F69 /* NavigationTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		654444C029AD5FD500E61F69 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		654444C229AD60E300E61F69 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		654444C429AD63C900E61F69 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		654444C429AD63C900E61F69 /* LoginStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStoryboard.swift; sourceTree = "<group>"; };
 		654444C629AF07BD00E61F69 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		654444C829AF18DC00E61F69 /* Auth0Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth0Error.swift; sourceTree = "<group>"; };
+		654444CA29AF1F3E00E61F69 /* DashboardStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardStoryboard.swift; sourceTree = "<group>"; };
 		6547D4D32992E0EB00701044 /* SecureTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecureTextField.xib; sourceTree = "<group>"; };
 		6547D4D52992E0F700701044 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
 		65613AEC29A5596B0002B90F /* PasswordToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordToggleButton.swift; sourceTree = "<group>"; };
@@ -149,7 +151,8 @@
 			children = (
 				654444C029AD5FD500E61F69 /* Coordinator.swift */,
 				654444C229AD60E300E61F69 /* MainCoordinator.swift */,
-				654444C429AD63C900E61F69 /* Storyboard.swift */,
+				654444C429AD63C900E61F69 /* LoginStoryboard.swift */,
+				654444CA29AF1F3E00E61F69 /* DashboardStoryboard.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -489,11 +492,12 @@
 				65E8A0D4299EA523009D70A0 /* String+.swift in Sources */,
 				658145AE299201C100BC9067 /* MainViewController.swift in Sources */,
 				65E7DE1F299D4ADE00926A1F /* Auth0Manager.swift in Sources */,
+				654444CB29AF1F3E00E61F69 /* DashboardStoryboard.swift in Sources */,
 				65E90FEB2988CD8000ACDC0C /* Button.swift in Sources */,
 				6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */,
 				65F9BF8329AD167800FADB2B /* SecureTextFieldWithLabel.swift in Sources */,
 				6547D4D62992E0F700701044 /* SecureTextField.swift in Sources */,
-				654444C529AD63C900E61F69 /* Storyboard.swift in Sources */,
+				654444C529AD63C900E61F69 /* LoginStoryboard.swift in Sources */,
 				654444C329AD60E300E61F69 /* MainCoordinator.swift in Sources */,
 				65EBA0BE298A1E5200202C02 /* ForgotPasswordViewController.swift in Sources */,
 				654444BE29AD4ED700E61F69 /* NavigationTapGestureRecognizer.swift in Sources */,

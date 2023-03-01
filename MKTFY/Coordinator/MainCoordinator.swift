@@ -21,5 +21,32 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToForgotPasswordVC() {
+        
+    }
+    
+    func goToLoadingConfirmationVC() {
+        
+    }
+    
+    func goToForgotPasswordVerificationVC() {
+        
+    }
+    
+    func goToResetPasswordVC() {
+        
+    }
+    
+    func goToCreateAccountVC() {
+        
+    }
+    
+    func goToCreatePasswordVC() {
+        
+    }
+    
+    func goToEmailVerifiationSentVC() {
+        
+    }
     
 }
