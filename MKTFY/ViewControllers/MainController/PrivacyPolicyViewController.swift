@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PrivacyPolicyViewController: UIViewController {
+class PrivacyPolicyViewController: UIViewController, LoginStoryboard {
 
     @IBOutlet weak var backgroundView: UIView!
     

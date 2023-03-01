@@ -57,6 +57,16 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToTermsOfServiceVC() {
+        let vc = TermsOfServiceViewController.instantiate()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToPrivacyPolicyVC() {
+        let vc = PrivacyPolicyViewController.instantiate()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func goToEmailVerifiationSentVC() {
         let vc = EmailVerificationSentViewController.instantiate()
         navigationController.pushViewController(vc, animated: true)
