@@ -10,7 +10,7 @@ import Auth0
 
 class LoginViewController: UIViewController, LoginStoryboard {
     
-    weak var coordinator: LoginCoordinator?
+    weak var coordinator: MainCoordinator?
         
     @IBOutlet var wholeView: UIView!
     @IBOutlet weak var titleImageView: UIImageView!
@@ -32,9 +32,9 @@ class LoginViewController: UIViewController, LoginStoryboard {
         
         Auth0Manager.shared.loginWithEmail(email, password: password) { success, error in
             if success {
+                
                 DispatchQueue.main.async {
-                    let vc = DashboardViewController.storyboardInstance(storyboardName: "Dashboard") as! DashboardViewController
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.coordinator?.goToDashboardViewController()
                 }
             } else {
                 print("Failed to authenticate with Auth0: \(String(describing: error))")

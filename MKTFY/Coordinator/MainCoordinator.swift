@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class LoginCoordinator: Coordinator {
+class MainCoordinator: Coordinator {
     var childCoordinator = [Coordinator]()
     var navigationController: UINavigationController
     
@@ -54,6 +54,12 @@ class LoginCoordinator: Coordinator {
     
     func goToEmailVerifiationSentVC() {
         let vc = EmailVerificationSentViewController.instantiate()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    /// MARK: - Dashboard
+    func goToDashboardViewController() {
+        let vc = DashboardViewController.instantiate()
         navigationController.pushViewController(vc, animated: true)
     }
     
