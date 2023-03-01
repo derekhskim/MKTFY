@@ -1,22 +1,22 @@
+////
+////  MainNavigationController.swift
+////  MKTFY
+////
+////  Created by Derek Kim on 2023/02/01.
+////
 //
-//  MainNavigationController.swift
-//  MKTFY
+//import UIKit
 //
-//  Created by Derek Kim on 2023/02/01.
+//class MainNavigationController: UINavigationController {
 //
-
-import UIKit
-
-class MainNavigationController: UINavigationController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.appColor(LPColor.OccasionalPurple)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-                        
-        // Do any additional setup after loading the view.
-    }
-}
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        let navBarAppearance = UINavigationBarAppearance()
+//        navBarAppearance.configureWithOpaqueBackground()
+//        navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.appColor(LPColor.OccasionalPurple)!]
+//        UINavigationBar.appearance().standardAppearance = navBarAppearance
+//
+//        // Do any additional setup after loading the view.
+//    }
+//}
