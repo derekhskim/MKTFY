@@ -901,10 +901,10 @@
             </objects>
             <point key="canvasLocation" x="3137" y="344"/>
         </scene>
-        <!--Terms Of Service View Controller-->
+        <!--Terms of Service-->
         <scene sceneID="CY3-Eu-NxN">
             <objects>
-                <viewController storyboardIdentifier="TermsOfServiceViewController" id="r1i-fR-tP0" customClass="TermsOfServiceViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermsOfServiceViewController" id="r1i-fR-tP0" userLabel="Terms of Service" customClass="TermsOfServiceViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kS1-yR-ygi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -992,6 +992,7 @@ The information provided on the Site is not intended for distribution to or use 
                             <constraint firstItem="h0E-re-Mad" firstAttribute="bottom" secondItem="qKi-qK-vc8" secondAttribute="bottom" id="ffj-FG-Kvo"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="jDE-Qx-5Zz" userLabel="Terms of Service"/>
                     <size key="freeformSize" width="393" height="1200"/>
                     <connections>
                         <outlet property="backgroundView" destination="yZG-4y-xxW" id="hFC-xb-aV7"/>
@@ -1001,10 +1002,10 @@ The information provided on the Site is not intended for distribution to or use 
             </objects>
             <point key="canvasLocation" x="2921" y="1253"/>
         </scene>
-        <!--Privacy Policy View Controller-->
+        <!--Privacy Policy-->
         <scene sceneID="dj2-hx-wWf">
             <objects>
-                <viewController storyboardIdentifier="PrivacyPolicyViewController" id="7gN-Mz-bSA" customClass="PrivacyPolicyViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivacyPolicyViewController" id="7gN-Mz-bSA" userLabel="Privacy Policy" customClass="PrivacyPolicyViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pjQ-db-J1M">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="1580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1089,6 +1090,7 @@ The concept of universal individual privacy is a modern concept primarily associ
                             <constraint firstItem="a1w-jn-8O5" firstAttribute="trailing" secondItem="eQr-Js-u3R" secondAttribute="trailing" id="q9d-wi-4KY"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="Sqi-pz-dHl" userLabel="Privacy Policy"/>
                     <size key="freeformSize" width="393" height="1580"/>
                     <connections>
                         <outlet property="backgroundView" destination="43l-n6-wQE" id="Bc6-0b-NVg"/>
