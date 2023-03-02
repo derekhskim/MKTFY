@@ -47,10 +47,7 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
         
         self.passwordView.isSecureTextField.delegate = self
         self.confirmPasswordView.isSecureTextField.delegate = self
-        
-        createMyAccountButton.isEnabled = false
-        allRequiredFieldsAreFilledOut()
-        
+                
         checkBoxTapped.addTarget(self, action: #selector(checkBoxValueChanged(sender:)), for: .valueChanged)
         
         originalFrame = view.frame
