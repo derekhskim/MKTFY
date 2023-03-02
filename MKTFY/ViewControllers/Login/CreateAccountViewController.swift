@@ -46,6 +46,23 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate, Log
         super.viewDidLoad()
         
         initializeHideKeyboard()
+        initializeImageDropDown()
+        
+        let imgViewForDropDown = UIImageView()
+        imgViewForDropDown.frame = CGRect(x: 0, y: 0, width: 30, height: 48)
+        imgViewForDropDown.image = UIImage(named: "drop_down_arrow")
+        imgViewForDropDown.isUserInteractionEnabled = true
+
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imgViewForDropDown.frame.width + 10, height: imgViewForDropDown.frame.height))
+        containerView.addSubview(imgViewForDropDown)
+
+        cityField.inputTextField.rightView = containerView
+        cityField.inputTextField.rightViewMode = .always
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDropDownMenu))
+        imgViewForDropDown.addGestureRecognizer(tapGesture)
+        
+        imgViewForDropDown.contentMode = .right
         
         self.firstNameField.inputTextField.delegate = self
         self.lastNameField.inputTextField.delegate = self
@@ -125,6 +142,43 @@ extension CreateAccountViewController {
         }
         
     }
+    
+    func initializeImageDropDown() {
+        let imgViewForDropDown = UIImageView()
+        imgViewForDropDown.frame = CGRect(x: 0, y: 0, width: 30, height: 48)
+        imgViewForDropDown.image = UIImage(named: "drop_down_arrow")
+        imgViewForDropDown.isUserInteractionEnabled = true
+
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imgViewForDropDown.frame.width + 10, height: imgViewForDropDown.frame.height))
+        containerView.addSubview(imgViewForDropDown)
+
+        cityField.inputTextField.rightView = containerView
+        cityField.inputTextField.rightViewMode = .always
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDropDownMenu))
+        imgViewForDropDown.addGestureRecognizer(tapGesture)
+        
+        imgViewForDropDown.contentMode = .right
+    }
+    
+    @objc func showDropDownMenu() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let options = ["Calgary", "Camrose", "Brooks"]
+        
+        for option in options {
+            let action = UIAlertAction(title: option, style: .default) { (action) in
+                self.cityField.inputTextField.text = option
+            }
+            alertController.addAction(action)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 // Enable dismiss of keyboard when the user taps anywhere from the screen
