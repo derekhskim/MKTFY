@@ -22,6 +22,7 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
     @IBOutlet weak var uppercaseValidationImage: UIImageView!
     @IBOutlet weak var numberValidationImage: UIImageView!
     
+    @IBOutlet weak var checkBoxTapped: CheckBox!
     @IBOutlet weak var agreementLabel: UILabel!
     
     @IBOutlet weak var createMyAccountButton: Button!
@@ -69,6 +70,7 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
         self.confirmPasswordView.isSecureTextField.delegate = self
         
         createMyAccountButton.isEnabled = false
+        checkBoxTapped.isChecked = false
         validatePassword()
         
         originalFrame = view.frame
@@ -141,10 +143,12 @@ extension CreatePasswordViewController: UITextFieldDelegate {
             passwordView.showIndicator = false
         }
         
-        if passwordsMatch && isLongEnough && hasCapitalLetter && hasNumber {
+        if passwordsMatch && isLongEnough && hasCapitalLetter && hasNumber && checkBoxTapped.isChecked == true {
             createMyAccountButton.isEnabled = true
+            createMyAccountButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
         } else {
             createMyAccountButton.isEnabled = false
+            createMyAccountButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
         }
     }
     

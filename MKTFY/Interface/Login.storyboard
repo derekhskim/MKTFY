@@ -890,6 +890,7 @@
                         <outlet property="agreementLabel" destination="Brd-rn-N94" id="c19-gs-e09"/>
                         <outlet property="backgroundView" destination="THH-T1-OwG" id="ZP9-kD-qqy"/>
                         <outlet property="characterLengthValidationImage" destination="hIU-43-Th9" id="3sS-c7-az0"/>
+                        <outlet property="checkBoxTapped" destination="skL-hk-UZ1" id="pYT-eB-hJd"/>
                         <outlet property="confirmPasswordView" destination="2IX-aI-8ms" id="xCB-Hn-nCg"/>
                         <outlet property="createMyAccountButton" destination="FL7-y9-AcI" id="ThU-Tx-T9a"/>
                         <outlet property="numberValidationImage" destination="jEp-WE-2KK" id="Qhd-cj-hFg"/>
@@ -917,7 +918,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPA-pb-To7">
                                                 <rect key="frame" x="18" y="39.999999999999943" width="357" height="953.66666666666652"/>
-                                                <mutableString key="text">These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [business entity name] (“we,” “us” or “our”), concerning your access to and use of the [website name.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
+                                                <string key="text">These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [business entity name] (“we,” “us” or “our”), concerning your access to and use of the [website name.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
 
 You agree that by accessing the Site, you have read, understood, and agree to be bound by all of these Terms of Service. If you do not agree with all of these Terms of Service, then you are expressly prohibited from using the Site and you must discontinue use immediately.
 
@@ -927,13 +928,14 @@ We will alert you about any changes by updating the “Last updated” date of t
 
 It is your responsibility to periodically review these Terms of Service to stay informed of updates. You will be subject to, and will be deemed to have been made aware of and to have accepted, the changes in any revised Terms of Service by your continued use of the Site after the date such revised Terms of Service are posted.
 
-The information provided on the Site is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country.</mutableString>
+The information provided on the Site is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FP-jz-hJr" customClass="Button" customModule="MKTFY" customModuleProvider="target">
                                                 <rect key="frame" x="18" y="1019.6666666666667" width="357" height="51"/>
+                                                <color key="backgroundColor" name="OccasionalPurple"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="51" id="PXU-f3-AAU"/>
                                                 </constraints>
@@ -992,7 +994,7 @@ The information provided on the Site is not intended for distribution to or use 
                             <constraint firstItem="h0E-re-Mad" firstAttribute="bottom" secondItem="qKi-qK-vc8" secondAttribute="bottom" id="ffj-FG-Kvo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="jDE-Qx-5Zz" userLabel="Terms of Service"/>
+                    <navigationItem key="navigationItem" title="Terms of Service" id="jDE-Qx-5Zz" userLabel="Terms of Service"/>
                     <size key="freeformSize" width="393" height="1200"/>
                     <connections>
                         <outlet property="backgroundView" destination="yZG-4y-xxW" id="hFC-xb-aV7"/>
@@ -1018,7 +1020,7 @@ The information provided on the Site is not intended for distribution to or use 
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auC-Xq-DUN">
                                                 <rect key="frame" x="18" y="40" width="357" height="1318.6666666666667"/>
-                                                <mutableString key="text">Privacy is the ability of an individual or group to seclude themselves or information about themselves, and thereby express themselves selectively.
+                                                <string key="text">Privacy is the ability of an individual or group to seclude themselves or information about themselves, and thereby express themselves selectively.
 When something is private to a person, it usually means that something is inherently special or sensitive to them. The domain of privacy partially overlaps with security, which can include the concepts of appropriate use, as well as protection of information. Privacy may also take the form of bodily integrity. The right not to be subjected to unsanctioned invasions of privacy by the government, corporations or individuals is part of many countries’ privacy laws, and in some cases, constitutions.
 In the business world, a person may volunteer personal details, including for advertising, in order to receive some sort of benefit. Public figures may be subject to rules on the public interest. Personal information which is voluntarily shared but subsequently stolen or misused can lead to identity theft.
 The concept of universal individual privacy is a modern concept primarily associated with Western culture, British and North American in particular, and remained virtually unknown in some cultures until recent times. Most cultures, however, recognize the ability of individuals to withhold certain parts of their personal information from wider society, such as closing the door to one’s home.
@@ -1026,13 +1028,14 @@ The concept of universal individual privacy is a modern concept primarily associ
 Privacy is the ability of an individual or group to seclude themselves or information about themselves, and thereby express themselves selectively.
 When something is private to a person, it usually means that something is inherently special or sensitive to them. The domain of privacy partially overlaps with security, which can include the concepts of appropriate use, as well as protection of information. Privacy may also take the form of bodily integrity. The right not to be subjected to unsanctioned invasions of privacy by the government, corporations or individuals is part of many countries’ privacy laws, and in some cases, constitutions.
 In the business world, a person may volunteer personal details, including for advertising, in order to receive some sort of benefit. Public figures may be subject to rules on the public interest. Personal information which is voluntarily shared but subsequently stolen or misused can lead to identity theft.
-The concept of universal individual privacy is a modern concept primarily associated with Western culture, British and North American in particular, and remained virtually unknown in some cultures until recent times. Most cultures, however, recognize the ability of individuals to withhold certain parts of their personal information from wider society, such as closing the door to one’s home.</mutableString>
+The concept of universal individual privacy is a modern concept primarily associated with Western culture, British and North American in particular, and remained virtually unknown in some cultures until recent times. Most cultures, however, recognize the ability of individuals to withhold certain parts of their personal information from wider society, such as closing the door to one’s home.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCu-Od-fJE" customClass="Button" customModule="MKTFY" customModuleProvider="target">
                                                 <rect key="frame" x="18" y="1384.6666666666667" width="357" height="51"/>
+                                                <color key="backgroundColor" name="OccasionalPurple"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="51" id="l8Y-JW-lhh"/>
                                                 </constraints>
@@ -1090,7 +1093,7 @@ The concept of universal individual privacy is a modern concept primarily associ
                             <constraint firstItem="a1w-jn-8O5" firstAttribute="trailing" secondItem="eQr-Js-u3R" secondAttribute="trailing" id="q9d-wi-4KY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Sqi-pz-dHl" userLabel="Privacy Policy"/>
+                    <navigationItem key="navigationItem" title="Privacy Policy" id="Sqi-pz-dHl" userLabel="Privacy Policy"/>
                     <size key="freeformSize" width="393" height="1580"/>
                     <connections>
                         <outlet property="backgroundView" destination="43l-n6-wQE" id="Bc6-0b-NVg"/>
@@ -1357,11 +1360,17 @@ The concept of universal individual privacy is a modern concept primarily associ
         <designable name="4MS-vW-F0h">
             <size key="intrinsicContentSize" width="124" height="31"/>
         </designable>
+        <designable name="6FP-jz-hJr">
+            <size key="intrinsicContentSize" width="78.333333333333329" height="36"/>
+        </designable>
         <designable name="8Eq-vo-rRB">
             <size key="intrinsicContentSize" width="44" height="31"/>
         </designable>
         <designable name="FL7-y9-AcI">
             <size key="intrinsicContentSize" width="145" height="31"/>
+        </designable>
+        <designable name="QCu-Od-fJE">
+            <size key="intrinsicContentSize" width="78.333333333333329" height="36"/>
         </designable>
         <designable name="aY2-3q-7XE">
             <size key="intrinsicContentSize" width="40" height="31"/>
