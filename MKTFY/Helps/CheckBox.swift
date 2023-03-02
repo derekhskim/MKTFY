@@ -18,6 +18,8 @@ class CheckBox: UIButton {
             } else {
                 self.setImage(uncheckedImage, for: UIControl.State.normal)
             }
+            
+            self.sendActions(for: .valueChanged)
         }
     }
     

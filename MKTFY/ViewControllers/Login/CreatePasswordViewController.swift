@@ -41,27 +41,6 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let termsOfServiceViewController = NavigationTapGestureRecognizer(target: self, action: #selector(termsOfServiceVCTapped))
-        termsOfServiceViewController.viewController = self
-        
-        let privacyPolicyViewController = NavigationTapGestureRecognizer(target: self, action: #selector(privacyPolicyVCTapped))
-        privacyPolicyViewController.viewController = self
-        
-        let string = NSMutableAttributedString(string: "By checking this box, you agree to our ")
-        let attributedTermsOfService = NSMutableAttributedString(string: "Terms of Service", attributes: [NSAttributedString.Key.link: termsOfServiceViewController, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.appColor(LPColor.LightestPurple)!, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
-        let additionalString = NSMutableAttributedString(string: " and our ")
-        let attributedPrivacyPolicy = NSMutableAttributedString(string: "Privacy Policy", attributes: [NSAttributedString.Key.link: privacyPolicyViewController, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.appColor(LPColor.LightestPurple)!, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
-        
-        string.append(attributedTermsOfService)
-        string.append(additionalString)
-        string.append(attributedPrivacyPolicy)
-        
-        agreementLabel.attributedText = string
-        
-        agreementLabel.addGestureRecognizer(termsOfServiceViewController)
-        agreementLabel.addGestureRecognizer(privacyPolicyViewController)
-        agreementLabel.isUserInteractionEnabled = true
-        
         initializeHideKeyboard()
         setupNavigationBar()
         setupBackgroundView(view: backgroundView)
@@ -70,23 +49,24 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
         self.confirmPasswordView.isSecureTextField.delegate = self
         
         createMyAccountButton.isEnabled = false
-        checkBoxTapped.isChecked = false
-        validatePassword()
+        allRequiredFieldsAreFilledOut()
+        
+        checkBoxTapped.addTarget(self, action: #selector(checkBoxValueChanged(sender:)), for: .valueChanged)
         
         originalFrame = view.frame
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
-    @objc func termsOfServiceVCTapped() {
-            let vc = TermsOfServiceViewController.storyboardInstance(storyboardName: "Login") as! TermsOfServiceViewController
-            navigationController?.pushViewController(vc, animated: true)
+    @objc func checkBoxValueChanged(sender: CheckBox) {
+        if sender.isChecked && allRequiredFieldsAreFilledOut() {
+            createMyAccountButton.isEnabled = true
+            createMyAccountButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
+        } else {
+            createMyAccountButton.isEnabled = false
+            createMyAccountButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
         }
-    
-    @objc func privacyPolicyVCTapped() {
-            let vc = PrivacyPolicyViewController.storyboardInstance(storyboardName: "Login") as! PrivacyPolicyViewController
-            navigationController?.pushViewController(vc, animated: true)
-        }
+    }
 }
 
 extension CreatePasswordViewController: UITextFieldDelegate {
@@ -100,11 +80,11 @@ extension CreatePasswordViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        validatePassword()
+        allRequiredFieldsAreFilledOut()
     }
     
-    func validatePassword() {
-        guard let password = passwordView.isSecureTextField.text, let confirmPassword = confirmPasswordView.isSecureTextField.text else { return }
+    func allRequiredFieldsAreFilledOut() -> Bool {
+        guard let password = passwordView.isSecureTextField.text, let confirmPassword = confirmPasswordView.isSecureTextField.text else { return false }
         
         let passwordsMatch = (password == confirmPassword)
         
@@ -143,13 +123,17 @@ extension CreatePasswordViewController: UITextFieldDelegate {
             passwordView.showIndicator = false
         }
         
-        if passwordsMatch && isLongEnough && hasCapitalLetter && hasNumber && checkBoxTapped.isChecked == true {
-            createMyAccountButton.isEnabled = true
-            createMyAccountButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
+        if isLongEnough && hasCapitalLetter && hasNumber && passwordsMatch {
+            if checkBoxTapped.isChecked {
+                createMyAccountButton.isEnabled = true
+                createMyAccountButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
+            }
+            return true
         } else {
-            createMyAccountButton.isEnabled = false
-            createMyAccountButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
+            return false
         }
+        
+        
     }
     
     private func configureView(withMessage message: String, withColor color: UIColor) {
