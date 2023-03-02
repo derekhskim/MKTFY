@@ -12,7 +12,9 @@ protocol CreatePasswordDelegate: AnyObject {
 }
 
 class CreatePasswordViewController: UIViewController, LoginStoryboard {
-
+    
+    weak var coordinator: MainCoordinator?
+    
     @IBOutlet weak var passwordView: SecureTextFieldWithLabel!
     @IBOutlet weak var confirmPasswordView: SecureTextField!
     
@@ -38,21 +40,26 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tapGestureRecognizer = NavigationTapGestureRecognizer(target: self, action: #selector(labelTapped))
-        tapGestureRecognizer.viewController = self
-        agreementLabel.addGestureRecognizer(tapGestureRecognizer)
-        agreementLabel.isUserInteractionEnabled = true
+        let termsOfServiceViewController = NavigationTapGestureRecognizer(target: self, action: #selector(termsOfServiceVCTapped))
+        termsOfServiceViewController.viewController = self
+        
+        let privacyPolicyViewController = NavigationTapGestureRecognizer(target: self, action: #selector(privacyPolicyVCTapped))
+        privacyPolicyViewController.viewController = self
         
         let string = NSMutableAttributedString(string: "By checking this box, you agree to our ")
-        let attributedTermsOfService = NSMutableAttributedString(string: "Terms of Service", attributes: [NSAttributedString.Key.link: NavigationTapGestureRecognizer(), NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.appColor(LPColor.LightestPurple)!, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
+        let attributedTermsOfService = NSMutableAttributedString(string: "Terms of Service", attributes: [NSAttributedString.Key.link: termsOfServiceViewController, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.appColor(LPColor.LightestPurple)!, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
         let additionalString = NSMutableAttributedString(string: " and our ")
-        let attributedPrivacyPolicy = NSMutableAttributedString(string: "Privacy Policy", attributes: [NSAttributedString.Key.link: URL(string: "https://www.github.com/treasure3210")!, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.appColor(LPColor.LightestPurple)!, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
+        let attributedPrivacyPolicy = NSMutableAttributedString(string: "Privacy Policy", attributes: [NSAttributedString.Key.link: privacyPolicyViewController, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.appColor(LPColor.LightestPurple)!, NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.LightestPurple)!])
         
         string.append(attributedTermsOfService)
         string.append(additionalString)
         string.append(attributedPrivacyPolicy)
-
+        
         agreementLabel.attributedText = string
+        
+        agreementLabel.addGestureRecognizer(termsOfServiceViewController)
+        agreementLabel.addGestureRecognizer(privacyPolicyViewController)
+        agreementLabel.isUserInteractionEnabled = true
         
         initializeHideKeyboard()
         setupNavigationBar()
@@ -69,10 +76,15 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
-    @objc func labelTapped() {
-        let vc = DashboardViewController.storyboardInstance(storyboardName: "Dashboard") as! DashboardViewController
-        navigationController?.pushViewController(vc, animated: true)
-    }
+    @objc func termsOfServiceVCTapped() {
+            let vc = TermsOfServiceViewController.storyboardInstance(storyboardName: "Login") as! TermsOfServiceViewController
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    
+    @objc func privacyPolicyVCTapped() {
+            let vc = PrivacyPolicyViewController.storyboardInstance(storyboardName: "Login") as! PrivacyPolicyViewController
+            navigationController?.pushViewController(vc, animated: true)
+        }
 }
 
 extension CreatePasswordViewController: UITextFieldDelegate {
@@ -122,12 +134,12 @@ extension CreatePasswordViewController: UITextFieldDelegate {
         }
         
         if isLongEnough && hasCapitalLetter && hasNumber || passwordsMatch && isLongEnough && hasCapitalLetter && hasNumber {
-                configureView(withMessage: "Strong", withColor: UIColor.appColor(LPColor.GoodGreen))
-            } else if isLongEnough {
-                configureView(withMessage: "Weak", withColor: UIColor.appColor(LPColor.WarningYellow))
-            } else {
-                passwordView.showIndicator = false
-            }
+            configureView(withMessage: "Strong", withColor: UIColor.appColor(LPColor.GoodGreen))
+        } else if isLongEnough {
+            configureView(withMessage: "Weak", withColor: UIColor.appColor(LPColor.WarningYellow))
+        } else {
+            passwordView.showIndicator = false
+        }
         
         if passwordsMatch && isLongEnough && hasCapitalLetter && hasNumber {
             createMyAccountButton.isEnabled = true
@@ -141,7 +153,7 @@ extension CreatePasswordViewController: UITextFieldDelegate {
         passwordView.indicatorText = message
         passwordView.indicator.textColor = color
     }
-
+    
 }
 
 extension CreatePasswordViewController {

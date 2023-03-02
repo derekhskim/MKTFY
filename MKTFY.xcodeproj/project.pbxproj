@@ -259,7 +259,6 @@
 			children = (
 				6587F35D298AFAB500EF5100 /* MainNavigationController.swift */,
 				658145AD299201C100BC9067 /* MainViewController.swift */,
-				654444D329AFBF7700E61F69 /* PrivacyPolicyViewController.swift */,
 			);
 			path = MainController;
 			sourceTree = "<group>";
@@ -283,10 +282,9 @@
 			path = OpenSans;
 			sourceTree = "<group>";
 		};
-		65C28FC52988BA0D00A3BBEE /* ViewControllers */ = {
+		65B8B4FA29AFD78700CB67CE /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				6587F35C298AFA9E00EF5100 /* MainController */,
 				6587F35A298AF37200EF5100 /* LoadingConfirmationViewController.swift */,
 				65C28FC62988BA1D00A3BBEE /* LoginViewController.swift */,
 				65EBA0BD298A1E5200202C02 /* ForgotPasswordViewController.swift */,
@@ -295,8 +293,26 @@
 				65883774299C1AAC006D986F /* CreatePasswordViewController.swift */,
 				65E0B3012996E48000A85CBB /* EmailVerificationSentViewController.swift */,
 				6530780729A4915000856DB4 /* ResetPasswordViewController.swift */,
-				65613AEE29A56DD30002B90F /* DashboardViewController.swift */,
 				654444D129AFBF5D00E61F69 /* TermsOfServiceViewController.swift */,
+				654444D329AFBF7700E61F69 /* PrivacyPolicyViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		65B8B4FB29AFD79900CB67CE /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				65613AEE29A56DD30002B90F /* DashboardViewController.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		65C28FC52988BA0D00A3BBEE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				65B8B4FB29AFD79900CB67CE /* Dashboard */,
+				65B8B4FA29AFD78700CB67CE /* Login */,
+				6587F35C298AFA9E00EF5100 /* MainController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
