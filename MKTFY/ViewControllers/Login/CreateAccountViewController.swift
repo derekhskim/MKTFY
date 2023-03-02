@@ -48,22 +48,6 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate, Log
         initializeHideKeyboard()
         initializeImageDropDown()
         
-        let imgViewForDropDown = UIImageView()
-        imgViewForDropDown.frame = CGRect(x: 0, y: 0, width: 30, height: 48)
-        imgViewForDropDown.image = UIImage(named: "drop_down_arrow")
-        imgViewForDropDown.isUserInteractionEnabled = true
-
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imgViewForDropDown.frame.width + 10, height: imgViewForDropDown.frame.height))
-        containerView.addSubview(imgViewForDropDown)
-
-        cityField.inputTextField.rightView = containerView
-        cityField.inputTextField.rightViewMode = .always
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDropDownMenu))
-        imgViewForDropDown.addGestureRecognizer(tapGesture)
-        
-        imgViewForDropDown.contentMode = .right
-        
         self.firstNameField.inputTextField.delegate = self
         self.lastNameField.inputTextField.delegate = self
         self.emailField.inputTextField.delegate = self
@@ -169,6 +153,7 @@ extension CreateAccountViewController {
         for option in options {
             let action = UIAlertAction(title: option, style: .default) { (action) in
                 self.cityField.inputTextField.text = option
+                self.cityField.inputTextField.sendActions(for: .editingChanged)
             }
             alertController.addAction(action)
         }
