@@ -6,8 +6,6 @@
 //
 
 import Auth0
-import UIKit
-import JWTDecode
 
 class Auth0Manager {
     
