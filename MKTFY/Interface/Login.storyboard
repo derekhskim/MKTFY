@@ -950,6 +950,7 @@ The information provided on the Site is not intended for distribution to or use 
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
+                                                    <color key="baseBackgroundColor" name="OccasionalPurple"/>
                                                 </buttonConfiguration>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1050,6 +1051,7 @@ The concept of universal individual privacy is a modern concept primarily associ
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
+                                                    <color key="baseBackgroundColor" name="OccasionalPurple"/>
                                                 </buttonConfiguration>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

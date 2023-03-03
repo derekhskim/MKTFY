@@ -34,6 +34,7 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
     
     var originalFrame: CGRect = .zero
     var shiftFactor: CGFloat = 0.25
+    let text = "By checking this box, you agree to our Terms of Service and our Privacy Policy"
     
     weak var delegate: CreatePasswordDelegate?
     @IBOutlet weak var backgroundView: UIView!
@@ -41,13 +42,29 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        agreementLabel.text = text
+        self.agreementLabel.textColor = UIColor.appColor(LPColor.TextGray)
+        let underlineAttributedString = NSMutableAttributedString(string: text)
+        let openSansBoldFont = UIFont(name: "OpenSans-Bold", size: 14)
+        let range1 = (text as NSString).range(of: "Terms of Service")
+        underlineAttributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range1)
+        underlineAttributedString.addAttribute(NSAttributedString.Key.font, value: openSansBoldFont, range: range1)
+        underlineAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.appColor(LPColor.LightestPurple)!, range: range1)
+        let range2 = (text as NSString).range(of: "Privacy Policy")
+        underlineAttributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range2)
+        underlineAttributedString.addAttribute(NSAttributedString.Key.font, value: openSansBoldFont, range: range2)
+        underlineAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.appColor(LPColor.LightestPurple)!, range: range2)
+        agreementLabel.attributedText = underlineAttributedString
+        agreementLabel.isUserInteractionEnabled = true
+        agreementLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapLabel(gesture:))))
+        
         initializeHideKeyboard()
         setupNavigationBar()
         setupBackgroundView(view: backgroundView)
         
         self.passwordView.isSecureTextField.delegate = self
         self.confirmPasswordView.isSecureTextField.delegate = self
-                
+        
         checkBoxTapped.addTarget(self, action: #selector(checkBoxValueChanged(sender:)), for: .valueChanged)
         
         originalFrame = view.frame
@@ -62,6 +79,19 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
         } else {
             createMyAccountButton.isEnabled = false
             createMyAccountButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
+        }
+    }
+    
+    @objc func tapLabel(gesture: UITapGestureRecognizer) {
+        let termsRange = (text as NSString).range(of: "Terms of Service")
+        let privacyRange = (text as NSString).range(of: "Privacy Policy")
+        
+        if gesture.didTapAttributedTextInLabel(label: agreementLabel, inRange: termsRange) {
+            let vc = TermsOfServiceViewController.storyboardInstance(storyboardName: "Login") as! TermsOfServiceViewController
+            navigationController?.pushViewController(vc, animated: true)
+        } else if gesture.didTapAttributedTextInLabel(label: agreementLabel, inRange: privacyRange) {
+            let vc = PrivacyPolicyViewController.storyboardInstance(storyboardName: "Login") as! PrivacyPolicyViewController
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
