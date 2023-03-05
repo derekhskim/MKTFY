@@ -12,9 +12,7 @@ protocol CreatePasswordDelegate: AnyObject {
 }
 
 class CreatePasswordViewController: UIViewController, LoginStoryboard {
-    
-    weak var coordinator: MainCoordinator?
-    
+        
     @IBOutlet weak var passwordView: SecureTextFieldWithLabel!
     @IBOutlet weak var confirmPasswordView: SecureTextField!
     
