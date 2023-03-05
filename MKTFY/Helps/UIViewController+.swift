@@ -16,7 +16,7 @@ extension UIViewController {
 }
 
 extension UIViewController {
-    func setupNavigationBar() {
+    func setupNavigationBarWithBackButton() {
         // Controls the back button's action and style
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backButtonTapped))
         backButton.tintColor = UIColor.appColor(LPColor.LightestPurple)
@@ -26,6 +26,17 @@ extension UIViewController {
     // Determines where the back button should take the view controller to
     @objc func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setupNavigationBarWithMenuButton() {
+        let menuButton = UIBarButtonItem(image: UIImage(systemName: "menu_bar"), style: .plain, target: self, action: #selector(menuButtonTapped))
+        menuButton.tintColor = UIColor.appColor(LPColor.OccasionalPurple)
+        self.navigationItem.leftBarButtonItem = menuButton
+    }
+    
+    @objc func menuButtonTapped() {
+        let vc = DashboardMenuViewController.storyboardInstance(storyboardName: "Dashboard") as! DashboardMenuViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

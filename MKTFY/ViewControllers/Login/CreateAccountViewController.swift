@@ -66,7 +66,7 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate, Log
         emailField.inputTextField.keyboardType = .emailAddress
         phoneField.inputTextField.keyboardType = .numberPad
         
-        setupNavigationBar()
+        setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
         
         originalFrame = wholeView.frame

@@ -18,7 +18,7 @@ class PrivacyPolicyViewController: UIViewController, LoginStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNavigationBar()
+        setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
     }
 }

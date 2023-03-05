@@ -57,7 +57,7 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
         agreementLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapLabel(gesture:))))
         
         initializeHideKeyboard()
-        setupNavigationBar()
+        setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
         
         self.passwordView.isSecureTextField.delegate = self

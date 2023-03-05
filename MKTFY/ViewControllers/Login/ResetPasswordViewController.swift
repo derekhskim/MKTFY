@@ -65,7 +65,7 @@ class ResetPasswordViewController: UIViewController, LoginStoryboard {
         super.viewDidLoad()
         
         initializeHideKeyboard()
-        setupNavigationBar()
+        setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
         
         self.passwordView.isSecureTextField.delegate = self

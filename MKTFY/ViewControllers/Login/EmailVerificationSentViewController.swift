@@ -12,6 +12,6 @@ class EmailVerificationSentViewController: UIViewController, LoginStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationBar()
+        setupNavigationBarWithBackButton()
     }
 }

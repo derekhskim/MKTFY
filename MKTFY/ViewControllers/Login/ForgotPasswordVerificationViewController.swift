@@ -118,7 +118,7 @@ class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboar
             codeSentLabel.text = message
         }
         
-        setupNavigationBar()
+        setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
         
         initializeHideKeyboard()
