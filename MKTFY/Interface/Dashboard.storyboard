@@ -113,7 +113,7 @@
                             <constraint firstItem="TWZ-4e-i7v" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="caN-dq-yde"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Hello" id="hIw-DY-yKW" userLabel="Dashboard View Controller"/>
+                    <navigationItem key="navigationItem" id="hIw-DY-yKW" userLabel="Dashboard View Controller"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

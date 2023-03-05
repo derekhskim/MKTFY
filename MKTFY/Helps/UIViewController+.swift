@@ -38,6 +38,17 @@ extension UIViewController {
         let vc = DashboardMenuViewController.storyboardInstance(storyboardName: "Dashboard") as! DashboardMenuViewController
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func setupNavigationBarWithExitButtonOnRight() {
+        let exitButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(exitButtonTapped))
+        exitButton.tintColor = UIColor.black
+        self.navigationItem.rightBarButtonItem = exitButton
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem()
+    }
+    
+    @objc func exitButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 extension UIViewController {

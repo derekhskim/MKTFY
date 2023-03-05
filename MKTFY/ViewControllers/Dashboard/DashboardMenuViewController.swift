@@ -13,7 +13,8 @@ class DashboardMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupNavigationBarWithExitButtonOnRight()
         
         profileInitialView.layer.cornerRadius = profileInitialView.layer.bounds.width / 2
         profileInitialView.clipsToBounds = true
