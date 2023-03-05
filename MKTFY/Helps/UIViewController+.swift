@@ -32,20 +32,38 @@ extension UIViewController {
         let menuButton = UIBarButtonItem(image: UIImage(named: "menu_button"), style: .plain, target: self, action: #selector(menuButtonTapped))
         menuButton.tintColor = UIColor.appColor(LPColor.OccasionalPurple)
         self.navigationItem.leftBarButtonItem = menuButton
-
+        
         let searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
         searchButton.tintColor = UIColor.appColor(LPColor.TextGray)
         self.navigationItem.rightBarButtonItem = searchButton
         
+        let containerView = UIView()
+        containerView.backgroundColor = UIColor.white
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.layer.cornerRadius = 16
+        containerView.clipsToBounds = true
+        navigationItem.titleView = containerView
+        
         let textField = UITextField()
         textField.placeholder = "Search on MKTFY"
         textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(textField)
         
-        let searchBarButtonItem = UIBarButtonItem(customView: textField)
+        NSLayoutConstraint.activate([
+            containerView.leadingAnchor.constraint(equalTo: navigationItem.titleView!.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: navigationItem.titleView!.trailingAnchor),
+            containerView.topAnchor.constraint(equalTo: navigationItem.titleView!.topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: navigationItem.titleView!.bottomAnchor),
+            
+            textField.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            textField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            textField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            textField.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
+        ])
         
-        navigationItem.titleView = searchBarButtonItem.customView
-        
-        navigationController?.navigationBar.barTintColor = UIColor.appColor(LPColor.OccasionalPurple)
+        navigationController?.navigationBar.frame.size.height = 100
+        navigationController?.navigationBar.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
     }
     
     @objc func menuButtonTapped() {
