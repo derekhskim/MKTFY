@@ -56,6 +56,9 @@ class LoginViewController: UIViewController, LoginStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emailView.inputTextField.text = "treasure3210@gmail.com"
+        passwordView.isSecureTextField.text = "K121212"
+        
         initializeHideKeyboard()
         
         self.emailView.inputTextField.delegate = self

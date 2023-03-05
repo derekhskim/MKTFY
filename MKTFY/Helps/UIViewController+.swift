@@ -32,11 +32,29 @@ extension UIViewController {
         let menuButton = UIBarButtonItem(image: UIImage(named: "menu_button"), style: .plain, target: self, action: #selector(menuButtonTapped))
         menuButton.tintColor = UIColor.appColor(LPColor.OccasionalPurple)
         self.navigationItem.leftBarButtonItem = menuButton
+
+        let searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
+        searchButton.tintColor = UIColor.appColor(LPColor.TextGray)
+        self.navigationItem.rightBarButtonItem = searchButton
+        
+        let textField = UITextField()
+        textField.placeholder = "Search on MKTFY"
+        textField.borderStyle = .roundedRect
+        
+        let searchBarButtonItem = UIBarButtonItem(customView: textField)
+        
+        navigationItem.titleView = searchBarButtonItem.customView
+        
+        navigationController?.navigationBar.barTintColor = UIColor.appColor(LPColor.OccasionalPurple)
     }
     
     @objc func menuButtonTapped() {
         let vc = DashboardMenuViewController.storyboardInstance(storyboardName: "Dashboard") as! DashboardMenuViewController
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func searchButtonTapped() {
+        
     }
     
     func setupNavigationBarWithExitButtonOnRight() {
