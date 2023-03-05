@@ -29,7 +29,7 @@ extension UIViewController {
     }
     
     func setupNavigationBarWithMenuButton() {
-        let menuButton = UIBarButtonItem(image: UIImage(systemName: "menu_button"), style: .plain, target: self, action: #selector(menuButtonTapped))
+        let menuButton = UIBarButtonItem(image: UIImage(named: "menu_button"), style: .plain, target: self, action: #selector(menuButtonTapped))
         menuButton.tintColor = UIColor.appColor(LPColor.OccasionalPurple)
         self.navigationItem.leftBarButtonItem = menuButton
     }

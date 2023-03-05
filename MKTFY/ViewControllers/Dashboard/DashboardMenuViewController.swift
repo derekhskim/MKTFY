@@ -9,9 +9,14 @@ import UIKit
 
 class DashboardMenuViewController: UIViewController {
 
+    @IBOutlet weak var profileInitialView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        profileInitialView.layer.cornerRadius = profileInitialView.layer.bounds.width / 2
+        profileInitialView.clipsToBounds = true
         // Do any additional setup after loading the view.
     }
     

@@ -8,7 +8,10 @@
 import UIKit
 
 class DashboardViewController: UIViewController, DashboardStoryboard {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupNavigationBarWithMenuButton()
     }
 }

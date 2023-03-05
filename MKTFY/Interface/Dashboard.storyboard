@@ -3,15 +3,98 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
+        <!--Dashboard Menu View Controller-->
+        <scene sceneID="5fY-D6-ePc">
+            <objects>
+                <viewController storyboardIdentifier="DashboardMenuViewController" id="b56-lf-MvU" customClass="DashboardMenuViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lre-Os-d6D">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpF-hl-Byz" userLabel="Profile Stack View">
+                                <rect key="frame" x="0.0" y="133" width="393" height="122"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXW-bq-6bu" userLabel="Profile Initial">
+                                        <rect key="frame" x="0.0" y="0.0" width="116" height="122"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oxX-5Q-17a" userLabel="Circle">
+                                                <rect key="frame" x="10" y="16" width="90" height="90"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsI-dK-OvC">
+                                                        <rect key="frame" x="33.666666666666664" y="20.333333333333346" width="22.666666666666664" height="49.333333333333343"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="36"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="OccasionalPurple"/>
+                                                <constraints>
+                                                    <constraint firstItem="fsI-dK-OvC" firstAttribute="centerX" secondItem="oxX-5Q-17a" secondAttribute="centerX" id="S3L-ua-guv"/>
+                                                    <constraint firstItem="fsI-dK-OvC" firstAttribute="centerY" secondItem="oxX-5Q-17a" secondAttribute="centerY" id="Sge-tu-cV8"/>
+                                                    <constraint firstAttribute="height" constant="90" id="oYL-eb-hp9"/>
+                                                    <constraint firstAttribute="width" constant="90" id="ug3-Zs-lIo"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="oxX-5Q-17a" firstAttribute="leading" secondItem="FXW-bq-6bu" secondAttribute="leading" constant="10" id="7hj-Dx-Ncd"/>
+                                            <constraint firstAttribute="trailing" secondItem="oxX-5Q-17a" secondAttribute="trailing" constant="16" id="Xwd-5c-t4D"/>
+                                            <constraint firstItem="oxX-5Q-17a" firstAttribute="top" secondItem="FXW-bq-6bu" secondAttribute="top" constant="16" id="j5G-3D-veH"/>
+                                            <constraint firstAttribute="bottom" secondItem="oxX-5Q-17a" secondAttribute="bottom" constant="16" id="ybC-Ju-uQ8"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pearl The Cat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qd-5d-5gk" userLabel="User Name Label">
+                                        <rect key="frame" x="116" y="0.0" width="127" height="122"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMU-2d-wPL">
+                                        <rect key="frame" x="243" y="0.0" width="150" height="122"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="750" constant="150" id="OaP-4U-EW1"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="122" id="G53-b5-kTz"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lIG-f1-b84"/>
+                        <color key="backgroundColor" name="SubtleGray"/>
+                        <constraints>
+                            <constraint firstItem="WpF-hl-Byz" firstAttribute="top" secondItem="lIG-f1-b84" secondAttribute="top" constant="74" id="AMI-D6-Fqs"/>
+                            <constraint firstItem="WpF-hl-Byz" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" id="jQq-bo-lWp"/>
+                            <constraint firstItem="WpF-hl-Byz" firstAttribute="trailing" secondItem="lIG-f1-b84" secondAttribute="trailing" id="nBe-xa-acD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="profileInitialView" destination="oxX-5Q-17a" id="fiA-aE-A4d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YsE-am-49g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-918" y="-28"/>
+        </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="DashboardViewController" id="Y6W-OH-hqX" customClass="DashboardViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardViewController" id="Y6W-OH-hqX" userLabel="Dashboard View Controller" customClass="DashboardViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,6 +113,7 @@
                             <constraint firstItem="TWZ-4e-i7v" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="caN-dq-yde"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Hello" id="hIw-DY-yKW" userLabel="Dashboard View Controller"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -37,6 +121,12 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="OccasionalPurple">
+            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SubtleGray">
+            <color red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
