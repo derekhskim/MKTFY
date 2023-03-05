@@ -7,4 +7,4 @@
 
 let databaseConnection = "Username-Password-Authentication"
 let emailConnection = "email"
-let domain = "dev-vtoay0l3h78iuz2e.us.auth0.com"
+let domain = "dev-m258xzf6bt8lj3yp.us.auth0.com"

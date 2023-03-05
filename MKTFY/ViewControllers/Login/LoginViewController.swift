@@ -47,7 +47,7 @@ class LoginViewController: UIViewController, LoginStoryboard {
     }
     
     @IBAction func createAccountButton(_ sender: Any) {
-        coordinator?.goToCreatePasswordVC()
+        coordinator?.goToCreateAccountVC()
     }
     
     var originalFrame: CGRect = .zero
