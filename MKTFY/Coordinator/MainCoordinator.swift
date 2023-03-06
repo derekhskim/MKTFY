@@ -78,4 +78,9 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToDashboardMenuViewController() {
+        let vc = DashboardMenuViewController.instantiate()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
 }

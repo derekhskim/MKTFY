@@ -7,11 +7,14 @@
 
 import UIKit
 
-class DashboardMenuViewController: UIViewController {
+class DashboardMenuViewController: UIViewController, LoginStoryboard {
 
+    let coordinator: MainCoordinator?
+    
     @IBOutlet weak var profileInitialView: UIView!
     @IBOutlet weak var signOutButton: UIButton!
     @IBAction func signOutButtonTapped(_ sender: Any) {
+        Auth0Manager.shared.signOut()
         
     }
     
