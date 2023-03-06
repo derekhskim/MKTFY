@@ -73,7 +73,7 @@ class Auth0Manager {
     func signOut() {
         let clientId = Auth0.authentication().clientId
         let domain = "https://\(domain)"
-        let redirectUri = URL(string: "derekkim.MKTFY://\(domain)/callback")!
+        let redirectUri = URL(string: "\(bundleId)://\(domain)/ios/\(bundleId)/callback")!
         let logoutUrl = URL(string: "\(domain)/v2/logout?client_id=\(clientId)&returnTo=\(redirectUri.absoluteString)")!
 
         URLSession.shared.dataTask(with: logoutUrl) { data, response, error in
