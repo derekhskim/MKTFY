@@ -62,7 +62,7 @@ extension UIViewController {
             textField.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
         ])
         
-        navigationController?.navigationBar.frame.size.height = 100
+        navigationController?.navigationBar.frame.size.height = 80
         navigationController?.navigationBar.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
     }
     

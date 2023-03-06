@@ -26,8 +26,8 @@ class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboar
         
         guard let email = email else { return }
         
-        getManagementAccessToekn { accessToken in
-            guard let accessToken = accessToken else {
+        getManagementAccessToekn { token in
+            guard let accessToken = token else {
                 print("Failed to get management access token")
                 return
             }
@@ -139,55 +139,37 @@ class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboar
         guard let plistPath = Bundle.main.path(forResource: "Config", ofType: "plist"),
               let plistData = FileManager.default.contents(atPath: plistPath),
               let plist = try? PropertyListSerialization.propertyList(from: plistData, options: [], format: nil) as? [String: Any],
-              let clientId = plist["clientId"] as? String,
-              let clientSecret = plist["clientSecret"] as? String else {
+              let url = plist["cloudflareUrl"] as? String else {
             fatalError("Could not read credentials from .plist file.")
         }
         
-        
-        let headers = ["content-type": "application/x-www-form-urlencoded"]
-        
-        let postData = NSMutableData(data: "grant_type=client_credentials".data(using: String.Encoding.utf8)!)
-        postData.append("&client_id=\(clientId)".data(using: String.Encoding.utf8)!)
-        postData.append("&client_secret=\(clientSecret)".data(using: String.Encoding.utf8)!)
-        postData.append("&audience=https://\(domain)/api/v2/".data(using: String.Encoding.utf8)!)
-        
-        let request = NSMutableURLRequest(url: NSURL(string: "https://\(domain)/oauth/token")! as URL,
-                                          cachePolicy: .useProtocolCachePolicy,
-                                          timeoutInterval: 10.0)
-        request.httpMethod = "POST"
-        request.allHTTPHeaderFields = headers
-        request.httpBody = postData as Data
-        
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                completion(nil)
-            } else if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    if let jsonData = data {
-                        do {
-                            let jsonDict = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any]
-                            if let accessToken = jsonDict?["access_token"] as? String {
-                                completion(accessToken)
-                            } else {
-                                completion(nil)
-                            }
-                        } catch {
-                            print("Error parsing JSON: \(error.localizedDescription)")
-                            completion(nil)
-                        }
-                    } else {
-                        completion(nil)
-                    }
-                } else {
-                    print("HTTP response status code: \(httpResponse.statusCode)")
-                    completion(nil)
-                }
-            }
+        guard let url = URL(string: "\(url)") else {
+            // Handle URL error
+            return
         }
-        dataTask.resume()
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    // Handle network error
+                    print("error: \(error.localizedDescription)")
+                    completion(nil)
+                    return
+                }
+
+                guard let data = data, let token = String(data: data, encoding: .utf8) else {
+                    // Handle response data error
+                    completion(nil)
+                    return
+                }
+
+                completion(token)
+            }
+
+            task.resume()
+
     }
 }
 
