@@ -26,7 +26,7 @@ class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboar
         
         guard let email = email else { return }
         
-        getManagementAccessToekn { token in
+        getManagementAccessToken { token in
             guard let accessToken = token else {
                 print("Failed to get management access token")
                 return
@@ -133,43 +133,6 @@ class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboar
     private func configureView(withMessage message: String){
         verificationTextField.showError = true
         verificationTextField.errorMessage = message
-    }
-    
-    func getManagementAccessToekn(completion: @escaping (String?) -> Void) {
-        guard let plistPath = Bundle.main.path(forResource: "Config", ofType: "plist"),
-              let plistData = FileManager.default.contents(atPath: plistPath),
-              let plist = try? PropertyListSerialization.propertyList(from: plistData, options: [], format: nil) as? [String: Any],
-              let url = plist["cloudflareUrl"] as? String else {
-            fatalError("Could not read credentials from .plist file.")
-        }
-        
-        guard let url = URL(string: "\(url)") else {
-            // Handle URL error
-            return
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if let error = error {
-                    // Handle network error
-                    print("error: \(error.localizedDescription)")
-                    completion(nil)
-                    return
-                }
-
-                guard let data = data, let token = String(data: data, encoding: .utf8) else {
-                    // Handle response data error
-                    completion(nil)
-                    return
-                }
-
-                completion(token)
-            }
-
-            task.resume()
-
     }
 }
 
