@@ -7,15 +7,16 @@
 
 import UIKit
 
-class DashboardMenuViewController: UIViewController, LoginStoryboard {
+class DashboardMenuViewController: UIViewController, DashboardStoryboard {
 
-    let coordinator: MainCoordinator?
+    weak var coordinator: MainCoordinator?
     
     @IBOutlet weak var profileInitialView: UIView!
     @IBOutlet weak var signOutButton: UIButton!
     @IBAction func signOutButtonTapped(_ sender: Any) {
         Auth0Manager.shared.signOut()
         
+        self.navigationController?.popToViewController(self.navigationController!.children[0], animated: true)
     }
     
     override func viewDidLoad() {

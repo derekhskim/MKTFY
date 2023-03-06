@@ -6,6 +6,7 @@
 //
 
 import Auth0
+import Foundation
 
 class Auth0Manager {
     
@@ -70,14 +71,18 @@ class Auth0Manager {
     }
     
     func signOut() {
-        Auth0.webAuth()
-            .clearSession { result in
-                switch result {
-                case .success:
-                    print("Session cookie cleared")
-                case .failure(let error):
-                    print("Failed with: \(error)")
-                }
+        let clientId = Auth0.authentication().clientId
+        let domain = "https://\(domain)"
+        let redirectUri = URL(string: "derekkim.MKTFY://\(domain)/callback")!
+        let logoutUrl = URL(string: "\(domain)/v2/logout?client_id=\(clientId)&returnTo=\(redirectUri.absoluteString)")!
+
+        URLSession.shared.dataTask(with: logoutUrl) { data, response, error in
+            if let error = error {
+                print("Failed to log out: \(error.localizedDescription)")
+            } else {
+                print("User logged out successfully")
             }
+        }.resume()
     }
+
 }

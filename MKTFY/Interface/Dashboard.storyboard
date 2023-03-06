@@ -246,7 +246,6 @@
                     <connections>
                         <outlet property="profileInitialView" destination="oxX-5Q-17a" id="fiA-aE-A4d"/>
                         <outlet property="signOutButton" destination="ft7-ue-bTd" id="FvL-ef-dgv"/>
-                        <outlet property="signOutTapped" destination="ft7-ue-bTd" id="YrA-kQ-Mcf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YsE-am-49g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
