@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpF-hl-Byz" userLabel="Profile Stack View">
-                                <rect key="frame" x="0.0" y="133" width="393" height="122"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="122"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXW-bq-6bu" userLabel="Profile Initial">
                                         <rect key="frame" x="0.0" y="0.0" width="116" height="122"/>
@@ -32,7 +32,7 @@
                                                 <rect key="frame" x="10" y="16" width="90" height="90"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsI-dK-OvC">
-                                                        <rect key="frame" x="33.666666666666664" y="20.333333333333346" width="22.666666666666664" height="49.333333333333343"/>
+                                                        <rect key="frame" x="33.666666666666664" y="20.333333333333332" width="22.666666666666664" height="49.333333333333343"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="36"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -74,17 +74,179 @@
                                     <constraint firstAttribute="height" priority="750" constant="122" id="G53-b5-kTz"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyN-am-4TO">
+                                <rect key="frame" x="15" y="221" width="64.666666666666671" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEW-zo-7VO">
+                                <rect key="frame" x="5" y="273" width="158.33333333333334" height="33.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" titleAlignment="leading">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Account Information">
+                                            <attributes>
+                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="14" name="OpenSans-Regular"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSy-Wn-PDd">
+                                <rect key="frame" x="5" y="326.33333333333331" width="140" height="33.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Change Password">
+                                            <attributes>
+                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="14" name="OpenSans-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaV-H7-Tc7">
+                                <rect key="frame" x="5" y="379.66666666666669" width="114.33333333333333" height="33.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="My Purchases">
+                                            <attributes>
+                                                <font key="NSFont" size="14" name="OpenSans-Regular"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hu8-Q2-BrG">
+                                <rect key="frame" x="5" y="433" width="96.333333333333329" height="33.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="My Listings">
+                                            <attributes>
+                                                <font key="NSFont" size="14" name="OpenSans-Regular"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vv9-Df-CVK">
+                                <rect key="frame" x="5" y="486.33333333333331" width="106.66666666666667" height="33.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Notifications">
+                                            <attributes>
+                                                <font key="NSFont" size="14" name="OpenSans-Regular"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux1-Px-RuR">
+                                <rect key="frame" x="15" y="549.66666666666663" width="37" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjA-Yh-IEp">
+                                <rect key="frame" x="5" y="601.66666666666663" width="51" height="33.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="FAQ">
+                                            <attributes>
+                                                <font key="NSFont" size="14" name="OpenSans-Regular"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H13-7h-God">
+                                <rect key="frame" x="5" y="655" width="95" height="33.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Contact Us">
+                                            <attributes>
+                                                <font key="NSFont" size="14" name="OpenSans-Regular"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft7-ue-bTd">
+                                <rect key="frame" x="0.0" y="784.66666666666663" width="393" height="33.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" titleAlignment="leading">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Sign Out">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="14" name="OpenSans-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" name="MistakeRed"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signOutButtonTapped:" destination="b56-lf-MvU" eventType="touchUpInside" id="af7-AG-sHg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lIG-f1-b84"/>
                         <color key="backgroundColor" name="SubtleGray"/>
                         <constraints>
-                            <constraint firstItem="WpF-hl-Byz" firstAttribute="top" secondItem="lIG-f1-b84" secondAttribute="top" constant="74" id="AMI-D6-Fqs"/>
+                            <constraint firstItem="nyN-am-4TO" firstAttribute="top" secondItem="WpF-hl-Byz" secondAttribute="bottom" constant="40" id="46V-5K-xid"/>
+                            <constraint firstItem="Ux1-Px-RuR" firstAttribute="top" secondItem="vv9-Df-CVK" secondAttribute="bottom" constant="30" id="6at-gJ-T92"/>
+                            <constraint firstItem="TEW-zo-7VO" firstAttribute="top" secondItem="nyN-am-4TO" secondAttribute="bottom" constant="30" id="7YG-v9-A5s"/>
+                            <constraint firstItem="TEW-zo-7VO" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="5" id="7lJ-Ql-4wZ"/>
+                            <constraint firstItem="GaV-H7-Tc7" firstAttribute="top" secondItem="tSy-Wn-PDd" secondAttribute="bottom" constant="20" id="8C6-BZ-N8J"/>
+                            <constraint firstItem="nyN-am-4TO" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="15" id="8Hl-Vn-1aS"/>
+                            <constraint firstItem="WpF-hl-Byz" firstAttribute="top" secondItem="lIG-f1-b84" secondAttribute="top" id="AMI-D6-Fqs"/>
+                            <constraint firstItem="H13-7h-God" firstAttribute="top" secondItem="gjA-Yh-IEp" secondAttribute="bottom" constant="20" id="BAK-oX-Xbf"/>
+                            <constraint firstItem="ft7-ue-bTd" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" id="Eyn-e6-BlK"/>
+                            <constraint firstItem="tSy-Wn-PDd" firstAttribute="top" secondItem="TEW-zo-7VO" secondAttribute="bottom" constant="20" id="Gjo-n5-iIR"/>
+                            <constraint firstItem="vv9-Df-CVK" firstAttribute="top" secondItem="hu8-Q2-BrG" secondAttribute="bottom" constant="20" id="Kxh-fJ-sbo"/>
+                            <constraint firstItem="gjA-Yh-IEp" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="5" id="LP1-57-sJ4"/>
+                            <constraint firstItem="gjA-Yh-IEp" firstAttribute="top" secondItem="Ux1-Px-RuR" secondAttribute="bottom" constant="30" id="MlS-wV-IFH"/>
+                            <constraint firstItem="hu8-Q2-BrG" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="5" id="R8d-Dd-f52"/>
+                            <constraint firstItem="hu8-Q2-BrG" firstAttribute="top" secondItem="GaV-H7-Tc7" secondAttribute="bottom" constant="20" id="c71-Q4-g67"/>
+                            <constraint firstItem="GaV-H7-Tc7" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="5" id="eG2-pt-WUJ"/>
                             <constraint firstItem="WpF-hl-Byz" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" id="jQq-bo-lWp"/>
                             <constraint firstItem="WpF-hl-Byz" firstAttribute="trailing" secondItem="lIG-f1-b84" secondAttribute="trailing" id="nBe-xa-acD"/>
+                            <constraint firstItem="ft7-ue-bTd" firstAttribute="bottom" secondItem="lIG-f1-b84" secondAttribute="bottom" id="oob-3Z-8aX"/>
+                            <constraint firstItem="lIG-f1-b84" firstAttribute="trailing" secondItem="ft7-ue-bTd" secondAttribute="trailing" id="qgk-yH-BOr"/>
+                            <constraint firstItem="H13-7h-God" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="5" id="wVp-hh-KgT"/>
+                            <constraint firstItem="vv9-Df-CVK" firstAttribute="leading" secondItem="Lre-Os-d6D" secondAttribute="leading" constant="5" id="y1i-rl-Gye"/>
+                            <constraint firstItem="tSy-Wn-PDd" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="5" id="y9D-Cx-Gzc"/>
+                            <constraint firstItem="Ux1-Px-RuR" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="15" id="zgb-J9-fYb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="profileInitialView" destination="oxX-5Q-17a" id="fiA-aE-A4d"/>
+                        <outlet property="signOutButton" destination="ft7-ue-bTd" id="FvL-ef-dgv"/>
+                        <outlet property="signOutTapped" destination="ft7-ue-bTd" id="YrA-kQ-Mcf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YsE-am-49g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -121,6 +283,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="MistakeRed">
+            <color red="1" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="OccasionalPurple">
             <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

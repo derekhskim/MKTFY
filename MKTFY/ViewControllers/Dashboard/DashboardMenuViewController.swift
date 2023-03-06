@@ -10,6 +10,10 @@ import UIKit
 class DashboardMenuViewController: UIViewController {
 
     @IBOutlet weak var profileInitialView: UIView!
+    @IBOutlet weak var signOutButton: UIButton!
+    @IBAction func signOutButtonTapped(_ sender: Any) {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
