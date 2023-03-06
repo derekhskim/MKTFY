@@ -48,7 +48,7 @@ class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboar
                     if (error != nil) {
                         print("error: \(String(describing: error))")
                     } else {
-                        if let httpResponse = response as? HTTPURLResponse {
+                        if response is HTTPURLResponse {
                             if let data = data {
                                 do {
                                     let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]]

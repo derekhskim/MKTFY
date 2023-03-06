@@ -46,11 +46,11 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
         let openSansBoldFont = UIFont(name: "OpenSans-Bold", size: 14)
         let range1 = (text as NSString).range(of: "Terms of Service")
         underlineAttributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range1)
-        underlineAttributedString.addAttribute(NSAttributedString.Key.font, value: openSansBoldFont, range: range1)
+        underlineAttributedString.addAttribute(NSAttributedString.Key.font, value: openSansBoldFont as Any, range: range1)
         underlineAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.appColor(LPColor.LightestPurple)!, range: range1)
         let range2 = (text as NSString).range(of: "Privacy Policy")
         underlineAttributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range2)
-        underlineAttributedString.addAttribute(NSAttributedString.Key.font, value: openSansBoldFont, range: range2)
+        underlineAttributedString.addAttribute(NSAttributedString.Key.font, value: openSansBoldFont as Any, range: range2)
         underlineAttributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.appColor(LPColor.LightestPurple)!, range: range2)
         agreementLabel.attributedText = underlineAttributedString
         agreementLabel.isUserInteractionEnabled = true

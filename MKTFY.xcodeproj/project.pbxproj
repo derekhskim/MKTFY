@@ -218,9 +218,9 @@
 				65C28FCB2988BB6500A3BBEE /* UIViewController+.swift */,
 				653F2400298CBE7A0053C5E1 /* UIImage+.swift */,
 				65D29D552992F1B300D14140 /* UITextField+.swift */,
-				65A646F5299C1E8000262DB8 /* CheckBox.swift */,
-				65E8A0D3299EA523009D70A0 /* String+.swift */,
 				65D25EBB29B28D00009AA27D /* UITapGestureRecognizer+.swift */,
+				65E8A0D3299EA523009D70A0 /* String+.swift */,
+				65A646F5299C1E8000262DB8 /* CheckBox.swift */,
 			);
 			path = Helps;
 			sourceTree = "<group>";
