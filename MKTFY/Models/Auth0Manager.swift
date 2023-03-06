@@ -68,4 +68,16 @@ class Auth0Manager {
                 }
             }
     }
+    
+    func signOut() {
+        Auth0.webAuth()
+            .clearSession { result in
+                switch result {
+                case .success:
+                    print("Session cookie cleared")
+                case .failure(let error):
+                    print("Failed with: \(error)")
+                }
+            }
+    }
 }
