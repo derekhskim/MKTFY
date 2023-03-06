@@ -22,10 +22,7 @@ extension UIViewController {
             fatalError("Could not read credentials from .plist file.")
         }
         
-        guard let url = URL(string: "\(url)") else {
-            // Handle URL error
-            return
-        }
+        guard let url = URL(string: "\(url)") else { return }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
