@@ -12,6 +12,36 @@ class DashboardMenuViewController: UIViewController, DashboardStoryboard {
     weak var coordinator: MainCoordinator?
     
     @IBOutlet weak var profileInitialView: UIView!
+    
+    @IBAction func accountInformationButtonTapped(_ sender: Any) {
+        print("Account Information button tapped!")
+    }
+    
+    @IBAction func changePasswordButtonTapped(_ sender: Any) {
+        print("Change Password button tapped!")
+    }
+    
+    @IBAction func myPurchasesButtonTapped(_ sender: Any) {
+        print("My Purchases button tapped!")
+    }
+    
+    @IBAction func myListingsButtonTapped(_ sender: Any) {
+        print("My Listings button tapped!")
+    }
+    
+    @IBAction func notificationButtonTapped(_ sender: Any) {
+        print("Notification button tapped!")
+    }
+    
+    
+    @IBAction func faqButtonTapped(_ sender: Any) {
+        print("FAQ button tapped!")
+    }
+    
+    @IBAction func contactUsButtonTapped(_ sender: Any) {
+        print("Contact Us button tapped!")
+    }
+    
     @IBOutlet weak var signOutButton: UIButton!
     @IBAction func signOutButtonTapped(_ sender: Any) {
         Auth0Manager.shared.signOut()

@@ -96,6 +96,9 @@
                                     </attributedString>
                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="accountInformationButtonTapped:" destination="b56-lf-MvU" eventType="touchUpInside" id="jep-4e-JdT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSy-Wn-PDd">
                                 <rect key="frame" x="5" y="326.33333333333331" width="140" height="33.333333333333314"/>
@@ -112,6 +115,9 @@
                                     </attributedString>
                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="changePasswordButtonTapped:" destination="b56-lf-MvU" eventType="touchUpInside" id="ghe-38-RNc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaV-H7-Tc7">
                                 <rect key="frame" x="5" y="379.66666666666669" width="114.33333333333333" height="33.333333333333314"/>
@@ -127,6 +133,9 @@
                                     </attributedString>
                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="myPurchasesButtonTapped:" destination="b56-lf-MvU" eventType="touchUpInside" id="AMI-C1-C0B"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hu8-Q2-BrG">
                                 <rect key="frame" x="5" y="433" width="96.333333333333329" height="33.333333333333314"/>
@@ -142,6 +151,9 @@
                                     </attributedString>
                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="myListingsButtonTapped:" destination="b56-lf-MvU" eventType="touchUpInside" id="bLv-WI-BW1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vv9-Df-CVK">
                                 <rect key="frame" x="5" y="486.33333333333331" width="106.66666666666667" height="33.333333333333314"/>
@@ -157,6 +169,9 @@
                                     </attributedString>
                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="notificationButtonTapped:" destination="b56-lf-MvU" eventType="touchUpInside" id="6de-to-PyH"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux1-Px-RuR">
                                 <rect key="frame" x="15" y="549.66666666666663" width="37" height="22"/>
@@ -178,6 +193,9 @@
                                     </attributedString>
                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="faqButtonTapped:" destination="b56-lf-MvU" eventType="touchUpInside" id="gdh-Qy-bLz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H13-7h-God">
                                 <rect key="frame" x="5" y="655" width="95" height="33.333333333333371"/>
@@ -193,6 +211,9 @@
                                     </attributedString>
                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="contactUsButtonTapped:" destination="b56-lf-MvU" eventType="touchUpInside" id="wYu-r0-nGz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft7-ue-bTd">
                                 <rect key="frame" x="0.0" y="784.66666666666663" width="393" height="33.333333333333371"/>
