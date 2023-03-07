@@ -14,7 +14,7 @@ class DashboardMenuViewController: UIViewController, DashboardStoryboard {
     @IBOutlet weak var profileInitialView: UIView!
     
     @IBAction func accountInformationButtonTapped(_ sender: Any) {
-        print("Account Information button tapped!")
+        coordinator?.goToAccountInformationVC()
     }
     
     @IBAction func changePasswordButtonTapped(_ sender: Any) {

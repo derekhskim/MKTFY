@@ -271,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YsE-am-49g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-918" y="-28"/>
+            <point key="canvasLocation" x="131" y="-740"/>
         </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -301,6 +301,182 @@
             </objects>
             <point key="canvasLocation" x="132" y="-28"/>
         </scene>
+        <!--Account Information-->
+        <scene sceneID="hb3-kj-p8B">
+            <objects>
+                <viewController storyboardIdentifier="AccountInformationViewController" id="VQW-Xw-Htc" customClass="AccountInformationViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SDr-BR-Kjk">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CT9-e1-cIK">
+                                <rect key="frame" x="0.0" y="59" width="393" height="741"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Hv-DS-NZw">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="700"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87w-ix-bxO" userLabel="FirstName View" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="38" width="353" height="80"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="CZ9-CN-j64"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="First Name"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your first name"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                        <color key="value" name="VerySubtleGray"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVC-iC-Kag" userLabel="LastName View" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="142" width="353" height="80"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="oxp-Jx-hWa"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Last Name"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your last name"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                        <color key="value" name="VerySubtleGray"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udl-H8-IVX" userLabel="Email View" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="246" width="353" height="80"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="MRr-an-6KK"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your email"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                        <color key="value" name="VerySubtleGray"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7B-Sn-4wx" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="350" width="353" height="80"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="GOP-m8-Y6c"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Phone"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                        <color key="value" name="VerySubtleGray"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="+1 (000) 000-0000"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsZ-pb-VW7">
+                                                <rect key="frame" x="20" y="454" width="353" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="1Zj-nc-Fo0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2j4-eR-ECc" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="500" width="353" height="80"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="PJi-sa-zYG"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Default Pickup Address"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                        <color key="value" name="VerySubtleGray"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your address"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9V-Ir-Ak7" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="604" width="353" height="80"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="AL5-ZR-n01"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="City"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your city"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                        <color key="value" name="VerySubtleGray"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" name="VerySubtleGray"/>
+                                        <constraints>
+                                            <constraint firstItem="Udl-H8-IVX" firstAttribute="leading" secondItem="7Hv-DS-NZw" secondAttribute="leading" constant="20" id="6A2-Hi-GJa"/>
+                                            <constraint firstItem="dVC-iC-Kag" firstAttribute="leading" secondItem="7Hv-DS-NZw" secondAttribute="leading" constant="20" id="7wy-Kj-5bK"/>
+                                            <constraint firstAttribute="trailing" secondItem="dVC-iC-Kag" secondAttribute="trailing" constant="20" id="AeN-6N-Lxz"/>
+                                            <constraint firstItem="WsZ-pb-VW7" firstAttribute="leading" secondItem="7Hv-DS-NZw" secondAttribute="leading" constant="20" id="Cqq-hC-LT5"/>
+                                            <constraint firstItem="2j4-eR-ECc" firstAttribute="top" secondItem="WsZ-pb-VW7" secondAttribute="bottom" constant="24" id="Etl-Yx-W0M"/>
+                                            <constraint firstItem="2j4-eR-ECc" firstAttribute="leading" secondItem="7Hv-DS-NZw" secondAttribute="leading" constant="20" id="EwY-Ic-JfS"/>
+                                            <constraint firstItem="87w-ix-bxO" firstAttribute="top" secondItem="7Hv-DS-NZw" secondAttribute="top" constant="38" id="HVg-He-W01"/>
+                                            <constraint firstItem="h7B-Sn-4wx" firstAttribute="top" secondItem="Udl-H8-IVX" secondAttribute="bottom" constant="24" id="JPE-Re-4mm"/>
+                                            <constraint firstAttribute="trailing" secondItem="h7B-Sn-4wx" secondAttribute="trailing" constant="20" id="NC0-B0-GlR"/>
+                                            <constraint firstItem="dVC-iC-Kag" firstAttribute="top" secondItem="87w-ix-bxO" secondAttribute="bottom" constant="24" id="S5x-9X-XbQ"/>
+                                            <constraint firstItem="WsZ-pb-VW7" firstAttribute="top" secondItem="h7B-Sn-4wx" secondAttribute="bottom" constant="24" id="SS8-82-8Ab"/>
+                                            <constraint firstAttribute="trailing" secondItem="WsZ-pb-VW7" secondAttribute="trailing" constant="20" id="ai7-PJ-AOw"/>
+                                            <constraint firstAttribute="trailing" secondItem="H9V-Ir-Ak7" secondAttribute="trailing" constant="20" id="fl2-gV-26W"/>
+                                            <constraint firstAttribute="trailing" secondItem="87w-ix-bxO" secondAttribute="trailing" constant="20" id="gfr-BZ-wLg"/>
+                                            <constraint firstAttribute="height" constant="700" id="hNc-V6-QOf"/>
+                                            <constraint firstItem="87w-ix-bxO" firstAttribute="leading" secondItem="7Hv-DS-NZw" secondAttribute="leading" constant="20" id="k8h-Sy-dlf"/>
+                                            <constraint firstItem="Udl-H8-IVX" firstAttribute="top" secondItem="dVC-iC-Kag" secondAttribute="bottom" constant="24" id="mob-JR-XNe"/>
+                                            <constraint firstAttribute="trailing" secondItem="Udl-H8-IVX" secondAttribute="trailing" constant="20" id="q3k-zy-Rbf"/>
+                                            <constraint firstItem="H9V-Ir-Ak7" firstAttribute="leading" secondItem="7Hv-DS-NZw" secondAttribute="leading" constant="20" id="syh-Ap-gWb"/>
+                                            <constraint firstAttribute="trailing" secondItem="2j4-eR-ECc" secondAttribute="trailing" constant="20" id="uR6-hg-pZH"/>
+                                            <constraint firstItem="h7B-Sn-4wx" firstAttribute="leading" secondItem="7Hv-DS-NZw" secondAttribute="leading" constant="20" id="v9H-wX-1jZ"/>
+                                            <constraint firstItem="H9V-Ir-Ak7" firstAttribute="top" secondItem="2j4-eR-ECc" secondAttribute="bottom" constant="24" id="y00-g9-xcC"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="7Hv-DS-NZw" firstAttribute="top" secondItem="qTq-C6-U64" secondAttribute="top" id="0DV-Hh-yPz"/>
+                                    <constraint firstItem="7Hv-DS-NZw" firstAttribute="leading" secondItem="qTq-C6-U64" secondAttribute="leading" id="5vS-fA-R5j"/>
+                                    <constraint firstItem="7Hv-DS-NZw" firstAttribute="bottom" secondItem="CT9-e1-cIK" secondAttribute="bottom" id="JOc-NG-DEy"/>
+                                    <constraint firstItem="7Hv-DS-NZw" firstAttribute="width" secondItem="G67-7g-Nd2" secondAttribute="width" id="ngK-dW-Dmh"/>
+                                    <constraint firstItem="7Hv-DS-NZw" firstAttribute="trailing" secondItem="qTq-C6-U64" secondAttribute="trailing" id="vEw-iX-Lce"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="qTq-C6-U64"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="G67-7g-Nd2"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aju-QM-fIU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CT9-e1-cIK" firstAttribute="leading" secondItem="aju-QM-fIU" secondAttribute="leading" id="P9p-OZ-rd3"/>
+                            <constraint firstItem="CT9-e1-cIK" firstAttribute="top" secondItem="aju-QM-fIU" secondAttribute="top" id="cIh-dP-nyS"/>
+                            <constraint firstItem="aju-QM-fIU" firstAttribute="trailing" secondItem="CT9-e1-cIK" secondAttribute="trailing" id="fuW-PV-MhE"/>
+                            <constraint firstAttribute="bottom" secondItem="CT9-e1-cIK" secondAttribute="bottom" id="nrW-Ue-LrX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Account Information" style="editor" id="Xts-gT-ZZ9"/>
+                    <size key="freeformSize" width="393" height="800"/>
+                    <connections>
+                        <outlet property="addressView" destination="2j4-eR-ECc" id="DFt-2D-YTt"/>
+                        <outlet property="cityView" destination="H9V-Ir-Ak7" id="QsL-2x-y54"/>
+                        <outlet property="emailView" destination="Udl-H8-IVX" id="lpY-7s-TdJ"/>
+                        <outlet property="firstNameView" destination="87w-ix-bxO" id="HbN-aS-YAl"/>
+                        <outlet property="lastNameView" destination="dVC-iC-Kag" id="LWh-1k-MRc"/>
+                        <outlet property="phoneView" destination="h7B-Sn-4wx" id="04h-jH-YPv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PXn-8r-wea" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1133.5877862595419" y="-724.64788732394368"/>
+        </scene>
     </scenes>
     <resources>
         <namedColor name="MistakeRed">
@@ -311,6 +487,9 @@
         </namedColor>
         <namedColor name="SubtleGray">
             <color red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VerySubtleGray">
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

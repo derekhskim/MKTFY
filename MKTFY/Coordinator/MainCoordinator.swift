@@ -73,13 +73,18 @@ class MainCoordinator: Coordinator {
     }
     
     /// MARK: - Dashboard
-    func goToDashboardViewController() {
+    func goToDashboardVC() {
         let vc = DashboardViewController.instantiate()
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToDashboardMenuViewController() {
+    func goToDashboardMenuVC() {
         let vc = DashboardMenuViewController.instantiate()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToAccountInformationVC() {
+        let vc = AccountInformationViewController.instantiate()
         navigationController.pushViewController(vc, animated: true)
     }
     

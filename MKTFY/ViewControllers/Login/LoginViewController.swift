@@ -34,7 +34,7 @@ class LoginViewController: UIViewController, LoginStoryboard {
             if success {
                 
                 DispatchQueue.main.async {
-                    self.coordinator?.goToDashboardViewController()
+                    self.coordinator?.goToDashboardVC()
                 }
             } else {
                 print("Failed to authenticate with Auth0: \(String(describing: error))")
