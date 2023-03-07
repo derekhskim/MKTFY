@@ -14,7 +14,12 @@ class DashboardMenuViewController: UIViewController, DashboardStoryboard {
     @IBOutlet weak var profileInitialView: UIView!
     
     @IBAction func accountInformationButtonTapped(_ sender: Any) {
-        coordinator?.goToAccountInformationVC()
+        Task { @MainActor in
+            let vc = AccountInformationViewController.instantiate()
+            navigationController?.pushViewController(vc, animated: true)
+            
+            await getUserMetadata()
+        }
     }
     
     @IBAction func changePasswordButtonTapped(_ sender: Any) {

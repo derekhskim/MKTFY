@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Auth0
 
 extension UIViewController {
     static func storyboardInstance(storyboardName: String) -> UIViewController {
@@ -45,7 +46,20 @@ extension UIViewController {
             }
 
             task.resume()
-
+    }
+    
+    func getUserMetadata() async {
+        if let accessToken = UserDefaults.standard.object(forKey: "authenticationAPI") as? String {
+            print(accessToken)
+            do {
+                let user = try await Auth0.authentication().userInfo(withAccessToken: accessToken).start()
+                print("User Info: \(user)")
+            } catch {
+                print("Failed with \(error)")
+            }
+        } else {
+            print("No Access Token Found")
+        }
     }
 }
 

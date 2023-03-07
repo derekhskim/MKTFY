@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Auth0
 
 class AccountInformationViewController: UIViewController, DashboardStoryboard {
-
+    
+    let auth0Manager = Auth0Manager()
+    
     @IBOutlet weak var firstNameView: TextFieldWithError!
     @IBOutlet weak var lastNameView: TextFieldWithError!
     @IBOutlet weak var emailView: TextFieldWithError!
@@ -16,11 +19,9 @@ class AccountInformationViewController: UIViewController, DashboardStoryboard {
     @IBOutlet weak var addressView: TextFieldWithError!
     @IBOutlet weak var cityView: TextFieldWithError!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 }

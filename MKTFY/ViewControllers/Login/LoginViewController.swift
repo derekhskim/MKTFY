@@ -32,7 +32,6 @@ class LoginViewController: UIViewController, LoginStoryboard {
         
         Auth0Manager.shared.loginWithEmail(email, password: password) { success, error in
             if success {
-                
                 DispatchQueue.main.async {
                     self.coordinator?.goToDashboardVC()
                 }
