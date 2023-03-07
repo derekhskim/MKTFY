@@ -17,11 +17,9 @@ class DashboardMenuViewController: UIViewController, DashboardStoryboard {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBAction func accountInformationButtonTapped(_ sender: Any) {
-//        let vc = AccountInformationViewController.instantiate()
-//        navigationController?.pushViewController(vc, animated: true)
-        DispatchQueue.main.async {
-            self.coordinator?.goToAccountInformationVC()
-        }
+        let vc = AccountInformationViewController.instantiate()
+        navigationController?.pushViewController(vc, animated: true)
+//        coordinator?.goToAccountInformationVC()
     }
     
     

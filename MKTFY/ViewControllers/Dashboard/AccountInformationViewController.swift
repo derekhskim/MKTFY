@@ -22,6 +22,9 @@ class AccountInformationViewController: UIViewController, DashboardStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBarWithBackButton()
+        setupNavigationBarWithSaveButtonOnRight()
+        
         firstNameView.inputTextField.text = "Derek"
         lastNameView.inputTextField.text = "Kim"
         emailView.inputTextField.text = "treasure3210@gmail.com"

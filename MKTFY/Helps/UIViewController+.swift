@@ -77,6 +77,17 @@ extension UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func setupNavigationBarWithSaveButtonOnRight() {
+        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
+        saveButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.GrayButtonGray), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], for: .normal)
+        saveButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.GrayButtonGray)], for: .highlighted)
+        navigationItem.rightBarButtonItem = saveButton
+    }
+    
+    @objc func saveButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     func setupNavigationBarWithMenuButton() {
         let menuButton = UIBarButtonItem(image: UIImage(named: "menu_button"), style: .plain, target: self, action: #selector(menuButtonTapped))
         menuButton.tintColor = UIColor.appColor(LPColor.OccasionalPurple)
