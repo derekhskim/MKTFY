@@ -265,6 +265,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="initialLabel" destination="fsI-dK-OvC" id="5pW-7X-1Dy"/>
+                        <outlet property="nameLabel" destination="8qd-5d-5gk" id="ZON-QQ-7eb"/>
                         <outlet property="profileInitialView" destination="oxX-5Q-17a" id="fiA-aE-A4d"/>
                         <outlet property="signOutButton" destination="ft7-ue-bTd" id="FvL-ef-dgv"/>
                     </connections>
@@ -475,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PXn-8r-wea" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1133.5877862595419" y="-724.64788732394368"/>
+            <point key="canvasLocation" x="1712" y="-759"/>
         </scene>
     </scenes>
     <resources>

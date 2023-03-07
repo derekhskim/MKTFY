@@ -48,6 +48,7 @@ extension UIViewController {
             task.resume()
     }
     
+    // Will probably remove it once back-end setup is complete 
     func getUserMetadata() async {
         if let accessToken = UserDefaults.standard.object(forKey: "authenticationAPI") as? String {
             print(accessToken)

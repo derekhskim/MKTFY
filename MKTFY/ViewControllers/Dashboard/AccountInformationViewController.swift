@@ -22,6 +22,12 @@ class AccountInformationViewController: UIViewController, DashboardStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        firstNameView.inputTextField.text = "Derek"
+        lastNameView.inputTextField.text = "Kim"
+        emailView.inputTextField.text = "treasure3210@gmail.com"
+        phoneView.inputTextField.text = "587-973-5454"
+        addressView.inputTextField.text = "370 Quarry Way SE"
+        cityView.inputTextField.text = "Calgary"
         // Do any additional setup after loading the view.
     }
 }

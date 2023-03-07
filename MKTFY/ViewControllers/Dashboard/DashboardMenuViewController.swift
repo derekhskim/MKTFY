@@ -8,19 +8,20 @@
 import UIKit
 
 class DashboardMenuViewController: UIViewController, DashboardStoryboard {
-
+    
     weak var coordinator: MainCoordinator?
     
     @IBOutlet weak var profileInitialView: UIView!
     
+    @IBOutlet weak var initialLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
     @IBAction func accountInformationButtonTapped(_ sender: Any) {
-        Task { @MainActor in
-            let vc = AccountInformationViewController.instantiate()
-            navigationController?.pushViewController(vc, animated: true)
-            
-            await getUserMetadata()
-        }
+//        let vc = AccountInformationViewController.instantiate()
+//        navigationController?.pushViewController(vc, animated: true)
+        coordinator?.goToAccountInformationVC()
     }
+    
     
     @IBAction func changePasswordButtonTapped(_ sender: Any) {
         print("Change Password button tapped!")
