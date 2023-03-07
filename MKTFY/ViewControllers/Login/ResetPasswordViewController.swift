@@ -37,7 +37,7 @@ class ResetPasswordViewController: UIViewController, LoginStoryboard {
         ] as [String : Any]
         
         let postData = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-        let request = NSMutableURLRequest(url: NSURL(string:  "https://\(domain)/api/v2/users/auth0%7C\(userId)")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string:  "https://\(devDomain)/api/v2/users/auth0%7C\(userId)")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "PATCH"

@@ -37,7 +37,7 @@ class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboar
                 
                 let headers = ["authorization": "Bearer \(self.mgmtAccessToken)"]
                 
-                let request = NSMutableURLRequest(url: NSURL(string: "https://\(domain)/api/v2/users?q=email:%22\(email)%22&search_engine=v3")! as URL,
+                let request = NSMutableURLRequest(url: NSURL(string: "https://\(devDomain)/api/v2/users?q=email:%22\(email)%22&search_engine=v3")! as URL,
                                                   cachePolicy: .useProtocolCachePolicy,
                                                   timeoutInterval: 10.0)
                 request.httpMethod = "GET"
@@ -61,7 +61,7 @@ class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboar
                                                             self.userId = user_id
                                                             UserDefaults.standard.set(self.userId, forKey: "user_id")
                                                             
-                                                            self.auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://\(domain)/api/v2/", scope: "openid profile")
+                                                            self.auth0Manager.auth0.login(email: email, code: cleanVerificationCode, audience: "https://\(devDomain)/api/v2/", scope: "openid profile")
                                                                 .start { result in
                                                                     switch result {
                                                                     case .success(_):

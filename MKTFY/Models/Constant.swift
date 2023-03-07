@@ -7,5 +7,5 @@
 
 let databaseConnection = "Username-Password-Authentication"
 let emailConnection = "email"
-let domain = "dev-m258xzf6bt8lj3yp.us.auth0.com"
+let devDomain = "dev-m258xzf6bt8lj3yp.us.auth0.com"
 let bundleId = "derekkim.MKTFY"

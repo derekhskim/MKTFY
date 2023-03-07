@@ -10,7 +10,7 @@ import Foundation
 
 class Auth0Manager {
     
-    let audience = "https://\(domain)/api/v2/"
+    let audience = "https://\(devDomain)/api/v2/"
     let auth0: Authentication!
     let users = Users()
     
@@ -73,9 +73,9 @@ class Auth0Manager {
     
     func signOut() {
         let clientId = Auth0.authentication().clientId
-        let domain = "https://\(domain)"
-        let redirectUri = URL(string: "\(bundleId)://\(domain)/ios/\(bundleId)/callback")!
-        let logoutUrl = URL(string: "\(domain)/v2/logout?client_id=\(clientId)&returnTo=\(redirectUri.absoluteString)")!
+        let completeDomain = "https://\(devDomain)"
+        let redirectUri = URL(string: "\(bundleId)://\(completeDomain)/ios/\(bundleId)/callback")!
+        let logoutUrl = URL(string: "\(completeDomain)/v2/logout?client_id=\(clientId)&amp;returnTo=\(redirectUri.absoluteString)")!
 
         URLSession.shared.dataTask(with: logoutUrl) { data, response, error in
             if let error = error {
