@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Auth0
 
+// MARK: - Functionality
 extension UIViewController {
     static func storyboardInstance(storyboardName: String) -> UIViewController {
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
@@ -64,6 +65,7 @@ extension UIViewController {
     }
 }
 
+// MARK: - Navigation Bar Setup
 extension UIViewController {
     func setupNavigationBarWithBackButton() {
         // Controls the back button's action and style
@@ -79,8 +81,8 @@ extension UIViewController {
     
     func setupNavigationBarWithSaveButtonOnRight() {
         let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
-        saveButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.GrayButtonGray), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], for: .normal)
-        saveButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.GrayButtonGray)], for: .highlighted)
+        saveButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.GrayButtonGray) as Any, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], for: .normal)
+        saveButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.appColor(LPColor.GrayButtonGray) as Any], for: .highlighted)
         navigationItem.rightBarButtonItem = saveButton
     }
     
@@ -123,9 +125,7 @@ extension UIViewController {
     @objc func exitButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
-}
-
-extension UIViewController {
+    
     func setupBackgroundView(view: UIView) {
         let backgroundView = view
         backgroundView.layer.cornerRadius = CGFloat(20)
@@ -133,7 +133,8 @@ extension UIViewController {
     }
 }
 
-// Show Alert
+// MARK: - Show Alert
+// TODO: Custom ShowAlert
 extension UIViewController {
     func showAlert(title: String, message: String, buttonTitle: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

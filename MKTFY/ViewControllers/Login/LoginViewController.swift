@@ -8,23 +8,24 @@
 import UIKit
 import Auth0
 
-class LoginViewController: UIViewController, LoginStoryboard {
+class LoginViewController: MainViewController, LoginStoryboard {
     
     weak var coordinator: MainCoordinator?
         
+    // MARK: - @IBOutlet
     @IBOutlet var wholeView: UIView!
     @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var emailView: TextFieldWithError!
     @IBOutlet weak var passwordView: SecureTextField!
+    @IBOutlet weak var cloudsImageView: UIImageView!
+    @IBOutlet weak var loginButton: UIButton!
     
+    // MARK: - @IBAction
     @IBAction func forgotPasswordButton(_ sender: Any) {
         coordinator?.goToForgotPasswordVC()
     }
     
-    @IBOutlet weak var cloudsImageView: UIImageView!
-    
-    @IBOutlet weak var loginButton: UIButton!
     @IBAction func loginButtonTapped(_ sender: Any) {
         
         guard let email = emailView.inputTextField.text,
@@ -44,13 +45,10 @@ class LoginViewController: UIViewController, LoginStoryboard {
             }
         }
     }
-    
+
     @IBAction func createAccountButton(_ sender: Any) {
         coordinator?.goToCreateAccountVC()
     }
-    
-    var originalFrame: CGRect = .zero
-    var shiftFactor: CGFloat = 0.25
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,10 +64,6 @@ class LoginViewController: UIViewController, LoginStoryboard {
         emailView.inputTextField.keyboardType = .emailAddress
         
         loginButton.isEnabled = false
-        
-        originalFrame = wholeView.frame
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
 }
@@ -84,19 +78,6 @@ extension LoginViewController {
             loginButton.setBackgroundColor(UIColor.appColor(LPColor.WarningYellow), forState: .normal)
         }
         
-    }
-    
-    // Extension to shift the view upward or downward when system keyboard appears
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
-        var newFrame = originalFrame
-        newFrame.origin.y -= keyboardSize.height * shiftFactor
-        wholeView.frame = newFrame
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        wholeView.frame = originalFrame
     }
     
     // Triggers the error message
