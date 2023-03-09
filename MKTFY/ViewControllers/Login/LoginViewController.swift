@@ -50,6 +50,7 @@ class LoginViewController: MainViewController, LoginStoryboard {
         coordinator?.goToCreateAccountVC()
     }
     
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +69,7 @@ class LoginViewController: MainViewController, LoginStoryboard {
     
 }
 
+// MARK: - Extension
 extension LoginViewController {
     // Simple method to control the color state of the button.
     func changeButtonColor(){

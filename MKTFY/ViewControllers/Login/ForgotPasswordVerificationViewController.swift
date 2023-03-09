@@ -8,18 +8,20 @@
 import UIKit
 import Auth0
 
-class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboard {
+class ForgotPasswordVerificationViewController: MainViewController, LoginStoryboard {
     
     let auth0Manager = Auth0Manager()
     var email: String!
     var mgmtAccessToken: String = ""
     var userId: String = ""
     
+    // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var verificationTextField: TextFieldWithError!
     @IBOutlet weak var codeSentLabel: UILabel!
-    
     @IBOutlet weak var verifyButton: Button!
+    
+    // MARK: - @IBAction
     @IBAction func verifyButtonTapped(_ sender: Any) {
         
         let cleanVerificationCode = verificationTextField.inputTextField.text!.replacingOccurrences(of: "-", with: "")
@@ -107,9 +109,7 @@ class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboar
     }
     
     
-    var originalFrame: CGRect = .zero
-    var shiftFactor: CGFloat = 0.25
-    
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -124,10 +124,7 @@ class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboar
         initializeHideKeyboard()
         self.verificationTextField.inputTextField.delegate = self
         verificationTextField.inputTextField.keyboardType = .numberPad
-        
-        originalFrame = view.frame
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+    
     }
     
     private func configureView(withMessage message: String){
@@ -136,6 +133,7 @@ class ForgotPasswordVerificationViewController: UIViewController, LoginStoryboar
     }
 }
 
+// MARK: - Extension
 // Enable dismiss of keyboard when the user taps anywhere from the screen
 extension ForgotPasswordVerificationViewController {
     func initializeHideKeyboard(){
@@ -232,24 +230,6 @@ extension ForgotPasswordVerificationViewController {
     func removeBorderColor() {
         verificationTextField.inputTextField.layer.borderWidth = 0
         verificationTextField.inputTextField.layer.borderColor = nil
-    }
-}
-
-// Extension to shift the view upward or downward when system keyboard appears
-extension ForgotPasswordVerificationViewController {
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
-        var newFrame = originalFrame
-        newFrame.origin.y -= keyboardSize.height * shiftFactor
-        view.frame = newFrame
-        
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        view.frame = originalFrame
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 

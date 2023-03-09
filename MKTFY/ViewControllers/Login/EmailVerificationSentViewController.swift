@@ -7,8 +7,9 @@
 
 import UIKit
 
-class EmailVerificationSentViewController: UIViewController, LoginStoryboard {
+class EmailVerificationSentViewController: MainViewController, LoginStoryboard {
     
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         

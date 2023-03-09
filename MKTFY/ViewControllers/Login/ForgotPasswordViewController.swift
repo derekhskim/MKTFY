@@ -7,13 +7,16 @@
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController, LoginStoryboard {
+class ForgotPasswordViewController: MainViewController, LoginStoryboard {
     
     weak var coordinator: MainCoordinator?
     
+    // MARK: - @IBOutlet
     @IBOutlet weak var emailView: TextFieldWithError!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var sendButton: Button!
+    
+    // MARK: - @IBAction
     @IBAction func sendButtonTapped(_ sender: Any) {
         coordinator?.goToLoadingConfirmationVC()
         
@@ -30,9 +33,7 @@ class ForgotPasswordViewController: UIViewController, LoginStoryboard {
         }
     }
     
-    var originalFrame: CGRect = .zero
-    var shiftFactor: CGFloat = 0.25
-    
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,11 +45,6 @@ class ForgotPasswordViewController: UIViewController, LoginStoryboard {
         emailView.inputTextField.keyboardType = .emailAddress
                 
         sendButton.isEnabled = false
-        originalFrame = view.frame
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
     // Triggers the error message
@@ -58,6 +54,7 @@ class ForgotPasswordViewController: UIViewController, LoginStoryboard {
     }
 }
 
+// MARK: - Extension
 // Enable dismiss of keyboard when the user taps anywhere from the screen
 extension ForgotPasswordViewController {
     func initializeHideKeyboard(){
@@ -139,23 +136,5 @@ extension ForgotPasswordViewController {
             sendButton.setBackgroundColor(UIColor.appColor(LPColor.OccasionalPurple), forState: .normal)
         }
         
-    }
-}
-
-// Extension to shift the view upward or downward when system keyboard appears
-extension ForgotPasswordViewController {
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
-        var newFrame = originalFrame
-        newFrame.origin.y -= keyboardSize.height * shiftFactor
-        view.frame = newFrame
-        
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        view.frame = originalFrame
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }

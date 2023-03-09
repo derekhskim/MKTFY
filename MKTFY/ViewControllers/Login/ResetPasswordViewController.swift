@@ -7,8 +7,13 @@
 
 import UIKit
 
-class ResetPasswordViewController: UIViewController, LoginStoryboard {
+class ResetPasswordViewController: MainViewController, LoginStoryboard {
     
+    var mgmtAccessToken: String!
+    var email: String = ""
+    var userId: String = ""
+    
+    // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var passwordView: SecureTextFieldWithLabel!
     @IBOutlet weak var confirmPasswordView: SecureTextField!
@@ -18,12 +23,7 @@ class ResetPasswordViewController: UIViewController, LoginStoryboard {
     @IBOutlet weak var numberValidationImage: UIImageView!
     @IBOutlet weak var resetPasswordButton: Button!
     
-    var originalFrame: CGRect = .zero
-    var shiftFactor: CGFloat = 0.25
-    var mgmtAccessToken: String!
-    var email: String = ""
-    var userId: String = ""
-    
+    // MARK: - @IBAction
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
         guard let newPassword = passwordView.isSecureTextField.text else { return }
         
@@ -61,6 +61,7 @@ class ResetPasswordViewController: UIViewController, LoginStoryboard {
         }
     }
     
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,12 +77,10 @@ class ResetPasswordViewController: UIViewController, LoginStoryboard {
         
         validatePassword()
         
-        originalFrame = view.frame
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
 }
 
+// MARK: - Extension
 // Determines where the back button should take the view controller to
 extension ResetPasswordViewController {
     @objc override func backButtonTapped() {
@@ -162,21 +161,6 @@ extension ResetPasswordViewController: UITextFieldDelegate {
 }
 
 extension ResetPasswordViewController {
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
-        var newFrame = originalFrame
-        newFrame.origin.y -= keyboardSize.height * shiftFactor
-        view.frame = newFrame
-        
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        view.frame = originalFrame
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
     func initializeHideKeyboard(){
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,

@@ -7,10 +7,10 @@
 
 import UIKit
 
-class CreateAccountViewController: UIViewController, CreatePasswordDelegate, LoginStoryboard {
+class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard {
     
+    // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
-    
     @IBOutlet weak var firstNameField: TextFieldWithError!
     @IBOutlet weak var lastNameField: TextFieldWithError!
     @IBOutlet weak var emailField: TextFieldWithError!
@@ -20,6 +20,7 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate, Log
     @IBOutlet var wholeView: UIView!
     @IBOutlet weak var nextButton: Button!
     
+    // MARK: - @IBAction
     @IBAction func nextButtonTapped(_ sender: Any) {
         guard let firstName = firstNameField.inputTextField.text,
               let lastName = lastNameField.inputTextField.text,
@@ -39,9 +40,7 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate, Log
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    var originalFrame: CGRect = .zero
-    var shiftFactor: CGFloat = 0.25
-    
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,53 +68,12 @@ class CreateAccountViewController: UIViewController, CreatePasswordDelegate, Log
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
         
-        originalFrame = wholeView.frame
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
-    }
-    
-    func passwordCreated(_ password: String) {
-        
-        guard let firstName = firstNameField.inputTextField.text,
-              let lastName = lastNameField.inputTextField.text,
-              let email = emailField.inputTextField.text,
-              let phone = phoneField.inputTextField.text,
-              let address = addressField.inputTextField.text,
-              let city = cityField.inputTextField.text else { return }
-        
-        Auth0Manager.shared.signup(email: email, password: password, firstName: firstName, lastName: lastName, phone: phone, address: address, city: city) { success, error in
-            if success {
-                print("Sign up succeeded!")
-            } else {
-                print("Failed to sign up: \(error?.localizedDescription ?? "unknown error")")
-            }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let createPasswordVC = segue.destination as? CreatePasswordViewController {
-            createPasswordVC.delegate = self
-        }
     }
     
 }
 
+// MARK: - Extension
 extension CreateAccountViewController {
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
-        var newFrame = originalFrame
-        newFrame.origin.y -= keyboardSize.height * shiftFactor
-        wholeView.frame = newFrame
-        
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        wholeView.frame = originalFrame
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
     func changeButtonColor(){
         let textField = TextFieldWithError()
         
@@ -162,6 +120,30 @@ extension CreateAccountViewController {
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func passwordCreated(_ password: String) {
+        
+        guard let firstName = firstNameField.inputTextField.text,
+              let lastName = lastNameField.inputTextField.text,
+              let email = emailField.inputTextField.text,
+              let phone = phoneField.inputTextField.text,
+              let address = addressField.inputTextField.text,
+              let city = cityField.inputTextField.text else { return }
+        
+        Auth0Manager.shared.signup(email: email, password: password, firstName: firstName, lastName: lastName, phone: phone, address: address, city: city) { success, error in
+            if success {
+                print("Sign up succeeded!")
+            } else {
+                print("Failed to sign up: \(error?.localizedDescription ?? "unknown error")")
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let createPasswordVC = segue.destination as? CreatePasswordViewController {
+            createPasswordVC.delegate = self
+        }
     }
     
 }

@@ -11,11 +11,16 @@ protocol CreatePasswordDelegate: AnyObject {
     func passwordCreated(_ password: String)
 }
 
-class CreatePasswordViewController: UIViewController, LoginStoryboard {
+class CreatePasswordViewController: MainViewController, LoginStoryboard {
         
+    weak var delegate: CreatePasswordDelegate?
+    let text = "By checking this box, you agree to our Terms of Service and our Privacy Policy"
+    
+    // MARK: - @IBOutlet
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var passwordView: SecureTextFieldWithLabel!
     @IBOutlet weak var confirmPasswordView: SecureTextField!
-    
+
     @IBOutlet weak var characterLengthValidationImage: UIImageView!
     @IBOutlet weak var uppercaseValidationImage: UIImageView!
     @IBOutlet weak var numberValidationImage: UIImageView!
@@ -24,19 +29,15 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
     @IBOutlet weak var agreementLabel: UILabel!
     
     @IBOutlet weak var createMyAccountButton: Button!
+    
+    // MARK: - @IBAction
     @IBAction func createMyAccountButtonTapped(_ sender: Any) {
         guard let password = passwordView.isSecureTextField.text else { return }
         delegate?.passwordCreated(password)
         self.navigationController?.popToViewController(self.navigationController!.children[0], animated: true)
     }
-    
-    var originalFrame: CGRect = .zero
-    var shiftFactor: CGFloat = 0.25
-    let text = "By checking this box, you agree to our Terms of Service and our Privacy Policy"
-    
-    weak var delegate: CreatePasswordDelegate?
-    @IBOutlet weak var backgroundView: UIView!
-    
+        
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,10 +65,6 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
         self.confirmPasswordView.isSecureTextField.delegate = self
         
         checkBoxTapped.addTarget(self, action: #selector(checkBoxValueChanged(sender:)), for: .valueChanged)
-        
-        originalFrame = view.frame
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
     @objc func checkBoxValueChanged(sender: CheckBox) {
@@ -94,6 +91,7 @@ class CreatePasswordViewController: UIViewController, LoginStoryboard {
     }
 }
 
+// MARK: - Extension
 extension CreatePasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -170,21 +168,6 @@ extension CreatePasswordViewController: UITextFieldDelegate {
 }
 
 extension CreatePasswordViewController {
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
-        var newFrame = originalFrame
-        newFrame.origin.y -= keyboardSize.height * shiftFactor
-        view.frame = newFrame
-        
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        view.frame = originalFrame
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
     func initializeHideKeyboard(){
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,

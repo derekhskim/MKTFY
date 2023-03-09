@@ -7,14 +7,17 @@
 
 import UIKit
 
-class TermsOfServiceViewController: UIViewController, LoginStoryboard {
+class TermsOfServiceViewController: MainViewController, LoginStoryboard {
     
+    // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
     
+    // MARK: - @IBAction
     @IBAction func acceptButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
