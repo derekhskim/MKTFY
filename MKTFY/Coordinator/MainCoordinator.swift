@@ -43,13 +43,13 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToResetPasswordVC() {
-        let vc = ResetPasswordViewController.instantiate()
+    func goToCreateAccountVC() {
+        let vc = CreateAccountViewController.instantiate()
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToCreateAccountVC() {
-        let vc = CreateAccountViewController.instantiate()
+    func goToCreatePasswordVC() {
+        let vc = CreatePasswordViewController.instantiate()
         navigationController.pushViewController(vc, animated: true)
     }
     
