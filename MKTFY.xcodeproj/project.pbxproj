@@ -38,7 +38,6 @@
 		658145B22992047100BC9067 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 658145B12992047100BC9067 /* Main.storyboard */; };
 		6587F35B298AF37200EF5100 /* LoadingConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587F35A298AF37200EF5100 /* LoadingConfirmationViewController.swift */; };
 		6587F35E298AFAB500EF5100 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587F35D298AFAB500EF5100 /* MainNavigationController.swift */; };
-		65883775299C1AAC006D986F /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65883774299C1AAC006D986F /* CreatePasswordViewController.swift */; };
 		6597D0C92992C3AF00485932 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6597D0BD2992C3AF00485932 /* OpenSans-SemiBold.ttf */; };
 		6597D0CA2992C3AF00485932 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6597D0BE2992C3AF00485932 /* OpenSans-Light.ttf */; };
 		6597D0CB2992C3AF00485932 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6597D0BF2992C3AF00485932 /* OpenSans-Italic.ttf */; };
@@ -106,7 +105,6 @@
 		658145B12992047100BC9067 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6587F35A298AF37200EF5100 /* LoadingConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingConfirmationViewController.swift; sourceTree = "<group>"; };
 		6587F35D298AFAB500EF5100 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
-		65883774299C1AAC006D986F /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
 		6597D0BD2992C3AF00485932 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		6597D0BE2992C3AF00485932 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		6597D0BF2992C3AF00485932 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
@@ -294,7 +292,6 @@
 				65EBA0BD298A1E5200202C02 /* ForgotPasswordViewController.swift */,
 				651218BB298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift */,
 				65CE01102991971F00772FCA /* CreateAccountViewController.swift */,
-				65883774299C1AAC006D986F /* CreatePasswordViewController.swift */,
 				65E0B3012996E48000A85CBB /* EmailVerificationSentViewController.swift */,
 				6530780729A4915000856DB4 /* ResetPasswordViewController.swift */,
 				654444D129AFBF5D00E61F69 /* TermsOfServiceViewController.swift */,
@@ -503,7 +500,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65883775299C1AAC006D986F /* CreatePasswordViewController.swift in Sources */,
 				65613AEF29A56DD30002B90F /* DashboardViewController.swift in Sources */,
 				654444C129AD5FD500E61F69 /* Coordinator.swift in Sources */,
 				658145A52991B13000BC9067 /* TextFieldWithError.swift in Sources */,

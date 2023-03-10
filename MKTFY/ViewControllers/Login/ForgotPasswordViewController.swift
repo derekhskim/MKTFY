@@ -18,18 +18,16 @@ class ForgotPasswordViewController: MainViewController, LoginStoryboard {
     
     // MARK: - @IBAction
     @IBAction func sendButtonTapped(_ sender: Any) {
-        coordinator?.goToLoadingConfirmationVC()
         
         guard let email = emailView.inputTextField.text,
         !email.isEmpty && email.isValidEmail else { return }
         
-        UserDefaults.standard.set(email, forKey: "resetPasswordEmail")
         Auth0Manager.shared.resetPassword(email: email)
         
+        coordinator?.goToLoadingConfirmationVC()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
-            let verificationVC = ForgotPasswordVerificationViewController.storyboardInstance(storyboardName: "Login") as! ForgotPasswordVerificationViewController
-            verificationVC.email = email
-            self.navigationController?.pushViewController(verificationVC, animated: true)
+            self.coordinator?.goToForgotPasswordVerificationVC()
         }
     }
     

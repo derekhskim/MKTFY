@@ -29,6 +29,7 @@ class MainCoordinator: Coordinator {
     
     func goToForgotPasswordVC() {
         let vc = ForgotPasswordViewController.instantiate()
+        vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
     
@@ -80,6 +81,7 @@ class MainCoordinator: Coordinator {
     
     func goToDashboardMenuVC() {
         let vc = DashboardMenuViewController.instantiate()
+        vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
     
