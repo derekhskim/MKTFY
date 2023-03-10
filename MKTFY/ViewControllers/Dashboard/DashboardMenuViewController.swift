@@ -12,19 +12,18 @@ class DashboardMenuViewController: UIViewController, DashboardStoryboard {
     weak var coordinator: MainCoordinator?
     
     @IBOutlet weak var profileInitialView: UIView!
-    
     @IBOutlet weak var initialLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBAction func accountInformationButtonTapped(_ sender: Any) {
-        let vc = AccountInformationViewController.instantiate()
-        navigationController?.pushViewController(vc, animated: true)
-//        coordinator?.goToAccountInformationVC()
+//        let vc = AccountInformationViewController.instantiate()
+//        navigationController?.pushViewController(vc, animated: true)
+        coordinator?.goToAccountInformationVC()
     }
     
     
     @IBAction func changePasswordButtonTapped(_ sender: Any) {
-        print("Change Password button tapped!")
+//        Auth0Manager.shared.resetPassword(email: <#T##String#>)
     }
     
     @IBAction func myPurchasesButtonTapped(_ sender: Any) {

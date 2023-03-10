@@ -53,11 +53,6 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToCreatePasswordVC() {
-        let vc = CreatePasswordViewController.instantiate()
-        navigationController.pushViewController(vc, animated: true)
-    }
-    
     func goToTermsOfServiceVC() {
         let vc = TermsOfServiceViewController.instantiate()
         navigationController.pushViewController(vc, animated: true)
