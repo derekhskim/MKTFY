@@ -7,8 +7,10 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController, DashboardStoryboard {
+class DashboardViewController: MainViewController, DashboardStoryboard {
     
+    weak var coordinator: MainCoordinator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

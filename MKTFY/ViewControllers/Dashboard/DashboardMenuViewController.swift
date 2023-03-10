@@ -7,10 +7,10 @@
 
 import UIKit
 
-class DashboardMenuViewController: UIViewController, DashboardStoryboard {
-    
+class DashboardMenuViewController: MainViewController, DashboardStoryboard {
+        
     weak var coordinator: MainCoordinator?
-    
+
     @IBOutlet weak var profileInitialView: UIView!
     @IBOutlet weak var initialLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -18,7 +18,7 @@ class DashboardMenuViewController: UIViewController, DashboardStoryboard {
     @IBAction func accountInformationButtonTapped(_ sender: Any) {
 //        let vc = AccountInformationViewController.instantiate()
 //        navigationController?.pushViewController(vc, animated: true)
-        coordinator?.goToAccountInformationVC()
+        self.coordinator?.goToAccountInformationVC()
     }
     
     

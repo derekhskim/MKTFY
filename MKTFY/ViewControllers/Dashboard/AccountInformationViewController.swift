@@ -8,8 +8,10 @@
 import UIKit
 import Auth0
 
-class AccountInformationViewController: UIViewController, DashboardStoryboard {
-    
+class AccountInformationViewController: MainViewController, DashboardStoryboard {
+        
+    weak var coordinator: MainCoordinator?
+
     let auth0Manager = Auth0Manager()
     
     @IBOutlet weak var firstNameView: TextFieldWithError!

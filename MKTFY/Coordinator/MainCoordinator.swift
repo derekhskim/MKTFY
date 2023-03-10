@@ -21,6 +21,7 @@ class MainCoordinator: Coordinator {
         UINavigationBar.appearance().standardAppearance = navBarAppearance
     }
     
+    // MARK: - Login
     func start() {
         let vc = LoginViewController.instantiate()
         vc.coordinator = self
@@ -68,21 +69,21 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    /// MARK: - Dashboard
+    // MARK: - Dashboard
     func goToDashboardVC() {
         let vc = DashboardViewController.instantiate()
+        vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
     
     func goToDashboardMenuVC() {
         let vc = DashboardMenuViewController.instantiate()
-        vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
     
     func goToAccountInformationVC() {
         let vc = AccountInformationViewController.instantiate()
-        navigationController.pushViewController(vc, animated: true)
+        self.navigationController.pushViewController(vc, animated: true)
     }
     
 }
