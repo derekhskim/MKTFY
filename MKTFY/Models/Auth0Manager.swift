@@ -70,16 +70,6 @@ class Auth0Manager {
                     print("Failed to send reset password email: \(error.localizedDescription)")
                 }
             }
-        
-//        auth0.startPasswordless(email: email, type: .code, connection: emailConnection)
-//            .start { result in
-//                switch result {
-//                case .success:
-//                    print("Reset password email sent successfully")
-//                case .failure(let error):
-//                    print("Failed to send reset password email: \(error.localizedDescription)")
-//                }
-//            }
     }
     
     func signOut() {
