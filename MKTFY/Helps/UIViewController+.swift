@@ -90,31 +90,6 @@ extension UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func setupNavigationBarWithMenuButton() {
-        let menuButton = UIBarButtonItem(image: UIImage(named: "menu_button"), style: .plain, target: self, action: #selector(menuButtonTapped))
-        menuButton.tintColor = UIColor.appColor(LPColor.OccasionalPurple)
-        self.navigationItem.leftBarButtonItem = menuButton
-        
-        let searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
-        searchButton.tintColor = UIColor.appColor(LPColor.TextGray)
-        self.navigationItem.rightBarButtonItem = searchButton
-                
-        let textField = UITextField()
-        textField.placeholder = "Search on MKTFY"
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        navigationItem.titleView = textField
-    }
-    
-    @objc func menuButtonTapped() {
-        let vc = DashboardMenuViewController.storyboardInstance(storyboardName: "Dashboard") as! DashboardMenuViewController
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func searchButtonTapped() {
-        
-    }
-    
     func setupNavigationBarWithExitButtonOnRight() {
         let exitButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(exitButtonTapped))
         exitButton.tintColor = UIColor.black

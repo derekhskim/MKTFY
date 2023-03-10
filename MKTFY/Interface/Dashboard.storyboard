@@ -284,20 +284,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dahsboard UI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWZ-4e-i7v">
-                                <rect key="frame" x="144.66666666666666" y="415.66666666666669" width="104" height="21"/>
+                                <rect key="frame" x="144.66666666666666" y="416" width="104" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pQ-cC-WJx" userLabel="PurpleBackground">
+                                <rect key="frame" x="0.0" y="59" width="393" height="80"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQ8-Kx-FVG" userLabel="WhiteBackground">
+                                        <rect key="frame" x="10" y="10" width="373" height="60"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="ZZy-uB-p7G">
+                                                <rect key="frame" x="17" y="19.666666666666671" width="336" height="21"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="253" verticalHuggingPriority="252" image="menu_button" translatesAutoresizingMaskIntoConstraints="NO" id="hFC-fV-WT0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="18" height="21"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="253" image="divider" translatesAutoresizingMaskIntoConstraints="NO" id="EQu-xb-t6a">
+                                                        <rect key="frame" x="37" y="0.0" width="1.3333333333333357" height="21"/>
+                                                    </imageView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search on MKTFY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C9i-qX-8NA">
+                                                        <rect key="frame" x="57.333333333333329" y="0.0" width="239.33333333333337" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="253" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kP4-zh-J5G">
+                                                        <rect key="frame" x="315.66666666666669" y="0.99999999999999822" width="20.333333333333314" height="19.333333333333336"/>
+                                                        <color key="tintColor" name="TextGray"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ZZy-uB-p7G" secondAttribute="bottom" constant="19.5" id="Rdn-ic-593"/>
+                                            <constraint firstItem="ZZy-uB-p7G" firstAttribute="top" secondItem="QQ8-Kx-FVG" secondAttribute="top" constant="19.5" id="iaI-Ni-XVb"/>
+                                            <constraint firstItem="ZZy-uB-p7G" firstAttribute="leading" secondItem="QQ8-Kx-FVG" secondAttribute="leading" constant="17" id="q0w-j4-qoS"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZZy-uB-p7G" secondAttribute="trailing" constant="20" id="w8v-7k-VbK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="OccasionalPurple"/>
+                                <constraints>
+                                    <constraint firstItem="QQ8-Kx-FVG" firstAttribute="leading" secondItem="7pQ-cC-WJx" secondAttribute="leading" constant="10" id="1Nt-Oy-2qV"/>
+                                    <constraint firstAttribute="height" constant="80" id="DPB-BQ-wFa"/>
+                                    <constraint firstItem="QQ8-Kx-FVG" firstAttribute="top" secondItem="7pQ-cC-WJx" secondAttribute="top" constant="10" id="HUS-T3-M4G"/>
+                                    <constraint firstAttribute="trailing" secondItem="QQ8-Kx-FVG" secondAttribute="trailing" constant="10" id="OhJ-fi-u6f"/>
+                                    <constraint firstAttribute="bottom" secondItem="QQ8-Kx-FVG" secondAttribute="bottom" constant="10" id="WFJ-a9-CCU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="7pQ-cC-WJx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1qw-6e-hrq"/>
                             <constraint firstItem="TWZ-4e-i7v" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="TI2-t4-fF9"/>
+                            <constraint firstItem="7pQ-cC-WJx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="aJc-o7-GcV"/>
                             <constraint firstItem="TWZ-4e-i7v" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="caN-dq-yde"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7pQ-cC-WJx" secondAttribute="trailing" id="fvl-cE-ZnW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hIw-DY-yKW" userLabel="Dashboard View Controller"/>
+                    <connections>
+                        <outlet property="menuImageView" destination="hFC-fV-WT0" id="BMZ-bM-c20"/>
+                        <outlet property="navigationWhiteBackgroundView" destination="QQ8-Kx-FVG" id="4b0-fB-zep"/>
+                        <outlet property="searchImageView" destination="kP4-zh-J5G" id="IIT-rv-ieo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -481,6 +534,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="divider" width="1.3333333730697632" height="21.333333969116211"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="menu_button" width="18" height="14"/>
         <namedColor name="MistakeRed">
             <color red="1" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -489,6 +545,9 @@
         </namedColor>
         <namedColor name="SubtleGray">
             <color red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextGray">
+            <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VerySubtleGray">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

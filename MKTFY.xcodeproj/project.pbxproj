@@ -222,8 +222,8 @@
 		6568E1152988B850001482AB /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				6568E1162988B860001482AB /* Login.storyboard */,
 				658145B12992047100BC9067 /* Main.storyboard */,
+				6568E1162988B860001482AB /* Login.storyboard */,
 				65613B1029A5E04A0002B90F /* Dashboard.storyboard */,
 			);
 			path = Interface;
@@ -391,7 +391,7 @@
 			);
 			mainGroup = 6568E0F22988AACF001482AB;
 			packageReferences = (
-				65A646F7299C854D00262DB8 /* XCRemoteSwiftPackageReference "Auth0.swift" */,
+				65A646F7299C854D00262DB8 /* XCRemoteSwiftPackageReference "Auth0" */,
 			);
 			productRefGroup = 6568E0FC2988AACF001482AB /* Products */;
 			projectDirPath = "";
@@ -688,7 +688,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		65A646F7299C854D00262DB8 /* XCRemoteSwiftPackageReference "Auth0.swift" */ = {
+		65A646F7299C854D00262DB8 /* XCRemoteSwiftPackageReference "Auth0" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/auth0/Auth0.swift";
 			requirement = {
@@ -701,7 +701,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		65A646F8299C854D00262DB8 /* Auth0 */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 65A646F7299C854D00262DB8 /* XCRemoteSwiftPackageReference "Auth0.swift" */;
+			package = 65A646F7299C854D00262DB8 /* XCRemoteSwiftPackageReference "Auth0" */;
 			productName = Auth0;
 		};
 /* End XCSwiftPackageProductDependency section */
