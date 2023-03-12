@@ -12,6 +12,9 @@
         <array key="OpenSans-Bold.ttf">
             <string>OpenSans-Bold</string>
         </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Dashboard Menu View Controller-->
@@ -283,19 +286,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dahsboard UI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWZ-4e-i7v">
-                                <rect key="frame" x="144.66666666666666" y="416" width="104" height="20.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pQ-cC-WJx" userLabel="PurpleBackground">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pQ-cC-WJx" userLabel="PurpleBackgroundView">
                                 <rect key="frame" x="0.0" y="59" width="393" height="80"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQ8-Kx-FVG" userLabel="WhiteBackground">
                                         <rect key="frame" x="10" y="10" width="373" height="60"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="ZZy-uB-p7G">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="ZZy-uB-p7G" userLabel="Search Bar Stack View">
                                                 <rect key="frame" x="17" y="19.666666666666671" width="336" height="21"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="253" verticalHuggingPriority="252" image="menu_button" translatesAutoresizingMaskIntoConstraints="NO" id="hFC-fV-WT0">
@@ -334,15 +331,63 @@
                                     <constraint firstAttribute="bottom" secondItem="QQ8-Kx-FVG" secondAttribute="bottom" constant="10" id="WFJ-a9-CCU"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I40-F3-evs" userLabel="CategoriesView">
+                                <rect key="frame" x="0.0" y="139" width="393" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RdX-eZ-may" userLabel="Categories Selection Stack View">
+                                        <rect key="frame" x="20" y="12.666666666666655" width="353" height="20.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Browse Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qob-iE-B4i">
+                                                <rect key="frame" x="0.0" y="0.0" width="288.66666666666669" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="bck-Wn-3rb" userLabel="City Dropdown Stack View">
+                                                <rect key="frame" x="288.66666666666669" y="0.0" width="64.333333333333314" height="20.333333333333332"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop_down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="gTY-kn-aQF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="10" height="20.333333333333332"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calgary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8E-td-pT7">
+                                                        <rect key="frame" x="16.000000000000004" y="0.0" width="48.333333333333343" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" name="OccasionalPurple"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ack-P9-VI1"/>
+                                    <constraint firstAttribute="trailing" secondItem="RdX-eZ-may" secondAttribute="trailing" constant="20" id="lYl-qZ-Uh8"/>
+                                    <constraint firstItem="RdX-eZ-may" firstAttribute="leading" secondItem="I40-F3-evs" secondAttribute="leading" constant="20" id="nFr-1P-k3r"/>
+                                    <constraint firstItem="RdX-eZ-may" firstAttribute="top" secondItem="I40-F3-evs" secondAttribute="top" constant="12.5" id="w1y-N7-Zme"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJb-gx-YOW" userLabel="CategoriesListView">
+                                <rect key="frame" x="0.0" y="183" width="393" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="sCa-4f-fcM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7pQ-cC-WJx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1qw-6e-hrq"/>
-                            <constraint firstItem="TWZ-4e-i7v" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="TI2-t4-fF9"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="I40-F3-evs" secondAttribute="trailing" id="Ef7-mp-v94"/>
+                            <constraint firstItem="I40-F3-evs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="IFB-Gn-Soq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="VJb-gx-YOW" secondAttribute="trailing" id="MuU-tI-XQt"/>
+                            <constraint firstItem="VJb-gx-YOW" firstAttribute="top" secondItem="I40-F3-evs" secondAttribute="bottom" id="Ze8-pT-Puk"/>
                             <constraint firstItem="7pQ-cC-WJx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="aJc-o7-GcV"/>
-                            <constraint firstItem="TWZ-4e-i7v" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="caN-dq-yde"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7pQ-cC-WJx" secondAttribute="trailing" id="fvl-cE-ZnW"/>
+                            <constraint firstItem="VJb-gx-YOW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="lPp-rn-PXM"/>
+                            <constraint firstItem="I40-F3-evs" firstAttribute="top" secondItem="7pQ-cC-WJx" secondAttribute="bottom" id="pfa-gR-8hj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hIw-DY-yKW" userLabel="Dashboard View Controller"/>
@@ -350,11 +395,12 @@
                         <outlet property="menuImageView" destination="hFC-fV-WT0" id="BMZ-bM-c20"/>
                         <outlet property="navigationWhiteBackgroundView" destination="QQ8-Kx-FVG" id="4b0-fB-zep"/>
                         <outlet property="searchImageView" destination="kP4-zh-J5G" id="IIT-rv-ieo"/>
+                        <outlet property="searchTextField" destination="C9i-qX-8NA" id="qG5-vk-nt4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="-28"/>
+            <point key="canvasLocation" x="130.53435114503816" y="-28.169014084507044"/>
         </scene>
         <!--Account Information-->
         <scene sceneID="hb3-kj-p8B">
@@ -535,6 +581,7 @@
     </scenes>
     <resources>
         <image name="divider" width="1.3333333730697632" height="21.333333969116211"/>
+        <image name="drop_down_arrow" width="10" height="5"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="menu_button" width="18" height="14"/>
         <namedColor name="MistakeRed">

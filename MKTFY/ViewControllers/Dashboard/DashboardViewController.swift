@@ -15,6 +15,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
     @IBOutlet weak var navigationWhiteBackgroundView: UIView!
     @IBOutlet weak var menuImageView: UIImageView!
     @IBOutlet weak var searchImageView: UIImageView!
+    @IBOutlet weak var searchTextField: UITextField!
     
     // MARK: - @IBAction
     
@@ -38,6 +39,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         navigationWhiteBackgroundView.clipsToBounds = true
         
         menuButton()
+        searchTextField.borderStyle = .none
         
     }
     
@@ -53,8 +55,7 @@ extension DashboardViewController {
     }
     
     @objc func menuButtonTapped() {
-        let vc = DashboardMenuViewController.storyboardInstance(storyboardName: "Dashboard") as! DashboardMenuViewController
-        navigationController?.pushViewController(vc, animated: true)
+        coordinator?.goToDashboardMenuVC()
     }
     
     @objc func searchButtonTapped() {

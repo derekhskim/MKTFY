@@ -18,7 +18,7 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
     @IBAction func accountInformationButtonTapped(_ sender: Any) {
 //        let vc = AccountInformationViewController.instantiate()
 //        navigationController?.pushViewController(vc, animated: true)
-        self.coordinator?.goToAccountInformationVC()
+        coordinator?.goToAccountInformationVC()
     }
     
     
