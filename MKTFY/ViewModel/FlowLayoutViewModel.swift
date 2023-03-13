@@ -10,7 +10,7 @@ import Foundation
 class FlowLayoutViewModel {
     var items: [Items]
     
-    init(items: [Items]) {
+    init() {
         self.items = Items.mockData()
     }
 }

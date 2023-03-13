@@ -23,8 +23,6 @@
 		65613AED29A5596B0002B90F /* PasswordToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65613AEC29A5596B0002B90F /* PasswordToggleButton.swift */; };
 		65613AEF29A56DD30002B90F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65613AEE29A56DD30002B90F /* DashboardViewController.swift */; };
 		65613B1129A5E04A0002B90F /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65613B1029A5E04A0002B90F /* Dashboard.storyboard */; };
-		6565E7C929BD851000C18C14 /* FlowLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6565E7C729BD851000C18C14 /* FlowLayoutViewController.swift */; };
-		6565E7CA29BD851000C18C14 /* FlowLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6565E7C829BD851000C18C14 /* FlowLayoutViewController.xib */; };
 		6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E0FE2988AACF001482AB /* AppDelegate.swift */; };
 		6568E1012988AACF001482AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E1002988AACF001482AB /* SceneDelegate.swift */; };
 		6568E1082988AACF001482AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6568E1072988AACF001482AB /* Assets.xcassets */; };
@@ -61,10 +59,10 @@
 		65D1AF6529B45D3B00B4581D /* DashboardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1AF6429B45D3B00B4581D /* DashboardMenuViewController.swift */; };
 		65D25EBC29B28D00009AA27D /* UITapGestureRecognizer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D25EBB29B28D00009AA27D /* UITapGestureRecognizer+.swift */; };
 		65D29D562992F1B300D14140 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D29D552992F1B300D14140 /* UITextField+.swift */; };
-		65DE1B4629BD864B00C7D3E8 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE1B4429BD864B00C7D3E8 /* ItemCollectionViewCell.swift */; };
-		65DE1B4729BD864B00C7D3E8 /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DE1B4529BD864B00C7D3E8 /* ItemCollectionViewCell.xib */; };
 		65DE1B4929BD887C00C7D3E8 /* CellItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE1B4829BD887C00C7D3E8 /* CellItems.swift */; };
 		65DE1B4B29BD891200C7D3E8 /* FlowLayoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE1B4A29BD891200C7D3E8 /* FlowLayoutViewModel.swift */; };
+		65DE1B5129BD97A900C7D3E8 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE1B4F29BD97A900C7D3E8 /* ItemCollectionViewCell.swift */; };
+		65DE1B5229BD97A900C7D3E8 /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DE1B5029BD97A900C7D3E8 /* ItemCollectionViewCell.xib */; };
 		65E0B3022996E48000A85CBB /* EmailVerificationSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E0B3012996E48000A85CBB /* EmailVerificationSentViewController.swift */; };
 		65E7DE1F299D4ADE00926A1F /* Auth0Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7DE1E299D4ADE00926A1F /* Auth0Manager.swift */; };
 		65E7DE23299D722B00926A1F /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7DE22299D722B00926A1F /* Users.swift */; };
@@ -92,8 +90,6 @@
 		65613AEC29A5596B0002B90F /* PasswordToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordToggleButton.swift; sourceTree = "<group>"; };
 		65613AEE29A56DD30002B90F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		65613B1029A5E04A0002B90F /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
-		6565E7C729BD851000C18C14 /* FlowLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutViewController.swift; sourceTree = "<group>"; };
-		6565E7C829BD851000C18C14 /* FlowLayoutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlowLayoutViewController.xib; sourceTree = "<group>"; };
 		6568E0FB2988AACF001482AB /* MKTFY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKTFY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6568E0FE2988AACF001482AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6568E1002988AACF001482AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,10 +127,10 @@
 		65D1AF6429B45D3B00B4581D /* DashboardMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMenuViewController.swift; sourceTree = "<group>"; };
 		65D25EBB29B28D00009AA27D /* UITapGestureRecognizer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+.swift"; sourceTree = "<group>"; };
 		65D29D552992F1B300D14140 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		65DE1B4429BD864B00C7D3E8 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
-		65DE1B4529BD864B00C7D3E8 /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		65DE1B4829BD887C00C7D3E8 /* CellItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellItems.swift; sourceTree = "<group>"; };
 		65DE1B4A29BD891200C7D3E8 /* FlowLayoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutViewModel.swift; sourceTree = "<group>"; };
+		65DE1B4F29BD97A900C7D3E8 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		65DE1B5029BD97A900C7D3E8 /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		65E0B3012996E48000A85CBB /* EmailVerificationSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationSentViewController.swift; sourceTree = "<group>"; };
 		65E7DE1E299D4ADE00926A1F /* Auth0Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth0Manager.swift; sourceTree = "<group>"; };
 		65E7DE22299D722B00926A1F /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
@@ -174,15 +170,6 @@
 				654444C429AD63C900E61F69 /* LoginStoryboard.swift */,
 			);
 			path = Storyboard;
-			sourceTree = "<group>";
-		};
-		6565E7C629BD84EE00C18C14 /* CollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				6565E7C729BD851000C18C14 /* FlowLayoutViewController.swift */,
-				6565E7C829BD851000C18C14 /* FlowLayoutViewController.xib */,
-			);
-			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		6568E0F22988AACF001482AB = {
@@ -325,7 +312,6 @@
 		65C28FC52988BA0D00A3BBEE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6565E7C629BD84EE00C18C14 /* CollectionView */,
 				65B8B4FB29AFD79900CB67CE /* Dashboard */,
 				65B8B4FA29AFD78700CB67CE /* Login */,
 				6587F35C298AFA9E00EF5100 /* MainController */,
@@ -336,8 +322,8 @@
 		65DE1B4329BD862700C7D3E8 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				65DE1B4429BD864B00C7D3E8 /* ItemCollectionViewCell.swift */,
-				65DE1B4529BD864B00C7D3E8 /* ItemCollectionViewCell.xib */,
+				65DE1B4F29BD97A900C7D3E8 /* ItemCollectionViewCell.swift */,
+				65DE1B5029BD97A900C7D3E8 /* ItemCollectionViewCell.xib */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -440,7 +426,6 @@
 			files = (
 				6597D0D12992C3AF00485932 /* OpenSans-Medium.ttf in Resources */,
 				6547D4D42992E0EB00701044 /* SecureTextField.xib in Resources */,
-				6565E7CA29BD851000C18C14 /* FlowLayoutViewController.xib in Resources */,
 				658145A72991B13C00BC9067 /* TextFieldWithError.xib in Resources */,
 				6597D0CC2992C3AF00485932 /* OpenSans-MediumItalic.ttf in Resources */,
 				65AB2A6329AB083B002B3D1B /* .gitignore in Resources */,
@@ -449,7 +434,7 @@
 				6597D0CB2992C3AF00485932 /* OpenSans-Italic.ttf in Resources */,
 				6597D0D32992C3AF00485932 /* OpenSans-Regular.ttf in Resources */,
 				6597D0D42992C3AF00485932 /* OpenSans-BoldItalic.ttf in Resources */,
-				65DE1B4729BD864B00C7D3E8 /* ItemCollectionViewCell.xib in Resources */,
+				65DE1B5229BD97A900C7D3E8 /* ItemCollectionViewCell.xib in Resources */,
 				6500C7ED29AD1963008EBA01 /* SecureTextFieldWithLabel.xib in Resources */,
 				658145B22992047100BC9067 /* Main.storyboard in Resources */,
 				6597D0D22992C3AF00485932 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
@@ -484,10 +469,8 @@
 				6568E1142988AF50001482AB /* UIColor+.swift in Sources */,
 				65D1AF6529B45D3B00B4581D /* DashboardMenuViewController.swift in Sources */,
 				654444C729AF07BD00E61F69 /* Constant.swift in Sources */,
-				65DE1B4629BD864B00C7D3E8 /* ItemCollectionViewCell.swift in Sources */,
 				6587F35B298AF37200EF5100 /* LoadingConfirmationViewController.swift in Sources */,
 				65E7DE23299D722B00926A1F /* Users.swift in Sources */,
-				6565E7C929BD851000C18C14 /* FlowLayoutViewController.swift in Sources */,
 				65CE01112991971F00772FCA /* CreateAccountViewController.swift in Sources */,
 				654444C929AF18DC00E61F69 /* Auth0Error.swift in Sources */,
 				654444D429AFBF7700E61F69 /* PrivacyPolicyViewController.swift in Sources */,
@@ -499,6 +482,7 @@
 				65E90FEB2988CD8000ACDC0C /* Button.swift in Sources */,
 				6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */,
 				65F9BF8329AD167800FADB2B /* SecureTextFieldWithLabel.swift in Sources */,
+				65DE1B5129BD97A900C7D3E8 /* ItemCollectionViewCell.swift in Sources */,
 				6547D4D62992E0F700701044 /* SecureTextField.swift in Sources */,
 				65DE1B4929BD887C00C7D3E8 /* CellItems.swift in Sources */,
 				654444C529AD63C900E61F69 /* LoginStoryboard.swift in Sources */,
