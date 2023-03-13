@@ -14,6 +14,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
     let leftPadding: CGFloat = 8
     let rightPadding: CGFloat = 8
     let width = UIScreen.main.bounds.width
+    let height: CGFloat = 270
 
     // MARK: - @IBOutlet
     @IBOutlet weak var navigationWhiteBackgroundView: UIView!
@@ -55,7 +56,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: leftPadding, bottom: 0, right: rightPadding)
-        layout.itemSize = CGSize(width: width / 2 - leftPadding - rightPadding, height: width)
+        layout.itemSize = CGSize(width: width / 2 - leftPadding - rightPadding, height: height)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 8
         collectionView.collectionViewLayout = layout
@@ -73,6 +74,14 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCollectionViewCell", for: indexPath) as! ItemCollectionViewCell
 
+        cell.layer.cornerRadius = 10
+        cell.layer.borderWidth = 0
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.layer.shadowRadius = 5
+        cell.layer.shadowOpacity = 0.5
+        cell.layer.masksToBounds = false
+        
         let item = vm.items[indexPath.row]
         cell.updateData(data: item)
 

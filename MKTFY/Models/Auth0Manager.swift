@@ -33,7 +33,7 @@ class Auth0Manager {
             switch result {
             case .success(let credentials):
 //                print("Access Token: \(credentials.accessToken)")
-//                UserDefaults.standard.set(credentials.accessToken, forKey: "authenticationAPI")
+                UserDefaults.standard.set(credentials.accessToken, forKey: "authenticationAPI")
                 completion(true, nil)
             case .failure(let error):
                 print(error.localizedDescription)
