@@ -54,12 +54,14 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         collectionView.dataSource = self
 
         collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ItemCollectionViewCell")
+        collectionView.register(UINib(nibName: "HeaderCollectionReusableView", bundle: Bundle.main), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView")
         
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: leftPadding, bottom: 0, right: rightPadding)
+        layout.sectionInset = UIEdgeInsets(top: 8, left: leftPadding, bottom: 8, right: rightPadding)
         layout.itemSize = CGSize(width: width / 2 - leftPadding - rightPadding, height: height)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 8
+        layout.headerReferenceSize = CGSize(width: width, height: 44)
         collectionView.collectionViewLayout = layout
     }
     
@@ -96,6 +98,13 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
         let item = vm.items[indexPath.row]
         cell.updateData(data: item)
 
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath)
+        
         return cell
     }
 }

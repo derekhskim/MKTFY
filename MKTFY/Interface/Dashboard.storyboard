@@ -511,42 +511,8 @@
                                     <constraint firstItem="1PA-g7-II1" firstAttribute="leading" secondItem="VJb-gx-YOW" secondAttribute="leading" id="u75-W1-oSn"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Dc-hC-W0X" userLabel="CategoriesView">
-                                <rect key="frame" x="0.0" y="303" width="393" height="44"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IoR-2j-fI5" userLabel="Categories Selection Stack View">
-                                        <rect key="frame" x="20" y="12.666666666666684" width="353" height="20.333333333333329"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Deals for you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs5-rL-fsw">
-                                                <rect key="frame" x="0.0" y="0.0" width="304.66666666666669" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="09y-od-BgK" userLabel="City Dropdown Stack View">
-                                                <rect key="frame" x="304.66666666666669" y="0.0" width="48.333333333333314" height="20.333333333333332"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calgary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VF6-bJ-uFO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48.333333333333336" height="20.333333333333332"/>
-                                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
-                                                        <color key="textColor" name="OccasionalPurple"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="23y-hn-Dpt"/>
-                                    <constraint firstItem="IoR-2j-fI5" firstAttribute="top" secondItem="6Dc-hC-W0X" secondAttribute="top" constant="12.5" id="Inz-oZ-pvY"/>
-                                    <constraint firstAttribute="trailing" secondItem="IoR-2j-fI5" secondAttribute="trailing" constant="20" id="Iym-ZC-zY8"/>
-                                    <constraint firstItem="IoR-2j-fI5" firstAttribute="leading" secondItem="6Dc-hC-W0X" secondAttribute="leading" constant="20" id="jQr-uH-gdQ"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7i9-ue-DuX">
-                                <rect key="frame" x="0.0" y="347" width="393" height="471"/>
+                                <rect key="frame" x="0.0" y="303" width="393" height="515"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Df-PO-c3V">
                                     <size key="itemSize" width="128" height="128"/>
@@ -570,21 +536,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7pQ-cC-WJx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1qw-6e-hrq"/>
-                            <constraint firstItem="7i9-ue-DuX" firstAttribute="top" secondItem="6Dc-hC-W0X" secondAttribute="bottom" id="BVv-nz-1dU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="I40-F3-evs" secondAttribute="trailing" id="Ef7-mp-v94"/>
                             <constraint firstItem="I40-F3-evs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="IFB-Gn-Soq"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7i9-ue-DuX" secondAttribute="trailing" id="IdV-Mb-cwa"/>
                             <constraint firstItem="7i9-ue-DuX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="J0W-Rb-CvP"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="VJb-gx-YOW" secondAttribute="trailing" id="MuU-tI-XQt"/>
-                            <constraint firstItem="6Dc-hC-W0X" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="Qeg-Eg-Q0n"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="7i9-ue-DuX" secondAttribute="bottom" id="QqR-ms-mcS"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="6Dc-hC-W0X" secondAttribute="trailing" id="W08-px-rSa"/>
                             <constraint firstItem="VJb-gx-YOW" firstAttribute="top" secondItem="I40-F3-evs" secondAttribute="bottom" id="Ze8-pT-Puk"/>
                             <constraint firstItem="7pQ-cC-WJx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="aJc-o7-GcV"/>
-                            <constraint firstItem="6Dc-hC-W0X" firstAttribute="top" secondItem="VJb-gx-YOW" secondAttribute="bottom" id="cRy-st-C5n"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7pQ-cC-WJx" secondAttribute="trailing" id="fvl-cE-ZnW"/>
                             <constraint firstItem="VJb-gx-YOW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="lPp-rn-PXM"/>
                             <constraint firstItem="I40-F3-evs" firstAttribute="top" secondItem="7pQ-cC-WJx" secondAttribute="bottom" id="pfa-gR-8hj"/>
+                            <constraint firstItem="7i9-ue-DuX" firstAttribute="top" secondItem="VJb-gx-YOW" secondAttribute="bottom" id="sdb-ld-RPK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hIw-DY-yKW" userLabel="Dashboard View Controller"/>

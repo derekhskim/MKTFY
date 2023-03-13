@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Jq-Ns-FCM" userLabel="CategoriesView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3s-Rd-cRq" userLabel="Categories Selection Stack View">
+                            <rect key="frame" x="20" y="12.666666666666666" width="280" height="20.333333333333336"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Deals for you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eL9-T0-Ez1">
+                                    <rect key="frame" x="0.0" y="0.0" width="231.66666666666666" height="20.333333333333332"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="avn-ca-Shk" userLabel="City Dropdown Stack View">
+                                    <rect key="frame" x="231.66666666666666" y="0.0" width="48.333333333333343" height="20.333333333333332"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calgary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPf-cO-3JH">
+                                            <rect key="frame" x="0.0" y="0.0" width="48.333333333333336" height="20.333333333333332"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                            <color key="textColor" name="OccasionalPurple"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="7wR-Yo-q0y"/>
+                        <constraint firstAttribute="trailing" secondItem="b3s-Rd-cRq" secondAttribute="trailing" constant="20" id="C7r-4s-yzf"/>
+                        <constraint firstItem="b3s-Rd-cRq" firstAttribute="top" secondItem="2Jq-Ns-FCM" secondAttribute="top" constant="12.5" id="Peq-dc-m4w"/>
+                        <constraint firstItem="b3s-Rd-cRq" firstAttribute="leading" secondItem="2Jq-Ns-FCM" secondAttribute="leading" constant="20" id="ZZJ-5T-8ZE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2Jq-Ns-FCM" secondAttribute="trailing" id="4oz-MZ-FH1"/>
+                <constraint firstItem="2Jq-Ns-FCM" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="TGs-P5-3fk"/>
+                <constraint firstItem="2Jq-Ns-FCM" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="qbN-ES-f7n"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="2Jq-Ns-FCM" secondAttribute="bottom" id="zCa-Kc-9DV"/>
+            </constraints>
+            <point key="canvasLocation" x="56" y="-11"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <namedColor name="OccasionalPurple">
+            <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
