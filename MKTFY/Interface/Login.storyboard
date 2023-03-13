@@ -75,7 +75,6 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your password"/>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureEntry" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDD-Yd-G5O" userLabel="I forgot Password Stack View">

@@ -12,7 +12,11 @@ class SecureTextField: LPView {
     var view: UIView!
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var isSecureTextField: UITextField!
+    @IBOutlet weak var isSecureTextField: UITextField! {
+        didSet {
+            isSecureTextField.isSecureTextEntry = true
+        }
+    }
     
     let button = UIButton(type: .system)
     let eyeSlashImage = UIImage(systemName: "eye.slash")
