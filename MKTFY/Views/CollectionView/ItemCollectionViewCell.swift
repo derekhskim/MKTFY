@@ -22,11 +22,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
         
         self.mainView.layer.cornerRadius = 10
         self.mainView.layer.masksToBounds = true
-        
-//        mainView.layer.shadowColor = UIColor.black.cgColor
-//        mainView.layer.shadowOpacity = 1
-//        mainView.layer.shadowOffset = .zero
-//        mainView.layer.shadowRadius = 10
     }
 
     func updateData(data: Items) {
