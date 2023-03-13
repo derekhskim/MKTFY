@@ -17,13 +17,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemCollectionViewCell" customModule="MKTFY" customModuleProvider="target">
-            <connections>
-                <outlet property="imageViewItem" destination="MKr-Gp-e6R" id="HmP-2h-HeF"/>
-                <outlet property="priceLabel" destination="3J8-a2-gRW" id="wJa-P1-1TK"/>
-                <outlet property="titleLabel" destination="Lpz-FZ-FhE" id="l6I-yJ-xdD"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="ItemCollectionViewCell" customModule="MKTFY" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="144" height="200"/>
@@ -80,6 +74,11 @@
                 <constraint firstAttribute="bottom" secondItem="aWW-Q3-Tdd" secondAttribute="bottom" id="tto-bL-Hjh"/>
             </constraints>
             <size key="customSize" width="144" height="200"/>
+            <connections>
+                <outlet property="imageViewItem" destination="MKr-Gp-e6R" id="SO9-cU-8Y9"/>
+                <outlet property="priceLabel" destination="3J8-a2-gRW" id="pj0-oh-8oO"/>
+                <outlet property="titleLabel" destination="Lpz-FZ-FhE" id="Rv0-6N-9tM"/>
+            </connections>
             <point key="canvasLocation" x="201.52671755725191" y="-80.281690140845072"/>
         </collectionViewCell>
     </objects>

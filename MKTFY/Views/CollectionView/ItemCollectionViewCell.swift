@@ -23,7 +23,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }
 
     func updateData(data: Items) {
-        self.priceLabel.text = "$ \(String(describing: data.price))"
+        self.priceLabel.text = "$ \(String(describing: data.price!))"
         self.titleLabel.text = data.title
         self.imageViewItem.image = data.imageName
     }

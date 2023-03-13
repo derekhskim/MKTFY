@@ -45,32 +45,32 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         
         searchTextField.borderStyle = .none
         
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//
-//        collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ItemCollectionViewCell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+
+        collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ItemCollectionViewCell")
         
     }
     
 }
 
 // MARK: - Extension
-//extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return vm.items.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCollectionViewCell", for: indexPath) as! ItemCollectionViewCell
-//
-//        let item = vm.items[indexPath.row]
-//        cell.updateData(data: item)
-//
-//        return cell
-//    }
-//}
+extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return vm.items.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCollectionViewCell", for: indexPath) as! ItemCollectionViewCell
+
+        let item = vm.items[indexPath.row]
+        cell.updateData(data: item)
+
+        return cell
+    }
+}
 
 extension DashboardViewController {
     
