@@ -10,6 +10,7 @@ import UIKit
 class ItemCollectionViewCell: UICollectionViewCell {
 
     // MARK: - @IBOutlet
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var imageViewItem: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -19,7 +20,13 @@ class ItemCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.contentView.layer.cornerRadius = 10
+        self.mainView.layer.cornerRadius = 10
+        self.mainView.layer.masksToBounds = true
+        
+//        mainView.layer.shadowColor = UIColor.black.cgColor
+//        mainView.layer.shadowOpacity = 1
+//        mainView.layer.shadowOffset = .zero
+//        mainView.layer.shadowRadius = 10
     }
 
     func updateData(data: Items) {

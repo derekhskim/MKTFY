@@ -32,8 +32,8 @@ class Auth0Manager {
         .start { result in
             switch result {
             case .success(let credentials):
-                print("Access Token: \(credentials.accessToken)")
-                UserDefaults.standard.set(credentials.accessToken, forKey: "authenticationAPI")
+//                print("Access Token: \(credentials.accessToken)")
+//                UserDefaults.standard.set(credentials.accessToken, forKey: "authenticationAPI")
                 completion(true, nil)
             case .failure(let error):
                 print(error.localizedDescription)
