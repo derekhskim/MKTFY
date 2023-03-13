@@ -46,6 +46,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         navigationWhiteBackgroundView.clipsToBounds = true
         
         menuButton()
+        horizontalDropShadow()
         
         searchTextField.borderStyle = .none
         
@@ -60,6 +61,16 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 8
         collectionView.collectionViewLayout = layout
+    }
+    
+    // TODO: Drop Shdoaw is only appearing on each side (left/right)
+    func horizontalDropShadow() {
+        horizontalView.layer.borderWidth = 0
+        horizontalView.layer.shadowColor = UIColor.black.cgColor
+        horizontalView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        horizontalView.layer.shadowRadius = 5
+        horizontalView.layer.shadowOpacity = 0.5
+        horizontalView.layer.masksToBounds = false
     }
 }
 
