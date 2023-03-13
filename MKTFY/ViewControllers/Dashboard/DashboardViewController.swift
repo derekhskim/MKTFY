@@ -42,7 +42,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         navigationWhiteBackgroundView.clipsToBounds = true
         
         menuButton()
-        addShadows()
         
         searchTextField.borderStyle = .none
         
@@ -74,14 +73,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
 //}
 
 extension DashboardViewController {
-    
-    func addShadows() {
-        horizontalView.layer.shadowColor = UIColor.black.cgColor
-        horizontalView.layer.shadowOpacity = 1
-        horizontalView.layer.shadowOffset = .zero
-        horizontalView.layer.shadowRadius = 10
-
-    }
     
     func menuButton() {
         let menuTapped = UITapGestureRecognizer(target: self, action: #selector(menuButtonTapped))
