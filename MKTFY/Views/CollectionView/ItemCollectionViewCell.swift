@@ -22,6 +22,9 @@ class ItemCollectionViewCell: UICollectionViewCell {
         
         self.mainView.layer.cornerRadius = 10
         self.mainView.layer.masksToBounds = true
+        
+        titleLabel.font = titleFont
+        priceLabel.font = priceFont
     }
 
     func updateData(data: Items) {

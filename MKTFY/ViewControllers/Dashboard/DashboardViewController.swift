@@ -56,13 +56,18 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ItemCollectionViewCell")
         collectionView.register(UINib(nibName: "HeaderCollectionReusableView", bundle: Bundle.main), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView")
         
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 8, left: leftPadding, bottom: 8, right: rightPadding)
-        layout.itemSize = CGSize(width: width / 2 - leftPadding - rightPadding, height: height)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 8
+        let layout = LPCollectionViewLayout()
+        layout.delegate = self
         layout.headerReferenceSize = CGSize(width: width, height: 44)
         collectionView.collectionViewLayout = layout
+
+//        let layout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 8, left: leftPadding, bottom: 8, right: rightPadding)
+//        layout.itemSize = CGSize(width: width / 2 - leftPadding - rightPadding, height: height)
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 8
+//        layout.headerReferenceSize = CGSize(width: width, height: 44)
+//        collectionView.collectionViewLayout = layout
     }
     
     // TODO: Drop Shdoaw is only appearing on each side (left/right)
@@ -107,6 +112,10 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Selected: \(indexPath)")
+    }
 }
 
 extension DashboardViewController {
@@ -125,16 +134,11 @@ extension DashboardViewController {
     }
 }
 
-// This allows equal spacing of UICollectionViewFlowLayout, however it's not necessary as middle spacing has double the size of each edge spacing.
-//extension DashboardViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        var itemSize: CGSize!
-//        if indexPath.row % 2 == 0 {
-//            itemSize = CGSize(width: width / 2 - leftPadding - rightPadding / 2, height: width)
-//        } else {
-//            itemSize = CGSize(width: width / 2 - leftPadding / 2 - rightPadding, height: width)
-//        }
-//        return itemSize
-//    }
-//}
+extension DashboardViewController: LPCollectionViewLayoutDelegate {
+    func collectionView(_ collectionView: UICollectionView, cellWidth: CGFloat, heightForAtIndexPath: IndexPath) -> CGFloat {
+        
+        let height = vm.items[heightForAtIndexPath.row].height(cellWidth: cellWidth)
+        return height
+        
+    }
+}

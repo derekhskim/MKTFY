@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     func applyPatternOnNumbers(pattern: String, replacementCharacter: Character, addCountryCodePrefix: Bool) -> String {
@@ -31,4 +32,18 @@ extension String {
     var isValidEmail: Bool {
         NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}").evaluate(with: self)
     }
+}
+
+extension String {
+    
+    func height(constraintedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let label =  UILabel(frame: CGRect(x: 0, y: 0, width: width, height: .greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.text = self
+        label.font = font
+        label.sizeToFit()
+
+        return label.frame.height
+     }
+    
 }

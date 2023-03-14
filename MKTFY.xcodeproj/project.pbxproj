@@ -61,8 +61,6 @@
 		65D29D562992F1B300D14140 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D29D552992F1B300D14140 /* UITextField+.swift */; };
 		65DC4A3C29BFADF700DCD554 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC4A3A29BFADF700DCD554 /* HeaderCollectionReusableView.swift */; };
 		65DC4A3D29BFADF800DCD554 /* HeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DC4A3B29BFADF700DCD554 /* HeaderCollectionReusableView.xib */; };
-		65DC4A4129BFB41A00DCD554 /* CustomLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DC4A3F29BFB41A00DCD554 /* CustomLayoutViewController.swift */; };
-		65DC4A4229BFB41A00DCD554 /* CustomLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DC4A4029BFB41A00DCD554 /* CustomLayoutViewController.xib */; };
 		65DE1B4929BD887C00C7D3E8 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE1B4829BD887C00C7D3E8 /* Items.swift */; };
 		65DE1B4B29BD891200C7D3E8 /* FlowLayoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE1B4A29BD891200C7D3E8 /* FlowLayoutViewModel.swift */; };
 		65DE1B5129BD97A900C7D3E8 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DE1B4F29BD97A900C7D3E8 /* ItemCollectionViewCell.swift */; };
@@ -133,8 +131,6 @@
 		65D29D552992F1B300D14140 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		65DC4A3A29BFADF700DCD554 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		65DC4A3B29BFADF700DCD554 /* HeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCollectionReusableView.xib; sourceTree = "<group>"; };
-		65DC4A3F29BFB41A00DCD554 /* CustomLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayoutViewController.swift; sourceTree = "<group>"; };
-		65DC4A4029BFB41A00DCD554 /* CustomLayoutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomLayoutViewController.xib; sourceTree = "<group>"; };
 		65DE1B4829BD887C00C7D3E8 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		65DE1B4A29BD891200C7D3E8 /* FlowLayoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutViewModel.swift; sourceTree = "<group>"; };
 		65DE1B4F29BD97A900C7D3E8 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -310,7 +306,6 @@
 		65B8B4FB29AFD79900CB67CE /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				65DC4A3E29BFB40300DCD554 /* CustomLayout */,
 				65613AEE29A56DD30002B90F /* DashboardViewController.swift */,
 				65D1AF6429B45D3B00B4581D /* DashboardMenuViewController.swift */,
 				659DF60C29B6FC1E00FEF0F3 /* AccountInformationViewController.swift */,
@@ -328,19 +323,10 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		65DC4A3E29BFB40300DCD554 /* CustomLayout */ = {
-			isa = PBXGroup;
-			children = (
-				65DC4A3F29BFB41A00DCD554 /* CustomLayoutViewController.swift */,
-				65DC4A4029BFB41A00DCD554 /* CustomLayoutViewController.xib */,
-				65449AA729BFB63800E13CF8 /* LPCollectionViewLayout.swift */,
-			);
-			path = CustomLayout;
-			sourceTree = "<group>";
-		};
 		65DE1B4329BD862700C7D3E8 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				65449AA729BFB63800E13CF8 /* LPCollectionViewLayout.swift */,
 				65DE1B4F29BD97A900C7D3E8 /* ItemCollectionViewCell.swift */,
 				65DE1B5029BD97A900C7D3E8 /* ItemCollectionViewCell.xib */,
 				65DC4A3A29BFADF700DCD554 /* HeaderCollectionReusableView.swift */,
@@ -449,7 +435,6 @@
 				658145A72991B13C00BC9067 /* TextFieldWithError.xib in Resources */,
 				6597D0CC2992C3AF00485932 /* OpenSans-MediumItalic.ttf in Resources */,
 				65AB2A6329AB083B002B3D1B /* .gitignore in Resources */,
-				65DC4A4229BFB41A00DCD554 /* CustomLayoutViewController.xib in Resources */,
 				6597D0CF2992C3AF00485932 /* OpenSans-Bold.ttf in Resources */,
 				6597D0D02992C3AF00485932 /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				6597D0CB2992C3AF00485932 /* OpenSans-Italic.ttf in Resources */,
@@ -518,7 +503,6 @@
 				65A646F6299C1E8000262DB8 /* CheckBox.swift in Sources */,
 				658145AA2991B27B00BC9067 /* LPView.swift in Sources */,
 				65449AA829BFB63800E13CF8 /* LPCollectionViewLayout.swift in Sources */,
-				65DC4A4129BFB41A00DCD554 /* CustomLayoutViewController.swift in Sources */,
 				65D29D562992F1B300D14140 /* UITextField+.swift in Sources */,
 				6568E1012988AACF001482AB /* SceneDelegate.swift in Sources */,
 			);
