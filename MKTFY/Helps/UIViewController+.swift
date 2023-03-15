@@ -108,8 +108,7 @@ extension UIViewController {
     }
 }
 
-// MARK: - Show Alert
-// TODO: Custom ShowAlert
+// MARK: - Show Custom Alert
 extension UIViewController {
     func showAlert(title: String, message: String, purpleButtonTitle: String, whiteButtonTitle: String) {
         let customAlert = CustomAlertViewController(title: title, description: message, purpleButtonTitle: purpleButtonTitle, whiteButtonTitle: whiteButtonTitle)

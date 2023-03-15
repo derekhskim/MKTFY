@@ -37,7 +37,6 @@ class LoginViewController: MainViewController, LoginStoryboard {
                     self.coordinator?.goToDashboardVC()
                 }
             } else {
-                print("Failed to authenticate with Auth0: \(String(describing: error))")
                 DispatchQueue.main.async {
                     self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
                     

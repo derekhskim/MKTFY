@@ -10,7 +10,6 @@ import UIKit
 class CustomAlertViewController: UIViewController {
     init(title: String, description: String, purpleButtonTitle: String, whiteButtonTitle: String) {
         super.init(nibName: nil, bundle: nil)
-        self.title = ""
         self.modalPresentationStyle = .overFullScreen
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
         setupCustomAlert(title: title, description: description, purpleButtonTitle: purpleButtonTitle, whiteButtonTitle: whiteButtonTitle)

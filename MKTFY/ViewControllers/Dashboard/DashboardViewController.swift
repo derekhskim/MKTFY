@@ -72,7 +72,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
+//        print(scrollView.contentOffset.y)
         if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 64 {
             
         }
@@ -90,16 +90,15 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
     
     func floatingButton() {
         let image = UIImage(systemName: "plus.circle")
-        let tintedImage = image?.withRenderingMode(.alwaysTemplate)
         var configuration = UIButton.Configuration.filled()
         configuration.title = "Create Listing"
         configuration.image = image
-        configuration.attributedTitle?.font = UIFont(name: "OpenSans", size: 14)
+        configuration.attributedTitle?.font = UIFont(name: "OpenSans-Bold", size: 14)
         configuration.attributedTitle?.foregroundColor = .white
         configuration.background.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
         configuration.imagePadding = 10
         configuration.image?.withTintColor(.white, renderingMode: .alwaysTemplate)
-        configuration.cornerStyle = .large
+        configuration.cornerStyle = .capsule
         
         let floatingButton = UIButton(configuration: configuration)
         
@@ -145,7 +144,7 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
 
         return cell
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath)
