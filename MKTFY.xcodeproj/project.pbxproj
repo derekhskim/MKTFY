@@ -10,6 +10,7 @@
 		6500C7ED29AD1963008EBA01 /* SecureTextFieldWithLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6500C7EC29AD1963008EBA01 /* SecureTextFieldWithLabel.xib */; };
 		651218BC298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651218BB298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift */; };
 		653F2401298CBE7A0053C5E1 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653F2400298CBE7A0053C5E1 /* UIImage+.swift */; };
+		6543314729C226E4008D7728 /* CreateListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543314629C226E4008D7728 /* CreateListingViewController.swift */; };
 		654444C129AD5FD500E61F69 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C029AD5FD500E61F69 /* Coordinator.swift */; };
 		654444C329AD60E300E61F69 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C229AD60E300E61F69 /* MainCoordinator.swift */; };
 		654444C529AD63C900E61F69 /* LoginStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654444C429AD63C900E61F69 /* LoginStoryboard.swift */; };
@@ -79,6 +80,7 @@
 		6500C7EC29AD1963008EBA01 /* SecureTextFieldWithLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecureTextFieldWithLabel.xib; sourceTree = "<group>"; };
 		651218BB298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVerificationViewController.swift; sourceTree = "<group>"; };
 		653F2400298CBE7A0053C5E1 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		6543314629C226E4008D7728 /* CreateListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingViewController.swift; sourceTree = "<group>"; };
 		654444C029AD5FD500E61F69 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		654444C229AD60E300E61F69 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		654444C429AD63C900E61F69 /* LoginStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStoryboard.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				65613AEE29A56DD30002B90F /* DashboardViewController.swift */,
 				65D1AF6429B45D3B00B4581D /* DashboardMenuViewController.swift */,
 				659DF60C29B6FC1E00FEF0F3 /* AccountInformationViewController.swift */,
+				6543314629C226E4008D7728 /* CreateListingViewController.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				65C28FCC2988BB6500A3BBEE /* UIViewController+.swift in Sources */,
 				651218BC298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift in Sources */,
 				65DC4A3C29BFADF700DCD554 /* HeaderCollectionReusableView.swift in Sources */,
+				6543314729C226E4008D7728 /* CreateListingViewController.swift in Sources */,
 				659DF60D29B6FC1E00FEF0F3 /* AccountInformationViewController.swift in Sources */,
 				6568E1142988AF50001482AB /* UIColor+.swift in Sources */,
 				65D1AF6529B45D3B00B4581D /* DashboardMenuViewController.swift in Sources */,

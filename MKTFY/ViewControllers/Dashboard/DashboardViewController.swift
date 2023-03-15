@@ -47,6 +47,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         
         menuButton()
         horizontalDropShadow()
+        floatingButton()
         
         searchTextField.borderStyle = .none
         
@@ -70,6 +71,13 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
 //        collectionView.collectionViewLayout = layout
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
+        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 64 {
+            
+        }
+    }
+    
     // TODO: Drop Shdoaw is only appearing on each side (left/right)
     func horizontalDropShadow() {
         horizontalView.layer.borderWidth = 0
@@ -78,6 +86,39 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         horizontalView.layer.shadowRadius = 5
         horizontalView.layer.shadowOpacity = 0.5
         horizontalView.layer.masksToBounds = false
+    }
+    
+    func floatingButton() {
+        let image = UIImage(systemName: "plus.circle")
+        let tintedImage = image?.withRenderingMode(.alwaysTemplate)
+        var configuration = UIButton.Configuration.filled()
+        configuration.title = "Create Listing"
+        configuration.image = image
+        configuration.attributedTitle?.font = UIFont(name: "OpenSans", size: 14)
+        configuration.attributedTitle?.foregroundColor = .white
+        configuration.background.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
+        configuration.imagePadding = 10
+        configuration.image?.withTintColor(.white, renderingMode: .alwaysTemplate)
+        configuration.cornerStyle = .large
+        
+        let floatingButton = UIButton(configuration: configuration)
+        
+        view.addSubview(floatingButton)
+        floatingButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            floatingButton.widthAnchor.constraint(equalToConstant: 165),
+            floatingButton.heightAnchor.constraint(equalToConstant: 50),
+            floatingButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            floatingButton.bottomAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor, constant: -10)
+        ])
+        
+        floatingButton.addTarget(self, action: #selector(floatingButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func floatingButtonTapped() {
+        print("Floating Button Tapped!")
+        coordinator?.presentCreateListingVC()
     }
 }
 
