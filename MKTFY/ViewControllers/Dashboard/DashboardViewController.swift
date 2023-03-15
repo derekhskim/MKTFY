@@ -117,7 +117,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
     }
     
     @objc func floatingButtonTapped() {
-        print("Floating Button Tapped!")
         coordinator?.presentCreateListingVC()
     }
 }

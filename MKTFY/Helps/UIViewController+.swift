@@ -25,31 +25,31 @@ extension UIViewController {
         }
         
         guard let url = URL(string: "\(url)") else { return }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-
+        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if let error = error {
-                    // Handle network error
-                    print("error: \(error.localizedDescription)")
-                    completion(nil)
-                    return
-                }
-
-                guard let data = data, let token = String(data: data, encoding: .utf8) else {
-                    // Handle response data error
-                    completion(nil)
-                    return
-                }
-
-                completion(token)
+            if let error = error {
+                // Handle network error
+                print("error: \(error.localizedDescription)")
+                completion(nil)
+                return
             }
-
-            task.resume()
+            
+            guard let data = data, let token = String(data: data, encoding: .utf8) else {
+                // Handle response data error
+                completion(nil)
+                return
+            }
+            
+            completion(token)
+        }
+        
+        task.resume()
     }
     
-    // Will probably remove it once back-end setup is complete 
+    // Will probably remove it once back-end setup is complete
     func getUserMetadata() async {
         if let accessToken = UserDefaults.standard.object(forKey: "authenticationAPI") as? String {
             print(accessToken)
@@ -111,10 +111,10 @@ extension UIViewController {
 // MARK: - Show Alert
 // TODO: Custom ShowAlert
 extension UIViewController {
-    func showAlert(title: String, message: String, buttonTitle: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okayAction = UIAlertAction(title: buttonTitle, style: .default, handler: nil)
-        alertController.addAction(okayAction)
-        self.present(alertController, animated: true, completion: nil)
+    func showAlert(title: String, message: String, purpleButtonTitle: String, whiteButtonTitle: String) {
+        let customAlert = CustomAlertViewController(title: title, description: message, purpleButtonTitle: purpleButtonTitle, whiteButtonTitle: whiteButtonTitle)
+        customAlert.modalPresentationStyle = .overCurrentContext
+        customAlert.modalTransitionStyle = .crossDissolve
+        self.present(customAlert, animated: true, completion: nil)
     }
 }
