@@ -61,14 +61,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         layout.delegate = self
         layout.headerReferenceSize = CGSize(width: width, height: 44)
         collectionView.collectionViewLayout = layout
-
-//        let layout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 8, left: leftPadding, bottom: 8, right: rightPadding)
-//        layout.itemSize = CGSize(width: width / 2 - leftPadding - rightPadding, height: height)
-//        layout.minimumInteritemSpacing = 0
-//        layout.minimumLineSpacing = 8
-//        layout.headerReferenceSize = CGSize(width: width, height: 44)
-//        collectionView.collectionViewLayout = layout
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -78,8 +70,9 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         }
     }
     
-    // TODO: Drop Shdoaw is only appearing on each side (left/right)
+    // MARK: - func
     func horizontalDropShadow() {
+        // TODO: Drop Shdoaw is only appearing on each side (left/right)
         horizontalView.layer.borderWidth = 0
         horizontalView.layer.shadowColor = UIColor.black.cgColor
         horizontalView.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -154,6 +147,12 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected: \(indexPath)")
+    }
+}
+
+extension DashboardViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 44)
     }
 }
 

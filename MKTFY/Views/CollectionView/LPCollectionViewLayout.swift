@@ -15,6 +15,7 @@ protocol LPCollectionViewLayoutDelegate: AnyObject {
 class LPCollectionViewLayout: UICollectionViewFlowLayout {
     weak var delegate: LPCollectionViewLayoutDelegate?
     
+    private var headerLayoutAttributes: UICollectionViewLayoutAttributes?
     private let numberOfColumns = 2
     private let cellPadding: CGFloat = 8
     
@@ -35,14 +36,19 @@ class LPCollectionViewLayout: UICollectionViewFlowLayout {
     override func prepare() {
         guard cache.isEmpty, let collectionView = collectionView else { return }
         
+        let headerIndexPath = IndexPath(item: 0, section: 0)
+        let headerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: headerIndexPath)
+        headerAttributes.frame = CGRect(x: 0, y: 0, width: contentWidth, height: headerReferenceSize.height)
+        headerLayoutAttributes = headerAttributes
+                
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         var xOffset: [CGFloat] = []
         for column in 0..<numberOfColumns {
             xOffset.append(CGFloat(column) * columnWidth)
         }
         var column = 0
-        var yOffset: [CGFloat] = .init(repeating: 0, count: numberOfColumns)
-        
+        var yOffset: [CGFloat] = .init(repeating: headerReferenceSize.height, count: numberOfColumns)
+
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
             
@@ -71,6 +77,18 @@ class LPCollectionViewLayout: UICollectionViewFlowLayout {
                 visibleLayoutAttributes.append(attributes)
             }
         }
+        
+        if let headerAttributes = headerLayoutAttributes, headerAttributes.frame.intersects(rect) {
+            visibleLayoutAttributes.append(headerAttributes)
+        }
         return visibleLayoutAttributes
     }
+    
+    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        if elementKind == UICollectionView.elementKindSectionHeader {
+            return headerLayoutAttributes
+        }
+        return nil
+    }
+    
 }
