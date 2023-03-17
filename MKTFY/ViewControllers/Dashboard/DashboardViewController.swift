@@ -52,11 +52,13 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         
         horizontalDropShadow()
         horizontalScrollView.bounces = false
+        horizontalScrollView.showsHorizontalScrollIndicator = false
         
         searchTextField.borderStyle = .none
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.showsVerticalScrollIndicator = false
         
         collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ItemCollectionViewCell")
         collectionView.register(UINib(nibName: "HeaderCollectionReusableView", bundle: Bundle.main), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView")
@@ -72,14 +74,14 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         horizontalView.backgroundColor = .clear
 
         let topShadow = CAGradientLayer()
-        topShadow.frame = CGRect(x: 0, y: 0, width: horizontalView.bounds.width, height: 5)
-        topShadow.colors = [UIColor.black.withAlphaComponent(0.5).cgColor, UIColor.clear.cgColor]
+        topShadow.frame = CGRect(x: 0, y: 0, width: horizontalView.bounds.width, height: 2)
+        topShadow.colors = [UIColor.black.withAlphaComponent(0.25).cgColor, UIColor.clear.cgColor]
         topShadow.startPoint = CGPoint(x: 0.5, y: 1.0)
         topShadow.endPoint = CGPoint(x: 0.5, y: 0.0)
 
         let bottomShadow = CAGradientLayer()
         bottomShadow.frame = CGRect(x: 0, y: horizontalView.bounds.height - 5, width: horizontalView.bounds.width, height: 5)
-        bottomShadow.colors = [UIColor.black.withAlphaComponent(0.5).cgColor, UIColor.clear.cgColor]
+        bottomShadow.colors = [UIColor.black.withAlphaComponent(0.25).cgColor, UIColor.clear.cgColor]
         bottomShadow.startPoint = CGPoint(x: 0.5, y: 0.0)
         bottomShadow.endPoint = CGPoint(x: 0.5, y: 1.0)
 
