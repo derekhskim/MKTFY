@@ -10,6 +10,7 @@ import UIKit
 class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard, UIScrollViewDelegate, UISearchBarDelegate {
     
     var customDropDownView: UIView?
+    var dropDownView: UIView!
     
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
@@ -75,6 +76,21 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
         
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let options = ["Calgary", "Camrose", "Brooks"]
+        let filteredOptions = searchText.isEmpty ? options : options.filter { $0.lowercased().contains(searchText.lowercased()) }
+        
+        for (index, button) in dropDownView.subviews.compactMap({ $0 as? UIButton }).enumerated() {
+            if filteredOptions.indices.contains(index) {
+                let option = filteredOptions[index]
+                button.setTitle(option, for: .normal)
+                button.isHidden = false
+            } else {
+                button.isHidden = true
+            }
+        }
+    }
+    
 }
 
 // MARK: - Extension
@@ -113,7 +129,7 @@ extension CreateAccountViewController {
             dropDownView.removeFromSuperview()
             customDropDownView = nil
         } else {
-            let dropDownView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+            dropDownView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
             dropDownView.backgroundColor = .white
             dropDownView.layer.cornerRadius = 8
             dropDownView.layer.shadowColor = UIColor.black.cgColor
@@ -151,19 +167,6 @@ extension CreateAccountViewController {
                 searchBar.trailingAnchor.constraint(equalTo: dropDownView.trailingAnchor),
                 searchBar.heightAnchor.constraint(equalToConstant: 44)
             ])
-            
-            func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-                let options = ["Calgary", "Camrose", "Brooks"]
-                let filteredOptions = searchText.isEmpty ? options : options.filter { $0.lowercased().contains(searchText.lowercased()) }
-
-                for button in dropDownView.subviews.compactMap({ $0 as? UIButton }) {
-                    if let title = button.title(for: .normal), let index = options.firstIndex(of: title) {
-                        let option = filteredOptions.indices.contains(index) ? filteredOptions[index] : ""
-                        button.setTitle(option, for: .normal)
-                        button.isHidden = option.isEmpty
-                    }
-                }
-            }
             
             let rect = cityField.convert(cityField.bounds, to: view)
             dropDownView.frame.origin = CGPoint(x: rect.maxX - dropDownView.frame.width, y: rect.maxY)
