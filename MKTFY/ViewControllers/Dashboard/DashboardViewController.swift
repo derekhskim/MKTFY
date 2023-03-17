@@ -23,6 +23,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var horizontalView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var cstTopCollectionView: NSLayoutConstraint!
     
     // MARK: - @IBAction
     
@@ -61,13 +62,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         layout.delegate = self
         layout.headerReferenceSize = CGSize(width: width, height: 44)
         collectionView.collectionViewLayout = layout
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(scrollView.contentOffset.y)
-        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 64 {
-            
-        }
     }
     
     // MARK: - func
