@@ -128,10 +128,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
             triangleView.translatesAutoresizingMaskIntoConstraints = false
             dropDownView.addSubview(triangleView)
             
-            NSLayoutConstraint.activate([
-                
-            ])
-            
             let options = ["Calgary", "Camrose", "Brooks"]
             
             for (index, option) in options.enumerated() {
