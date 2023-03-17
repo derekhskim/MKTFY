@@ -142,7 +142,7 @@ extension CreateAccountViewController {
             dropDownView.removeFromSuperview()
             customDropDownView = nil
         } else {
-            dropDownView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+            dropDownView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 200))
             dropDownView.backgroundColor = .white
             dropDownView.layer.shadowColor = UIColor.black.cgColor
             dropDownView.layer.shadowOpacity = 0.5
@@ -156,10 +156,7 @@ extension CreateAccountViewController {
             dropDownView.addSubview(triangleView)
             
             NSLayoutConstraint.activate([
-                triangleView.bottomAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 0),
-                triangleView.trailingAnchor.constraint(equalTo: dropDownView.trailingAnchor, constant: -3.5),
-                triangleView.heightAnchor.constraint(equalToConstant: 11),
-                triangleView.widthAnchor.constraint(equalToConstant: 24.5)
+                
             ])
             
             let options = ["Calgary", "Camrose", "Brooks"]
@@ -191,6 +188,11 @@ extension CreateAccountViewController {
             dropDownView.addSubview(searchBar)
             
             NSLayoutConstraint.activate([
+                triangleView.bottomAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 0),
+                triangleView.trailingAnchor.constraint(equalTo: dropDownView.trailingAnchor, constant: -3.5),
+                triangleView.heightAnchor.constraint(equalToConstant: 11),
+                triangleView.widthAnchor.constraint(equalToConstant: 24.5),
+                
                 searchBar.topAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 10),
                 searchBar.leadingAnchor.constraint(equalTo: dropDownView.leadingAnchor),
                 searchBar.trailingAnchor.constraint(equalTo: dropDownView.trailingAnchor),
