@@ -7,7 +7,9 @@
 
 import UIKit
 
-class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard {
+class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard, UIScrollViewDelegate {
+    
+    var customDropDownView: UIView?
     
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
@@ -19,6 +21,7 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
     @IBOutlet weak var cityField: TextFieldWithError!
     @IBOutlet var wholeView: UIView!
     @IBOutlet weak var nextButton: Button!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: - @IBAction
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -65,6 +68,8 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
         emailField.inputTextField.keyboardType = .emailAddress
         phoneField.inputTextField.keyboardType = .numberPad
         
+        scrollView.delegate = self
+        
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
         
@@ -90,36 +95,63 @@ extension CreateAccountViewController {
         imgViewForDropDown.frame = CGRect(x: 0, y: 0, width: 30, height: 48)
         imgViewForDropDown.image = UIImage(named: "drop_down_arrow")
         imgViewForDropDown.isUserInteractionEnabled = true
-
+        
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imgViewForDropDown.frame.width + 10, height: imgViewForDropDown.frame.height))
         containerView.addSubview(imgViewForDropDown)
-
+        
         cityField.inputTextField.rightView = containerView
         cityField.inputTextField.rightViewMode = .always
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDropDownMenu))
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showCustomDropDownView))
         imgViewForDropDown.addGestureRecognizer(tapGesture)
         
         imgViewForDropDown.contentMode = .right
     }
     
-    @objc func showDropDownMenu() {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let options = ["Calgary", "Camrose", "Brooks"]
-        
-        for option in options {
-            let action = UIAlertAction(title: option, style: .default) { (action) in
-                self.cityField.inputTextField.text = option
-                self.cityField.inputTextField.sendActions(for: .editingChanged)
+    @objc func showCustomDropDownView() {
+        if let dropDownView = customDropDownView {
+            dropDownView.removeFromSuperview()
+            customDropDownView = nil
+        } else {
+            let dropDownView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
+            dropDownView.backgroundColor = .white
+            dropDownView.layer.cornerRadius = 8
+            dropDownView.layer.shadowColor = UIColor.black.cgColor
+            dropDownView.layer.shadowOpacity = 0.5
+            dropDownView.layer.shadowOffset = CGSize(width: 0, height: 1)
+            dropDownView.layer.shadowRadius = 5
+            dropDownView.clipsToBounds = false
+            
+            let options = ["Calgary", "Camrose", "Brooks"]
+            
+            for (index, option) in options.enumerated() {
+                let button = UIButton(type: .system)
+                button.setTitle(option, for: .normal)
+                button.addTarget(self, action: #selector(dropDownOptionSelected(_:)), for: .touchUpInside)
+                button.frame = CGRect(x: 0, y: CGFloat(index) * 50, width: 200, height: 50)
+                dropDownView.addSubview(button)
             }
-            alertController.addAction(action)
+            
+            let rect = cityField.convert(cityField.bounds, to: view)
+            dropDownView.frame.origin = CGPoint(x: rect.maxX - dropDownView.frame.width, y: rect.maxY)
+            view.addSubview(dropDownView)
+            customDropDownView = dropDownView
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func dropDownOptionSelected(_ sender: UIButton) {
+        if let option = sender.title(for: .normal) {
+            cityField.inputTextField.text = option
+            cityField.inputTextField.sendActions(for: .editingChanged)
+        }
+        sender.superview?.removeFromSuperview()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let dropDownView = customDropDownView {
+            let rect = cityField.convert(cityField.bounds, to: view)
+            dropDownView.frame.origin = CGPoint(x: rect.maxX - dropDownView.frame.width, y: rect.maxY)
+        }
     }
     
     func passwordCreated(_ password: String) {
