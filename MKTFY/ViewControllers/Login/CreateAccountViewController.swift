@@ -71,9 +71,22 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
         
         scrollView.delegate = self
         
+        let tapOutsideDropDown = UITapGestureRecognizer(target: self, action: #selector(handleOutsideTap))
+        view.addGestureRecognizer(tapOutsideDropDown)
+        
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
         
+    }
+    
+    @objc func handleOutsideTap(_ sender: UITapGestureRecognizer) {
+        if let dropDownView = customDropDownView {
+            let point = sender.location(in: dropDownView)
+            if !dropDownView.bounds.contains(point) {
+                dropDownView.removeFromSuperview()
+                customDropDownView = nil
+            }
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -131,7 +144,6 @@ extension CreateAccountViewController {
         } else {
             dropDownView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
             dropDownView.backgroundColor = .white
-            dropDownView.layer.cornerRadius = 8
             dropDownView.layer.shadowColor = UIColor.black.cgColor
             dropDownView.layer.shadowOpacity = 0.5
             dropDownView.layer.shadowOffset = CGSize(width: 0, height: 1)
