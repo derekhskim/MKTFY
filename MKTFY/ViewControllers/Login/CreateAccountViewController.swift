@@ -142,7 +142,7 @@ extension CreateAccountViewController {
             dropDownView.removeFromSuperview()
             customDropDownView = nil
         } else {
-            dropDownView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 200))
+            dropDownView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
             dropDownView.backgroundColor = .white
             dropDownView.layer.shadowColor = UIColor.black.cgColor
             dropDownView.layer.shadowOpacity = 0.5
