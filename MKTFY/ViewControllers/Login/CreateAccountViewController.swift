@@ -127,8 +127,14 @@ extension CreateAccountViewController {
             for (index, option) in options.enumerated() {
                 let button = UIButton(type: .system)
                 button.setTitle(option, for: .normal)
+                button.contentHorizontalAlignment = .left
+                button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+                button.setTitleColor(.black, for: .normal)
+                button.setTitleColor(UIColor.appColor(LPColor.OccasionalPurple), for: .highlighted)
                 button.addTarget(self, action: #selector(dropDownOptionSelected(_:)), for: .touchUpInside)
                 button.frame = CGRect(x: 0, y: CGFloat(index) * 50, width: 200, height: 50)
+                button.backgroundColor = .white
+                button.setBackgroundImage(UIImage(color: UIColor.appColor(LPColor.VerySubtleGray), alpha: 0.25), for: .highlighted)
                 dropDownView.addSubview(button)
             }
             
