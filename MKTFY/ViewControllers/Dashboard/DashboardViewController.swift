@@ -15,13 +15,14 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
     let rightPadding: CGFloat = 8
     let width = UIScreen.main.bounds.width
     let height: CGFloat = 270
-
+    
     // MARK: - @IBOutlet
     @IBOutlet weak var navigationWhiteBackgroundView: UIView!
     @IBOutlet weak var menuImageView: UIImageView!
     @IBOutlet weak var searchImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var horizontalView: UIView!
+    @IBOutlet weak var horizontalScrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var cstTopCollectionView: NSLayoutConstraint!
     
@@ -33,7 +34,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
@@ -47,14 +48,16 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
         navigationWhiteBackgroundView.clipsToBounds = true
         
         menuButton()
-        horizontalDropShadow()
         floatingButton()
+        
+        horizontalDropShadow()
+        horizontalScrollView.bounces = false
         
         searchTextField.borderStyle = .none
         
         collectionView.delegate = self
         collectionView.dataSource = self
-
+        
         collectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ItemCollectionViewCell")
         collectionView.register(UINib(nibName: "HeaderCollectionReusableView", bundle: Bundle.main), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView")
         
@@ -66,13 +69,22 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
     
     // MARK: - func
     func horizontalDropShadow() {
-        // TODO: Drop Shdoaw is only appearing on each side (left/right)
-        horizontalView.layer.borderWidth = 0
-        horizontalView.layer.shadowColor = UIColor.black.cgColor
-        horizontalView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        horizontalView.layer.shadowRadius = 5
-        horizontalView.layer.shadowOpacity = 0.5
-        horizontalView.layer.masksToBounds = false
+        horizontalView.backgroundColor = .clear
+
+        let topShadow = CAGradientLayer()
+        topShadow.frame = CGRect(x: 0, y: 0, width: horizontalView.bounds.width, height: 5)
+        topShadow.colors = [UIColor.black.withAlphaComponent(0.5).cgColor, UIColor.clear.cgColor]
+        topShadow.startPoint = CGPoint(x: 0.5, y: 1.0)
+        topShadow.endPoint = CGPoint(x: 0.5, y: 0.0)
+
+        let bottomShadow = CAGradientLayer()
+        bottomShadow.frame = CGRect(x: 0, y: horizontalView.bounds.height - 5, width: horizontalView.bounds.width, height: 5)
+        bottomShadow.colors = [UIColor.black.withAlphaComponent(0.5).cgColor, UIColor.clear.cgColor]
+        bottomShadow.startPoint = CGPoint(x: 0.5, y: 0.0)
+        bottomShadow.endPoint = CGPoint(x: 0.5, y: 1.0)
+
+        horizontalView.layer.addSublayer(topShadow)
+        horizontalView.layer.addSublayer(bottomShadow)
     }
     
     func floatingButton() {
@@ -109,15 +121,15 @@ class DashboardViewController: MainViewController, DashboardStoryboard {
 
 // MARK: - Extension
 extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return vm.items.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCollectionViewCell", for: indexPath) as! ItemCollectionViewCell
-
+        
         cell.layer.cornerRadius = 10
         cell.layer.borderWidth = 0
         cell.layer.shadowColor = UIColor.black.cgColor
@@ -128,10 +140,10 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
         
         let item = vm.items[indexPath.row]
         cell.updateData(data: item)
-
+        
         return cell
     }
-        
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath)

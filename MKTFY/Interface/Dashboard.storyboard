@@ -554,6 +554,7 @@
                     <connections>
                         <outlet property="collectionView" destination="7i9-ue-DuX" id="P8W-v9-a6q"/>
                         <outlet property="cstTopCollectionView" destination="sdb-ld-RPK" id="m2Z-6T-i9J"/>
+                        <outlet property="horizontalScrollView" destination="1PA-g7-II1" id="0Vc-x9-Vuy"/>
                         <outlet property="horizontalView" destination="rwf-XQ-5zf" id="XPg-Mn-VbI"/>
                         <outlet property="menuImageView" destination="hFC-fV-WT0" id="BMZ-bM-c20"/>
                         <outlet property="navigationWhiteBackgroundView" destination="QQ8-Kx-FVG" id="4b0-fB-zep"/>
