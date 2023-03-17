@@ -150,6 +150,18 @@ extension CreateAccountViewController {
             dropDownView.layer.shadowRadius = 5
             dropDownView.clipsToBounds = false
             
+            let triangleView = UIImageView()
+            triangleView.image = UIImage(named: "white_triangle")
+            triangleView.translatesAutoresizingMaskIntoConstraints = false
+            dropDownView.addSubview(triangleView)
+            
+            NSLayoutConstraint.activate([
+                triangleView.bottomAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 0),
+                triangleView.trailingAnchor.constraint(equalTo: dropDownView.trailingAnchor, constant: -3.5),
+                triangleView.heightAnchor.constraint(equalToConstant: 11),
+                triangleView.widthAnchor.constraint(equalToConstant: 24.5)
+            ])
+            
             let options = ["Calgary", "Camrose", "Brooks"]
             
             for (index, option) in options.enumerated() {
@@ -171,10 +183,15 @@ extension CreateAccountViewController {
             searchBar.placeholder = "Search City"
             searchBar.delegate = self
             searchBar.searchTextField.backgroundColor = .clear
+            searchBar.searchTextField.layer.borderWidth = 1
+            searchBar.searchTextField.layer.borderColor = UIColor.appColor(LPColor.SubtleGray).cgColor
+            
+            searchBar.backgroundImage = UIImage()
+            
             dropDownView.addSubview(searchBar)
             
             NSLayoutConstraint.activate([
-                searchBar.topAnchor.constraint(equalTo: dropDownView.topAnchor),
+                searchBar.topAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 10),
                 searchBar.leadingAnchor.constraint(equalTo: dropDownView.leadingAnchor),
                 searchBar.trailingAnchor.constraint(equalTo: dropDownView.trailingAnchor),
                 searchBar.heightAnchor.constraint(equalToConstant: 44)
