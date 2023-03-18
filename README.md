@@ -1,5 +1,4 @@
-# MKTFY
-![Header](./Logo.png)
+# ![Header](./Logo.png)
 
 A buy & sell platform for users to list, view, purchase, and sell items. 
 
