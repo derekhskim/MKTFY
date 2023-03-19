@@ -24,6 +24,8 @@ class FAQViewController: MainViewController, DashboardStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBarWithBackButton()
+        
         configureVCPath()
     }
     

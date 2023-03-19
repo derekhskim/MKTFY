@@ -14,6 +14,12 @@ class ContactUsViewController: MainViewController, DashboardStoryboard, UITextVi
     @IBOutlet weak var nameView: TextFieldWithError!
     @IBOutlet weak var emailView: TextFieldWithError!
     @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var sendButton: Button!
+    
+    // MARK: - @IBAction
+    @IBAction func sendButtonTapped(_ sender: Any) {
+        print("Send Button Tapped!")
+    }
     
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
