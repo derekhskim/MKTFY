@@ -744,6 +744,153 @@
             </objects>
             <point key="canvasLocation" x="964" y="-759"/>
         </scene>
+        <!--FAQ View Controller-->
+        <scene sceneID="JTI-G0-VfL">
+            <objects>
+                <viewController storyboardIdentifier="FAQViewController" id="Xg9-ic-7BM" userLabel="FAQ View Controller" customClass="FAQViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9DY-2r-EXo">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DT0-CY-kF8" userLabel="backgroundView">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqO-Jb-vuj" userLabel="FAQ1 View">
+                                        <rect key="frame" x="0.0" y="38" width="393" height="68"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCm-c7-PEm">
+                                                <rect key="frame" x="10" y="0.0" width="373" height="68"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="How MKTFY works?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPe-zT-JCU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="368" height="68"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="h6N-e8-IWl">
+                                                        <rect key="frame" x="368" y="0.0" width="5" height="68"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="5" id="T2O-aC-HKD"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="sCm-c7-PEm" secondAttribute="bottom" id="II0-44-P1k"/>
+                                            <constraint firstItem="sCm-c7-PEm" firstAttribute="top" secondItem="WqO-Jb-vuj" secondAttribute="top" id="K8R-Zd-zHR"/>
+                                            <constraint firstAttribute="trailing" secondItem="sCm-c7-PEm" secondAttribute="trailing" constant="10" id="Qkc-5k-U3H"/>
+                                            <constraint firstAttribute="height" constant="68" id="iIK-6Q-Oev"/>
+                                            <constraint firstItem="sCm-c7-PEm" firstAttribute="leading" secondItem="WqO-Jb-vuj" secondAttribute="leading" constant="10" id="qNb-xS-ArN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                                <constraints>
+                                    <constraint firstItem="WqO-Jb-vuj" firstAttribute="top" secondItem="DT0-CY-kF8" secondAttribute="top" constant="38" id="UxO-p1-taZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="WqO-Jb-vuj" secondAttribute="trailing" id="X1R-MG-GIM"/>
+                                    <constraint firstItem="WqO-Jb-vuj" firstAttribute="leading" secondItem="DT0-CY-kF8" secondAttribute="leading" id="XIb-2X-eGg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RZR-WB-8S4"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="DT0-CY-kF8" secondAttribute="bottom" id="Fkw-eT-dXy"/>
+                            <constraint firstItem="DT0-CY-kF8" firstAttribute="top" secondItem="RZR-WB-8S4" secondAttribute="top" id="LfU-ID-sFs"/>
+                            <constraint firstItem="DT0-CY-kF8" firstAttribute="leading" secondItem="RZR-WB-8S4" secondAttribute="leading" id="MbN-92-Fp8"/>
+                            <constraint firstItem="RZR-WB-8S4" firstAttribute="trailing" secondItem="DT0-CY-kF8" secondAttribute="trailing" id="sRf-Mt-iqo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="FAQ" style="editor" id="6Ee-iH-Qi2" userLabel="FAQ"/>
+                    <connections>
+                        <outlet property="FAQ1View" destination="WqO-Jb-vuj" id="tMI-Ey-cLJ"/>
+                        <outlet property="backgroundView" destination="DT0-CY-kF8" id="WuG-j6-QE2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u23-me-OZA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="964" y="-1599"/>
+        </scene>
+        <!--FAQ1 View Controller-->
+        <scene sceneID="aSU-Lm-hHC">
+            <objects>
+                <viewController storyboardIdentifier="FAQ1ViewController" id="fFf-74-9zV" userLabel="FAQ1 View Controller" customClass="FAQ1ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WvH-yD-ZHJ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6do-do-pfS">
+                                <rect key="frame" x="0.0" y="59" width="393" height="1007"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtV-bc-iRW" userLabel="backgroundView">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1000"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How MKTFY works?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEM-0m-OMJ">
+                                                <rect key="frame" x="21" y="38" width="232" height="33"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="24"/>
+                                                <color key="textColor" name="OccasionalPurple"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yL-3y-asV">
+                                                <rect key="frame" x="21" y="95" width="351" height="801"/>
+                                                <string key="text">These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [business entity name] (“we,” “us” or “our”), concerning your access to and use of the [website name.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
+
+You agree that by accessing the Site, you have read, understood, and agree to be bound by all of these Terms of Service. If you do not agree with all of these Terms of Service, then you are expressly prohibited from using the Site and you must discontinue use immediately.
+
+Supplemental Terms of Service or documents that may be posted on the Site from time to time are hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make changes or modifications to these Terms of Service at any time and for any reason.
+
+We will alert you about any changes by updating the “Last updated” date of these Terms of Service, and you waive any right to receive specific notice of each such change.
+
+It is your responsibility to periodically review these Terms of Service to stay informed of updates. You will be subject to, and will be deemed to have been made aware of and to have accepted, the changes in any revised Terms of Service by your continued use of the Site after the date such revised Terms of Service are posted.
+
+The information provided on the Site is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country.</string>
+                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" name="VerySubtleGray"/>
+                                        <constraints>
+                                            <constraint firstItem="UEM-0m-OMJ" firstAttribute="leading" secondItem="xtV-bc-iRW" secondAttribute="leading" constant="21" id="2h4-1n-TQb"/>
+                                            <constraint firstAttribute="height" constant="1000" id="7Mm-Gi-piN"/>
+                                            <constraint firstItem="3yL-3y-asV" firstAttribute="leading" secondItem="xtV-bc-iRW" secondAttribute="leading" constant="21" id="NUM-fa-xXa"/>
+                                            <constraint firstAttribute="trailing" secondItem="3yL-3y-asV" secondAttribute="trailing" constant="21" id="ScS-Lg-5po"/>
+                                            <constraint firstItem="3yL-3y-asV" firstAttribute="top" secondItem="UEM-0m-OMJ" secondAttribute="bottom" constant="24" id="ZXU-rw-n1d"/>
+                                            <constraint firstItem="UEM-0m-OMJ" firstAttribute="top" secondItem="xtV-bc-iRW" secondAttribute="top" constant="38" id="czR-1r-L3m"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="xtV-bc-iRW" firstAttribute="bottom" secondItem="Grx-jA-PD4" secondAttribute="bottom" id="6io-A1-88x"/>
+                                    <constraint firstItem="xtV-bc-iRW" firstAttribute="top" secondItem="Grx-jA-PD4" secondAttribute="top" id="AOp-zo-o7O"/>
+                                    <constraint firstItem="xtV-bc-iRW" firstAttribute="leading" secondItem="Grx-jA-PD4" secondAttribute="leading" id="CZl-ov-MKs"/>
+                                    <constraint firstItem="xtV-bc-iRW" firstAttribute="width" secondItem="RV1-rY-JM7" secondAttribute="width" id="cBO-rp-UvJ"/>
+                                    <constraint firstItem="xtV-bc-iRW" firstAttribute="trailing" secondItem="Grx-jA-PD4" secondAttribute="trailing" id="mIx-yO-DSV"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Grx-jA-PD4"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="RV1-rY-JM7"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ydd-Vw-zeM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ydd-Vw-zeM" firstAttribute="trailing" secondItem="6do-do-pfS" secondAttribute="trailing" id="5jM-aN-ewM"/>
+                            <constraint firstItem="6do-do-pfS" firstAttribute="leading" secondItem="Ydd-Vw-zeM" secondAttribute="leading" id="XvS-iy-wUZ"/>
+                            <constraint firstItem="6do-do-pfS" firstAttribute="top" secondItem="Ydd-Vw-zeM" secondAttribute="top" id="cgy-yT-H6X"/>
+                            <constraint firstItem="Ydd-Vw-zeM" firstAttribute="bottom" secondItem="6do-do-pfS" secondAttribute="bottom" id="hJ0-yO-E1T"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="393" height="1100"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="xtV-bc-iRW" id="SrI-M0-RLy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Hu-Rp-9hU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1756" y="-1513"/>
+        </scene>
         <!--Create Listing View Controller-->
         <scene sceneID="i1v-y9-OTy">
             <objects>
@@ -761,6 +908,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow_right" width="5" height="10"/>
         <image name="divider" width="1.3333333730697632" height="21.333333969116211"/>
         <image name="drop_down_arrow" width="10" height="5"/>
         <image name="icon_cars_and_vehicles" width="44" height="44"/>

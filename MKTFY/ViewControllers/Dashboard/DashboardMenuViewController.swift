@@ -16,8 +16,6 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBAction func accountInformationButtonTapped(_ sender: Any) {
-//        let vc = AccountInformationViewController.instantiate()
-//        navigationController?.pushViewController(vc, animated: true)
         coordinator?.goToAccountInformationVC()
     }
     
@@ -40,7 +38,7 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
     
     
     @IBAction func faqButtonTapped(_ sender: Any) {
-        print("FAQ button tapped!")
+        coordinator?.goToFAQVC()
     }
     
     @IBAction func contactUsButtonTapped(_ sender: Any) {

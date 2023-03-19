@@ -23,7 +23,7 @@ class MainCoordinator: Coordinator {
     
     // MARK: - Login
     func start() {
-        let vc = DashboardViewController.instantiate()
+        let vc = LoginViewController.instantiate()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
@@ -89,6 +89,17 @@ class MainCoordinator: Coordinator {
     
     func presentCreateListingVC() {
         let vc = CreateListingViewController.instantiate()
+        self.navigationController.present(vc, animated: true)
+    }
+    
+    func goToFAQVC() {
+        let vc = FAQViewController.instantiate()
+        vc.coordinator = self
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToFAQ1VC() {
+        let vc = FAQ1ViewController.instantiate()
         self.navigationController.present(vc, animated: true)
     }
     
