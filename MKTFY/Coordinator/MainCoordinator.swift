@@ -103,4 +103,24 @@ class MainCoordinator: Coordinator {
         self.navigationController.present(vc, animated: true)
     }
     
+    func goToFAQ2VC() {
+        let vc = FAQ2ViewController.instantiate()
+        self.navigationController.present(vc, animated: true)
+    }
+    
+    func goToFAQ3VC() {
+        let vc = FAQ3ViewController.instantiate()
+        self.navigationController.present(vc, animated: true)
+    }
+    
+    func goToFAQ4VC() {
+        let vc = FAQ4ViewController.instantiate()
+        self.navigationController.present(vc, animated: true)
+    }
+    
+    func goToFAQ5VC() {
+        let vc = FAQ5ViewController.instantiate()
+        self.navigationController.present(vc, animated: true)
+    }
+    
 }

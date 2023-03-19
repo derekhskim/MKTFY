@@ -744,6 +744,21 @@
             </objects>
             <point key="canvasLocation" x="964" y="-759"/>
         </scene>
+        <!--Create Listing View Controller-->
+        <scene sceneID="i1v-y9-OTy">
+            <objects>
+                <viewController storyboardIdentifier="CreateListingViewController" id="f53-OS-EEF" customClass="CreateListingViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kPG-5e-sHi">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qKi-DV-N9R"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="75B-A3-Udc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131" y="736"/>
+        </scene>
         <!--FAQ View Controller-->
         <scene sceneID="JTI-G0-VfL">
             <objects>
@@ -763,7 +778,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="How MKTFY works?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPe-zT-JCU">
                                                         <rect key="frame" x="0.0" y="0.0" width="368" height="68"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -785,12 +800,144 @@
                                             <constraint firstItem="sCm-c7-PEm" firstAttribute="leading" secondItem="WqO-Jb-vuj" secondAttribute="leading" constant="10" id="qNb-xS-ArN"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYK-ER-bOY" userLabel="FAQ2 View">
+                                        <rect key="frame" x="0.0" y="106" width="393" height="68"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sZ-9o-3O0">
+                                                <rect key="frame" x="10" y="0.0" width="373" height="68"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="How can I sell things on MKTFY?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEQ-Zx-G2m">
+                                                        <rect key="frame" x="0.0" y="0.0" width="368" height="68"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="Y7M-vJ-MZM">
+                                                        <rect key="frame" x="368" y="0.0" width="5" height="68"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="5" id="Zdx-tk-RoM"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="9sZ-9o-3O0" secondAttribute="bottom" id="0bD-O0-PyM"/>
+                                            <constraint firstAttribute="trailing" secondItem="9sZ-9o-3O0" secondAttribute="trailing" constant="10" id="XDZ-Ux-ItE"/>
+                                            <constraint firstItem="9sZ-9o-3O0" firstAttribute="top" secondItem="MYK-ER-bOY" secondAttribute="top" id="aSH-gn-GTv"/>
+                                            <constraint firstItem="9sZ-9o-3O0" firstAttribute="leading" secondItem="MYK-ER-bOY" secondAttribute="leading" constant="10" id="bVE-c9-agm"/>
+                                            <constraint firstAttribute="height" constant="68" id="ucn-jk-bsh"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83R-Qk-TQ4" userLabel="FAQ3 View">
+                                        <rect key="frame" x="0.0" y="174" width="393" height="68"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gri-Fh-Ciq">
+                                                <rect key="frame" x="10" y="0.0" width="373" height="68"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="How can I sell things on MKTFY?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBO-Rp-gba">
+                                                        <rect key="frame" x="0.0" y="0.0" width="368" height="68"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="1Gr-an-hVv">
+                                                        <rect key="frame" x="368" y="0.0" width="5" height="68"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="5" id="XdU-7E-iC4"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Gri-Fh-Ciq" secondAttribute="trailing" constant="10" id="5Ac-Sb-NVi"/>
+                                            <constraint firstAttribute="bottom" secondItem="Gri-Fh-Ciq" secondAttribute="bottom" id="Jw1-kZ-Pjd"/>
+                                            <constraint firstItem="Gri-Fh-Ciq" firstAttribute="top" secondItem="83R-Qk-TQ4" secondAttribute="top" id="KhA-ye-wBA"/>
+                                            <constraint firstItem="Gri-Fh-Ciq" firstAttribute="leading" secondItem="83R-Qk-TQ4" secondAttribute="leading" constant="10" id="O7B-o5-5CH"/>
+                                            <constraint firstAttribute="height" constant="68" id="ghC-7C-lWI"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cce-TN-1Nc" userLabel="FAQ4 View">
+                                        <rect key="frame" x="0.0" y="242" width="393" height="68"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8n7-8q-Mmg">
+                                                <rect key="frame" x="10" y="0.0" width="373" height="68"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Can I have a refund?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn4-eQ-Lbq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="368" height="68"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="WZH-Uk-VeR">
+                                                        <rect key="frame" x="368" y="0.0" width="5" height="68"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="5" id="Wca-jh-Urh"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="8n7-8q-Mmg" firstAttribute="top" secondItem="cce-TN-1Nc" secondAttribute="top" id="C8D-yW-qWn"/>
+                                            <constraint firstAttribute="height" constant="68" id="Xpa-nI-36f"/>
+                                            <constraint firstItem="8n7-8q-Mmg" firstAttribute="leading" secondItem="cce-TN-1Nc" secondAttribute="leading" constant="10" id="com-gx-Jbu"/>
+                                            <constraint firstAttribute="trailing" secondItem="8n7-8q-Mmg" secondAttribute="trailing" constant="10" id="v8r-kr-w4j"/>
+                                            <constraint firstAttribute="bottom" secondItem="8n7-8q-Mmg" secondAttribute="bottom" id="w52-ii-kbN"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIk-t3-GzP" userLabel="FAQ5 View">
+                                        <rect key="frame" x="0.0" y="310" width="393" height="68"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7aQ-ki-kcI">
+                                                <rect key="frame" x="10" y="0.0" width="373" height="68"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Where MKTFY is based?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9l-fi-6Qv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="368" height="68"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="Gj6-2s-eyl">
+                                                        <rect key="frame" x="368" y="0.0" width="5" height="68"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="5" id="XWy-F8-bwh"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="68" id="BHg-fk-qZL"/>
+                                            <constraint firstAttribute="trailing" secondItem="7aQ-ki-kcI" secondAttribute="trailing" constant="10" id="bul-h8-d5O"/>
+                                            <constraint firstItem="7aQ-ki-kcI" firstAttribute="top" secondItem="FIk-t3-GzP" secondAttribute="top" id="fNo-K9-vKG"/>
+                                            <constraint firstAttribute="bottom" secondItem="7aQ-ki-kcI" secondAttribute="bottom" id="nj7-9b-Ogc"/>
+                                            <constraint firstItem="7aQ-ki-kcI" firstAttribute="leading" secondItem="FIk-t3-GzP" secondAttribute="leading" constant="10" id="zEA-23-Aiq"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" name="VerySubtleGray"/>
                                 <constraints>
+                                    <constraint firstItem="cce-TN-1Nc" firstAttribute="leading" secondItem="DT0-CY-kF8" secondAttribute="leading" id="84M-jS-Ysx"/>
+                                    <constraint firstItem="MYK-ER-bOY" firstAttribute="leading" secondItem="DT0-CY-kF8" secondAttribute="leading" id="8ex-HQ-sga"/>
+                                    <constraint firstItem="83R-Qk-TQ4" firstAttribute="top" secondItem="MYK-ER-bOY" secondAttribute="bottom" id="9dd-29-WBF"/>
+                                    <constraint firstItem="FIk-t3-GzP" firstAttribute="top" secondItem="cce-TN-1Nc" secondAttribute="bottom" id="JGa-u1-qpq"/>
+                                    <constraint firstItem="FIk-t3-GzP" firstAttribute="leading" secondItem="DT0-CY-kF8" secondAttribute="leading" id="Jew-Or-YRP"/>
+                                    <constraint firstItem="MYK-ER-bOY" firstAttribute="top" secondItem="WqO-Jb-vuj" secondAttribute="bottom" id="Roz-cc-eTr"/>
                                     <constraint firstItem="WqO-Jb-vuj" firstAttribute="top" secondItem="DT0-CY-kF8" secondAttribute="top" constant="38" id="UxO-p1-taZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="FIk-t3-GzP" secondAttribute="trailing" id="V9A-6S-1T4"/>
+                                    <constraint firstAttribute="trailing" secondItem="MYK-ER-bOY" secondAttribute="trailing" id="VF1-7j-PTw"/>
                                     <constraint firstAttribute="trailing" secondItem="WqO-Jb-vuj" secondAttribute="trailing" id="X1R-MG-GIM"/>
                                     <constraint firstItem="WqO-Jb-vuj" firstAttribute="leading" secondItem="DT0-CY-kF8" secondAttribute="leading" id="XIb-2X-eGg"/>
+                                    <constraint firstItem="cce-TN-1Nc" firstAttribute="top" secondItem="83R-Qk-TQ4" secondAttribute="bottom" id="YTC-Sy-wYW"/>
+                                    <constraint firstItem="83R-Qk-TQ4" firstAttribute="leading" secondItem="DT0-CY-kF8" secondAttribute="leading" id="Zn3-fb-wLC"/>
+                                    <constraint firstAttribute="trailing" secondItem="cce-TN-1Nc" secondAttribute="trailing" id="rnH-kx-7KO"/>
+                                    <constraint firstAttribute="trailing" secondItem="83R-Qk-TQ4" secondAttribute="trailing" id="wBO-d2-hrQ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -806,6 +953,10 @@
                     <navigationItem key="navigationItem" title="FAQ" style="editor" id="6Ee-iH-Qi2" userLabel="FAQ"/>
                     <connections>
                         <outlet property="FAQ1View" destination="WqO-Jb-vuj" id="tMI-Ey-cLJ"/>
+                        <outlet property="FAQ2View" destination="MYK-ER-bOY" id="Ueg-57-B1Y"/>
+                        <outlet property="FAQ3View" destination="83R-Qk-TQ4" id="E5f-jD-LbQ"/>
+                        <outlet property="FAQ4View" destination="cce-TN-1Nc" id="TSI-pZ-Glc"/>
+                        <outlet property="FAQ5View" destination="FIk-t3-GzP" id="jBw-ah-vwF"/>
                         <outlet property="backgroundView" destination="DT0-CY-kF8" id="WuG-j6-QE2"/>
                     </connections>
                 </viewController>
@@ -891,20 +1042,65 @@ The information provided on the Site is not intended for distribution to or use 
             </objects>
             <point key="canvasLocation" x="1756" y="-1513"/>
         </scene>
-        <!--Create Listing View Controller-->
-        <scene sceneID="i1v-y9-OTy">
+        <!--FAQ2 View Controller-->
+        <scene sceneID="YhG-nh-t8g">
             <objects>
-                <viewController storyboardIdentifier="CreateListingViewController" id="f53-OS-EEF" customClass="CreateListingViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kPG-5e-sHi">
+                <viewController storyboardIdentifier="FAQ2ViewController" id="Afb-5K-ART" userLabel="FAQ2 View Controller" customClass="FAQ2ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rGt-gU-bSS">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="qKi-DV-N9R"/>
+                        <viewLayoutGuide key="safeArea" id="heU-8t-CQL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="75B-A3-Udc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iry-yX-o84" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131" y="736"/>
+            <point key="canvasLocation" x="2474" y="-1600"/>
+        </scene>
+        <!--FAQ3 View Controller-->
+        <scene sceneID="u0b-sV-BnZ">
+            <objects>
+                <viewController storyboardIdentifier="FAQ3ViewController" id="zDx-UO-8qM" userLabel="FAQ3 View Controller" customClass="FAQ3ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hP5-18-fLu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="P66-Qj-eAK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmR-8O-Aul" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3181" y="-1600"/>
+        </scene>
+        <!--FAQ4 View Controller-->
+        <scene sceneID="x6d-kX-F0d">
+            <objects>
+                <viewController storyboardIdentifier="FAQ4ViewController" id="WWu-6O-P2B" userLabel="FAQ4 View Controller" customClass="FAQ4ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bh-yw-aq9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cNP-Vn-7e3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z0b-aZ-n9t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3912" y="-1600"/>
+        </scene>
+        <!--FAQ5 View Controller-->
+        <scene sceneID="7aQ-hX-WV1">
+            <objects>
+                <viewController storyboardIdentifier="FAQ5ViewController" id="ypD-bE-UeR" userLabel="FAQ5 View Controller" customClass="FAQ5ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fpx-cI-8NV">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="EPf-fL-w7m"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eof-KX-uGD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4636" y="-1600"/>
         </scene>
     </scenes>
     <resources>
