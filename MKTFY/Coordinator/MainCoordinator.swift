@@ -82,6 +82,7 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    // MARK: - Dashboard Menu
     func goToAccountInformationVC() {
         let vc = AccountInformationViewController.instantiate()
         self.navigationController.pushViewController(vc, animated: true)
@@ -98,6 +99,12 @@ class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToContactUsVC() {
+        let vc = ContactUsViewController.instantiate()
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - FAQ VCs
     func goToFAQ1VC() {
         let vc = FAQ1ViewController.instantiate()
         self.navigationController.present(vc, animated: true)

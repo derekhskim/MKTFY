@@ -30,9 +30,13 @@ extension MainViewController {
         var newFrame = originalFrame
         newFrame.origin.y -= keyboardSize.height * shiftFactor
         view.frame = newFrame
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         view.frame = originalFrame
+        
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }

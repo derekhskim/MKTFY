@@ -42,7 +42,7 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
     }
     
     @IBAction func contactUsButtonTapped(_ sender: Any) {
-        print("Contact Us button tapped!")
+        coordinator?.goToContactUsVC()
     }
     
     @IBOutlet weak var signOutButton: UIButton!

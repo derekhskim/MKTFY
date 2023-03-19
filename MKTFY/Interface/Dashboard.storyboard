@@ -16,6 +16,9 @@
         <array key="OpenSans-Regular.ttf">
             <string>OpenSans-Regular</string>
         </array>
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Dashboard Menu View Controller-->
@@ -1123,6 +1126,102 @@ The information provided on the Site is not intended for distribution to or use 
             </objects>
             <point key="canvasLocation" x="3912" y="-1600"/>
         </scene>
+        <!--Contact Us View Controller-->
+        <scene sceneID="Mz9-ge-qN2">
+            <objects>
+                <viewController storyboardIdentifier="ContactUsViewController" id="ULT-il-5rl" userLabel="Contact Us View Controller" customClass="ContactUsViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Gj-jM-BV0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYK-tz-cnk" userLabel="backgroundView">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQz-Ur-UQ8" userLabel="Name View" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                        <rect key="frame" x="21" y="38" width="351" height="80"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="u9b-IE-JOJ"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Name"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Your name"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                <color key="value" name="VerySubtleGray"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0s-ic-uS0" userLabel="Email View" customClass="TextFieldWithError" customModule="MKTFY" customModuleProvider="target">
+                                        <rect key="frame" x="21" y="142" width="351" height="80"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="1Kp-nv-2GG"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email Address"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Your email"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showError" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                <color key="value" name="VerySubtleGray"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-w5-tz4">
+                                        <rect key="frame" x="21" y="246" width="351" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
+                                        <color key="textColor" name="TitleGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rZn-Fi-Bz7">
+                                        <rect key="frame" x="21" y="274" width="351" height="140"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="Bf8-QO-1Bn"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="dQz-Ur-UQ8" secondAttribute="trailing" constant="21" id="QGN-qr-NVE"/>
+                                    <constraint firstAttribute="trailing" secondItem="rZn-Fi-Bz7" secondAttribute="trailing" constant="21" id="Qsg-xy-Ie6"/>
+                                    <constraint firstItem="dQz-Ur-UQ8" firstAttribute="leading" secondItem="ZYK-tz-cnk" secondAttribute="leading" constant="21" id="Sxd-GM-LxF"/>
+                                    <constraint firstItem="y0s-ic-uS0" firstAttribute="top" secondItem="dQz-Ur-UQ8" secondAttribute="bottom" constant="24" id="cl5-jt-Whf"/>
+                                    <constraint firstItem="y0s-ic-uS0" firstAttribute="leading" secondItem="ZYK-tz-cnk" secondAttribute="leading" constant="21" id="lFF-0G-m84"/>
+                                    <constraint firstAttribute="trailing" secondItem="y0s-ic-uS0" secondAttribute="trailing" constant="21" id="m0s-XB-tpV"/>
+                                    <constraint firstItem="dQz-Ur-UQ8" firstAttribute="top" secondItem="ZYK-tz-cnk" secondAttribute="top" constant="38" id="ngS-P1-AD4"/>
+                                    <constraint firstAttribute="trailing" secondItem="P3C-w5-tz4" secondAttribute="trailing" constant="21" id="tR4-Ql-014"/>
+                                    <constraint firstItem="rZn-Fi-Bz7" firstAttribute="top" secondItem="P3C-w5-tz4" secondAttribute="bottom" constant="6" id="wsI-of-hE7"/>
+                                    <constraint firstItem="P3C-w5-tz4" firstAttribute="top" secondItem="y0s-ic-uS0" secondAttribute="bottom" constant="24" id="z88-WK-ZNg"/>
+                                    <constraint firstItem="rZn-Fi-Bz7" firstAttribute="leading" secondItem="ZYK-tz-cnk" secondAttribute="leading" constant="21" id="zb4-uy-BgC"/>
+                                    <constraint firstItem="P3C-w5-tz4" firstAttribute="leading" secondItem="ZYK-tz-cnk" secondAttribute="leading" constant="21" id="ziF-05-ilC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="d1K-nn-hfv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="d1K-nn-hfv" firstAttribute="trailing" secondItem="ZYK-tz-cnk" secondAttribute="trailing" id="6Sk-Tm-pYu"/>
+                            <constraint firstItem="ZYK-tz-cnk" firstAttribute="top" secondItem="d1K-nn-hfv" secondAttribute="top" id="KIW-E7-arh"/>
+                            <constraint firstAttribute="bottom" secondItem="ZYK-tz-cnk" secondAttribute="bottom" id="WTX-Qh-ydJ"/>
+                            <constraint firstItem="ZYK-tz-cnk" firstAttribute="leading" secondItem="d1K-nn-hfv" secondAttribute="leading" id="uln-IT-jg4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Contact Us" style="editor" id="bvs-A9-YIZ"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="ZYK-tz-cnk" id="rU5-9g-rev"/>
+                        <outlet property="emailView" destination="y0s-ic-uS0" id="qBc-08-zYu"/>
+                        <outlet property="messageTextView" destination="rZn-Fi-Bz7" id="pMW-vA-i5x"/>
+                        <outlet property="nameView" destination="dQz-Ur-UQ8" id="v3v-78-FMx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TYZ-dz-3wv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2473" y="-740"/>
+        </scene>
         <!--FAQ5 View Controller-->
         <scene sceneID="7aQ-hX-WV1">
             <objects>
@@ -1174,9 +1273,15 @@ The information provided on the Site is not intended for distribution to or use 
         <namedColor name="TextGray">
             <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="TitleGray">
+            <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="VerySubtleGray">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
