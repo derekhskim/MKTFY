@@ -23,7 +23,7 @@ class FAQViewController: MainViewController, DashboardStoryboard {
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-         
+        
         configureVCPath()
     }
     
