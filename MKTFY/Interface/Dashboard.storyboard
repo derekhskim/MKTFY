@@ -578,18 +578,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130.53435114503816" y="-28.169014084507044"/>
+            <point key="canvasLocation" x="963" y="-32"/>
         </scene>
         <!--Account Information-->
         <scene sceneID="hb3-kj-p8B">
             <objects>
                 <viewController storyboardIdentifier="AccountInformationViewController" id="VQW-Xw-Htc" customClass="AccountInformationViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SDr-BR-Kjk">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CT9-e1-cIK">
-                                <rect key="frame" x="0.0" y="59" width="393" height="741"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Hv-DS-NZw">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="700"/>
@@ -742,7 +742,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Account Information" style="editor" id="Xts-gT-ZZ9"/>
-                    <size key="freeformSize" width="393" height="800"/>
                     <connections>
                         <outlet property="addressView" destination="2j4-eR-ECc" id="DFt-2D-YTt"/>
                         <outlet property="cityView" destination="H9V-Ir-Ak7" id="QsL-2x-y54"/>
@@ -754,7 +753,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PXn-8r-wea" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="-759"/>
+            <point key="canvasLocation" x="963" y="-742"/>
         </scene>
         <!--Create Listing View Controller-->
         <scene sceneID="i1v-y9-OTy">
@@ -769,7 +768,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75B-A3-Udc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131" y="736"/>
+            <point key="canvasLocation" x="963" y="690"/>
         </scene>
         <!--FAQ View Controller-->
         <scene sceneID="JTI-G0-VfL">
@@ -991,7 +990,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1000"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How MKTFY works?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEM-0m-OMJ">
-                                                <rect key="frame" x="21" y="38" width="232" height="33"/>
+                                                <rect key="frame" x="20.999999999999986" y="38" width="231.66666666666663" height="33"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="24"/>
                                                 <color key="textColor" name="OccasionalPurple"/>
                                                 <nil key="highlightedColor"/>
@@ -1135,6 +1134,33 @@ The information provided on the Site is not intended for distribution to or use 
             </objects>
             <point key="canvasLocation" x="3912" y="-1600"/>
         </scene>
+        <!--FAQ5 View Controller-->
+        <scene sceneID="7aQ-hX-WV1">
+            <objects>
+                <viewController storyboardIdentifier="FAQ5ViewController" id="ypD-bE-UeR" userLabel="FAQ5 View Controller" customClass="FAQ5ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fpx-cI-8NV">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VC5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="br1-B8-bbi">
+                                <rect key="frame" x="180.33333333333334" y="415.66666666666669" width="32.666666666666657" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EPf-fL-w7m"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="br1-B8-bbi" firstAttribute="centerX" secondItem="Fpx-cI-8NV" secondAttribute="centerX" id="Ask-LV-cdU"/>
+                            <constraint firstItem="br1-B8-bbi" firstAttribute="centerY" secondItem="Fpx-cI-8NV" secondAttribute="centerY" id="KXD-DJ-SaW"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eof-KX-uGD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4636" y="-1600"/>
+        </scene>
         <!--Contact Us View Controller-->
         <scene sceneID="Mz9-ge-qN2">
             <objects>
@@ -1261,7 +1287,7 @@ The information provided on the Site is not intended for distribution to or use 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYZ-dz-3wv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2473" y="-740"/>
+            <point key="canvasLocation" x="3911" y="-32"/>
         </scene>
         <!--Notification View Controller-->
         <scene sceneID="sz9-jn-zaj">
@@ -1292,38 +1318,7 @@ The information provided on the Site is not intended for distribution to or use 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PUi-Rz-0mg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3294" y="-740"/>
-        </scene>
-        <!--Change Password View Controller-->
-        <scene sceneID="w3d-cb-RtL">
-            <objects>
-                <viewController storyboardIdentifier="ChangePasswordViewController" id="sQO-LD-eiC" userLabel="Change Password View Controller" customClass="ChangePasswordViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hFm-9p-AlQ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MH4-bF-fsd" userLabel="backgroundView">
-                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
-                                <color key="backgroundColor" name="VerySubtleGray"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="IlQ-lj-ZhA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="MH4-bF-fsd" firstAttribute="top" secondItem="IlQ-lj-ZhA" secondAttribute="top" id="DKf-gd-MrE"/>
-                            <constraint firstAttribute="bottom" secondItem="MH4-bF-fsd" secondAttribute="bottom" id="EGv-9U-0L0"/>
-                            <constraint firstItem="IlQ-lj-ZhA" firstAttribute="trailing" secondItem="MH4-bF-fsd" secondAttribute="trailing" id="KEU-in-tvy"/>
-                            <constraint firstItem="MH4-bF-fsd" firstAttribute="leading" secondItem="IlQ-lj-ZhA" secondAttribute="leading" id="iBF-3X-jE2"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Change Password" id="qIX-Jc-Fes" userLabel="Change Password"/>
-                    <connections>
-                        <outlet property="backgroundView" destination="MH4-bF-fsd" id="fW8-L5-xTC"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ljb-CZ-BOo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4221" y="-740"/>
+            <point key="canvasLocation" x="3911" y="-740"/>
         </scene>
         <!--My Purchases View Controller-->
         <scene sceneID="iBi-Ua-fws">
@@ -1354,7 +1349,7 @@ The information provided on the Site is not intended for distribution to or use 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2T-CJ-aFw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5108" y="-741"/>
+            <point key="canvasLocation" x="2473" y="-741"/>
         </scene>
         <!--My Listings View Controller-->
         <scene sceneID="a4b-8u-YR1">
@@ -1385,36 +1380,206 @@ The information provided on the Site is not intended for distribution to or use 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AtX-0J-7YX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6018" y="-740"/>
+            <point key="canvasLocation" x="3181" y="-740"/>
         </scene>
-        <!--FAQ5 View Controller-->
-        <scene sceneID="7aQ-hX-WV1">
+        <!--Change Password-->
+        <scene sceneID="3dY-HV-Ll9">
             <objects>
-                <viewController storyboardIdentifier="FAQ5ViewController" id="ypD-bE-UeR" userLabel="FAQ5 View Controller" customClass="FAQ5ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Fpx-cI-8NV">
+                <viewController storyboardIdentifier="ChangePasswordViewController" id="npL-ea-Mrr" userLabel="Change Password" customClass="ChangePasswordViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SvK-4o-098">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VC5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="br1-B8-bbi">
-                                <rect key="frame" x="180.33333333333334" y="415.66666666666669" width="32.666666666666657" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84p-MG-dmY" userLabel="backgroundView">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqV-ge-F5z" customClass="SecureTextField" customModule="MKTFY" customModuleProvider="target">
+                                        <rect key="frame" x="21" y="38" width="351" height="80"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="E4V-a8-Uib"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Current Password"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your current password"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                <color key="value" name="VerySubtleGray"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="The password must have at least 6 characters  and must contain 1 uppercase and 1 number." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kn1-Dg-HNa">
+                                        <rect key="frame" x="18" y="142" width="357" height="38.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                        <color key="textColor" name="TextGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yf-xD-V4z" customClass="SecureTextFieldWithLabel" customModule="MKTFY" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="200.33333333333331" width="357" height="80"/>
+                                        <color key="backgroundColor" name="VerySubtleGray"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="5d3-Td-hkI"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your password"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                <color key="value" name="VerySubtleGray"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showIndicator" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zI-Br-Wuj" customClass="SecureTextField" customModule="MKTFY" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="300.33333333333331" width="357" height="80"/>
+                                        <color key="backgroundColor" name="VerySubtleGray"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="kQg-ee-3ql"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Confirm Password"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your password"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                <color key="value" name="VerySubtleGray"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0ws-BR-tLW" userLabel="6Characters StackView">
+                                        <rect key="frame" x="40" y="420.33333333333331" width="313" height="20"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password_validation_unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="JDh-sq-jPo">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="Jqg-jj-f0g"/>
+                                                    <constraint firstAttribute="height" constant="20" id="hYH-re-5dt"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At least 6 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9T-4x-LJL">
+                                                <rect key="frame" x="30" y="0.0" width="283" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nlA-j6-8jX" userLabel="Uppercase StackView">
+                                        <rect key="frame" x="40" y="470.33333333333337" width="313" height="20"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password_validation_unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="tKn-wQ-W5X">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="mV7-nL-gsr"/>
+                                                    <constraint firstAttribute="height" constant="20" id="tko-8R-Xpo"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Uppercase" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHB-eB-sgA">
+                                                <rect key="frame" x="30" y="0.0" width="283" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="knM-Yg-wY3" userLabel="Number StackView">
+                                        <rect key="frame" x="40" y="520.33333333333337" width="313" height="20"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password_validation_unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="nAz-a2-CLB">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="8EU-nh-O1K"/>
+                                                    <constraint firstAttribute="width" constant="20" id="ghe-US-5oD"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ll-5z-pzr">
+                                                <rect key="frame" x="30" y="0.0" width="283" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9D-Sy-ac5" customClass="Button" customModule="MKTFY" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="700" width="363" height="51"/>
+                                        <color key="backgroundColor" name="DisabledGray"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="7WY-hH-sab"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Update Password">
+                                            <color key="titleColor" name="VoidWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="28"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="updateButtonTapped:" destination="npL-ea-Mrr" eventType="touchUpInside" id="SSU-py-NE5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                                <constraints>
+                                    <constraint firstItem="0ws-BR-tLW" firstAttribute="top" secondItem="5zI-Br-Wuj" secondAttribute="bottom" constant="40" id="4J5-Pi-nKl"/>
+                                    <constraint firstAttribute="trailing" secondItem="5zI-Br-Wuj" secondAttribute="trailing" constant="18" id="6Ex-zk-ujy"/>
+                                    <constraint firstItem="nlA-j6-8jX" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="40" id="70z-m9-PbV"/>
+                                    <constraint firstItem="5zI-Br-Wuj" firstAttribute="top" secondItem="6yf-xD-V4z" secondAttribute="bottom" constant="20" id="KYn-DJ-vxW"/>
+                                    <constraint firstItem="6yf-xD-V4z" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="18" id="OIP-G7-Kdc"/>
+                                    <constraint firstItem="qqV-ge-F5z" firstAttribute="top" secondItem="84p-MG-dmY" secondAttribute="top" constant="38" id="OnG-oZ-msC"/>
+                                    <constraint firstAttribute="trailing" secondItem="qqV-ge-F5z" secondAttribute="trailing" constant="21" id="Pqw-qu-5tq"/>
+                                    <constraint firstItem="6yf-xD-V4z" firstAttribute="top" secondItem="Kn1-Dg-HNa" secondAttribute="bottom" constant="20" id="QCc-S0-dLy"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kn1-Dg-HNa" secondAttribute="trailing" constant="18" id="RE6-zx-byk"/>
+                                    <constraint firstAttribute="trailing" secondItem="0ws-BR-tLW" secondAttribute="trailing" constant="40" id="Yjo-JI-t1T"/>
+                                    <constraint firstAttribute="bottom" secondItem="B9D-Sy-ac5" secondAttribute="bottom" constant="42" id="YvX-bT-ua8"/>
+                                    <constraint firstAttribute="trailing" secondItem="B9D-Sy-ac5" secondAttribute="trailing" constant="15" id="ZxT-Ey-VTX"/>
+                                    <constraint firstItem="B9D-Sy-ac5" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="15" id="bxo-3T-VIX"/>
+                                    <constraint firstItem="Kn1-Dg-HNa" firstAttribute="top" secondItem="qqV-ge-F5z" secondAttribute="bottom" constant="24" id="c1E-Bc-TOg"/>
+                                    <constraint firstItem="0ws-BR-tLW" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="40" id="dLm-Xu-7UC"/>
+                                    <constraint firstItem="qqV-ge-F5z" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="21" id="ehu-g6-NZS"/>
+                                    <constraint firstAttribute="trailing" secondItem="nlA-j6-8jX" secondAttribute="trailing" constant="40" id="esa-2k-Q0y"/>
+                                    <constraint firstItem="5zI-Br-Wuj" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="18" id="gI8-h5-5Px"/>
+                                    <constraint firstItem="Kn1-Dg-HNa" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="18" id="m9B-e3-Jsk"/>
+                                    <constraint firstItem="nlA-j6-8jX" firstAttribute="top" secondItem="0ws-BR-tLW" secondAttribute="bottom" constant="30" id="mIo-Uh-yB2"/>
+                                    <constraint firstItem="knM-Yg-wY3" firstAttribute="top" secondItem="nlA-j6-8jX" secondAttribute="bottom" constant="30" id="mTE-Os-6z8"/>
+                                    <constraint firstAttribute="trailing" secondItem="6yf-xD-V4z" secondAttribute="trailing" constant="18" id="qB4-gl-WQ1"/>
+                                    <constraint firstAttribute="trailing" secondItem="knM-Yg-wY3" secondAttribute="trailing" constant="40" id="tcB-hN-dL7"/>
+                                    <constraint firstItem="knM-Yg-wY3" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="40" id="uxh-LS-aZl"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="EPf-fL-w7m"/>
+                        <viewLayoutGuide key="safeArea" id="BMv-WO-919"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="br1-B8-bbi" firstAttribute="centerX" secondItem="Fpx-cI-8NV" secondAttribute="centerX" id="Ask-LV-cdU"/>
-                            <constraint firstItem="br1-B8-bbi" firstAttribute="centerY" secondItem="Fpx-cI-8NV" secondAttribute="centerY" id="KXD-DJ-SaW"/>
+                            <constraint firstItem="84p-MG-dmY" firstAttribute="top" secondItem="BMv-WO-919" secondAttribute="top" id="4zG-Gu-vxl"/>
+                            <constraint firstItem="BMv-WO-919" firstAttribute="trailing" secondItem="84p-MG-dmY" secondAttribute="trailing" id="RWW-5G-hJi"/>
+                            <constraint firstItem="84p-MG-dmY" firstAttribute="leading" secondItem="BMv-WO-919" secondAttribute="leading" id="jBR-zz-kfh"/>
+                            <constraint firstAttribute="bottom" secondItem="84p-MG-dmY" secondAttribute="bottom" id="pST-j9-pgq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Update Password" style="editor" id="AiZ-aW-496" userLabel="Change Password"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="84p-MG-dmY" id="HSA-ek-5BU"/>
+                        <outlet property="characterLengthValidationImage" destination="JDh-sq-jPo" id="QqS-Pd-Cr5"/>
+                        <outlet property="confirmPasswordView" destination="5zI-Br-Wuj" id="hgr-b3-YdR"/>
+                        <outlet property="currentPasswordView" destination="qqV-ge-F5z" id="SPn-DG-Uwk"/>
+                        <outlet property="numberValidationImage" destination="nAz-a2-CLB" id="sCK-kJ-zeG"/>
+                        <outlet property="passwordView" destination="6yf-xD-V4z" id="1Sg-ga-Lo8"/>
+                        <outlet property="updateButton" destination="B9D-Sy-ac5" id="v85-Yk-ohr"/>
+                        <outlet property="uppercaseValidationImage" destination="tKn-wQ-W5X" id="hGC-9R-Bwc"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Eof-KX-uGD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8n-M1-FIA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4636" y="-1600"/>
+            <point key="canvasLocation" x="1753" y="-740"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="B9D-Sy-ac5">
+            <size key="intrinsicContentSize" width="135" height="31"/>
+        </designable>
+        <designable name="yuD-GJ-c46">
+            <size key="intrinsicContentSize" width="63" height="36"/>
+        </designable>
+    </designables>
     <resources>
         <image name="arrow_right" width="5" height="10"/>
         <image name="divider" width="1.3333333730697632" height="21.333333969116211"/>
@@ -1426,6 +1591,7 @@ The information provided on the Site is not intended for distribution to or use 
         <image name="icon_real_estate" width="37" height="31.333333969116211"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="menu_button" width="18" height="14"/>
+        <image name="password_validation_unchecked" width="20" height="20.333333969116211"/>
         <image name="sign_out_button" width="18" height="18"/>
         <namedColor name="DisabledGray">
             <color red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1447,6 +1613,9 @@ The information provided on the Site is not intended for distribution to or use 
         </namedColor>
         <namedColor name="VerySubtleGray">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VoidWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
