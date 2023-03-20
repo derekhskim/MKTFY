@@ -43,6 +43,7 @@ class ContactUsViewController: MainViewController, DashboardStoryboard, UITextVi
     
     // MARK: - func
     func allFieldsFilled() {
+        // TODO: Validation to enable button is not working atm
         guard let nameViewText = nameView.inputTextField.text, let validEmail = nameView.inputTextField.text?.isValidEmail, let emailViewText = emailView.inputTextField.text, let messageText = messageTextView.text else { return }
         
         if !nameViewText.isEmpty && validEmail && !emailViewText.isEmpty && !messageText.isEmpty {
