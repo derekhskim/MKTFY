@@ -23,7 +23,7 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
     }
     
     @IBAction func changePasswordButtonTapped(_ sender: Any) {
-//        Auth0Manager.shared.resetPassword(email: <#T##String#>)
+        print("Change Password button tapped!")
     }
     
     @IBAction func myPurchasesButtonTapped(_ sender: Any) {

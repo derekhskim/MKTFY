@@ -35,6 +35,9 @@
 		6568E1172988B860001482AB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6568E1162988B860001482AB /* Login.storyboard */; };
 		656F3C4829C6CB6300DFAAEC /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3C4729C6CB6300DFAAEC /* ContactUsViewController.swift */; };
 		656F3C4A29C8282400DFAAEC /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3C4929C8282400DFAAEC /* NotificationViewController.swift */; };
+		656F3C4C29C8298700DFAAEC /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3C4B29C8298700DFAAEC /* ChangePasswordViewController.swift */; };
+		656F3C4E29C829B100DFAAEC /* MyPurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3C4D29C829B100DFAAEC /* MyPurchasesViewController.swift */; };
+		656F3C5029C829CA00DFAAEC /* MyListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3C4F29C829CA00DFAAEC /* MyListingViewController.swift */; };
 		658145A52991B13000BC9067 /* TextFieldWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658145A42991B13000BC9067 /* TextFieldWithError.swift */; };
 		658145A72991B13C00BC9067 /* TextFieldWithError.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658145A62991B13C00BC9067 /* TextFieldWithError.xib */; };
 		658145AA2991B27B00BC9067 /* LPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658145A92991B27B00BC9067 /* LPView.swift */; };
@@ -119,6 +122,9 @@
 		6568E1162988B860001482AB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		656F3C4729C6CB6300DFAAEC /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		656F3C4929C8282400DFAAEC /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		656F3C4B29C8298700DFAAEC /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		656F3C4D29C829B100DFAAEC /* MyPurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPurchasesViewController.swift; sourceTree = "<group>"; };
+		656F3C4F29C829CA00DFAAEC /* MyListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListingViewController.swift; sourceTree = "<group>"; };
 		658145A42991B13000BC9067 /* TextFieldWithError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithError.swift; sourceTree = "<group>"; };
 		658145A62991B13C00BC9067 /* TextFieldWithError.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldWithError.xib; sourceTree = "<group>"; };
 		658145A92991B27B00BC9067 /* LPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPView.swift; sourceTree = "<group>"; };
@@ -369,6 +375,9 @@
 				6543314629C226E4008D7728 /* CreateListingViewController.swift */,
 				656F3C4729C6CB6300DFAAEC /* ContactUsViewController.swift */,
 				656F3C4929C8282400DFAAEC /* NotificationViewController.swift */,
+				656F3C4B29C8298700DFAAEC /* ChangePasswordViewController.swift */,
+				656F3C4D29C829B100DFAAEC /* MyPurchasesViewController.swift */,
+				656F3C4F29C829CA00DFAAEC /* MyListingViewController.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -558,6 +567,7 @@
 				65E90FEB2988CD8000ACDC0C /* Button.swift in Sources */,
 				65EFDFF329C6C6B5000F3E7E /* FAQ5ViewController.swift in Sources */,
 				6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */,
+				656F3C4E29C829B100DFAAEC /* MyPurchasesViewController.swift in Sources */,
 				65EFDFED29C6C67A000F3E7E /* FAQ2ViewController.swift in Sources */,
 				65F9BF8329AD167800FADB2B /* SecureTextFieldWithLabel.swift in Sources */,
 				65DE1B5129BD97A900C7D3E8 /* ItemCollectionViewCell.swift in Sources */,
@@ -567,12 +577,14 @@
 				654444C529AD63C900E61F69 /* LoginStoryboard.swift in Sources */,
 				65EFDFEF29C6C694000F3E7E /* FAQ3ViewController.swift in Sources */,
 				654444C329AD60E300E61F69 /* MainCoordinator.swift in Sources */,
+				656F3C4C29C8298700DFAAEC /* ChangePasswordViewController.swift in Sources */,
 				65EBA0BE298A1E5200202C02 /* ForgotPasswordViewController.swift in Sources */,
 				6584B28829C6AB4300E3AD7E /* FAQ1ViewController.swift in Sources */,
 				65C28FC72988BA1D00A3BBEE /* LoginViewController.swift in Sources */,
 				653F2401298CBE7A0053C5E1 /* UIImage+.swift in Sources */,
 				65DE1B4B29BD891200C7D3E8 /* FlowLayoutViewModel.swift in Sources */,
 				65E0B3022996E48000A85CBB /* EmailVerificationSentViewController.swift in Sources */,
+				656F3C5029C829CA00DFAAEC /* MyListingViewController.swift in Sources */,
 				656F3C4A29C8282400DFAAEC /* NotificationViewController.swift in Sources */,
 				65A646F6299C1E8000262DB8 /* CheckBox.swift in Sources */,
 				6584B28529C6A48B00E3AD7E /* FAQViewController.swift in Sources */,
