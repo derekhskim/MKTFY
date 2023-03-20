@@ -8,16 +8,18 @@
 import UIKit
 
 class SecureTextFieldWithLabel: LPView {
-    @IBOutlet var view: UIView!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var indicator: UILabel!
-    @IBOutlet weak var isSecureTextField: UITextField!
     
     let button = UIButton(type: .system)
     let eyeSlashImage = UIImage(systemName: "eye.slash")
     let eyeImage = UIImage(systemName: "eye")
     
+    // MARK: - @IBOutlet
+    @IBOutlet var view: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var indicator: UILabel!
+    @IBOutlet weak var isSecureTextField: UITextField!
+    
+    // MARK: - @IBInspectable
     @IBInspectable var title: String = "Title" {
         didSet {
             titleLabel.text = title

@@ -11,10 +11,12 @@ import UIKit
 class TextFieldWithError: LPView {
     var view: UIView!
     
+    // MARK: - @IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
+    // MARK: - @IBInspectable
     @IBInspectable var title: String = "Title" {
         didSet {
             titleLabel.text = title

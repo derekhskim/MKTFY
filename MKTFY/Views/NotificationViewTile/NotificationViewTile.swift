@@ -12,7 +12,10 @@ class NotificationViewTile: LPView {
     
     var view: UIView!
     
-    
+    // MARK: - @IBOutlet
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))

@@ -9,8 +9,13 @@ import UIKit
 
 @IBDesignable
 class SecureTextField: LPView {
-    var view: UIView!
     
+    var view: UIView!
+    let button = UIButton(type: .system)
+    let eyeSlashImage = UIImage(systemName: "eye.slash")
+    let eyeImage = UIImage(systemName: "eye")
+    
+    // MARK: - @IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var isSecureTextField: UITextField! {
         didSet {
@@ -18,10 +23,7 @@ class SecureTextField: LPView {
         }
     }
     
-    let button = UIButton(type: .system)
-    let eyeSlashImage = UIImage(systemName: "eye.slash")
-    let eyeImage = UIImage(systemName: "eye")
-    
+    // MARK: - @IBInspectable
     @IBInspectable var title: String = "Title" {
         didSet {
             titleLabel.text = title
