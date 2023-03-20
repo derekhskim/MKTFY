@@ -109,6 +109,21 @@ class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToChangePasswordVC() {
+        let vc = ChangePasswordViewController.instantiate()
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToMyPurchasesVC() {
+        let vc = MyPurchasesViewController.instantiate()
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToMyListingsVC() {
+        let vc = MyListingViewController.instantiate()
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+    
     // MARK: - FAQ VCs
     func goToFAQ1VC() {
         let vc = FAQ1ViewController.instantiate()

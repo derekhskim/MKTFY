@@ -23,15 +23,15 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
     }
     
     @IBAction func changePasswordButtonTapped(_ sender: Any) {
-        print("Change Password button tapped!")
+        coordinator?.goToChangePasswordVC()
     }
     
     @IBAction func myPurchasesButtonTapped(_ sender: Any) {
-        print("My Purchases button tapped!")
+        coordinator?.goToMyPurchasesVC()
     }
     
     @IBAction func myListingsButtonTapped(_ sender: Any) {
-        print("My Listings button tapped!")
+        coordinator?.goToMyListingsVC()
     }
     
     @IBAction func notificationButtonTapped(_ sender: Any) {

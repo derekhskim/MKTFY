@@ -1294,6 +1294,99 @@ The information provided on the Site is not intended for distribution to or use 
             </objects>
             <point key="canvasLocation" x="3294" y="-740"/>
         </scene>
+        <!--Change Password View Controller-->
+        <scene sceneID="w3d-cb-RtL">
+            <objects>
+                <viewController storyboardIdentifier="ChangePasswordViewController" id="sQO-LD-eiC" userLabel="Change Password View Controller" customClass="ChangePasswordViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hFm-9p-AlQ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MH4-bF-fsd" userLabel="backgroundView">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IlQ-lj-ZhA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MH4-bF-fsd" firstAttribute="top" secondItem="IlQ-lj-ZhA" secondAttribute="top" id="DKf-gd-MrE"/>
+                            <constraint firstAttribute="bottom" secondItem="MH4-bF-fsd" secondAttribute="bottom" id="EGv-9U-0L0"/>
+                            <constraint firstItem="IlQ-lj-ZhA" firstAttribute="trailing" secondItem="MH4-bF-fsd" secondAttribute="trailing" id="KEU-in-tvy"/>
+                            <constraint firstItem="MH4-bF-fsd" firstAttribute="leading" secondItem="IlQ-lj-ZhA" secondAttribute="leading" id="iBF-3X-jE2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Change Password" id="qIX-Jc-Fes" userLabel="Change Password"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="MH4-bF-fsd" id="fW8-L5-xTC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ljb-CZ-BOo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4221" y="-740"/>
+        </scene>
+        <!--My Purchases View Controller-->
+        <scene sceneID="iBi-Ua-fws">
+            <objects>
+                <viewController storyboardIdentifier="MyPurchasesViewController" id="99x-Hb-e7q" userLabel="My Purchases View Controller" customClass="MyPurchasesViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v0L-tC-ruu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cz6-ow-R6L" userLabel="backgroundView">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Yrl-39-7VE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Yrl-39-7VE" firstAttribute="trailing" secondItem="Cz6-ow-R6L" secondAttribute="trailing" id="J3H-cb-qxU"/>
+                            <constraint firstItem="Cz6-ow-R6L" firstAttribute="top" secondItem="Yrl-39-7VE" secondAttribute="top" id="OPq-lD-V9x"/>
+                            <constraint firstAttribute="bottom" secondItem="Cz6-ow-R6L" secondAttribute="bottom" id="lpD-Vi-jxY"/>
+                            <constraint firstItem="Cz6-ow-R6L" firstAttribute="leading" secondItem="Yrl-39-7VE" secondAttribute="leading" id="wXH-HE-vKc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Purchases" id="w0U-88-9bT" userLabel="My Purchases"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="Cz6-ow-R6L" id="0mh-9f-RYV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2T-CJ-aFw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5108" y="-741"/>
+        </scene>
+        <!--My Listings View Controller-->
+        <scene sceneID="a4b-8u-YR1">
+            <objects>
+                <viewController storyboardIdentifier="MyListingViewController" id="U5Q-Fa-zlY" userLabel="My Listings View Controller" customClass="MyListingViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cho-Gy-Y6X">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d88-q8-vVt" userLabel="backgroundView">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xvm-Xe-FbG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="d88-q8-vVt" secondAttribute="bottom" id="HSz-eh-iLi"/>
+                            <constraint firstItem="d88-q8-vVt" firstAttribute="top" secondItem="xvm-Xe-FbG" secondAttribute="top" id="IB3-LR-KAm"/>
+                            <constraint firstItem="xvm-Xe-FbG" firstAttribute="trailing" secondItem="d88-q8-vVt" secondAttribute="trailing" id="Zmj-CY-w2w"/>
+                            <constraint firstItem="d88-q8-vVt" firstAttribute="leading" secondItem="xvm-Xe-FbG" secondAttribute="leading" id="lR7-Xz-ecw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Listings" id="ebB-3J-Q2N"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="d88-q8-vVt" id="NBO-kK-yfl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AtX-0J-7YX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6018" y="-740"/>
+        </scene>
         <!--FAQ5 View Controller-->
         <scene sceneID="7aQ-hX-WV1">
             <objects>
