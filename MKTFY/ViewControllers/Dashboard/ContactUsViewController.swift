@@ -28,8 +28,12 @@ class ContactUsViewController: MainViewController, DashboardStoryboard, UITextVi
         initializeHideKeyboard()
         nameView.inputTextField.delegate = self
         emailView.inputTextField.delegate = self
+        messageTextView.delegate = self
         
         emailView.inputTextField.keyboardType = .emailAddress
+        
+        sendButton.isEnabled = false
+        allFieldsFilled()
         
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
@@ -38,6 +42,14 @@ class ContactUsViewController: MainViewController, DashboardStoryboard, UITextVi
     }
     
     // MARK: - func
+    func allFieldsFilled() {
+        guard let nameViewText = nameView.inputTextField.text, let validEmail = nameView.inputTextField.text?.isValidEmail, let emailViewText = emailView.inputTextField.text, let messageText = messageTextView.text else { return }
+        
+        if !nameViewText.isEmpty && validEmail && !emailViewText.isEmpty && !messageText.isEmpty {
+            sendButton.isEnabled = true
+        }
+    }
+    
     func setupTextViewPlaceholder() {
         messageTextView.delegate = self
         messageTextView.text = "Your message"
@@ -71,20 +83,27 @@ extension ContactUsViewController {
     
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
+        allFieldsFilled()
     }
 }
 
 extension ContactUsViewController: UITextFieldDelegate, UINavigationBarDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        allFieldsFilled()
         return false
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-    
+   
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        allFieldsFilled()
     }
+
+    func textViewDidChange(_ textView: UITextView) {
+        allFieldsFilled()
+    }
+
 }
