@@ -104,6 +104,11 @@ class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToNotificationVC() {
+        let vc = NotificationViewController.instantiate()
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+    
     // MARK: - FAQ VCs
     func goToFAQ1VC() {
         let vc = FAQ1ViewController.instantiate()

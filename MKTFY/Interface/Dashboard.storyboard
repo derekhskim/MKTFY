@@ -64,7 +64,7 @@
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pearl The Cat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qd-5d-5gk" userLabel="User Name Label">
                                         <rect key="frame" x="116" y="0.0" width="127" height="122"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1262,6 +1262,37 @@ The information provided on the Site is not intended for distribution to or use 
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYZ-dz-3wv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2473" y="-740"/>
+        </scene>
+        <!--Notification View Controller-->
+        <scene sceneID="sz9-jn-zaj">
+            <objects>
+                <viewController storyboardIdentifier="NotificationViewController" id="zis-Te-exL" userLabel="Notification View Controller" customClass="NotificationViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dMF-Ab-V0I">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CF7-Z9-BYh" userLabel="backgroundView">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7px-c9-8lA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CF7-Z9-BYh" firstAttribute="top" secondItem="7px-c9-8lA" secondAttribute="top" id="9V6-M5-R2A"/>
+                            <constraint firstItem="7px-c9-8lA" firstAttribute="trailing" secondItem="CF7-Z9-BYh" secondAttribute="trailing" id="YdH-pM-qbg"/>
+                            <constraint firstItem="CF7-Z9-BYh" firstAttribute="leading" secondItem="7px-c9-8lA" secondAttribute="leading" id="d3l-cP-lQ6"/>
+                            <constraint firstAttribute="bottom" secondItem="CF7-Z9-BYh" secondAttribute="bottom" id="sdF-uU-a5a"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Notifications" style="editor" id="Stw-Ne-zAT" userLabel="Notification"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="CF7-Z9-BYh" id="XBK-xl-ADz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PUi-Rz-0mg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3294" y="-740"/>
         </scene>
         <!--FAQ5 View Controller-->
         <scene sceneID="7aQ-hX-WV1">

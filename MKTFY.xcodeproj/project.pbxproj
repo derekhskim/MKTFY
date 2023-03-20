@@ -34,6 +34,7 @@
 		6568E1142988AF50001482AB /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E1132988AF50001482AB /* UIColor+.swift */; };
 		6568E1172988B860001482AB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6568E1162988B860001482AB /* Login.storyboard */; };
 		656F3C4829C6CB6300DFAAEC /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3C4729C6CB6300DFAAEC /* ContactUsViewController.swift */; };
+		656F3C4A29C8282400DFAAEC /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3C4929C8282400DFAAEC /* NotificationViewController.swift */; };
 		658145A52991B13000BC9067 /* TextFieldWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658145A42991B13000BC9067 /* TextFieldWithError.swift */; };
 		658145A72991B13C00BC9067 /* TextFieldWithError.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658145A62991B13C00BC9067 /* TextFieldWithError.xib */; };
 		658145AA2991B27B00BC9067 /* LPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658145A92991B27B00BC9067 /* LPView.swift */; };
@@ -117,6 +118,7 @@
 		6568E1132988AF50001482AB /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		6568E1162988B860001482AB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		656F3C4729C6CB6300DFAAEC /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
+		656F3C4929C8282400DFAAEC /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		658145A42991B13000BC9067 /* TextFieldWithError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithError.swift; sourceTree = "<group>"; };
 		658145A62991B13C00BC9067 /* TextFieldWithError.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldWithError.xib; sourceTree = "<group>"; };
 		658145A92991B27B00BC9067 /* LPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPView.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				659DF60C29B6FC1E00FEF0F3 /* AccountInformationViewController.swift */,
 				6543314629C226E4008D7728 /* CreateListingViewController.swift */,
 				656F3C4729C6CB6300DFAAEC /* ContactUsViewController.swift */,
+				656F3C4929C8282400DFAAEC /* NotificationViewController.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				653F2401298CBE7A0053C5E1 /* UIImage+.swift in Sources */,
 				65DE1B4B29BD891200C7D3E8 /* FlowLayoutViewModel.swift in Sources */,
 				65E0B3022996E48000A85CBB /* EmailVerificationSentViewController.swift in Sources */,
+				656F3C4A29C8282400DFAAEC /* NotificationViewController.swift in Sources */,
 				65A646F6299C1E8000262DB8 /* CheckBox.swift in Sources */,
 				6584B28529C6A48B00E3AD7E /* FAQViewController.swift in Sources */,
 				658145AA2991B27B00BC9067 /* LPView.swift in Sources */,

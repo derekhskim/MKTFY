@@ -11,14 +11,16 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
         
     weak var coordinator: MainCoordinator?
 
+    // MARK: - @IBOutlet
     @IBOutlet weak var profileInitialView: UIView!
     @IBOutlet weak var initialLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var signOutButton: UIButton!
     
+    // MARK: - @IBAction
     @IBAction func accountInformationButtonTapped(_ sender: Any) {
         coordinator?.goToAccountInformationVC()
     }
-    
     
     @IBAction func changePasswordButtonTapped(_ sender: Any) {
 //        Auth0Manager.shared.resetPassword(email: <#T##String#>)
@@ -33,9 +35,8 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
     }
     
     @IBAction func notificationButtonTapped(_ sender: Any) {
-        print("Notification button tapped!")
+        coordinator?.goToNotificationVC()
     }
-    
     
     @IBAction func faqButtonTapped(_ sender: Any) {
         coordinator?.goToFAQVC()
@@ -45,13 +46,13 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
         coordinator?.goToContactUsVC()
     }
     
-    @IBOutlet weak var signOutButton: UIButton!
     @IBAction func signOutButtonTapped(_ sender: Any) {
         Auth0Manager.shared.signOut()
         
         self.navigationController?.popToViewController(self.navigationController!.children[0], animated: true)
     }
     
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
