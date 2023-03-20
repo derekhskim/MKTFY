@@ -13,9 +13,12 @@ class NotificationViewTile: LPView {
     var view: UIView!
     
     // MARK: - @IBOutlet
+    @IBOutlet weak var notificationTileView: UIView!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    
+    // TODO: @IBInspectable for these fields
     
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
