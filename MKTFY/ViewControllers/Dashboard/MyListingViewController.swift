@@ -9,6 +9,8 @@ import UIKit
 
 class MyListingViewController: MainViewController, DashboardStoryboard {
 
+    weak var coordinator: MainCoordinator?
+    
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
     
@@ -18,6 +20,23 @@ class MyListingViewController: MainViewController, DashboardStoryboard {
 
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
-        // Do any additional setup after loading the view.
+        
+        floatingButton()
+    }
+    
+    func floatingButton() {
+        let floatingButton = FloatingButton(action: #selector(floatingButtonTapped), target: self)
+        view.addSubview(floatingButton)
+        
+        NSLayoutConstraint.activate([
+            floatingButton.widthAnchor.constraint(equalToConstant: 165),
+            floatingButton.heightAnchor.constraint(equalToConstant: 50),
+            floatingButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            floatingButton.bottomAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor, constant: -10)
+        ])
+    }
+    
+    @objc func floatingButtonTapped() {
+        coordinator?.presentCreateListingVC()
     }
 }

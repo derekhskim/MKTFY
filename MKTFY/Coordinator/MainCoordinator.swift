@@ -121,6 +121,7 @@ class MainCoordinator: Coordinator {
     
     func goToMyListingsVC() {
         let vc = MyListingViewController.instantiate()
+        vc.coordinator = self
         self.navigationController.pushViewController(vc, animated: true)
     }
     
