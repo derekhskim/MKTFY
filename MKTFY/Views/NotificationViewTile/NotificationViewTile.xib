@@ -9,9 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="OpenSans-Bold.ttf">
-            <string>OpenSans-Bold</string>
-        </array>
         <array key="OpenSans-Regular.ttf">
             <string>OpenSans-Regular</string>
         </array>
@@ -20,24 +17,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationViewTile" customModule="MKTFY" customModuleProvider="target">
             <connections>
                 <outlet property="dateLabel" destination="FSl-Ha-7Qu" id="oqU-xQ-TX3"/>
-                <outlet property="headerLabel" destination="LIF-H5-vJ5" id="86T-Kn-t7s"/>
                 <outlet property="notificationTileView" destination="Qcx-Lz-Uoo" id="fqr-mo-7mV"/>
                 <outlet property="titleLabel" destination="B5r-5B-77f" id="zbD-K1-geQ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
+            <rect key="frame" x="0.0" y="0.0" width="393" height="98"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIF-H5-vJ5" userLabel="Header Label">
-                    <rect key="frame" x="10" y="0.0" width="38" height="24"/>
-                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qcx-Lz-Uoo" userLabel="NotificationTileView">
-                    <rect key="frame" x="0.0" y="34" width="393" height="96"/>
+                    <rect key="frame" x="0.0" y="2" width="393" height="96"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Yu6-uI-k8t">
                             <rect key="frame" x="15" y="18" width="363" height="60"/>
@@ -62,7 +52,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSl-Ha-7Qu">
-                                                    <rect key="frame" x="0.0" y="23.333333333333329" width="267" height="16.666666666666671"/>
+                                                    <rect key="frame" x="0.0" y="23.333333333333336" width="267" height="16.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                     <color key="textColor" name="TextGray"/>
                                                     <nil key="highlightedColor"/>
@@ -93,15 +83,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Qcx-Lz-Uoo" firstAttribute="top" secondItem="LIF-H5-vJ5" secondAttribute="bottom" constant="10" id="6bL-Xy-WXA"/>
-                <constraint firstItem="LIF-H5-vJ5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Of4-uW-fli"/>
-                <constraint firstItem="LIF-H5-vJ5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="PG6-v4-OCy"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Qcx-Lz-Uoo" secondAttribute="bottom" id="SV5-1W-dKQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Qcx-Lz-Uoo" secondAttribute="trailing" id="bC5-AL-FXk"/>
                 <constraint firstItem="Qcx-Lz-Uoo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hYn-8d-22q"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="130.53435114503816" y="200.35211267605635"/>
+            <point key="canvasLocation" x="130.53435114503816" y="211.26760563380282"/>
         </view>
     </objects>
     <resources>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6500C7ED29AD1963008EBA01 /* SecureTextFieldWithLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6500C7EC29AD1963008EBA01 /* SecureTextFieldWithLabel.xib */; };
+		6506DA7029CA398400038AF8 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506DA6F29CA398400038AF8 /* FloatingButton.swift */; };
 		651218BC298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651218BB298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift */; };
 		653F2401298CBE7A0053C5E1 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653F2400298CBE7A0053C5E1 /* UIImage+.swift */; };
 		6543314729C226E4008D7728 /* CreateListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543314629C226E4008D7728 /* CreateListingViewController.swift */; };
@@ -95,6 +96,7 @@
 
 /* Begin PBXFileReference section */
 		6500C7EC29AD1963008EBA01 /* SecureTextFieldWithLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecureTextFieldWithLabel.xib; sourceTree = "<group>"; };
+		6506DA6F29CA398400038AF8 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		651218BB298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVerificationViewController.swift; sourceTree = "<group>"; };
 		653F2400298CBE7A0053C5E1 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		6543314629C226E4008D7728 /* CreateListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6506DA6E29CA397400038AF8 /* CustomButton */ = {
+			isa = PBXGroup;
+			children = (
+				6506DA6F29CA398400038AF8 /* FloatingButton.swift */,
+			);
+			path = CustomButton;
+			sourceTree = "<group>";
+		};
 		6543314829C22EFB008D7728 /* CustomAlert */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +441,7 @@
 				6557135829C8EBDE00D60584 /* NotificationViewTile */,
 				6556049C29C4F16300B8B20A /* ListingViewTile */,
 				6543314829C22EFB008D7728 /* CustomAlert */,
+				6506DA6E29CA397400038AF8 /* CustomButton */,
 				65DE1B4329BD862700C7D3E8 /* CollectionView */,
 				658145A82991B27300BC9067 /* Base */,
 				658145A32991B12300BC9067 /* CustomTextField */,
@@ -571,6 +582,7 @@
 				6587F35B298AF37200EF5100 /* LoadingConfirmationViewController.swift in Sources */,
 				65E7DE23299D722B00926A1F /* Users.swift in Sources */,
 				65CE01112991971F00772FCA /* CreateAccountViewController.swift in Sources */,
+				6506DA7029CA398400038AF8 /* FloatingButton.swift in Sources */,
 				654444C929AF18DC00E61F69 /* Auth0Error.swift in Sources */,
 				654444D429AFBF7700E61F69 /* PrivacyPolicyViewController.swift in Sources */,
 				65E8A0D4299EA523009D70A0 /* String+.swift in Sources */,

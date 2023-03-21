@@ -13,7 +13,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     
     var customDropDownView: UIView?
     var dropDownView: UIView!
-
+    
     let vm = FlowLayoutViewModel()
     let leftPadding: CGFloat = 8
     let rightPadding: CGFloat = 8
@@ -82,19 +82,19 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     // MARK: - func
     func horizontalDropShadow() {
         horizontalView.backgroundColor = .clear
-
+        
         let topShadow = CAGradientLayer()
         topShadow.frame = CGRect(x: 0, y: 0, width: horizontalView.bounds.width, height: 2)
         topShadow.colors = [UIColor.black.withAlphaComponent(0.25).cgColor, UIColor.clear.cgColor]
         topShadow.startPoint = CGPoint(x: 0.5, y: 1.0)
         topShadow.endPoint = CGPoint(x: 0.5, y: 0.0)
-
+        
         let bottomShadow = CAGradientLayer()
         bottomShadow.frame = CGRect(x: 0, y: horizontalView.bounds.height - 5, width: horizontalView.bounds.width, height: 5)
         bottomShadow.colors = [UIColor.black.withAlphaComponent(0.25).cgColor, UIColor.clear.cgColor]
         bottomShadow.startPoint = CGPoint(x: 0.5, y: 0.0)
         bottomShadow.endPoint = CGPoint(x: 0.5, y: 1.0)
-
+        
         horizontalView.layer.addSublayer(topShadow)
         horizontalView.layer.addSublayer(bottomShadow)
     }
@@ -212,21 +212,8 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     }
     
     func floatingButton() {
-        let image = UIImage(systemName: "plus.circle")
-        var configuration = UIButton.Configuration.filled()
-        configuration.title = "Create Listing"
-        configuration.image = image
-        configuration.attributedTitle?.font = UIFont(name: "OpenSans-Bold", size: 14)
-        configuration.attributedTitle?.foregroundColor = .white
-        configuration.background.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
-        configuration.imagePadding = 10
-        configuration.image?.withTintColor(.white, renderingMode: .alwaysTemplate)
-        configuration.cornerStyle = .capsule
-        
-        let floatingButton = UIButton(configuration: configuration)
-        
+        let floatingButton = FloatingButton(action: #selector(floatingButtonTapped), target: self)
         view.addSubview(floatingButton)
-        floatingButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             floatingButton.widthAnchor.constraint(equalToConstant: 165),
@@ -234,8 +221,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
             floatingButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             floatingButton.bottomAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor, constant: -10)
         ])
-        
-        floatingButton.addTarget(self, action: #selector(floatingButtonTapped), for: .touchUpInside)
     }
     
     @objc func floatingButtonTapped() {

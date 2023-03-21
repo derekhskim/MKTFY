@@ -65,7 +65,6 @@ class LoginViewController: MainViewController, LoginStoryboard {
         
         loginButton.isEnabled = false
     }
-    
 }
 
 // MARK: - Extension

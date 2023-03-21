@@ -14,7 +14,6 @@ class NotificationViewTile: LPView {
     
     // MARK: - @IBOutlet
     @IBOutlet weak var notificationTileView: UIView!
-    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
