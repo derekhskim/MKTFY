@@ -315,7 +315,7 @@
                                                         <rect key="frame" x="37" y="0.0" width="1.3333333333333357" height="21"/>
                                                     </imageView>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search on MKTFY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C9i-qX-8NA">
-                                                        <rect key="frame" x="57.333333333333329" y="0.0" width="239.33333333333337" height="21"/>
+                                                        <rect key="frame" x="57.333333333333329" y="0.0" width="239.33333333333343" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -1299,7 +1299,78 @@ The information provided on the Site is not intended for distribution to or use 
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CF7-Z9-BYh" userLabel="backgroundView">
                                 <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New for you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEY-Pe-qB5">
+                                        <rect key="frame" x="10" y="29" width="373" height="19.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                        <color key="textColor" name="TextGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psZ-46-rwo" customClass="NotificationViewTile" customModule="MKTFY" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="58.333333333333329" width="393" height="95.999999999999986"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="96" id="Uc4-Zt-U7s"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Hey Pearl, welcome to MKTFY"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="date" value="September 7, 2020"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                <color key="value" name="VoidWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Previously seen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QO-ZA-FTo">
+                                        <rect key="frame" x="10" y="179.33333333333334" width="373" height="19.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                        <color key="textColor" name="TextGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o5b-1a-lyA" customClass="NotificationViewTile" customModule="MKTFY" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="223.66666666666669" width="393" height="96"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="96" id="sMO-cz-Vcl"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Let's create your first offer!"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="date" value="September 5, 2020"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                <color key="value" name="VerySubtleGray"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uV8-eb-n33" customClass="NotificationViewTile" customModule="MKTFY" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="319.66666666666669" width="393" height="96"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="96" id="dhN-ZX-dZt"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Our Terms of Service has been updated!"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="date" value="September 3, 2020"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
+                                                <color key="value" name="VerySubtleGray"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" name="VerySubtleGray"/>
+                                <constraints>
+                                    <constraint firstItem="pEY-Pe-qB5" firstAttribute="leading" secondItem="CF7-Z9-BYh" secondAttribute="leading" constant="10" id="2Tn-Rs-SqE"/>
+                                    <constraint firstItem="uV8-eb-n33" firstAttribute="leading" secondItem="CF7-Z9-BYh" secondAttribute="leading" id="7He-FO-yro"/>
+                                    <constraint firstItem="4QO-ZA-FTo" firstAttribute="leading" secondItem="CF7-Z9-BYh" secondAttribute="leading" constant="10" id="JOx-61-nAw"/>
+                                    <constraint firstAttribute="trailing" secondItem="uV8-eb-n33" secondAttribute="trailing" id="Nd1-kb-IAy"/>
+                                    <constraint firstAttribute="trailing" secondItem="pEY-Pe-qB5" secondAttribute="trailing" constant="10" id="NlS-fs-efn"/>
+                                    <constraint firstItem="psZ-46-rwo" firstAttribute="leading" secondItem="CF7-Z9-BYh" secondAttribute="leading" id="QPV-gO-68F"/>
+                                    <constraint firstItem="o5b-1a-lyA" firstAttribute="top" secondItem="4QO-ZA-FTo" secondAttribute="bottom" constant="25" id="UYZ-yx-wSa"/>
+                                    <constraint firstAttribute="trailing" secondItem="o5b-1a-lyA" secondAttribute="trailing" id="V2H-TK-2up"/>
+                                    <constraint firstItem="pEY-Pe-qB5" firstAttribute="top" secondItem="CF7-Z9-BYh" secondAttribute="top" constant="29" id="b2g-tU-M3n"/>
+                                    <constraint firstAttribute="trailing" secondItem="psZ-46-rwo" secondAttribute="trailing" id="j6j-5I-7L9"/>
+                                    <constraint firstItem="o5b-1a-lyA" firstAttribute="leading" secondItem="CF7-Z9-BYh" secondAttribute="leading" id="j9P-mc-ud5"/>
+                                    <constraint firstItem="4QO-ZA-FTo" firstAttribute="top" secondItem="psZ-46-rwo" secondAttribute="bottom" constant="25" id="mSJ-Wu-pAz"/>
+                                    <constraint firstItem="uV8-eb-n33" firstAttribute="top" secondItem="o5b-1a-lyA" secondAttribute="bottom" id="mVJ-hE-odM"/>
+                                    <constraint firstAttribute="trailing" secondItem="4QO-ZA-FTo" secondAttribute="trailing" constant="10" id="rnR-Np-Svv"/>
+                                    <constraint firstItem="psZ-46-rwo" firstAttribute="top" secondItem="pEY-Pe-qB5" secondAttribute="bottom" constant="10" id="ug1-3B-PJq"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7px-c9-8lA"/>

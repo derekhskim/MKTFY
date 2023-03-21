@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="dateLabel" destination="FSl-Ha-7Qu" id="oqU-xQ-TX3"/>
                 <outlet property="notificationTileView" destination="Qcx-Lz-Uoo" id="fqr-mo-7mV"/>
+                <outlet property="textHoldingView" destination="2mj-q6-CA9" id="a8d-WU-mME"/>
                 <outlet property="titleLabel" destination="B5r-5B-77f" id="zbD-K1-geQ"/>
             </connections>
         </placeholder>

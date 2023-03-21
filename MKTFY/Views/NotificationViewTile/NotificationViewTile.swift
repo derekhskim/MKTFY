@@ -14,6 +14,7 @@ class NotificationViewTile: LPView {
     
     // MARK: - @IBOutlet
     @IBOutlet weak var notificationTileView: UIView!
+    @IBOutlet weak var textHoldingView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -33,12 +34,14 @@ class NotificationViewTile: LPView {
     @IBInspectable var viewBackgroundColor: UIColor = .white {
         didSet {
             notificationTileView.backgroundColor = viewBackgroundColor
+            
+            textHoldingView.backgroundColor = viewBackgroundColor
         }
     }
     
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "ListingViewTile", bundle: bundle)
+        let nib = UINib(nibName: "NotificationViewTile", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
     }
