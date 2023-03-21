@@ -9,6 +9,7 @@ import UIKit
 
 class NotificationTableViewCell: UITableViewCell {
     
+    // MARK: - @IBOutlet
     @IBOutlet weak var notificationTileView: UIView!
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var textHoldingView: UIView!
@@ -52,7 +53,6 @@ class NotificationTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
     }
     
 }
