@@ -442,9 +442,9 @@
 				6556049C29C4F16300B8B20A /* ListingViewTile */,
 				6543314829C22EFB008D7728 /* CustomAlert */,
 				6506DA6E29CA397400038AF8 /* CustomButton */,
+				658145A32991B12300BC9067 /* CustomTextField */,
 				65DE1B4329BD862700C7D3E8 /* CollectionView */,
 				658145A82991B27300BC9067 /* Base */,
-				658145A32991B12300BC9067 /* CustomTextField */,
 				65E90FEA2988CD8000ACDC0C /* Button.swift */,
 			);
 			path = Views;

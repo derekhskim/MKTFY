@@ -17,7 +17,24 @@ class NotificationViewTile: LPView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    // TODO: @IBInspectable for these fields
+    // MARK: - @IBInspectable
+    @IBInspectable var title: String = "Title" {
+        didSet {
+            titleLabel.text = title
+        }
+    }
+    
+    @IBInspectable var date: String = "Date" {
+        didSet {
+            dateLabel.text = date
+        }
+    }
+    
+    @IBInspectable var viewBackgroundColor: UIColor = .white {
+        didSet {
+            notificationTileView.backgroundColor = viewBackgroundColor
+        }
+    }
     
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))

@@ -18,6 +18,6 @@ class MyPurchasesViewController: MainViewController, DashboardStoryboard {
         
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
-        // Do any additional setup after loading the view.
+
     }
 }
