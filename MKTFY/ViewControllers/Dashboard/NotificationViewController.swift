@@ -88,9 +88,9 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 0 {
             let seenNotification = newNotifications.remove(at: indexPath.row)
-            oldNotifications.append(seenNotification)
+            oldNotifications.insert(seenNotification, at: 0)
             
-            let destinationIndexPath = IndexPath(row: oldNotifications.count - 1, section: 1)
+            let destinationIndexPath = IndexPath(row: 0, section: 1)
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.insertRows(at: [destinationIndexPath], with: .automatic)

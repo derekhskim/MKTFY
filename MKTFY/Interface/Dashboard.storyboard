@@ -250,7 +250,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lIG-f1-b84"/>
-                        <color key="backgroundColor" name="SubtleGray"/>
+                        <color key="backgroundColor" name="VerySubtleGray"/>
                         <constraints>
                             <constraint firstItem="nyN-am-4TO" firstAttribute="top" secondItem="WpF-hl-Byz" secondAttribute="bottom" constant="40" id="46V-5K-xid"/>
                             <constraint firstItem="Ux1-Px-RuR" firstAttribute="top" secondItem="vv9-Df-CVK" secondAttribute="bottom" constant="30" id="6at-gJ-T92"/>
@@ -1614,9 +1614,6 @@ The information provided on the Site is not intended for distribution to or use 
         </namedColor>
         <namedColor name="OccasionalPurple">
             <color red="0.38823529411764707" green="0.094117647058823528" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SubtleGray">
-            <color red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextGray">
             <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
