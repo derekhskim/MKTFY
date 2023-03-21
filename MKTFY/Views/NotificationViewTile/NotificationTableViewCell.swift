@@ -1,17 +1,16 @@
 //
-//  NotificationViewTile.swift
+//  NotificationTableViewCell.swift
 //  MKTFY
 //
-//  Created by Derek Kim on 2023-03-20.
+//  Created by Derek Kim on 2023-03-21.
 //
 
 import UIKit
 
-@IBDesignable
-class NotificationViewTile: UITableViewCell {
-    
-    // MARK: - @IBOutlet
+class NotificationTableViewCell: UITableViewCell {
+
     @IBOutlet weak var notificationTileView: UIView!
+    @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var textHoldingView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -39,23 +38,13 @@ class NotificationViewTile: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
     }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        xibSetup()
-    }
-    
-    func xibSetup() {
-        let nib = UINib(nibName: "NotificationViewTile", bundle: Bundle(for: type(of: self)))
-        let view = nib.instantiate(withOwner: self, options: nil).first as? UIView
-        view?.frame = bounds
-        view?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(view!)
-    }
-}
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="96" id="KGk-i7-Jjw" customClass="NotificationTableViewCell" customModule="MKTFY" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="96"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6G-Y4-QT6" userLabel="NotificationTileView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="96"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="JCI-vn-BHo">
+                                <rect key="frame" x="15" y="18" width="363" height="60"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="circle_logo" translatesAutoresizingMaskIntoConstraints="NO" id="zz1-4L-qvZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Y38-hl-jxH"/>
+                                            <constraint firstAttribute="width" constant="60" id="yRL-69-Crs"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wB-jx-lhT">
+                                        <rect key="frame" x="76" y="0.0" width="287" height="60"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="g6Z-4C-pEK">
+                                                <rect key="frame" x="10" y="10" width="267" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Title description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRG-GK-xeb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="267" height="23.333333333333332"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                                        <color key="textColor" name="TextGray"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMo-9w-tPA">
+                                                        <rect key="frame" x="0.0" y="23.333333333333336" width="267" height="16.666666666666664"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
+                                                        <color key="textColor" name="TextGray"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="g6Z-4C-pEK" secondAttribute="trailing" constant="10" id="O4L-MD-XTO"/>
+                                            <constraint firstItem="g6Z-4C-pEK" firstAttribute="top" secondItem="0wB-jx-lhT" secondAttribute="top" constant="10" id="e8i-TJ-LQJ"/>
+                                            <constraint firstItem="g6Z-4C-pEK" firstAttribute="leading" secondItem="0wB-jx-lhT" secondAttribute="leading" constant="10" id="yfG-tV-3we"/>
+                                            <constraint firstAttribute="bottom" secondItem="g6Z-4C-pEK" secondAttribute="bottom" constant="10" id="zEg-1T-0tE"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="JCI-vn-BHo" secondAttribute="bottom" constant="18" id="4vg-CS-gCX"/>
+                            <constraint firstItem="JCI-vn-BHo" firstAttribute="top" secondItem="c6G-Y4-QT6" secondAttribute="top" constant="18" id="G7y-4o-o9n"/>
+                            <constraint firstAttribute="trailing" secondItem="JCI-vn-BHo" secondAttribute="trailing" constant="15" id="LY0-bl-v3J"/>
+                            <constraint firstItem="JCI-vn-BHo" firstAttribute="leading" secondItem="c6G-Y4-QT6" secondAttribute="leading" constant="15" id="ogD-LJ-vvf"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="c6G-Y4-QT6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0IL-VB-gum"/>
+                    <constraint firstItem="c6G-Y4-QT6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="AcR-Bx-H2Y"/>
+                    <constraint firstAttribute="bottom" secondItem="c6G-Y4-QT6" secondAttribute="bottom" id="GXr-Xa-qLx"/>
+                    <constraint firstAttribute="trailing" secondItem="c6G-Y4-QT6" secondAttribute="trailing" id="f9j-WX-hPO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="gMo-9w-tPA" id="qMF-Zx-E5M"/>
+                <outlet property="logoImgView" destination="zz1-4L-qvZ" id="kE2-SK-rYm"/>
+                <outlet property="notificationTileView" destination="c6G-Y4-QT6" id="6E8-9d-igh"/>
+                <outlet property="textHoldingView" destination="0wB-jx-lhT" id="WMO-KU-CbE"/>
+                <outlet property="titleLabel" destination="JRG-GK-xeb" id="B5U-2V-02z"/>
+            </connections>
+            <point key="canvasLocation" x="17.557251908396946" y="23.239436619718312"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="circle_logo" width="60" height="60"/>
+        <namedColor name="TextGray">
+            <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
