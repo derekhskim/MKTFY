@@ -27,12 +27,22 @@ class NotificationViewController: MainViewController, DashboardStoryboard {
         super.viewDidLoad()
         
         setupNavigationBarWithBackButton()
-        setupBackgroundView(view: backgroundView)
+        setupTableViewBackground()
         
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
+    }
+    
+    func setupTableViewBackground() {
+        backgroundView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        backgroundView.layer.cornerRadius = 20
+        backgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        backgroundView.clipsToBounds = true
+
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
     }
 }
 
@@ -41,6 +51,14 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
     // MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "New for you"
+        } else {
+            return "Previously seen"
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,6 +75,10 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
         
         cell.title = notification.title
         cell.date = notification.date
+        
+        if indexPath.section == 1 {
+            cell.viewBackgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        }
         
         return cell
     }

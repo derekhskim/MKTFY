@@ -8,7 +8,7 @@
 import UIKit
 
 class NotificationTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var notificationTileView: UIView!
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var textHoldingView: UIView!
@@ -38,12 +38,20 @@ class NotificationTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        addDropShadow()
     }
-
+    
+    func addDropShadow() {
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        contentView.layer.shadowOpacity = 0.3
+        contentView.layer.shadowRadius = 2
+        contentView.layer.masksToBounds = false
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
