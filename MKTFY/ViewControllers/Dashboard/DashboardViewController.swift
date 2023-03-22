@@ -62,6 +62,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         horizontalScrollView.showsHorizontalScrollIndicator = false
         
         searchTextField.borderStyle = .none
+        searchTextField.delegate = self
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -77,6 +78,9 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         
         let tapOutsideDropDown = UITapGestureRecognizer(target: self, action: #selector(handleOutsideTap))
         view.addGestureRecognizer(tapOutsideDropDown)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: - func
@@ -109,7 +113,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         
         imgViewForDropDown.contentMode = .right
     }
-    
+   
     @objc func showCustomDropDownView() {
         if let dropDownView = customDropDownView {
             dropDownView.removeFromSuperview()
@@ -202,11 +206,17 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     }
     
     @objc func handleOutsideTap(_ sender: UITapGestureRecognizer) {
-        if let dropDownView = customDropDownView {
-            let point = sender.location(in: dropDownView)
-            if !dropDownView.bounds.contains(point) {
-                dropDownView.removeFromSuperview()
-                customDropDownView = nil
+        let pointInCustomDropDownView = sender.location(in: customDropDownView)
+        let pointInSearchTextField = sender.location(in: searchTextField)
+
+        if searchTextField.bounds.contains(pointInSearchTextField) == false {
+            view.endEditing(true)
+        }
+
+        if let customDropDownView = customDropDownView, let convertedCustomDropDownViewFrame = customDropDownView.superview?.convert(customDropDownView.frame, to: view) {
+            if !convertedCustomDropDownViewFrame.contains(sender.location(in: view)) {
+                customDropDownView.removeFromSuperview()
+                self.customDropDownView = nil
             }
         }
     }
@@ -225,6 +235,19 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     
     @objc func floatingButtonTapped() {
         coordinator?.presentCreateListingVC()
+    }
+    
+    @objc override func keyboardWillShow(notification: NSNotification) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    @objc override func keyboardWillHide(notification: NSNotification) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
@@ -269,6 +292,22 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 44)
     }
+}
+
+extension DashboardViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
 }
 
 extension DashboardViewController {
