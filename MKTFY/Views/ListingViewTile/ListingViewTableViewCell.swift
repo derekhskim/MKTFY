@@ -10,7 +10,8 @@ import UIKit
 class ListingViewTableViewCell: UITableViewCell {
     
     // MARK: - @IBOutlet
-    @IBOutlet weak var view: UIView!
+    @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var textHoldingView: UIView!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -28,11 +29,14 @@ class ListingViewTableViewCell: UITableViewCell {
     }
     
     func addDropShadow() {
-        contentView.layer.shadowColor = UIColor.black.cgColor
-        contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        contentView.layer.shadowOpacity = 0.3
-        contentView.layer.shadowRadius = 2
-        contentView.layer.masksToBounds = false
+        cellView.layer.shadowColor = UIColor.black.cgColor
+        cellView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cellView.layer.shadowOpacity = 0.3
+        cellView.layer.shadowRadius = 2
+        cellView.layer.masksToBounds = false
+        cellView.layer.cornerRadius = 20
+        textHoldingView.layer.cornerRadius = 20
+        itemImageView.layer.cornerRadius = 20
     }
     
     func updateNotificationCell(image: UIImage, date: String, title: String, price: String) {

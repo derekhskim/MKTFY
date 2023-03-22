@@ -8,7 +8,7 @@
 import UIKit
 
 class MyPurchasesViewController: MainViewController, DashboardStoryboard {
-        
+    
     var myPurchases: [Purchases] = [
         Purchases(image: UIImage(named: "pearl_the_christmas")!, date: "September 7, 2020", title: "Pearl the Cat: Christmas Edition", price: "$340.00"),
         Purchases(image: UIImage(named: "pearl_the_halloween")!, date: "September 7, 2020", title: "Pearl the Cat: Halloween Edition", price: "$340.00")
@@ -25,6 +25,14 @@ class MyPurchasesViewController: MainViewController, DashboardStoryboard {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ListingViewTableViewCell", bundle: nil), forCellReuseIdentifier: "ListingViewTableViewCell")
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 38),
+            tableView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: 0)
+        ])
         
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
@@ -56,7 +64,7 @@ extension MyPurchasesViewController: UITableViewDataSource {
         cell.dateLabel.text = purchases.date
         cell.priceLabel.text = purchases.price
         cell.itemImageView.image = purchases.image
-
+        
         return cell
     }
 }
@@ -64,7 +72,17 @@ extension MyPurchasesViewController: UITableViewDataSource {
 extension MyPurchasesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        return 126
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .clear
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 24
     }
     
 }
