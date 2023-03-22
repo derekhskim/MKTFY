@@ -1347,7 +1347,19 @@ The information provided on the Site is not intended for distribution to or use 
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cz6-ow-R6L" userLabel="backgroundView">
                                 <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kx2-27-QEY">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" name="VerySubtleGray"/>
+                                <constraints>
+                                    <constraint firstItem="kx2-27-QEY" firstAttribute="leading" secondItem="Cz6-ow-R6L" secondAttribute="leading" id="3vl-fI-Aqk"/>
+                                    <constraint firstItem="kx2-27-QEY" firstAttribute="top" secondItem="Cz6-ow-R6L" secondAttribute="top" id="AVY-9A-aWC"/>
+                                    <constraint firstAttribute="bottom" secondItem="kx2-27-QEY" secondAttribute="bottom" id="FGz-Wc-u4c"/>
+                                    <constraint firstAttribute="trailing" secondItem="kx2-27-QEY" secondAttribute="trailing" id="qXb-q8-dk2"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yrl-39-7VE"/>
@@ -1362,6 +1374,7 @@ The information provided on the Site is not intended for distribution to or use 
                     <navigationItem key="navigationItem" title="My Purchases" id="w0U-88-9bT" userLabel="My Purchases"/>
                     <connections>
                         <outlet property="backgroundView" destination="Cz6-ow-R6L" id="0mh-9f-RYV"/>
+                        <outlet property="tableView" destination="kx2-27-QEY" id="57I-5I-Ooz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2T-CJ-aFw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

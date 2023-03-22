@@ -8,7 +8,7 @@
 import UIKit
 
 class ListingViewTableViewCell: UITableViewCell {
-
+    
     // MARK: - @IBOutlet
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var itemImageView: UIImageView!
@@ -20,18 +20,17 @@ class ListingViewTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     func configureCell(image: UIImage, date: String, title: String, price: String) {
-            itemImageView.image = image
-            dateLabel.text = date
-            titleLabel.text = title
-            priceLabel.text = price
-        }
-    
+        itemImageView.image = image
+        dateLabel.text = date
+        titleLabel.text = title
+        priceLabel.text = price
+    }
 }
