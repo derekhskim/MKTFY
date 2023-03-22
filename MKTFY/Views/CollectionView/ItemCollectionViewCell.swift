@@ -27,7 +27,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         priceLabel.font = priceFont
     }
 
-    func updateData(data: Items) {
+    func updateData(data: CollectionViewItems) {
         self.priceLabel.text = "$ \(String(describing: data.price!))"
         self.titleLabel.text = data.title
         self.imageViewItem.image = data.imageName

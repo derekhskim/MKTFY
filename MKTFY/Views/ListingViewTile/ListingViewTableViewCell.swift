@@ -18,7 +18,7 @@ class ListingViewTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        addDropShadow()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,7 +27,15 @@ class ListingViewTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(image: UIImage, date: String, title: String, price: String) {
+    func addDropShadow() {
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        contentView.layer.shadowOpacity = 0.3
+        contentView.layer.shadowRadius = 2
+        contentView.layer.masksToBounds = false
+    }
+    
+    func updateNotificationCell(image: UIImage, date: String, title: String, price: String) {
         itemImageView.image = image
         dateLabel.text = date
         titleLabel.text = title

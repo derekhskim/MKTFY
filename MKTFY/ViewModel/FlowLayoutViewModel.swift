@@ -8,9 +8,9 @@
 import Foundation
 
 class FlowLayoutViewModel {
-    var items: [Items]
+    var items: [CollectionViewItems]
     
     init() {
-        self.items = Items.mockData()
+        self.items = CollectionViewItems.mockData()
     }
 }
