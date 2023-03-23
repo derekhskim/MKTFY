@@ -51,6 +51,7 @@
 		6584B28329C6595200E3AD7E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584B28229C6595200E3AD7E /* User.swift */; };
 		6584B28529C6A48B00E3AD7E /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584B28429C6A48B00E3AD7E /* FAQViewController.swift */; };
 		6584B28829C6AB4300E3AD7E /* FAQ1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6584B28729C6AB4300E3AD7E /* FAQ1ViewController.swift */; };
+		6586C6CD29CCC2AB00C05117 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6586C6CC29CCC2AB00C05117 /* NetworkManager.swift */; };
 		6587F35B298AF37200EF5100 /* LoadingConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6587F35A298AF37200EF5100 /* LoadingConfirmationViewController.swift */; };
 		6597D0C92992C3AF00485932 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6597D0BD2992C3AF00485932 /* OpenSans-SemiBold.ttf */; };
 		6597D0CA2992C3AF00485932 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6597D0BE2992C3AF00485932 /* OpenSans-Light.ttf */; };
@@ -142,6 +143,7 @@
 		6584B28229C6595200E3AD7E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6584B28429C6A48B00E3AD7E /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		6584B28729C6AB4300E3AD7E /* FAQ1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ1ViewController.swift; sourceTree = "<group>"; };
+		6586C6CC29CCC2AB00C05117 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		6587F35A298AF37200EF5100 /* LoadingConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingConfirmationViewController.swift; sourceTree = "<group>"; };
 		6597D0BD2992C3AF00485932 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		6597D0BE2992C3AF00485932 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 				6584B28229C6595200E3AD7E /* User.swift */,
 				6506DA7129CA45F800038AF8 /* Notification.swift */,
 				65629A4B29CB6A1E0056F748 /* Purchases.swift */,
+				6586C6CC29CCC2AB00C05117 /* NetworkManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				6543314729C226E4008D7728 /* CreateListingViewController.swift in Sources */,
 				659DF60D29B6FC1E00FEF0F3 /* AccountInformationViewController.swift in Sources */,
 				6568E1142988AF50001482AB /* UIColor+.swift in Sources */,
+				6586C6CD29CCC2AB00C05117 /* NetworkManager.swift in Sources */,
 				65D1AF6529B45D3B00B4581D /* DashboardMenuViewController.swift in Sources */,
 				654444C729AF07BD00E61F69 /* Constant.swift in Sources */,
 				6587F35B298AF37200EF5100 /* LoadingConfirmationViewController.swift in Sources */,

@@ -20,7 +20,7 @@ class Auth0Manager {
         auth0 = Auth0.authentication()
     }
     
-    func loginWithEmail(_ email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+    func loginWithEmail(_ email: String, password: String, completion: @escaping (Bool, String?, Error?) -> Void) {
         
         auth0.login(
             usernameOrEmail: email,
@@ -32,17 +32,31 @@ class Auth0Manager {
         .start { result in
             switch result {
             case .success(let credentials):
-//                print("Access Token: \(credentials.accessToken)")
+                print("Access Token: \(credentials.accessToken)")
                 UserDefaults.standard.set(credentials.accessToken, forKey: "authenticationAPI")
-                completion(true, nil)
+                self.getUserInfo(accessToken: credentials.accessToken, completion: completion)
             case .failure(let error):
                 print(error.localizedDescription)
-                completion(false, error)
+                completion(false, nil, error)
             }
         }
     }
     
-    func signup(email: String, password: String, firstName: String, lastName: String, phone: String, address: String, city: String, completion: @escaping (Bool, Error?) -> Void) {
+    private func getUserInfo(accessToken: String, completion: @escaping (Bool, String?, Error?) -> Void) {
+        auth0.userInfo(withAccessToken: accessToken)
+            .start { (result: Result<UserInfo, AuthenticationError>) in
+                switch result {
+                case .success(let userInfo):
+                    let userId = userInfo.sub
+                    completion(true, userId, nil)
+                case .failure(let error):
+                    print("Failed to get user info: \(error)")
+                    completion(false, nil, error)
+                }
+            }
+    }
+    
+    func signup(email: String, password: String, firstName: String, lastName: String, phone: String, address: String, city: String, completion: @escaping (Bool, String?, Error?) -> Void) {
         
         let userMetadata = ["firstName" : firstName, "lastName" : lastName, "email" : email, "phone" : phone, "address" : address, "city" : city]
         
@@ -51,10 +65,27 @@ class Auth0Manager {
                 switch result {
                 case .success(let user):
                     print("User signed up: \(user)")
-                    completion(true, nil)
+                    Auth0Manager.shared.loginWithEmail(email, password: password) { success, userId, error in
+                        if success {
+                            let user = User(id: userId!, firstName: firstName, lastName: lastName, email: email, phone: phone, streetAddress: address, city: city, province: nil)
+                            NetworkManager.shared.registerUser(user: user) { result in
+                                switch result {
+                                case .success(let success):
+                                    if success {
+                                        print("User registered successfully")
+                                    }
+                                case .failure(let error):
+                                    print("Failed to register user: \(error)")
+                                }
+                            }
+                            completion(true, userId, nil)
+                        } else {
+                            completion(false, nil, error)
+                        }
+                    }
                 case .failure(let error):
                     print("Failed to sign up: \(error)")
-                    completion(false, error)
+                    completion(false, nil, error)
                 }
             }
     }
@@ -77,7 +108,7 @@ class Auth0Manager {
         let completeDomain = "https://\(devDomain)"
         let redirectUri = URL(string: "\(bundleId)://\(completeDomain)/ios/\(bundleId)/callback")!
         let logoutUrl = URL(string: "\(completeDomain)/v2/logout?client_id=\(clientId)&amp;returnTo=\(redirectUri.absoluteString)")!
-
+        
         URLSession.shared.dataTask(with: logoutUrl) { data, response, error in
             if let error = error {
                 print("Failed to log out: \(error.localizedDescription)")
@@ -86,5 +117,5 @@ class Auth0Manager {
             }
         }.resume()
     }
-
+    
 }

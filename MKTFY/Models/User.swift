@@ -16,5 +16,6 @@ struct User: Codable {
     let phone: String
     let streetAddress: String
     let city: String
+    let province: String?
 }
 

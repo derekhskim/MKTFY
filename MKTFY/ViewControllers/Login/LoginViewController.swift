@@ -31,7 +31,7 @@ class LoginViewController: MainViewController, LoginStoryboard {
         guard let email = emailView.inputTextField.text,
               let password = passwordView.isSecureTextField.text else { return }
         
-        Auth0Manager.shared.loginWithEmail(email, password: password) { success, error in
+        Auth0Manager.shared.loginWithEmail(email, password: password) { success, userId, error in
             if success {
                 DispatchQueue.main.async {
                     self.coordinator?.goToDashboardVC()

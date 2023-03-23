@@ -230,7 +230,7 @@ extension CreateAccountViewController {
               let address = addressField.inputTextField.text,
               let city = cityField.inputTextField.text else { return }
         
-        Auth0Manager.shared.signup(email: email, password: password, firstName: firstName, lastName: lastName, phone: phone, address: address, city: city) { success, error in
+        Auth0Manager.shared.signup(email: email, password: password, firstName: firstName, lastName: lastName, phone: phone, address: address, city: city) { success, userId, error in
             if success {
                 print("Sign up succeeded!")
             } else {

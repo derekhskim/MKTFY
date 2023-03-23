@@ -51,8 +51,12 @@ class MyPurchasesViewController: MainViewController, DashboardStoryboard {
 }
 
 extension MyPurchasesViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return myPurchases.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,4 +89,13 @@ extension MyPurchasesViewController: UITableViewDelegate {
         return 24
     }
     
+    //    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    //        return 24
+    //    }
+    //
+    //    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    //        let footerView = UIView()
+    //        footerView.backgroundColor = .clear
+    //        return footerView
+    //    }
 }
