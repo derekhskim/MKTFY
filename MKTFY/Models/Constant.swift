@@ -5,6 +5,8 @@
 //  Created by Derek Kim on 2023/02/28.
 //
 
+import Foundation
+
 let databaseConnection = "Username-Password-Authentication"
 let emailConnection = "email"
 let devDomain = "dev-imv7dvp8n7sd2xfz.us.auth0.com"

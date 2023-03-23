@@ -84,7 +84,6 @@
 		65DE1B5229BD97A900C7D3E8 /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65DE1B5029BD97A900C7D3E8 /* ItemCollectionViewCell.xib */; };
 		65E0B3022996E48000A85CBB /* EmailVerificationSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E0B3012996E48000A85CBB /* EmailVerificationSentViewController.swift */; };
 		65E7DE1F299D4ADE00926A1F /* Auth0Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7DE1E299D4ADE00926A1F /* Auth0Manager.swift */; };
-		65E7DE23299D722B00926A1F /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7DE22299D722B00926A1F /* Users.swift */; };
 		65E8A0D4299EA523009D70A0 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E8A0D3299EA523009D70A0 /* String+.swift */; };
 		65E90FEB2988CD8000ACDC0C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E90FEA2988CD8000ACDC0C /* Button.swift */; };
 		65EBA0BE298A1E5200202C02 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EBA0BD298A1E5200202C02 /* ForgotPasswordViewController.swift */; };
@@ -175,7 +174,6 @@
 		65DE1B5029BD97A900C7D3E8 /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		65E0B3012996E48000A85CBB /* EmailVerificationSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationSentViewController.swift; sourceTree = "<group>"; };
 		65E7DE1E299D4ADE00926A1F /* Auth0Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth0Manager.swift; sourceTree = "<group>"; };
-		65E7DE22299D722B00926A1F /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		65E8A0D3299EA523009D70A0 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		65E90FEA2988CD8000ACDC0C /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		65EBA0BD298A1E5200202C02 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -348,6 +346,15 @@
 			path = FAQViewController;
 			sourceTree = "<group>";
 		};
+		6586C6CE29CCCBED00C05117 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				65E7DE1E299D4ADE00926A1F /* Auth0Manager.swift */,
+				6586C6CC29CCC2AB00C05117 /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		6587F35C298AFA9E00EF5100 /* MainController */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,15 +463,13 @@
 		65F846E7299C88090056B675 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				65E7DE1E299D4ADE00926A1F /* Auth0Manager.swift */,
-				65E7DE22299D722B00926A1F /* Users.swift */,
+				6586C6CE29CCCBED00C05117 /* Manager */,
 				654444C629AF07BD00E61F69 /* Constant.swift */,
 				654444C829AF18DC00E61F69 /* Auth0Error.swift */,
 				65DE1B4829BD887C00C7D3E8 /* CollectionViewItems.swift */,
 				6584B28229C6595200E3AD7E /* User.swift */,
 				6506DA7129CA45F800038AF8 /* Notification.swift */,
 				65629A4B29CB6A1E0056F748 /* Purchases.swift */,
-				6586C6CC29CCC2AB00C05117 /* NetworkManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -585,7 +590,6 @@
 				65D1AF6529B45D3B00B4581D /* DashboardMenuViewController.swift in Sources */,
 				654444C729AF07BD00E61F69 /* Constant.swift in Sources */,
 				6587F35B298AF37200EF5100 /* LoadingConfirmationViewController.swift in Sources */,
-				65E7DE23299D722B00926A1F /* Users.swift in Sources */,
 				65CE01112991971F00772FCA /* CreateAccountViewController.swift in Sources */,
 				6506DA7029CA398400038AF8 /* FloatingButton.swift in Sources */,
 				654444C929AF18DC00E61F69 /* Auth0Error.swift in Sources */,

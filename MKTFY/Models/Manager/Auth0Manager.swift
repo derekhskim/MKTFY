@@ -12,7 +12,6 @@ class Auth0Manager {
     
     let audience = "https://\(devDomain)/api/v2/"
     let auth0: Authentication!
-    let users = Users()
     
     static let shared = Auth0Manager()
     
