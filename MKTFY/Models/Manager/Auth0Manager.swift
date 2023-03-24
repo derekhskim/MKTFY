@@ -47,6 +47,7 @@ class Auth0Manager {
                 switch result {
                 case .success(let userInfo):
                     let userId = userInfo.sub
+                    UserDefaults.standard.set(userId, forKey: "userId")
                     completion(true, userId, nil)
                 case .failure(let error):
                     print("Failed to get user info: \(error)")

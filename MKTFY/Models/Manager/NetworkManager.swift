@@ -15,6 +15,7 @@ class NetworkManager {
         let status: Int
     }
     
+    // MARK: - POST Method
     func registerUser(user: User, completion: @escaping (Result<Bool, Error>) -> Void) {
         guard let url = URL(string: "\(baseURL)/user/register") else { return }
         guard let token = UserDefaults.standard.string(forKey: "authenticationAPI") else { return }
@@ -63,6 +64,54 @@ class NetworkManager {
                 print(prettyPrintedJson)
             } catch {
                 print("Error: Trying to convert JSON data to string")
+                return
+            }
+        }
+        task.resume()
+    }
+    
+    // MARK: - GET Method
+    func getUsers() {
+        guard let userId = UserDefaults.standard.string(forKey: "userId") else { return }
+        guard let url = URL(string: "\(baseURL)/user/\(userId)") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                print("Error calling GET: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            
+            guard let data = data else {
+                print("Error: Did not receive data")
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                print("Status code: \(response.statusCode)")
+            }
+            
+            do {
+                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                    print("Error: Cannot convert data to JSON object")
+                    return
+                }
+                
+                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                    print("Error: Cannot convert JSON object to Pretty JSON data")
+                    return
+                }
+                
+                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
+                    print("Error: Cannot print JSON in String")
+                    return
+                }
+                
+                print(prettyPrintedJson)
+            } catch {
+                print("Error: Trying to convert JSON data to String")
                 return
             }
         }
