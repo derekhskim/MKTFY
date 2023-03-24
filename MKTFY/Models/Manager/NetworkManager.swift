@@ -15,7 +15,7 @@ class NetworkManager {
         let status: Int
     }
     
-    // MARK: - POST Method
+    // MARK: - Register User via "POST" Method
     func registerUser(user: User, completion: @escaping (Result<Bool, Error>) -> Void) {
         guard let url = URL(string: "\(baseURL)/user/register") else { return }
         guard let token = UserDefaults.standard.string(forKey: "authenticationAPI") else { return }
@@ -70,7 +70,7 @@ class NetworkManager {
         task.resume()
     }
     
-    // MARK: - GET Method
+    // MARK: - Get User via "GET" Method
     func getUsers() {
         guard let userId = UserDefaults.standard.string(forKey: "userId") else { return }
         guard let url = URL(string: "\(baseURL)/user/\(userId)") else { return }
@@ -116,6 +116,13 @@ class NetworkManager {
             }
         }
         task.resume()
+    }
+    
+    // MARK: - Update user via "PUT" Method
+    func updateUsers() {
+        guard let url = URL(string: "\(baseURL)/user") else { return }
+        
+        
     }
 }
 
