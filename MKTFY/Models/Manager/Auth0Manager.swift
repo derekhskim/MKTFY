@@ -10,7 +10,7 @@ import Foundation
 
 class Auth0Manager {
     
-    let audience = "https://\(devDomain)/api/v2/"
+    let audience = "http://marketforyou.com"
     let auth0: Authentication!
     
     static let shared = Auth0Manager()
@@ -66,7 +66,7 @@ class Auth0Manager {
                     print("User signed up: \(user)")
                     Auth0Manager.shared.loginWithEmail(email, password: password) { success, userId, error in
                         if success {
-                            let user = User(id: userId!, firstName: firstName, lastName: lastName, email: email, phone: phone, streetAddress: address, city: city, province: nil)
+                            let user = User(id: userId!, firstName: firstName, lastName: lastName, email: email, phone: phone, streetAddress: address, city: city, province: "AB")
                             NetworkManager.shared.registerUser(user: user) { result in
                                 switch result {
                                 case .success(let success):

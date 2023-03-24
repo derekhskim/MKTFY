@@ -54,7 +54,7 @@ class LoginViewController: MainViewController, LoginStoryboard {
         super.viewDidLoad()
         
         emailView.inputTextField.text = "treasure3210@gmail.com"
-        passwordView.isSecureTextField.text = "K121212"
+        passwordView.isSecureTextField.text = "K131313_!"
         
         initializeHideKeyboard()
         

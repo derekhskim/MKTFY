@@ -350,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				65E7DE1E299D4ADE00926A1F /* Auth0Manager.swift */,
+				654444C829AF18DC00E61F69 /* Auth0Error.swift */,
 				6586C6CC29CCC2AB00C05117 /* NetworkManager.swift */,
 			);
 			path = Manager;
@@ -465,9 +466,8 @@
 			children = (
 				6586C6CE29CCCBED00C05117 /* Manager */,
 				654444C629AF07BD00E61F69 /* Constant.swift */,
-				654444C829AF18DC00E61F69 /* Auth0Error.swift */,
-				65DE1B4829BD887C00C7D3E8 /* CollectionViewItems.swift */,
 				6584B28229C6595200E3AD7E /* User.swift */,
+				65DE1B4829BD887C00C7D3E8 /* CollectionViewItems.swift */,
 				6506DA7129CA45F800038AF8 /* Notification.swift */,
 				65629A4B29CB6A1E0056F748 /* Purchases.swift */,
 			);

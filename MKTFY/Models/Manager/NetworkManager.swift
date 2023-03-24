@@ -12,25 +12,24 @@ class NetworkManager {
     static let shared = NetworkManager()
     
     struct ServerResponse: Codable {
-        let status: String
+        let status: Int
     }
     
     func registerUser(user: User, completion: @escaping (Result<Bool, Error>) -> Void) {
-        let url = URL(string: "\(baseURL)/user/register")!
-//        let token = UserDefaults.standard.string(forKey: "authenticationAPI") ?? ""
+        guard let url = URL(string: "\(baseURL)/user/register") else { return }
+        guard let token = UserDefaults.standard.string(forKey: "authenticationAPI") else { return }
+        
+        guard let jsonData = try? JSONEncoder().encode(user) else {
+            print("Error: Trying to convert model to JSON Data")
+            return
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            let jsonData = try JSONEncoder().encode(user)
-            request.httpBody = jsonData
-        } catch {
-            completion(.failure(error))
-            return
-        }
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = jsonData
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -43,27 +42,30 @@ class NetworkManager {
                 print("Status code: \(response.statusCode)")
             }
             
-            if let data = data {
-                do {
-                    let decoder = JSONDecoder()
-                    let result = try decoder.decode(ServerResponse.self, from: data)
-                    print("Server response: \(result)")
-                    if result.status == "success" {
-                        completion(.success(true))
-                    } else {
-                        let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to register user"])
-                        completion(.failure(error))
-                    }
-                } catch let decodingError {
-                    print("Decoding error: \(decodingError)")
-                    completion(.failure(decodingError))
+            guard let data = data else {
+                print("Error: Did not receive data")
+                return
+            }
+            
+            do {
+                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                    print("Error: Cannot convert data to JSON object")
+                    return
                 }
-            } else {
-                let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"])
-                completion(.failure(error))
+                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                    print("Error: Cannot convert JSON object to Pretty JSON data")
+                    return
+                }
+                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
+                    print("Error: Couldn't print JSON in String")
+                    return
+                }
+                print(prettyPrintedJson)
+            } catch {
+                print("Error: Trying to convert JSON data to string")
+                return
             }
         }
-        
         task.resume()
     }
 }
