@@ -8,7 +8,6 @@ A buy & sell platform for users to list, view, purchase, and sell items.
 - Setup user interfaces and managed data using API calls for GET, POST, and PUT requests
 
 
-
 ## 🚀 About Me
 I'm a iOS/Flutter Developer...
 
@@ -22,16 +21,18 @@ I'm a iOS/Flutter Developer...
 - [@treasure3210](https://www.github.com/treasure3210)
 
 
-## Demo
+## 💻 Demo
+### Splash Screen 
+![Splash Screen](./Media/Splash-Screen.gif)
 
-
+### Login Flow
+#### Login | Sign Up | Forgot Password
+![Login](./Media/Login.gif "Login") ![Sign Up](./Media/Sign-Up.gif "Sign Up") !["Forgot Password"](./Media/Forgot-Password.gif "Forgot Password")
 
 ## Badges
-
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 
 ## Feedback
-
 If you have any feedback, please reach out to us at treasure3210@gmail.com
 
