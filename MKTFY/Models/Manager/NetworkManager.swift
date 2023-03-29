@@ -71,16 +71,20 @@ class NetworkManager {
     }
     
     // MARK: - Get User via "GET" Method
-    func getUsers() {
+    func getUsers(completion: @escaping (Result<[String: Any], Error>) -> Void) {
         guard let userId = UserDefaults.standard.string(forKey: "userId") else { return }
+        guard let token = UserDefaults.standard.string(forKey: "authenticationAPI") else { return }
         guard let url = URL(string: "\(baseURL)/user/\(userId)") else { return }
         
         var request = URLRequest(url: url)
+        request.setValue("text/plain", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 print("Error calling GET: \(String(describing: error?.localizedDescription))")
+                completion(.failure(error!))
                 return
             }
             
@@ -112,6 +116,7 @@ class NetworkManager {
                 print(prettyPrintedJson)
             } catch {
                 print("Error: Trying to convert JSON data to String")
+                completion(.failure(error))
                 return
             }
         }

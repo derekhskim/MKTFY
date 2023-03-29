@@ -10,7 +10,7 @@ import Foundation
 
 class Auth0Manager {
     
-    let audience = "http://marketforyou.com"
+    let audience = "http://mktfy.com"
     let auth0: Authentication!
     
     static let shared = Auth0Manager()
@@ -40,7 +40,7 @@ class Auth0Manager {
             }
         }
     }
-    
+        
     private func getUserInfo(accessToken: String, completion: @escaping (Bool, String?, Error?) -> Void) {
         auth0.userInfo(withAccessToken: accessToken)
             .start { (result: Result<UserInfo, AuthenticationError>) in
@@ -49,6 +49,15 @@ class Auth0Manager {
                     let userId = userInfo.sub
                     UserDefaults.standard.set(userId, forKey: "userId")
                     completion(true, userId, nil)
+
+//                    NetworkManager.shared.getUsers { result in
+//                        switch result {
+//                        case .success(let success):
+//                            print("Successfully fetched User Data: \(success)")
+//                        case .failure(let error):
+//                            print("Failed to fetch user: \(error)")
+//                        }
+//                    }
                 case .failure(let error):
                     print("Failed to get user info: \(error)")
                     completion(false, nil, error)
@@ -67,7 +76,7 @@ class Auth0Manager {
                     print("User signed up: \(user)")
                     Auth0Manager.shared.loginWithEmail(email, password: password) { success, userId, error in
                         if success {
-                            let user = User(id: userId!, firstName: firstName, lastName: lastName, email: email, phone: phone, streetAddress: address, city: city, province: "AB")
+                            let user = User(id: userId!, firstName: firstName, lastName: lastName, email: email, phone: phone, address: address, city: city)
                             NetworkManager.shared.registerUser(user: user) { result in
                                 switch result {
                                 case .success(let success):

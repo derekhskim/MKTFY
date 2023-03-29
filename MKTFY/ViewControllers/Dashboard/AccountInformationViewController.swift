@@ -32,7 +32,7 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
         setupNavigationBarWithSaveButtonOnRight()
         
         // TODO: - call getUsers and assign data to each textfields
-        networkManager.getUsers()
+//        networkManager.getUsers()
         
         firstNameView.inputTextField.text = "Derek"
         lastNameView.inputTextField.text = "Kim"

@@ -9,6 +9,6 @@ import Foundation
 
 let databaseConnection = "Username-Password-Authentication"
 let emailConnection = "email"
-let devDomain = "dev-imv7dvp8n7sd2xfz.us.auth0.com"
+let devDomain = "mktfy-proof.us.auth0.com"
 let bundleId = "derekkim.MKTFY"
-let baseURL = "http://marketforyou-env.eba-dg3dnepd.ca-central-1.elasticbeanstalk.com/api"
+let baseURL = "http://mktfy-proof.ca-central-1.elasticbeanstalk.com/api"

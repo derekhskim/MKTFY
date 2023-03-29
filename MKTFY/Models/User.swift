@@ -14,8 +14,7 @@ struct User: Codable {
     let lastName: String
     let email: String
     let phone: String
-    let streetAddress: String
+    let address: String
     let city: String
-    let province: String?
 }
 

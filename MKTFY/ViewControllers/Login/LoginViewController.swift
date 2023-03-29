@@ -11,7 +11,7 @@ import Auth0
 class LoginViewController: MainViewController, LoginStoryboard {
     
     weak var coordinator: MainCoordinator?
-        
+    
     // MARK: - @IBOutlet
     @IBOutlet var wholeView: UIView!
     @IBOutlet weak var titleImageView: UIImageView!
@@ -31,6 +31,26 @@ class LoginViewController: MainViewController, LoginStoryboard {
         guard let email = emailView.inputTextField.text,
               let password = passwordView.isSecureTextField.text else { return }
         
+        //        Auth0Manager.shared.loginWithEmail(email, password: password) { success, userId, error in
+        //            if success {
+        //                NetworkManager.shared.getUsers { result in
+        //                    switch result {
+        //                    case .success(let success):
+        //                            DispatchQueue.main.async {
+        //                                self.coordinator?.goToDashboardVC()
+        //                            }
+        //                            print("User logged in successfully")
+        //                    case .failure(let error):
+        //                        print("Failed to login user: \(error)")
+        //                    }
+        //                }
+        //            } else {
+        //                DispatchQueue.main.async {
+        //                    self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
+        //                }
+        //            }
+        //        }
+        
         Auth0Manager.shared.loginWithEmail(email, password: password) { success, userId, error in
             if success {
                 DispatchQueue.main.async {
@@ -44,7 +64,7 @@ class LoginViewController: MainViewController, LoginStoryboard {
             }
         }
     }
-
+    
     @IBAction func createAccountButton(_ sender: Any) {
         coordinator?.goToCreateAccountVC()
     }
