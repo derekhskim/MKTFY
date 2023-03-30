@@ -33,7 +33,8 @@ class Auth0Manager {
             case .success(let credentials):
                 print("Access Token: \(credentials.accessToken)")
                 UserDefaults.standard.set(credentials.accessToken, forKey: "authenticationAPI")
-                self.getUserInfo(accessToken: credentials.accessToken, completion: completion)
+                self.getUserInfo(accessToken: credentials.accessToken)
+                completion(true, nil, nil)
             case .failure(let error):
                 print(error.localizedDescription)
                 completion(false, nil, error)
@@ -41,26 +42,15 @@ class Auth0Manager {
         }
     }
         
-    private func getUserInfo(accessToken: String, completion: @escaping (Bool, String?, Error?) -> Void) {
+    private func getUserInfo(accessToken: String) {
         auth0.userInfo(withAccessToken: accessToken)
             .start { (result: Result<UserInfo, AuthenticationError>) in
                 switch result {
                 case .success(let userInfo):
                     let userId = userInfo.sub
                     UserDefaults.standard.set(userId, forKey: "userId")
-                    completion(true, userId, nil)
-
-//                    NetworkManager.shared.getUsers { result in
-//                        switch result {
-//                        case .success(let success):
-//                            print("Successfully fetched User Data: \(success)")
-//                        case .failure(let error):
-//                            print("Failed to fetch user: \(error)")
-//                        }
-//                    }
                 case .failure(let error):
                     print("Failed to get user info: \(error)")
-                    completion(false, nil, error)
                 }
             }
     }

@@ -27,29 +27,9 @@ class LoginViewController: MainViewController, LoginStoryboard {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        
+            
         guard let email = emailView.inputTextField.text,
               let password = passwordView.isSecureTextField.text else { return }
-        
-        //        Auth0Manager.shared.loginWithEmail(email, password: password) { success, userId, error in
-        //            if success {
-        //                NetworkManager.shared.getUsers { result in
-        //                    switch result {
-        //                    case .success(let success):
-        //                            DispatchQueue.main.async {
-        //                                self.coordinator?.goToDashboardVC()
-        //                            }
-        //                            print("User logged in successfully")
-        //                    case .failure(let error):
-        //                        print("Failed to login user: \(error)")
-        //                    }
-        //                }
-        //            } else {
-        //                DispatchQueue.main.async {
-        //                    self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
-        //                }
-        //            }
-        //        }
         
         Auth0Manager.shared.loginWithEmail(email, password: password) { success, userId, error in
             if success {
@@ -57,11 +37,29 @@ class LoginViewController: MainViewController, LoginStoryboard {
                     self.coordinator?.goToDashboardVC()
                 }
             } else {
-                DispatchQueue.main.async {
-                    self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
-                    
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
+                    }
                 }
-            }
+                
+//                NetworkManager.shared.getUsers { result in
+//                    switch result {
+//                    case .success(_):
+//                        print("Fetch user success")
+//                        DispatchQueue.main.async {
+//                            self.coordinator?.goToDashboardVC()
+//                        }
+//                    case .failure(let error):
+//                        print("Fetch user failed: \(error.localizedDescription)")
+//                    }
+//                }
+//            } else if userId {
+//                print(userId)
+//            } else {
+//                DispatchQueue.main.async {
+//                    self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
+//                }
+            
         }
     }
     
@@ -73,7 +71,7 @@ class LoginViewController: MainViewController, LoginStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailView.inputTextField.text = "treasure3210@gmail.com"
+        emailView.inputTextField.text = "treasure3210+1@gmail.com"
         passwordView.isSecureTextField.text = "K131313_!"
         
         initializeHideKeyboard()

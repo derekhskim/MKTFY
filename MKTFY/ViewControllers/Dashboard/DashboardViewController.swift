@@ -50,6 +50,17 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Before")
+        NetworkManager.shared.getUsers { result in
+            switch result {
+            case .success(let user):
+                print("User: \(user)")
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+        print("After")
+        
         navigationWhiteBackgroundView.layer.cornerRadius = 10
         navigationWhiteBackgroundView.clipsToBounds = true
         
@@ -113,7 +124,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         
         imgViewForDropDown.contentMode = .right
     }
-   
+    
     @objc func showCustomDropDownView() {
         if let dropDownView = customDropDownView {
             dropDownView.removeFromSuperview()
@@ -208,11 +219,11 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     @objc func handleOutsideTap(_ sender: UITapGestureRecognizer) {
         let pointInCustomDropDownView = sender.location(in: customDropDownView)
         let pointInSearchTextField = sender.location(in: searchTextField)
-
+        
         if searchTextField.bounds.contains(pointInSearchTextField) == false {
             view.endEditing(true)
         }
-
+        
         if let customDropDownView = customDropDownView, let convertedCustomDropDownViewFrame = customDropDownView.superview?.convert(customDropDownView.frame, to: view) {
             if !convertedCustomDropDownViewFrame.contains(sender.location(in: view)) {
                 customDropDownView.removeFromSuperview()
@@ -240,7 +251,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     @objc override func keyboardWillShow(notification: NSNotification) {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-
+    
     @objc override func keyboardWillHide(notification: NSNotification) {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }

@@ -10,6 +10,7 @@ import Foundation
 class NetworkManager {
     
     static let shared = NetworkManager()
+    let token = UserDefaults.standard.string(forKey: "authenticationAPI")
     
     struct ServerResponse: Codable {
         let status: Int
@@ -18,7 +19,6 @@ class NetworkManager {
     // MARK: - Register User via "POST" Method
     func registerUser(user: User, completion: @escaping (Result<Bool, Error>) -> Void) {
         guard let url = URL(string: "\(baseURL)/user/register") else { return }
-        guard let token = UserDefaults.standard.string(forKey: "authenticationAPI") else { return }
         
         guard let jsonData = try? JSONEncoder().encode(user) else {
             print("Error: Trying to convert model to JSON Data")
@@ -71,10 +71,16 @@ class NetworkManager {
     }
     
     // MARK: - Get User via "GET" Method
-    func getUsers(completion: @escaping (Result<[String: Any], Error>) -> Void) {
+    func getUsers(completion: @escaping (Result<User, Error>) -> Void) {
         guard let userId = UserDefaults.standard.string(forKey: "userId") else { return }
         guard let token = UserDefaults.standard.string(forKey: "authenticationAPI") else { return }
-        guard let url = URL(string: "\(baseURL)/user/\(userId)") else { return }
+
+        let encodedUserId = userId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+
+        guard let url = URL(string: "\(baseURL)/User/\(encodedUserId!)") else {
+            print("Error with URL")
+            return
+        }
         
         var request = URLRequest(url: url)
         request.setValue("text/plain", forHTTPHeaderField: "Accept")
@@ -84,7 +90,6 @@ class NetworkManager {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 print("Error calling GET: \(String(describing: error?.localizedDescription))")
-                completion(.failure(error!))
                 return
             }
             
@@ -114,6 +119,9 @@ class NetworkManager {
                 }
                 
                 print(prettyPrintedJson)
+                
+                let user = try JSONDecoder().decode(User.self, from: data)
+                completion(.success(user))
             } catch {
                 print("Error: Trying to convert JSON data to String")
                 completion(.failure(error))
