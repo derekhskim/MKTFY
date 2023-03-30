@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Auth0
 
 class AccountInformationViewController: MainViewController, DashboardStoryboard {
     
@@ -32,19 +31,8 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
         
         fetchUsers()
         
-        guard let firstName = UserDefaults.standard.string(forKey: "firstName"),
-              let lastName = UserDefaults.standard.string(forKey: "lastName"),
-              let email = UserDefaults.standard.string(forKey: "email"),
-              let phone = UserDefaults.standard.string(forKey: "phone"),
-              let address = UserDefaults.standard.string(forKey: "address"),
-              let city = UserDefaults.standard.string(forKey: "city") else { return }
-        
-        firstNameView.inputTextField.text = firstName
-        lastNameView.inputTextField.text = lastName
-        emailView.inputTextField.text = email
-        phoneView.inputTextField.text = phone
-        addressView.inputTextField.text = address
-        cityView.inputTextField.text = city
+        emailView.isUserInteractionEnabled = false
+        emailView.inputTextField.textColor = UIColor.appColor(LPColor.TextGray40)
         // Do any additional setup after loading the view.
     }
     
@@ -58,6 +46,20 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
                 print("Error: \(error.localizedDescription)")
             }
         }
+        
+        guard let firstName = UserDefaults.standard.string(forKey: "firstName"),
+              let lastName = UserDefaults.standard.string(forKey: "lastName"),
+              let email = UserDefaults.standard.string(forKey: "email"),
+              let phone = UserDefaults.standard.string(forKey: "phone"),
+              let address = UserDefaults.standard.string(forKey: "address"),
+              let city = UserDefaults.standard.string(forKey: "city") else { return }
+        
+        firstNameView.inputTextField.text = firstName
+        lastNameView.inputTextField.text = lastName
+        emailView.inputTextField.text = email
+        phoneView.inputTextField.text = phone
+        addressView.inputTextField.text = address
+        cityView.inputTextField.text = city
     }
     
     func setupNavigationBarWithSaveButtonOnRight() {
@@ -76,26 +78,32 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
               let address = addressView.inputTextField.text,
               let city = cityView.inputTextField.text else { return }
         
-        let encodedUserId = userId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-        
-        let user = User(id: encodedUserId!, firstName: firstName, lastName: lastName, email: email, phone: phone, address: address, city: city)
+        let user = User(id: userId, firstName: firstName, lastName: lastName, email: email, phone: phone, address: address, city: city)
         
         NetworkManager.shared.updateUsers(user: user) { result in
             switch result {
-            case .success(let updatedUser):
-                print("User updated successfully: \(updatedUser)")
+            case .success(_):
+                print("User updated successfully: \(user)")
                 
-                UserDefaults.standard.set(updatedUser.firstName, forKey: "firstName")
-                UserDefaults.standard.set(updatedUser.lastName, forKey: "lastName")
-                UserDefaults.standard.set(updatedUser.email, forKey: "email")
-                UserDefaults.standard.set(updatedUser.phone, forKey: "phone")
-                UserDefaults.standard.set(updatedUser.address, forKey: "address")
-                UserDefaults.standard.set(updatedUser.city, forKey: "city")
+                UserDefaults.standard.set(user.firstName, forKey: "firstName")
+                UserDefaults.standard.set(user.lastName, forKey: "lastName")
+                UserDefaults.standard.set(user.email, forKey: "email")
+                UserDefaults.standard.set(user.phone, forKey: "phone")
+                UserDefaults.standard.set(user.address, forKey: "address")
+                UserDefaults.standard.set(user.city, forKey: "city")
+                
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
             case .failure(let error):
                 print("Error updating user: \(error.localizedDescription)")
+                
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Something went wrong", message: "Account inforamtion could not be saved. Please try again.", purpleButtonTitle: "OK", whiteButtonTitle: "Try Again")
+                }
+                
             }
         }
-        
-        self.navigationController?.popViewController(animated: true)
     }
 }

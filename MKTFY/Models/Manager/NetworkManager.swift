@@ -140,7 +140,7 @@ class NetworkManager {
     }
     
     // MARK: - Update user via "PUT" Method
-    func updateUsers(user: User?, completion: @escaping (Result<User, Error>) -> Void) {
+    func updateUsers(user: User, completion: @escaping (Result<User, Error>) -> Void) {
         guard let url = URL(string: "\(baseURL)/User") else { return }
         guard let token = UserDefaults.standard.string(forKey: "authenticationAPI") else { return }
         
@@ -152,7 +152,7 @@ class NetworkManager {
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("text/plain", forHTTPHeaderField: "accept")
+        request.setValue("text/plain", forHTTPHeaderField: "Accept")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpBody = jsonData
         
