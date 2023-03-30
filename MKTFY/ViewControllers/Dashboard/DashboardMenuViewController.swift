@@ -8,9 +8,9 @@
 import UIKit
 
 class DashboardMenuViewController: MainViewController, DashboardStoryboard {
-        
+    
     weak var coordinator: MainCoordinator?
-
+    
     // MARK: - @IBOutlet
     @IBOutlet weak var profileInitialView: UIView!
     @IBOutlet weak var initialLabel: UILabel!
@@ -56,11 +56,25 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationBarWithExitButtonOnRight()
+        changeNameAndPrefix()
+        configureProfileView()
         
-        profileInitialView.layer.cornerRadius = profileInitialView.layer.bounds.width / 2
-        profileInitialView.clipsToBounds = true
+        setupNavigationBarWithExitButtonOnRight()
         // Do any additional setup after loading the view.
     }
     
+    func changeNameAndPrefix() {
+        guard let firstName = UserDefaults.standard.string(forKey: "firstName"),
+              let lastName = UserDefaults.standard.string(forKey: "lastName") else { return }
+        
+        let prefixString = lastName.prefix(1)
+        
+        nameLabel.text = "\(firstName) \(lastName)"
+        initialLabel.text = "\(prefixString)"
+    }
+    
+    func configureProfileView() {
+        profileInitialView.layer.cornerRadius = profileInitialView.layer.bounds.width / 2
+        profileInitialView.clipsToBounds = true
+    }
 }

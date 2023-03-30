@@ -50,16 +50,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Before")
-        NetworkManager.shared.getUsers { result in
-            switch result {
-            case .success(let user):
-                print("User: \(user)")
-            case .failure(let error):
-                print("Error: \(error.localizedDescription)")
-            }
-        }
-        print("After")
+        fetchUsers()
         
         navigationWhiteBackgroundView.layer.cornerRadius = 10
         navigationWhiteBackgroundView.clipsToBounds = true

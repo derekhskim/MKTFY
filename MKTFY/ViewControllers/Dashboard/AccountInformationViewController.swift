@@ -19,9 +19,6 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
     @IBOutlet weak var addressView: TextFieldWithError!
     @IBOutlet weak var cityView: TextFieldWithError!
     
-    // MARK: - @IBAction
-    // TODO: add PUT method to save button to update a user
-    
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +34,7 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
     }
     
     // MARK: - Function
-    func fetchUsers() {
+    override func fetchUsers() {
         NetworkManager.shared.getUsers { result in
             switch result {
             case .success(let user):

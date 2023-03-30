@@ -19,8 +19,8 @@ class Auth0Manager {
         auth0 = Auth0.authentication()
     }
     
+    // MARK: - USER Login
     func loginWithEmail(_ email: String, password: String, completion: @escaping (Bool, String?, Error?) -> Void) {
-        
         auth0.login(
             usernameOrEmail: email,
             password: password,
@@ -33,28 +33,30 @@ class Auth0Manager {
             case .success(let credentials):
                 print("Access Token: \(credentials.accessToken)")
                 UserDefaults.standard.set(credentials.accessToken, forKey: "authenticationAPI")
-                self.getUserInfo(accessToken: credentials.accessToken)
-                completion(true, nil, nil)
+                self.getUserInfo(accessToken: credentials.accessToken, completion: completion)
             case .failure(let error):
                 print(error.localizedDescription)
-                completion(false, nil, error)
             }
         }
     }
         
-    private func getUserInfo(accessToken: String) {
+    // MARK: - Fetch USER Information
+    private func getUserInfo(accessToken: String, completion: @escaping (Bool, String?, Error?) -> Void) {
         auth0.userInfo(withAccessToken: accessToken)
             .start { (result: Result<UserInfo, AuthenticationError>) in
                 switch result {
                 case .success(let userInfo):
                     let userId = userInfo.sub
                     UserDefaults.standard.set(userId, forKey: "userId")
+                    completion(true, userId, nil)
                 case .failure(let error):
                     print("Failed to get user info: \(error)")
+                    completion(false, nil, error)
                 }
             }
     }
     
+    // MARK: - USER Sign Up
     func signup(email: String, password: String, firstName: String, lastName: String, phone: String, address: String, city: String, completion: @escaping (Bool, String?, Error?) -> Void) {
         
         let userMetadata = ["firstName" : firstName, "lastName" : lastName, "email" : email, "phone" : phone, "address" : address, "city" : city]
@@ -65,8 +67,15 @@ class Auth0Manager {
                 case .success(let user):
                     print("User signed up: \(user)")
                     Auth0Manager.shared.loginWithEmail(email, password: password) { success, userId, error in
+                        
+                        guard let userId = userId else {
+                            print("Error: userId is nil")
+                            completion(false, nil, error)
+                            return
+                        }
+                    
                         if success {
-                            let user = User(id: userId!, firstName: firstName, lastName: lastName, email: email, phone: phone, address: address, city: city)
+                            let user = User(id: userId, firstName: firstName, lastName: lastName, email: email, phone: phone, address: address, city: city)
                             NetworkManager.shared.registerUser(user: user) { result in
                                 switch result {
                                 case .success(let success):
@@ -89,6 +98,7 @@ class Auth0Manager {
             }
     }
     
+    // MARK: - USER Reset Password
     func resetPassword(email: String) {
         
         auth0.resetPassword(email: email, connection: databaseConnection)
@@ -102,6 +112,7 @@ class Auth0Manager {
             }
     }
     
+    // MARK: - USER Sign Out
     func signOut() {
         let clientId = Auth0.authentication().clientId
         let completeDomain = "https://\(devDomain)"

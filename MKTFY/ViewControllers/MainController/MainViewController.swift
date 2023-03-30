@@ -20,6 +20,17 @@ class MainViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
+    
+    func fetchUsers() {
+        NetworkManager.shared.getUsers { result in
+            switch result {
+            case .success(let user):
+                print("User: \(user)")
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 // Extension to shift the view upward or downward when system keyboard appears
