@@ -121,6 +121,14 @@ class NetworkManager {
                 print(prettyPrintedJson)
                 
                 let user = try JSONDecoder().decode(User.self, from: data)
+                
+                UserDefaults.standard.set(user.firstName, forKey: "firstName")
+                UserDefaults.standard.set(user.lastName, forKey: "lastName")
+                UserDefaults.standard.set(user.email, forKey: "email")
+                UserDefaults.standard.set(user.phone, forKey: "phone")
+                UserDefaults.standard.set(user.address, forKey: "address")
+                UserDefaults.standard.set(user.city, forKey: "city")
+                
                 completion(.success(user))
             } catch {
                 print("Error: Trying to convert JSON data to String")
