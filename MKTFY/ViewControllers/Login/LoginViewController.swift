@@ -41,25 +41,6 @@ class LoginViewController: MainViewController, LoginStoryboard {
                         self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
                     }
                 }
-                
-//                NetworkManager.shared.getUsers { result in
-//                    switch result {
-//                    case .success(_):
-//                        print("Fetch user success")
-//                        DispatchQueue.main.async {
-//                            self.coordinator?.goToDashboardVC()
-//                        }
-//                    case .failure(let error):
-//                        print("Fetch user failed: \(error.localizedDescription)")
-//                    }
-//                }
-//            } else if userId {
-//                print(userId)
-//            } else {
-//                DispatchQueue.main.async {
-//                    self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
-//                }
-            
         }
     }
     

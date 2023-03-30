@@ -31,15 +31,32 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
         setupNavigationBarWithBackButton()
         setupNavigationBarWithSaveButtonOnRight()
         
-        // TODO: - call getUsers and assign data to each textfields
-//        networkManager.getUsers()
+        fetchUsers()
         
-        firstNameView.inputTextField.text = "Derek"
-        lastNameView.inputTextField.text = "Kim"
-        emailView.inputTextField.text = "treasure3210@gmail.com"
-        phoneView.inputTextField.text = "587-973-5454"
-        addressView.inputTextField.text = "370 Quarry Way SE"
-        cityView.inputTextField.text = "Calgary"
+        guard let firstName = UserDefaults.standard.string(forKey: "firstName"),
+                let lastName = UserDefaults.standard.string(forKey: "lastName"),
+                let email = UserDefaults.standard.string(forKey: "email"),
+                let phone = UserDefaults.standard.string(forKey: "phone"),
+                let address = UserDefaults.standard.string(forKey: "address"),
+                let city = UserDefaults.standard.string(forKey: "city") else { return }
+        
+        firstNameView.inputTextField.text = firstName
+        lastNameView.inputTextField.text = lastName
+        emailView.inputTextField.text = email
+        phoneView.inputTextField.text = phone
+        addressView.inputTextField.text = address
+        cityView.inputTextField.text = city
         // Do any additional setup after loading the view.
+    }
+    
+    func fetchUsers() {
+        NetworkManager.shared.getUsers { result in
+            switch result {
+            case .success(let user):
+                print("User: \(user)")
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+        }
     }
 }
