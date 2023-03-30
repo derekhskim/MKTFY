@@ -10,7 +10,6 @@ import Foundation
 class NetworkManager {
     
     static let shared = NetworkManager()
-    let token = UserDefaults.standard.string(forKey: "authenticationAPI")
     
     struct ServerResponse: Codable {
         let status: Int
@@ -19,6 +18,7 @@ class NetworkManager {
     // MARK: - Register User via "POST" Method
     func registerUser(user: User, completion: @escaping (Result<Bool, Error>) -> Void) {
         guard let url = URL(string: "\(baseURL)/user/register") else { return }
+        guard let token = UserDefaults.standard.string(forKey: "authenticationAPI") else { return }
         
         guard let jsonData = try? JSONEncoder().encode(user) else {
             print("Error: Trying to convert model to JSON Data")
@@ -140,8 +140,9 @@ class NetworkManager {
     }
     
     // MARK: - Update user via "PUT" Method
-    func updateUsers(user: User, completion: @escaping (Result<Bool, Error>) -> Void) {
-        guard let url = URL(string: "\(baseURL)/user") else { return }
+    func updateUsers(user: User?, completion: @escaping (Result<User, Error>) -> Void) {
+        guard let url = URL(string: "\(baseURL)/User") else { return }
+        guard let token = UserDefaults.standard.string(forKey: "authenticationAPI") else { return }
         
         guard let jsonData = try? JSONEncoder().encode(user) else {
             print("Error: Trying to convert model to JSON Data")
@@ -151,6 +152,8 @@ class NetworkManager {
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("text/plain", forHTTPHeaderField: "accept")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpBody = jsonData
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -185,8 +188,11 @@ class NetworkManager {
                 }
                 
                 print(prettyPrintedJson)
+                let user = try JSONDecoder().decode(User.self, from: data)
+                completion(.success(user))
             } catch {
                 print("Error: Trying to convert JSON data to String")
+                completion(.failure(error))
                 return
             }
         }
