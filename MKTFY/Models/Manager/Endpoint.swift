@@ -19,12 +19,11 @@ extension Endpoint {
     var url: URL? {
         return URL(string: "\(baseURL)\(path)")
     }
-    
-    var headers: [String: String] {
-        var defaultHeaders: [String: String] = [:]
-        if let token = UserDefaults.standard.string(forKey: "authenticationAPI") {
-            defaultHeaders["Authorization"] = "Bearer \(token)"
-        }
-        return defaultHeaders
+    var defaultHeaders: [String: String] {
+            var headers: [String: String] = [:]
+            if let token = UserDefaults.standard.string(forKey: "authenticationAPI") {
+                headers["Authorization"] = "Bearer \(token)"
+            }
+            return headers
     }
 }
