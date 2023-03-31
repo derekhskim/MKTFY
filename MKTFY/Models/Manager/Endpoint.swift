@@ -19,6 +19,7 @@ extension Endpoint {
     var url: URL? {
         return URL(string: "\(baseURL)\(path)")
     }
+    
     var defaultHeaders: [String: String] {
             var headers: [String: String] = [:]
             if let token = UserDefaults.standard.string(forKey: "authenticationAPI") {

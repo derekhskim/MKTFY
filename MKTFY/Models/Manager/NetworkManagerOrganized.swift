@@ -13,6 +13,10 @@ class NetworkManagerOrganized {
     
     private init() {}
     
+    struct ServerResponse: Codable {
+        let status: Int
+    }
+    
     func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = endpoint.url else {
             print("Error with URL")
@@ -44,12 +48,10 @@ class NetworkManagerOrganized {
             }
             
             do {
-                let responseObject = try JSONDecoder().decode(T.self, from: data)
-                completion(.success(responseObject))
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print("Received JSON: \(json)")
             } catch {
-                print("Error: Trying to convert JSON data to String")
-                completion(.failure(error))
-                return
+                print("Failed to decode JSON: \(error)")
             }
         }
         task.resume()

@@ -39,7 +39,7 @@ class Auth0Manager {
             }
         }
     }
-        
+    
     // MARK: - Fetch USER Information
     private func getUserInfo(accessToken: String, completion: @escaping (Bool, String?, Error?) -> Void) {
         auth0.userInfo(withAccessToken: accessToken)
@@ -73,17 +73,16 @@ class Auth0Manager {
                             completion(false, nil, error)
                             return
                         }
-                    
+                        
                         if success {
                             let user = User(id: userId, firstName: firstName, lastName: lastName, email: email, phone: phone, address: address, city: city)
-                            NetworkManager.shared.registerUser(user: user) { result in
+                            let registerEndpoint = RegisterUserEndpoint(user: user)
+                            NetworkManagerOrganized.shared.request(endpoint: registerEndpoint) { (result: Result<NetworkManagerOrganized.ServerResponse, Error>) in
                                 switch result {
-                                case .success(let success):
-                                    if success {
-                                        print("User registered successfully")
-                                    }
+                                case .success(let response):
+                                    print("User registered successfully: \(response.status)")
                                 case .failure(let error):
-                                    print("Failed to register user: \(error)")
+                                    print("Error registering user: \(error.localizedDescription)")
                                 }
                             }
                             completion(true, userId, nil)
