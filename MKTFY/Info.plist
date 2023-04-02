@@ -52,5 +52,7 @@
         <key>NSAllowsArbitraryLoads</key>
         <true/>
     </dict>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>MKTFY needs access to your photo library to let you choose photos.</string>
 </dict>
 </plist>

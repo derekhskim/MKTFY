@@ -755,20 +755,70 @@
             </objects>
             <point key="canvasLocation" x="963" y="-742"/>
         </scene>
-        <!--Create Listing View Controller-->
+        <!--Create Listing-->
         <scene sceneID="i1v-y9-OTy">
             <objects>
                 <viewController storyboardIdentifier="CreateListingViewController" id="f53-OS-EEF" customClass="CreateListingViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kPG-5e-sHi">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1450"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbM-sF-jxO">
+                                <rect key="frame" x="0.0" y="59" width="393" height="1357"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmx-BV-uNN">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1350"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-w4-JkU" customClass="UploadImageButton" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="14" y="28" width="365" height="158"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="158" id="nph-RV-oqV"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <connections>
+                                                    <action selector="uploadImageButtonTapped:" destination="f53-OS-EEF" eventType="touchUpInside" id="M5S-1y-vvw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="CKe-w4-JkU" firstAttribute="top" secondItem="gmx-BV-uNN" secondAttribute="top" constant="28" id="7ke-Wz-v1c"/>
+                                            <constraint firstAttribute="height" constant="1350" id="Kgg-fP-cWQ"/>
+                                            <constraint firstItem="CKe-w4-JkU" firstAttribute="leading" secondItem="gmx-BV-uNN" secondAttribute="leading" constant="14" id="h5n-s7-gQp"/>
+                                            <constraint firstAttribute="trailing" secondItem="CKe-w4-JkU" secondAttribute="trailing" constant="14" id="uYz-iV-xpn"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="gmx-BV-uNN" firstAttribute="top" secondItem="pc7-5y-1bb" secondAttribute="top" id="SzY-3X-qvl"/>
+                                    <constraint firstItem="gmx-BV-uNN" firstAttribute="width" secondItem="iJC-9B-9DO" secondAttribute="width" id="cIl-WW-Ppc"/>
+                                    <constraint firstItem="gmx-BV-uNN" firstAttribute="bottom" secondItem="pc7-5y-1bb" secondAttribute="bottom" id="dGo-7B-kHn"/>
+                                    <constraint firstItem="gmx-BV-uNN" firstAttribute="leading" secondItem="pc7-5y-1bb" secondAttribute="leading" id="dnd-UT-UeD"/>
+                                    <constraint firstItem="gmx-BV-uNN" firstAttribute="trailing" secondItem="pc7-5y-1bb" secondAttribute="trailing" id="eat-n9-Wa8"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="pc7-5y-1bb"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="iJC-9B-9DO"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qKi-DV-N9R"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JbM-sF-jxO" firstAttribute="leading" secondItem="qKi-DV-N9R" secondAttribute="leading" id="Pb9-0J-MuM"/>
+                            <constraint firstItem="qKi-DV-N9R" firstAttribute="trailing" secondItem="JbM-sF-jxO" secondAttribute="trailing" id="UZt-EN-xrL"/>
+                            <constraint firstItem="qKi-DV-N9R" firstAttribute="bottom" secondItem="JbM-sF-jxO" secondAttribute="bottom" id="jjk-F1-uNe"/>
+                            <constraint firstItem="JbM-sF-jxO" firstAttribute="top" secondItem="qKi-DV-N9R" secondAttribute="top" id="wj5-dI-owY"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Create Listing" style="editor" id="ozs-2U-tp6"/>
+                    <size key="freeformSize" width="393" height="1450"/>
+                    <connections>
+                        <outlet property="uploadImageButton" destination="CKe-w4-JkU" id="IgY-Hh-UhW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75B-A3-Udc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="963" y="690"/>
+            <point key="canvasLocation" x="132" y="177"/>
         </scene>
         <!--FAQ View Controller-->
         <scene sceneID="JTI-G0-VfL">
@@ -1208,13 +1258,13 @@ The information provided on the Site is not intended for distribution to or use 
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-w5-tz4">
-                                        <rect key="frame" x="21" y="246" width="351" height="18.666666666666686"/>
+                                        <rect key="frame" x="21" y="246" width="351" height="22"/>
                                         <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" name="TitleGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rZn-Fi-Bz7">
-                                        <rect key="frame" x="21" y="270.66666666666669" width="351" height="140"/>
+                                        <rect key="frame" x="21" y="274" width="351" height="140"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="Bf8-QO-1Bn"/>
@@ -1608,7 +1658,7 @@ The information provided on the Site is not intended for distribution to or use 
             <size key="intrinsicContentSize" width="135" height="31"/>
         </designable>
         <designable name="yuD-GJ-c46">
-            <size key="intrinsicContentSize" width="61.666666666666664" height="32.666666666666664"/>
+            <size key="intrinsicContentSize" width="63" height="36"/>
         </designable>
     </designables>
     <resources>

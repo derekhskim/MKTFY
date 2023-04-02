@@ -13,10 +13,6 @@ class NetworkManager {
     
     private init() {}
     
-    struct ServerResponse: Codable {
-        let status: Int
-    }
-    
     func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void, userDefaultsSaving: ((T) -> Void)? = nil) {
         guard let url = endpoint.url else {
             print("Error with URL")
