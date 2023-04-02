@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
     var originalFrame: CGRect = .zero
     var shiftFactor: CGFloat = 0.25
 
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +22,7 @@ class MainViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
+    // MARK: - Function
     func getUser(completion: @escaping (Result<User, Error>) -> Void) {
         guard let userId = UserDefaults.standard.string(forKey: "userId") else { return }
         
@@ -39,7 +41,7 @@ class MainViewController: UIViewController {
     }
 }
 
-// Extension to shift the view upward or downward when system keyboard appears
+// MARK: - Extension
 extension MainViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
