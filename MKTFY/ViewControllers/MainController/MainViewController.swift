@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
         
         let getUserEndpoint = GetUserEndpoint(userId: userId)
         
-        NetworkManagerOrganized.shared.request(endpoint: getUserEndpoint, completion: completion, userDefaultsSaving: saveUserToUserDefaults)
+        NetworkManager.shared.request(endpoint: getUserEndpoint, completion: completion, userDefaultsSaving: saveUserToUserDefaults)
     }
     
     func saveUserToUserDefaults(user: User) {

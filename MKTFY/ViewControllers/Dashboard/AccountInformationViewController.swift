@@ -104,6 +104,6 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
     
     func updateUser(user: User, completion: @escaping (Result<User, Error>) -> Void) {
         let updateUserEndpoint = UpdateUserEndpoint(user: user)
-        NetworkManagerOrganized.shared.request(endpoint: updateUserEndpoint, completion: completion)
+        NetworkManager.shared.request(endpoint: updateUserEndpoint, completion: completion)
     }
 }

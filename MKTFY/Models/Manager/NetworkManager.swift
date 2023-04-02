@@ -1,5 +1,5 @@
 //
-//  NetworkManagerOrganized.swift
+//  NetworkManager.swift
 //  MKTFY
 //
 //  Created by Derek Kim on 2023-03-31.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class NetworkManagerOrganized {
+class NetworkManager {
     
-    static let shared = NetworkManagerOrganized()
+    static let shared = NetworkManager()
     
     private init() {}
     

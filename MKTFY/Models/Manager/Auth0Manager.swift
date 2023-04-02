@@ -77,7 +77,7 @@ class Auth0Manager {
                         if success {
                             let user = User(id: userId, firstName: firstName, lastName: lastName, email: email, phone: phone, address: address, city: city)
                             let registerEndpoint = RegisterUserEndpoint(user: user)
-                            NetworkManagerOrganized.shared.request(endpoint: registerEndpoint) { (result: Result<User, Error>) in
+                            NetworkManager.shared.request(endpoint: registerEndpoint) { (result: Result<User, Error>) in
                                 switch result {
                                 case .success(let response):
                                     print("User registered successfully: \(response.id)")

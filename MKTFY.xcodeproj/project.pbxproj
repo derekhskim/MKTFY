@@ -71,7 +71,7 @@
 		65AB2A6329AB083B002B3D1B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 65AB2A6229AB083B002B3D1B /* .gitignore */; };
 		65C28FC72988BA1D00A3BBEE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C28FC62988BA1D00A3BBEE /* LoginViewController.swift */; };
 		65C28FCC2988BB6500A3BBEE /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C28FCB2988BB6500A3BBEE /* UIViewController+.swift */; };
-		65CCAFB829D76C200088338B /* NetworkManagerOrganized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCAFB729D76C200088338B /* NetworkManagerOrganized.swift */; };
+		65CCAFB829D76C200088338B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCAFB729D76C200088338B /* NetworkManager.swift */; };
 		65CCAFBA29D76CCF0088338B /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCAFB929D76CCF0088338B /* HttpMethod.swift */; };
 		65CCAFBC29D76CED0088338B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCAFBB29D76CED0088338B /* Endpoint.swift */; };
 		65CCAFC229D76FF00088338B /* RegisterUserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCAFC129D76FF00088338B /* RegisterUserEndpoint.swift */; };
@@ -166,7 +166,7 @@
 		65AB2A6229AB083B002B3D1B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		65C28FC62988BA1D00A3BBEE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		65C28FCB2988BB6500A3BBEE /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
-		65CCAFB729D76C200088338B /* NetworkManagerOrganized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerOrganized.swift; sourceTree = "<group>"; };
+		65CCAFB729D76C200088338B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		65CCAFB929D76CCF0088338B /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		65CCAFBB29D76CED0088338B /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		65CCAFC129D76FF00088338B /* RegisterUserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserEndpoint.swift; sourceTree = "<group>"; };
@@ -362,7 +362,7 @@
 				65CCAFC029D76FE50088338B /* User */,
 				65E7DE1E299D4ADE00926A1F /* Auth0Manager.swift */,
 				654444C829AF18DC00E61F69 /* Auth0Error.swift */,
-				65CCAFB729D76C200088338B /* NetworkManagerOrganized.swift */,
+				65CCAFB729D76C200088338B /* NetworkManager.swift */,
 				65CCAFB929D76CCF0088338B /* HttpMethod.swift */,
 				65CCAFBB29D76CED0088338B /* Endpoint.swift */,
 			);
@@ -618,7 +618,7 @@
 				6506DA7029CA398400038AF8 /* FloatingButton.swift in Sources */,
 				654444C929AF18DC00E61F69 /* Auth0Error.swift in Sources */,
 				654444D429AFBF7700E61F69 /* PrivacyPolicyViewController.swift in Sources */,
-				65CCAFB829D76C200088338B /* NetworkManagerOrganized.swift in Sources */,
+				65CCAFB829D76C200088338B /* NetworkManager.swift in Sources */,
 				65E8A0D4299EA523009D70A0 /* String+.swift in Sources */,
 				65F41E0929BBA7D500C1C08A /* CreatePasswordViewController.swift in Sources */,
 				658145AE299201C100BC9067 /* MainViewController.swift in Sources */,
