@@ -49,8 +49,8 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        fetchUsers()
+    
+        getUsers()
         
         navigationWhiteBackgroundView.layer.cornerRadius = 10
         navigationWhiteBackgroundView.clipsToBounds = true
@@ -85,7 +85,18 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    // MARK: - func
+    // MARK: - Function
+    func getUsers() {
+        getUser { result in
+            switch result {
+            case .success(let user):
+                print("User data successfully fetched: \(user)")
+            case .failure(let error):
+                print("Error fetching user data: \(error)")
+            }
+        }
+    }
+    
     func horizontalDropShadow() {
         horizontalView.backgroundColor = .clear
         

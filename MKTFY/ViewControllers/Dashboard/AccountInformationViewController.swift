@@ -26,7 +26,7 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
         setupNavigationBarWithBackButton()
         setupNavigationBarWithSaveButtonOnRight()
         
-        fetchUsers()
+        getUser()
         
         emailView.isUserInteractionEnabled = false
         emailView.inputTextField.textColor = UIColor.appColor(LPColor.TextGray40)
@@ -34,13 +34,13 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
     }
     
     // MARK: - Function
-    override func fetchUsers() {
-        NetworkManager.shared.getUsers { result in
+    func getUser() {
+        getUser { result in
             switch result {
             case .success(let user):
-                print("User: \(user)")
+                print("User data successfully fetched: \(user)")
             case .failure(let error):
-                print("Error: \(error.localizedDescription)")
+                print("Error fetching user data: \(error)")
             }
         }
         
@@ -77,9 +77,9 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
         
         let user = User(id: userId, firstName: firstName, lastName: lastName, email: email, phone: phone, address: address, city: city)
         
-        NetworkManager.shared.updateUsers(user: user) { result in
+        updateUser(user: user) { (result: Result<User, Error>) in
             switch result {
-            case .success(_):
+            case .success(let user):
                 print("User updated successfully: \(user)")
                 
                 UserDefaults.standard.set(user.firstName, forKey: "firstName")
@@ -92,15 +92,18 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
                 }
-                
             case .failure(let error):
-                print("Error updating user: \(error.localizedDescription)")
+                print("Error Updating user: \(error.localizedDescription)")
                 
                 DispatchQueue.main.async {
                     self.showAlert(title: "Something went wrong", message: "Account inforamtion could not be saved. Please try again.", purpleButtonTitle: "OK", whiteButtonTitle: "Try Again")
                 }
-                
             }
         }
+    }
+    
+    func updateUser(user: User, completion: @escaping (Result<User, Error>) -> Void) {
+        let updateUserEndpoint = UpdateUserEndpoint(user: user)
+        NetworkManagerOrganized.shared.request(endpoint: updateUserEndpoint, completion: completion)
     }
 }

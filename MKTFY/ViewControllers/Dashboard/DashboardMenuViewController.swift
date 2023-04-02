@@ -52,6 +52,11 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
         self.navigationController?.popToViewController(self.navigationController!.children[0], animated: true)
     }
     
+    // MARK: - View Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        changeNameAndPrefix()
+    }
+    
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()

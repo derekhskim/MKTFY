@@ -29,7 +29,7 @@ class FAQViewController: MainViewController, DashboardStoryboard {
         configureVCPath()
     }
     
-    // MARK: - func
+    // MARK: - Function
     func configureVCPath() {
         let faqViews = [FAQ1View, FAQ2View, FAQ3View, FAQ4View, FAQ5View]
         let actions: [() -> Void] = [

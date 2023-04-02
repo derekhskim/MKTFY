@@ -9,9 +9,12 @@ import Foundation
 
 struct GetUserEndpoint: Endpoint {
     let userId: String
-    
+        
     var path: String {
-        return "/User/\(userId)"
+        guard let encodedUserId = userId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+            return "/User/"
+        }
+        return "/User/\(encodedUserId)"
     }
     
     var httpMethod: HttpMethod {

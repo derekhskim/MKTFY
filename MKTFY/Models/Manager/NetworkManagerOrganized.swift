@@ -17,7 +17,7 @@ class NetworkManagerOrganized {
         let status: Int
     }
     
-    func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void) {
+    func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void, userDefaultsSaving: ((T) -> Void)? = nil) {
         guard let url = endpoint.url else {
             print("Error with URL")
             return
@@ -48,8 +48,10 @@ class NetworkManagerOrganized {
             }
             
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print("Received JSON: \(json)")
+                let responseObject = try JSONDecoder().decode(T.self, from: data)
+                userDefaultsSaving?(responseObject)
+                completion(.success(responseObject))
+                print("Received JSON: \(responseObject)")
             } catch {
                 print("Failed to decode JSON: \(error)")
             }

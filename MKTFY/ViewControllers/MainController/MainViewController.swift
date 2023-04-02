@@ -21,15 +21,21 @@ class MainViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
-    func fetchUsers() {
-        NetworkManager.shared.getUsers { result in
-            switch result {
-            case .success(let user):
-                print("User: \(user)")
-            case .failure(let error):
-                print("Error: \(error.localizedDescription)")
-            }
-        }
+    func getUser(completion: @escaping (Result<User, Error>) -> Void) {
+        guard let userId = UserDefaults.standard.string(forKey: "userId") else { return }
+        
+        let getUserEndpoint = GetUserEndpoint(userId: userId)
+        
+        NetworkManagerOrganized.shared.request(endpoint: getUserEndpoint, completion: completion, userDefaultsSaving: saveUserToUserDefaults)
+    }
+    
+    func saveUserToUserDefaults(user: User) {
+        UserDefaults.standard.set(user.firstName, forKey: "firstName")
+        UserDefaults.standard.set(user.lastName, forKey: "lastName")
+        UserDefaults.standard.set(user.email, forKey: "email")
+        UserDefaults.standard.set(user.phone, forKey: "phone")
+        UserDefaults.standard.set(user.address, forKey: "address")
+        UserDefaults.standard.set(user.city, forKey: "city")
     }
 }
 
