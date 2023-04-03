@@ -19,7 +19,6 @@ class UploadImageButton: UIButton {
     private let instructionLabel = UILabel()
     private let xButton = UIImageView()
     
-    // TODO: Only enable xButton to remove photos
     // TODO: Add subviews beneath for additional images view and add more photo up to 3 photos and disappear
     // TODO: allow multiple selection of photo
     func updateAppearance() {
@@ -82,6 +81,8 @@ class UploadImageButton: UIButton {
         xButton.image = UIImage(systemName: "x.circle.fill")
         xButton.tintColor = UIColor.appColor(LPColor.MistakeRed)
         xButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        setTitle("", for: .highlighted)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(removeImage))
         xButton.isUserInteractionEnabled = true

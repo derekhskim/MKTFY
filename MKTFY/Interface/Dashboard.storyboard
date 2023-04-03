@@ -781,7 +781,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="VerySubtleGray"/>
                                         <constraints>
                                             <constraint firstItem="CKe-w4-JkU" firstAttribute="top" secondItem="gmx-BV-uNN" secondAttribute="top" constant="28" id="7ke-Wz-v1c"/>
                                             <constraint firstAttribute="height" constant="1350" id="Kgg-fP-cWQ"/>
@@ -813,6 +813,7 @@
                     <navigationItem key="navigationItem" title="Create Listing" style="editor" id="ozs-2U-tp6"/>
                     <size key="freeformSize" width="393" height="1450"/>
                     <connections>
+                        <outlet property="backgroundView" destination="gmx-BV-uNN" id="Xwa-2D-8sD"/>
                         <outlet property="uploadImageButton" destination="CKe-w4-JkU" id="IgY-Hh-UhW"/>
                     </connections>
                 </viewController>

@@ -37,6 +37,6 @@ class MyListingViewController: MainViewController, DashboardStoryboard {
     }
     
     @objc func floatingButtonTapped() {
-        coordinator?.presentCreateListingVC()
+        coordinator?.goToCreateListingVC()
     }
 }

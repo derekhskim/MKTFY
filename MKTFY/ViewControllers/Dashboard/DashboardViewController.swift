@@ -247,7 +247,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     }
     
     @objc func floatingButtonTapped() {
-        coordinator?.presentCreateListingVC()
+        coordinator?.goToCreateListingVC()
     }
     
     @objc override func keyboardWillShow(notification: NSNotification) {

@@ -7,46 +7,26 @@
 
 import UIKit
 
-class CreateListingViewController: MainViewController, DashboardStoryboard, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CreateListingViewController: MainViewController, DashboardStoryboard {
     
     // MARK: - @IBOutlet
     @IBOutlet weak var uploadImageButton: UploadImageButton!
+    @IBOutlet weak var backgroundView: UIView!
     
     // MARK: - @IBAction
     @IBAction func uploadImageButtonTapped(_ sender: Any) {
-        //        let imagePickerController = UIImagePickerController()
-        //        imagePickerController.delegate = self
-        //        imagePickerController.sourceType = .photoLibrary
-        //        imagePickerController.allowsEditing = false
-        //        imagePickerController.mediaTypes = ["public.image"]
-        //        if #available(iOS 14, *) {
-        //            imagePickerController.modalPresentationStyle = .fullScreen
-        //        }
-        //
-        //        present(imagePickerController, animated: true, completion: nil)
-        //
-        //        print("Tapped")
         
         if uploadImageButton.chosenImages.isEmpty {
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self
             imagePickerController.sourceType = .photoLibrary
-            imagePickerController.allowsEditing = false
+            imagePickerController.allowsEditing = true
             imagePickerController.mediaTypes = ["public.image"]
-            if #available(iOS 14, *) {
-                imagePickerController.modalPresentationStyle = .fullScreen
-            }
+            imagePickerController.modalPresentationStyle = .fullScreen
             
             present(imagePickerController, animated: true, completion: nil)
             
             print("Tapped")
-        } else {
-            // Remove the image if it's already set
-            print("Remove Image button tapped")
-            if !uploadImageButton.chosenImages.isEmpty {
-                uploadImageButton.chosenImages.removeFirst()
-                uploadImageButton.updateAppearance()
-            }
         }
     }
     
@@ -54,11 +34,14 @@ class CreateListingViewController: MainViewController, DashboardStoryboard, UIIm
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        setupNavigationBarWithBackButton()
+        setupBackgroundView(view: backgroundView)
     }
-    
+}
+
+extension CreateListingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        if let image = info[.originalImage] as? UIImage, uploadImageButton.chosenImages.count < 3 {
+        if let image = info[.originalImage] as? UIImage, uploadImageButton.chosenImages.count <= 3 {
             uploadImageButton.chosenImages.append(image)
         }
         picker.dismiss(animated: true, completion: nil)
