@@ -20,9 +20,8 @@ class CreateListingViewController: MainViewController, DashboardStoryboard {
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self
             imagePickerController.sourceType = .photoLibrary
-            imagePickerController.allowsEditing = true
+            imagePickerController.allowsEditing = false
             imagePickerController.mediaTypes = ["public.image"]
-            imagePickerController.modalPresentationStyle = .fullScreen
             
             present(imagePickerController, animated: true, completion: nil)
             
