@@ -769,24 +769,29 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmx-BV-uNN">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1350"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-w4-JkU" customClass="UploadImageButton" customModule="MKTFY" customModuleProvider="target">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PkR-L5-cee">
                                                 <rect key="frame" x="14" y="28" width="365" height="158"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="158" id="nph-RV-oqV"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                                <connections>
-                                                    <action selector="uploadImageButtonTapped:" destination="f53-OS-EEF" eventType="touchUpInside" id="M5S-1y-vvw"/>
-                                                </connections>
-                                            </button>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-w4-JkU" customClass="UploadImageButton" customModule="MKTFY" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="365" height="158"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="158" id="nph-RV-oqV"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                        <connections>
+                                                            <action selector="uploadImageButtonTapped:" destination="f53-OS-EEF" eventType="touchUpInside" id="M5S-1y-vvw"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" name="VerySubtleGray"/>
                                         <constraints>
-                                            <constraint firstItem="CKe-w4-JkU" firstAttribute="top" secondItem="gmx-BV-uNN" secondAttribute="top" constant="28" id="7ke-Wz-v1c"/>
+                                            <constraint firstItem="PkR-L5-cee" firstAttribute="leading" secondItem="gmx-BV-uNN" secondAttribute="leading" constant="14" id="InV-w2-UTs"/>
                                             <constraint firstAttribute="height" constant="1350" id="Kgg-fP-cWQ"/>
-                                            <constraint firstItem="CKe-w4-JkU" firstAttribute="leading" secondItem="gmx-BV-uNN" secondAttribute="leading" constant="14" id="h5n-s7-gQp"/>
-                                            <constraint firstAttribute="trailing" secondItem="CKe-w4-JkU" secondAttribute="trailing" constant="14" id="uYz-iV-xpn"/>
+                                            <constraint firstItem="PkR-L5-cee" firstAttribute="top" secondItem="gmx-BV-uNN" secondAttribute="top" constant="28" id="QFU-ni-TOP"/>
+                                            <constraint firstAttribute="trailing" secondItem="PkR-L5-cee" secondAttribute="trailing" constant="14" id="rnL-PV-nbg"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -814,6 +819,7 @@
                     <size key="freeformSize" width="393" height="1450"/>
                     <connections>
                         <outlet property="backgroundView" destination="gmx-BV-uNN" id="Xwa-2D-8sD"/>
+                        <outlet property="imageStackView" destination="PkR-L5-cee" id="qqR-hI-tMk"/>
                         <outlet property="uploadImageButton" destination="CKe-w4-JkU" id="IgY-Hh-UhW"/>
                     </connections>
                 </viewController>
