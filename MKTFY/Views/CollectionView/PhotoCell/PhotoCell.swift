@@ -24,7 +24,7 @@ class PhotoCell: UICollectionViewCell {
         removeImageButton.translatesAutoresizingMaskIntoConstraints = false
         removeImageButton.addTarget(self, action: #selector(removeButtonTapped), for: .touchUpInside)
         
-        photoImageView.addSubview(removeImageButton)
+        contentView.addSubview(removeImageButton)
         
         NSLayoutConstraint.activate([
             removeImageButton.topAnchor.constraint(equalTo: photoImageView.topAnchor, constant: 5),

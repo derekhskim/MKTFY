@@ -11,7 +11,6 @@ import UIKit
 class CreateListingTestViewController: MainViewController, DashboardStoryboard {
     
     var imageArray = [UIImage]()
-    var plusButton: UIBarButtonItem!
     
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
@@ -23,9 +22,7 @@ class CreateListingTestViewController: MainViewController, DashboardStoryboard {
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
         
-        plusButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(uploadButtonTapped))
-        plusButton.tintColor = UIColor.appColor(LPColor.LightestPurple)
-        self.navigationItem.rightBarButtonItem = plusButton
+        collectionView.reloadData()
     }
     
     @objc private func uploadButtonTapped() {
@@ -41,10 +38,6 @@ class CreateListingTestViewController: MainViewController, DashboardStoryboard {
         let phPickerVC = PHPickerViewController(configuration: config)
         phPickerVC.delegate = self
         self.present(phPickerVC, animated: true)
-    }
-    
-    func updatePlusButtonState() {
-        plusButton.isEnabled = imageArray.count < 3
     }
 }
 
@@ -64,7 +57,6 @@ extension CreateListingTestViewController: PHPickerViewControllerDelegate {
                     self.collectionView.reloadData()
                     self.backgroundView.layer.cornerRadius = 0
                     self.backgroundView.clipsToBounds = false
-                    self.updatePlusButtonState()
                 }
             }
         }
@@ -79,9 +71,9 @@ extension CreateListingTestViewController: UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return min(imageArray.count, 1)
+            return 1
         } else {
-            return max(imageArray.count - 1, 0)
+            return imageArray.isEmpty ? 0 : (imageArray.count < 3 ? imageArray.count : imageArray.count - 1)
         }
     }
     
@@ -90,17 +82,40 @@ extension CreateListingTestViewController: UICollectionViewDelegate, UICollectio
             return UICollectionViewCell()
         }
         
+        cell.photoImageView.gestureRecognizers?.forEach(cell.photoImageView.removeGestureRecognizer)
+        
         if indexPath.section == 0 {
-            cell.photoImageView.image = imageArray.first
+            if imageArray.isEmpty {
+                cell.photoImageView.image = UIImage(systemName: "plus")
+                cell.removeImageButton.isHidden = true
+                cell.photoImageView.isUserInteractionEnabled = true
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(uploadButtonTapped))
+                cell.photoImageView.addGestureRecognizer(tapGesture)
+            } else {
+                cell.photoImageView.image = imageArray.first
+                cell.removeImageButton.isHidden = false
+                cell.photoImageView.isUserInteractionEnabled = false
+            }
         } else {
-            cell.photoImageView.image = imageArray[indexPath.row + 1]
+            if indexPath.row < imageArray.count - 1 {
+                cell.photoImageView.image = imageArray[indexPath.row + 1]
+                cell.removeImageButton.isHidden = false
+                cell.photoImageView.isUserInteractionEnabled = false
+            } else {
+                cell.photoImageView.image = UIImage(systemName: "plus")
+                cell.removeImageButton.isHidden = true
+                cell.photoImageView.isUserInteractionEnabled = true
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(uploadButtonTapped))
+                cell.photoImageView.addGestureRecognizer(tapGesture)
+            }
         }
+        
+        cell.photoImageView.contentMode = .scaleAspectFill
         
         cell.onRemoveButtonTapped = { [weak self] in
             self?.imageArray.remove(at: indexPath.section == 0 ? 0 : indexPath.row + 1)
             DispatchQueue.main.async {
                 self?.collectionView.reloadData()
-                self?.updatePlusButtonState()
             }
         }
         
@@ -114,7 +129,8 @@ extension CreateListingTestViewController: UICollectionViewDelegateFlowLayout {
         if indexPath.section == 0 {
             return CGSize(width: collectionView.frame.size.width, height: 283)
         } else {
-            return CGSize(width: collectionView.frame.size.width / 3, height: collectionView.frame.size.height / 5)
+            let itemWidth = collectionView.frame.size.width / 3
+            return CGSize(width: itemWidth, height: itemWidth)
         }
     }
     
