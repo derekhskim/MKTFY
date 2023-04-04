@@ -8,146 +8,14 @@
 import UIKit
 
 class UploadImageButton: UIButton {
-    var chosenImages = [UIImage]() {
-        didSet {
-            updateAppearance()
-        }
-    }
     
-    let mainImageView = UIImageView()
     let addImageIcon = UIImageView()
     let instructionLabel = UILabel()
-    let xButton = UIImageView()
-    let additionalImageView1 = UIImageView()
-    let additionalImageView2 = UIImageView()
-    let imageStackView = UIStackView()
-//    private var additionalUploadImageButton: UploadImageButton?
     
     // TODO: allow multiple selection of photo
     func updateAppearance() {
-        print("Updating appearance with \(chosenImages.count) image(s)")
+        print("Updating appearance with image(s)")
         
-        addImageIcon.isHidden = true
-        instructionLabel.isHidden = true
-        xButton.isHidden = false
-        layer.borderWidth = 0
-        
-        switch chosenImages.count {
-        case 1:
-            mainImageView.image = chosenImages[0]
-            additionalImageView1.isHidden = true
-            additionalImageView2.isHidden = true
-        case 2:
-            mainImageView.image = chosenImages[0]
-            additionalImageView1.image = chosenImages[1]
-            additionalImageView1.isHidden = false
-            additionalImageView2.isHidden = true
-        case 3:
-            mainImageView.image = chosenImages[0]
-            additionalImageView1.image = chosenImages[1]
-            additionalImageView2.image = chosenImages[2]
-            additionalImageView1.isHidden = false
-            additionalImageView2.isHidden = false
-        default:
-            mainImageView.image = nil
-            additionalImageView1.isHidden = true
-            additionalImageView2.isHidden = true
-            addImageIcon.isHidden = false
-            instructionLabel.isHidden = false
-            xButton.isHidden = true
-            setTitle("Choose up to 3 photos", for: .normal)
-            isUserInteractionEnabled = true
-            layer.borderWidth = 1
-        }
-        
-//        if chosenImages.count == 0 {
-//            additionalUploadImageButton?.removeFromSuperview()
-//            additionalUploadImageButton = nil
-//        } else if chosenImages.count == 1, additionalUploadImageButton == nil {
-//            additionalUploadImageButton = UploadImageButton()
-//            additionalUploadImageButton?.isUserInteractionEnabled = true
-//            additionalUploadImageButton?.addTarget(self, action: #selector(uploadButtonTapped), for: .touchUpInside)
-//            imageStackView.addArrangedSubview(additionalUploadImageButton!)
-//            
-//            additionalUploadImageButton?.isUserInteractionEnabled = true
-//            
-//            additionalUploadImageButton?.translatesAutoresizingMaskIntoConstraints = false
-//            additionalUploadImageButton!.instructionLabel.text = "Add Photo"
-//            
-//            NSLayoutConstraint.activate([
-//                additionalUploadImageButton!.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 10),
-//                additionalUploadImageButton!.leadingAnchor.constraint(equalTo: leadingAnchor),
-//                additionalUploadImageButton!.heightAnchor.constraint(equalToConstant: 102),
-//                additionalUploadImageButton!.widthAnchor.constraint(equalToConstant: 102),
-//                
-//                additionalUploadImageButton!.addImageIcon.topAnchor.constraint(equalTo: additionalUploadImageButton!.topAnchor, constant: 14.5),
-//                additionalUploadImageButton!.addImageIcon.centerXAnchor.constraint(equalTo: additionalUploadImageButton!.centerXAnchor),
-//                additionalUploadImageButton!.addImageIcon.widthAnchor.constraint(equalToConstant: 44),
-//                additionalUploadImageButton!.addImageIcon.heightAnchor.constraint(equalToConstant: 44),
-//                
-//                additionalUploadImageButton!.instructionLabel.topAnchor.constraint(equalTo: additionalUploadImageButton!.addImageIcon.bottomAnchor, constant: 14),
-//                additionalUploadImageButton!.instructionLabel.centerXAnchor.constraint(equalTo: additionalUploadImageButton!.centerXAnchor),
-//            ])
-//        } else if chosenImages.count == 2 {
-//            additionalUploadImageButton?.removeFromSuperview()
-//            additionalUploadImageButton = nil
-//            
-//            additionalUploadImageButton = UploadImageButton()
-//            additionalUploadImageButton?.isUserInteractionEnabled = true
-//
-//            imageStackView.addArrangedSubview(additionalImageView1)
-//            imageStackView.addArrangedSubview(additionalUploadImageButton!)
-//            
-//            additionalImageView1.translatesAutoresizingMaskIntoConstraints = false
-//            
-//            additionalUploadImageButton?.isUserInteractionEnabled = true
-//            additionalUploadImageButton?.translatesAutoresizingMaskIntoConstraints = false
-//            additionalUploadImageButton!.instructionLabel.text = "Add Photo"
-//            
-//            NSLayoutConstraint.activate([
-//                additionalImageView1.topAnchor.constraint(equalTo: mainImageView.bottomAnchor),
-//                additionalImageView1.leadingAnchor.constraint(equalTo: leadingAnchor),
-//                additionalImageView1.heightAnchor.constraint(equalToConstant: 125),
-//                additionalImageView1.widthAnchor.constraint(equalToConstant: 125),
-//                
-//                additionalUploadImageButton!.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 10),
-//                additionalUploadImageButton!.leadingAnchor.constraint(equalTo: additionalImageView1.trailingAnchor, constant: 10),
-//                additionalUploadImageButton!.heightAnchor.constraint(equalToConstant: 102),
-//                additionalUploadImageButton!.widthAnchor.constraint(equalToConstant: 102),
-//                
-//                additionalUploadImageButton!.addImageIcon.topAnchor.constraint(equalTo: additionalUploadImageButton!.topAnchor, constant: 14.5),
-//                additionalUploadImageButton!.addImageIcon.centerXAnchor.constraint(equalTo: additionalUploadImageButton!.centerXAnchor),
-//                additionalUploadImageButton!.addImageIcon.widthAnchor.constraint(equalToConstant: 44),
-//                additionalUploadImageButton!.addImageIcon.heightAnchor.constraint(equalToConstant: 44),
-//                
-//                additionalUploadImageButton!.instructionLabel.topAnchor.constraint(equalTo: additionalUploadImageButton!.addImageIcon.bottomAnchor, constant: 14),
-//                additionalUploadImageButton!.instructionLabel.centerXAnchor.constraint(equalTo: additionalUploadImageButton!.centerXAnchor),
-//            ])
-//            
-//        } else if chosenImages.count == 3 {
-//            additionalUploadImageButton?.removeFromSuperview()
-//            additionalUploadImageButton = nil
-//            
-//            let emptyView = UIView()
-//
-//            imageStackView.addArrangedSubview(additionalImageView1)
-//            imageStackView.addArrangedSubview(additionalImageView2)
-//            
-//            additionalImageView1.translatesAutoresizingMaskIntoConstraints = false
-//            additionalImageView2.translatesAutoresizingMaskIntoConstraints = false
-//            
-//            NSLayoutConstraint.activate([
-//                additionalImageView1.topAnchor.constraint(equalTo: mainImageView.bottomAnchor),
-//                additionalImageView1.leadingAnchor.constraint(equalTo: leadingAnchor),
-//                additionalImageView1.heightAnchor.constraint(equalToConstant: 125),
-//                additionalImageView1.widthAnchor.constraint(equalToConstant: 125),
-//                
-//                additionalImageView2.topAnchor.constraint(equalTo: mainImageView.bottomAnchor),
-//                additionalImageView2.leadingAnchor.constraint(equalTo: additionalImageView1.trailingAnchor),
-//                additionalImageView2.heightAnchor.constraint(equalToConstant: 125),
-//                additionalImageView2.widthAnchor.constraint(equalToConstant: 125),
-//            ])
-//        }
     }
     
     override init(frame: CGRect) {
@@ -167,15 +35,8 @@ class UploadImageButton: UIButton {
         setTitleColor(.clear, for: .normal)
         titleLabel?.textAlignment = .center
         
-        addSubview(mainImageView)
         addSubview(addImageIcon)
         addSubview(instructionLabel)
-        addSubview(xButton)
-        
-        mainImageView.translatesAutoresizingMaskIntoConstraints = false
-        mainImageView.contentMode = .scaleAspectFill
-        mainImageView.isUserInteractionEnabled = false
-        mainImageView.clipsToBounds = true
         
         addImageIcon.image = UIImage(named: "add_image_camera")
         addImageIcon.translatesAutoresizingMaskIntoConstraints = false
@@ -187,30 +48,10 @@ class UploadImageButton: UIButton {
         instructionLabel.textColor = UIColor.appColor(LPColor.OccasionalPurple)
         instructionLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        xButton.image = UIImage(systemName: "x.circle.fill")
-        xButton.tintColor = UIColor.appColor(LPColor.MistakeRed)
-        xButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        imageStackView.axis = .horizontal
-        imageStackView.spacing = 10
-        imageStackView.translatesAutoresizingMaskIntoConstraints = false
-//        imageStackView.addArrangedSubview(additionalUploadImageButton!)
-        imageStackView.addArrangedSubview(additionalImageView1)
-        imageStackView.addArrangedSubview(additionalImageView2)
-        addSubview(imageStackView)
-        
+        setTitle("", for: .normal)
         setTitle("", for: .highlighted)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(removeImage))
-        xButton.isUserInteractionEnabled = true
-        xButton.addGestureRecognizer(tapGestureRecognizer)
-        
         NSLayoutConstraint.activate([
-            mainImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            mainImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            mainImageView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            mainImageView.heightAnchor.constraint(equalToConstant: 283),
-            
             addImageIcon.topAnchor.constraint(equalTo: topAnchor, constant: 42),
             addImageIcon.centerXAnchor.constraint(equalTo: centerXAnchor),
             addImageIcon.widthAnchor.constraint(equalToConstant: 44),
@@ -218,31 +59,12 @@ class UploadImageButton: UIButton {
             
             instructionLabel.topAnchor.constraint(equalTo: addImageIcon.bottomAnchor, constant: 13),
             instructionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            instructionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
-            xButton.topAnchor.constraint(equalTo: topAnchor, constant: 11),
-            xButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11),
-            xButton.heightAnchor.constraint(equalToConstant: 21),
-            xButton.widthAnchor.constraint(equalToConstant: 21),
-            
-            imageStackView.topAnchor.constraint(equalTo: mainImageView.bottomAnchor),
-            imageStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageStackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor)
+            instructionLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
         addImageIcon.widthAnchor.constraint(equalToConstant: 100).isActive = true
         addImageIcon.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         updateAppearance()
-    }
-    
-    @objc private func removeImage() {
-        print("remove Image button tapped")
-        
-        if !chosenImages.isEmpty {
-            chosenImages.removeFirst()
-            updateAppearance()
-        }
-    }
-
+    }    
 }

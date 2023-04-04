@@ -5,34 +5,29 @@
 //  Created by Derek Kim on 2023-03-15.
 //
 
+import PhotosUI
 import UIKit
 
 class CreateListingViewController: MainViewController, DashboardStoryboard {
     
-    private var additionalUploadImageButton: UploadImageButton?
+    var chosenImages = [UIImage]()
+    private var additionalUploadImageButton = UIButton()
     
+    private let mainImageView = UIImageView()
     private let additionalImageView1 = UIImageView()
     private let additionalImageView2 = UIImageView()
     
     // MARK: - @IBOutlet
-    @IBOutlet weak var uploadImageButton: UploadImageButton!
+    @IBOutlet weak var uploadImageButton: UIButton!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var imageStackView: UIStackView!
+    @IBOutlet weak var horizontalStackView: UIStackView!
     
     // MARK: - @IBAction
     @IBAction func uploadImageButtonTapped(_ sender: Any) {
         
-        if uploadImageButton.chosenImages.isEmpty {
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.sourceType = .photoLibrary
-            imagePickerController.allowsEditing = false
-            imagePickerController.mediaTypes = ["public.image"]
-            
-            present(imagePickerController, animated: true, completion: nil)
-            
-            print("Tapped")
-        }
+        uploadButtonTapped()
+        
     }
     
     // MARK: - viewDidLoad()
@@ -41,63 +36,63 @@ class CreateListingViewController: MainViewController, DashboardStoryboard {
         
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
-    }
-    
-    func configureAdditionalImageUploadButton(){
-        if uploadImageButton.chosenImages.count == 1 {
-            let horizontalStackView = UIStackView()
-            horizontalStackView.axis = .horizontal
-            
-            imageStackView.addArrangedSubview(horizontalStackView)
-            horizontalStackView.addArrangedSubview(additionalUploadImageButton!)
-            
-            NSLayoutConstraint.activate([
-                horizontalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
-                horizontalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
-                horizontalStackView.topAnchor.constraint(equalTo: uploadImageButton.mainImageView.bottomAnchor),
-                
-                additionalUploadImageButton!.leadingAnchor.constraint(equalTo: horizontalStackView.leadingAnchor),
-                additionalUploadImageButton!.topAnchor.constraint(equalTo: horizontalStackView.topAnchor),
-                additionalUploadImageButton!.heightAnchor.constraint(equalToConstant: 44),
-                additionalUploadImageButton!.widthAnchor.constraint(equalToConstant: 44)
-            ])
-            
-        }
+        
+        imageStackView.backgroundColor = .red
+        
     }
     
     @objc private func uploadButtonTapped() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.allowsEditing = false
-        imagePickerController.mediaTypes = ["public.image"]
+        var config = PHPickerConfiguration()
+        config.selectionLimit = 3
         
-        present(imagePickerController, animated: true, completion: nil)
-        
-        print("Additional Upload Image Button Tapped")
+        let phPickerVC = PHPickerViewController(configuration: config)
+        phPickerVC.delegate = self
+        self.present(phPickerVC, animated: true)
     }
-    
 }
 
-extension CreateListingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        if let image = info[.originalImage] as? UIImage, uploadImageButton.chosenImages.count < 3 {
-                    uploadImageButton.chosenImages.append(image)
-                    switch uploadImageButton.chosenImages.count {
-                    case 2:
-                        additionalImageView1.image = image
-                        additionalImageView1.isHidden = false
-                    case 3:
-                        additionalImageView2.image = image
-                        additionalImageView2.isHidden = false
-                    default:
-                        break
-                    }
-                }
-                picker.dismiss(animated: true, completion: nil)
-    }
+extension CreateListingViewController: PHPickerViewControllerDelegate {
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        dismiss(animated: true)
+        
+        for result in results {
+            result.itemProvider.loadObject(ofClass: UIImage.self) { object, error in
+                if let image = object as? UIImage {
+                    print(image)
+                }
+            }
+        }
     }
 }
+
+//extension CreateListingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+//        if let image = info[.originalImage] as? UIImage, chosenImages.count < 3 {
+//            chosenImages.append(image)
+//            switch chosenImages.count {
+//            case 1:
+//                mainImageView.image = chosenImages[0]
+//                mainImageView.contentMode = .scaleAspectFit
+//                mainImageView.clipsToBounds = true
+//            case 2:
+//                additionalImageView1.image = image
+//                additionalImageView1.contentMode = .scaleAspectFit
+//                additionalImageView1.clipsToBounds = true
+//                additionalImageView1.isHidden = false
+//            case 3:
+//                additionalImageView2.image = image
+//                additionalImageView2.contentMode = .scaleAspectFit
+//                additionalImageView2.clipsToBounds = true
+//                additionalImageView2.isHidden = false
+//            default:
+//                break
+//            }
+//        }
+//        picker.dismiss(animated: true, completion: nil)
+//    }
+//
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        picker.dismiss(animated: true, completion: nil)
+//    }
+//}

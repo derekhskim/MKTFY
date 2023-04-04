@@ -755,6 +755,83 @@
             </objects>
             <point key="canvasLocation" x="963" y="-742"/>
         </scene>
+        <!--Create Listing Test View Controller-->
+        <scene sceneID="Z5h-fk-9sn">
+            <objects>
+                <viewController storyboardIdentifier="CreateListingTestViewController" id="V3F-Ec-HBQ" customClass="CreateListingTestViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7EE-mO-UgA">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WgM-Dx-7Mx">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uZw-b9-ewk">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                                        <color key="backgroundColor" name="VerySubtleGray"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VVq-cu-crk">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="oMm-h8-zB3" customClass="PhotoCell" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MxQ-Uv-T09">
+                                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PKi-cn-vQu">
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="PKi-cn-vQu" firstAttribute="top" secondItem="MxQ-Uv-T09" secondAttribute="top" id="2cM-eL-qAv"/>
+                                                        <constraint firstItem="PKi-cn-vQu" firstAttribute="leading" secondItem="MxQ-Uv-T09" secondAttribute="leading" id="IOc-Yg-gpv"/>
+                                                        <constraint firstAttribute="trailing" secondItem="PKi-cn-vQu" secondAttribute="trailing" id="Yrc-9j-cLM"/>
+                                                        <constraint firstAttribute="bottom" secondItem="PKi-cn-vQu" secondAttribute="bottom" id="vgq-i1-bz3"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <connections>
+                                                    <outlet property="photoImageView" destination="PKi-cn-vQu" id="Vgu-5l-zmP"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="V3F-Ec-HBQ" id="H1M-uf-SdA"/>
+                                            <outlet property="delegate" destination="V3F-Ec-HBQ" id="kuN-MA-yoG"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="uZw-b9-ewk" secondAttribute="bottom" id="4OL-9z-VV8"/>
+                                    <constraint firstAttribute="trailing" secondItem="uZw-b9-ewk" secondAttribute="trailing" id="KvG-je-MNs"/>
+                                    <constraint firstItem="uZw-b9-ewk" firstAttribute="top" secondItem="WgM-Dx-7Mx" secondAttribute="top" id="aY7-Uf-Bhr"/>
+                                    <constraint firstItem="uZw-b9-ewk" firstAttribute="leading" secondItem="WgM-Dx-7Mx" secondAttribute="leading" id="dZh-Wn-g06"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Pd6-UI-mhL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WgM-Dx-7Mx" firstAttribute="top" secondItem="Pd6-UI-mhL" secondAttribute="top" id="IZo-4s-RP2"/>
+                            <constraint firstItem="Pd6-UI-mhL" firstAttribute="trailing" secondItem="WgM-Dx-7Mx" secondAttribute="trailing" id="oww-gu-wp8"/>
+                            <constraint firstAttribute="bottom" secondItem="WgM-Dx-7Mx" secondAttribute="bottom" id="pQd-dz-ItE"/>
+                            <constraint firstItem="WgM-Dx-7Mx" firstAttribute="leading" secondItem="Pd6-UI-mhL" secondAttribute="leading" id="yGV-h4-xwE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="WgM-Dx-7Mx" id="A8G-9U-0mt"/>
+                        <outlet property="collectionView" destination="uZw-b9-ewk" id="uHe-L0-3zZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="08P-Nf-mp7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-642" y="-33"/>
+        </scene>
         <!--Create Listing-->
         <scene sceneID="i1v-y9-OTy">
             <objects>
@@ -772,7 +849,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PkR-L5-cee">
                                                 <rect key="frame" x="14" y="28" width="365" height="283"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-w4-JkU" customClass="UploadImageButton" customModule="MKTFY" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-w4-JkU">
                                                         <rect key="frame" x="0.0" y="0.0" width="365" height="158"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="158" id="nph-RV-oqV"/>

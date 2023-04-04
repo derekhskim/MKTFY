@@ -22,7 +22,7 @@ class MainCoordinator: Coordinator {
     
     // MARK: - Login
     func start() {
-        let vc = CreateListingViewController.instantiate()
+        let vc = CreateListingTestViewController.instantiate()
 //        let vc = LoginViewController.instantiate()
 //        vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
