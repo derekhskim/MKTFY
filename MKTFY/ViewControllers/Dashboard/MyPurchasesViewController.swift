@@ -42,7 +42,6 @@ class MyPurchasesViewController: MainViewController, DashboardStoryboard {
     func setupTableViewBackground() {
         backgroundView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
         backgroundView.layer.cornerRadius = 20
-        backgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         backgroundView.clipsToBounds = true
         
         tableView.separatorStyle = .none
@@ -76,7 +75,7 @@ extension MyPurchasesViewController: UITableViewDataSource {
 extension MyPurchasesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 126
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -88,14 +87,4 @@ extension MyPurchasesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 24
     }
-    
-    //    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    //        return 24
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    //        let footerView = UIView()
-    //        footerView.backgroundColor = .clear
-    //        return footerView
-    //    }
 }

@@ -770,7 +770,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1350"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PkR-L5-cee">
-                                                <rect key="frame" x="14" y="28" width="365" height="158"/>
+                                                <rect key="frame" x="14" y="28" width="365" height="283"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-w4-JkU" customClass="UploadImageButton" customModule="MKTFY" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="365" height="158"/>
@@ -783,7 +783,19 @@
                                                             <action selector="uploadImageButtonTapped:" destination="f53-OS-EEF" eventType="touchUpInside" id="M5S-1y-vvw"/>
                                                         </connections>
                                                     </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTb-7P-c8A">
+                                                        <rect key="frame" x="0.0" y="158" width="365" height="125"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="125" id="maq-02-QFl"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="mTb-7P-c8A" secondAttribute="trailing" id="0YM-sF-cIZ"/>
+                                                    <constraint firstItem="mTb-7P-c8A" firstAttribute="leading" secondItem="PkR-L5-cee" secondAttribute="leading" id="9fL-Zy-qhY"/>
+                                                    <constraint firstAttribute="bottom" secondItem="mTb-7P-c8A" secondAttribute="bottom" id="CWF-EE-j5e"/>
+                                                    <constraint firstItem="mTb-7P-c8A" firstAttribute="top" secondItem="CKe-w4-JkU" secondAttribute="bottom" id="a4r-wA-Gwn"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" name="VerySubtleGray"/>
@@ -819,6 +831,7 @@
                     <size key="freeformSize" width="393" height="1450"/>
                     <connections>
                         <outlet property="backgroundView" destination="gmx-BV-uNN" id="Xwa-2D-8sD"/>
+                        <outlet property="horizontalStackView" destination="mTb-7P-c8A" id="cNb-zx-7QT"/>
                         <outlet property="imageStackView" destination="PkR-L5-cee" id="qqR-hI-tMk"/>
                         <outlet property="uploadImageButton" destination="CKe-w4-JkU" id="IgY-Hh-UhW"/>
                     </connections>

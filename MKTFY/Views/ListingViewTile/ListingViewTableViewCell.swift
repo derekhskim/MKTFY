@@ -19,6 +19,8 @@ class ListingViewTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         addDropShadow()
+        cellView.layer.cornerRadius = 20
+        cellView.clipsToBounds = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
