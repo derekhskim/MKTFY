@@ -9,7 +9,7 @@ import UIKit
 
 class CustomViewCollectionViewCell: UICollectionViewCell {
     
-    var view: TextFieldWithError!
+    var TextFieldView: TextFieldWithError!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,8 +18,9 @@ class CustomViewCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        view = TextFieldWithError(frame: self.contentView.bounds)
-        self.contentView.addSubview(view)
+        TextFieldView = TextFieldWithError(frame: self.contentView.bounds)
+        TextFieldView.view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        self.contentView.addSubview(TextFieldView)
     }
     
     required init?(coder: NSCoder) {
@@ -29,10 +30,11 @@ class CustomViewCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        view.titleLabel.text = "I haven't been assigned yet!"
-        view.inputTextField.placeholder = "I haven't been assigned yet!"
-        view.inputTextField.backgroundColor = .clear
-        view.errorLabel.text = ""
+        TextFieldView.titleLabel.text = "I haven't been assigned yet!"
+        TextFieldView.inputTextField.placeholder = "I haven't been assigned yet!"
+        TextFieldView.inputTextField.backgroundColor = .clear
+        TextFieldView.view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        TextFieldView.errorLabel.text = ""
     }
     
 }

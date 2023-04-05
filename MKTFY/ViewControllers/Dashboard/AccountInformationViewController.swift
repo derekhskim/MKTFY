@@ -28,6 +28,13 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
         
         getUser()
         
+        firstNameView.inputTextField.delegate = self
+        lastNameView.inputTextField.delegate = self
+        emailView.inputTextField.delegate = self
+        phoneView.inputTextField.delegate = self
+        addressView.inputTextField.delegate = self
+        cityView.inputTextField.delegate = self
+        
         emailView.isUserInteractionEnabled = false
         emailView.inputTextField.textColor = UIColor.appColor(LPColor.TextGray40)
         // Do any additional setup after loading the view.
@@ -106,4 +113,21 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
         let updateUserEndpoint = UpdateUserEndpoint(user: user)
         NetworkManager.shared.request(endpoint: updateUserEndpoint, completion: completion)
     }
+}
+
+// MARK: - Extension
+extension AccountInformationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
 }

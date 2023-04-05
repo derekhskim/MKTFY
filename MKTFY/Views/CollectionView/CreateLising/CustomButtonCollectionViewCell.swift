@@ -22,8 +22,11 @@ class CustomButtonCollectionViewCell: UICollectionViewCell {
         button = Button(frame: self.contentView.bounds)
         
         button.setTitle("Button Title", for: .normal)
+        button.titleLabel?.font = UIFont(name: "OpenSans-bold", size: 16)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .blue
+        button.cornerRadius = 20
+        button.clipsToBounds = true
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
         self.contentView.addSubview(button)
