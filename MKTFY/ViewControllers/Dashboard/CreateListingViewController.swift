@@ -121,9 +121,25 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
             let isLastCell = indexPath.section == 1 && indexPath.row == imageArray.count - 1
             let shouldDisplayAddButton = isFirstCell || isLastCell
             
-            // TODO: Create a customButton and add it to PhotoCell.swift, then switch out the imagebutton to custom button
+            cell.plusButton?.isHidden = true
+            cell.smallPlusButton?.isHidden = true
+            
             if shouldDisplayAddButton {
-                cell.photoImageView.image = indexPath.section == 0 ? UIImage(named: "large_add_image_button") : UIImage(named: "small_add_image_button")
+                if indexPath.section == 0 {
+                        cell.plusButton?.isHidden = false
+                        cell.smallPlusButton?.isHidden = true
+                } else if indexPath.section == 1 {
+                        cell.plusButton?.isHidden = true
+                        cell.smallPlusButton?.isHidden = false
+                } else {
+                    cell.plusButton?.isHidden = true
+                    cell.smallPlusButton?.isHidden = true
+                }
+                
+                cell.photoImageView.image = UIImage()
+                cell.onUploadImageButtonTapped = { [weak self] in
+                    self?.uploadButtonTapped()
+                }
                 cell.removeImageButton.isHidden = true
                 cell.photoImageView.isUserInteractionEnabled = true
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(uploadButtonTapped))
