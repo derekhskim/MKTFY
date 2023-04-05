@@ -40,9 +40,33 @@ class CreateListingViewController: MainViewController, DashboardStoryboard {
             config.selectionLimit = 3
         }
         
-        let phPickerVC = PHPickerViewController(configuration: config)
-        phPickerVC.delegate = self
-        self.present(phPickerVC, animated: true)
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .notDetermined {
+            // Request photo library access
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+                if status == .authorized {
+                    // Access granted, present the PHPickerViewController
+                    DispatchQueue.main.async {
+                        let phPickerVC = PHPickerViewController(configuration: config)
+                        phPickerVC.delegate = self
+                        self?.present(phPickerVC, animated: true)
+                    }
+                } else {
+                    // Access denied, show an alert to the user
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Photo Library Access Denied", message: "Please grant MKTFY access to your photo library in Settings to upload photos.", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
+                    }
+                }
+            }
+        } else if status == .authorized {
+            // Photo library access granted, present the PHPickerViewController
+            let phPickerVC = PHPickerViewController(configuration: config)
+            phPickerVC.delegate = self
+            self.present(phPickerVC, animated: true)
+        } else {
+            // Photo library access denied, show an alert to the user
+            showAlert(title: "Photo Library Access Denied", message: "Please grant MKTFY access to your photo library in Settings to upload photos.", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
+        }
     }
 }
 
@@ -136,12 +160,15 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                     customViewCell.TextFieldView.inputTextField.placeholder = "Enter your product name"
                     customViewCell.TextFieldView.inputTextField.backgroundColor = .white
                 } else if indexPath.row == 1 {
+                    // TODO: Implement editable textview
                     return customTextViewCell
                 } else if indexPath.row == 2 {
+                    // TODO: Implement dropDownField
                     customViewCell.TextFieldView.titleLabel.text = "Category"
                     customViewCell.TextFieldView.inputTextField.placeholder = "Choose your category"
                     customViewCell.TextFieldView.inputTextField.backgroundColor = .white
                 } else if indexPath.row == 3 {
+                    // TODO: Implement dropDownField
                     customViewCell.TextFieldView.titleLabel.text = "Condition"
                     customViewCell.TextFieldView.inputTextField.placeholder = "Choose the condition of your item"
                     customViewCell.TextFieldView.inputTextField.backgroundColor = .white
@@ -154,6 +181,7 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                     customViewCell.TextFieldView.inputTextField.placeholder = "Enter your address"
                     customViewCell.TextFieldView.inputTextField.backgroundColor = .white
                 } else if indexPath.row == 6 {
+                    // TODO: Implement dropDownField
                     customViewCell.TextFieldView.titleLabel.text = "City"
                     customViewCell.TextFieldView.inputTextField.placeholder = "Choose your city"
                     customViewCell.TextFieldView.inputTextField.backgroundColor = .white
@@ -230,6 +258,7 @@ extension CreateListingViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// TODO: Add tap out gesture?
 extension CreateListingViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
