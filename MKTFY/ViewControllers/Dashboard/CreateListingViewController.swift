@@ -19,6 +19,7 @@ class CreateListingViewController: MainViewController, DashboardStoryboard, UITe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initializeHideKeyboard()
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
         
@@ -81,6 +82,17 @@ class CreateListingViewController: MainViewController, DashboardStoryboard, UITe
             textView.text = "Your message"
             textView.textColor = UIColor.appColor(LPColor.TextGray40)
         }
+    }
+    
+    func initializeHideKeyboard(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissMyKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissMyKeyboard(){
+        view.endEditing(true)
     }
 }
 
@@ -298,7 +310,6 @@ extension CreateListingViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// TODO: Add tap out gesture?
 extension CreateListingViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -307,9 +318,5 @@ extension CreateListingViewController: UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
     }
 }

@@ -32,9 +32,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var cstTopCollectionView: NSLayoutConstraint!
     
-    // MARK: - @IBAction
-    
-    
     // MARK: - View Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -65,6 +62,10 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         
         searchTextField.borderStyle = .none
         searchTextField.delegate = self
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchButtonTapped))
+        searchImageView.addGestureRecognizer(tapGesture)
+        searchImageView.isUserInteractionEnabled = true
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -262,6 +263,11 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    func searchProducts(search: Search, completion: @escaping (Result<[SearchResult], Error>) -> Void) {
+        let searchEndpoint = SearchEndpoint(search: search)
+        NetworkManager.shared.request(endpoint: searchEndpoint, completion: completion)
+    }
 }
 
 // MARK: - Extension
@@ -335,8 +341,20 @@ extension DashboardViewController {
     }
     
     @objc func searchButtonTapped() {
+        guard let searchText = searchTextField.text, let cityText = cityLabel.text else { return }
         
+        let search = Search(search: searchText, city: cityText)
+        searchProducts(search: search) { (result: Result<[SearchResult], Error>) in
+            switch result {
+            case .success(let searchResults):
+                // TODO: Display data after search
+                print("Search results: \(searchResults)")
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
     }
+
 }
 
 extension DashboardViewController: LPCollectionViewLayoutDelegate {

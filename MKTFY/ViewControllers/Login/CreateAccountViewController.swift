@@ -79,6 +79,7 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
         
     }
     
+    // MARK: - Function
     @objc func handleOutsideTap(_ sender: UITapGestureRecognizer) {
         if let dropDownView = customDropDownView {
             let point = sender.location(in: dropDownView)

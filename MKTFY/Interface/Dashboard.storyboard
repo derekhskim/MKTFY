@@ -1271,13 +1271,13 @@ The information provided on the Site is not intended for distribution to or use 
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-w5-tz4">
-                                        <rect key="frame" x="21" y="246" width="351" height="22"/>
+                                        <rect key="frame" x="21" y="246" width="351" height="18.666666666666686"/>
                                         <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" name="TitleGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rZn-Fi-Bz7">
-                                        <rect key="frame" x="21" y="274" width="351" height="140"/>
+                                        <rect key="frame" x="21" y="270.66666666666669" width="351" height="140"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="Bf8-QO-1Bn"/>
@@ -1671,7 +1671,7 @@ The information provided on the Site is not intended for distribution to or use 
             <size key="intrinsicContentSize" width="135" height="31"/>
         </designable>
         <designable name="yuD-GJ-c46">
-            <size key="intrinsicContentSize" width="63" height="36"/>
+            <size key="intrinsicContentSize" width="61.666666666666664" height="32.666666666666664"/>
         </designable>
     </designables>
     <resources>
