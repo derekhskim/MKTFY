@@ -12,6 +12,7 @@ class PhotoCell: UICollectionViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     
     let removeImageButton = UIButton()
+    var plusButton: CustomPlusButton?
     var onRemoveButtonTapped: (() -> Void)?
     
     override func awakeFromNib() {

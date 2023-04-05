@@ -89,7 +89,7 @@ class MainCoordinator: Coordinator {
     }
     
     func goToCreateListingVC() {
-        let vc = CreateListingViewController.instantiate()
+        let vc = CreateListingTestViewController.instantiate()
         self.navigationController.pushViewController(vc, animated: true)
     }
     

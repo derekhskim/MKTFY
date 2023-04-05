@@ -22,6 +22,10 @@ class CreateListingTestViewController: MainViewController, DashboardStoryboard {
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
         
+        collectionView.register(CustomViewCollectionViewCell.self, forCellWithReuseIdentifier: "CustomViewCollectionViewCell")
+        collectionView.register(CustomTextViewCollectionViewCell.self, forCellWithReuseIdentifier: "CustomTextViewCollectionViewCell")
+        collectionView.register(CustomButtonCollectionViewCell.self, forCellWithReuseIdentifier: "CustomButtonCollectionViewCell")
+        
         collectionView.reloadData()
     }
     
@@ -66,60 +70,83 @@ extension CreateListingTestViewController: PHPickerViewControllerDelegate {
 extension CreateListingTestViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return 1
-        } else {
+        } else if section == 1 {
             return imageArray.isEmpty ? 0 : (imageArray.count < 3 ? imageArray.count : imageArray.count - 1)
+        } else {
+            return 9
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoCell else {
-            return UICollectionViewCell()
-        }
-        
-        cell.photoImageView.gestureRecognizers?.forEach(cell.photoImageView.removeGestureRecognizer)
-        
-        if indexPath.section == 0 {
-            if imageArray.isEmpty {
-                cell.photoImageView.image = UIImage(systemName: "plus")
-                cell.removeImageButton.isHidden = true
-                cell.photoImageView.isUserInteractionEnabled = true
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(uploadButtonTapped))
-                cell.photoImageView.addGestureRecognizer(tapGesture)
+        if indexPath.section == 0 || indexPath.section == 1 {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoCell else {
+                    return UICollectionViewCell()
+                }
+
+                cell.photoImageView.gestureRecognizers?.forEach(cell.photoImageView.removeGestureRecognizer)
+                
+                let isFirstCell = indexPath.section == 0 && imageArray.isEmpty
+                let isLastCell = indexPath.section == 1 && indexPath.row == imageArray.count - 1
+                let shouldDisplayAddButton = isFirstCell || isLastCell
+                
+                if shouldDisplayAddButton {
+                    cell.photoImageView.image = indexPath.section == 0 ? UIImage(named: "large_add_image_button") : UIImage(named: "small_add_image_button")
+                    cell.removeImageButton.isHidden = true
+                    cell.photoImageView.isUserInteractionEnabled = true
+                    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(uploadButtonTapped))
+                    cell.photoImageView.addGestureRecognizer(tapGesture)
+                } else {
+                    let imageIndex = indexPath.section == 0 ? 0 : indexPath.row + 1
+                    cell.photoImageView.image = imageArray[imageIndex]
+                    cell.removeImageButton.isHidden = false
+                    cell.photoImageView.isUserInteractionEnabled = false
+                }
+                
+            cell.onRemoveButtonTapped = { [weak self] in
+                self?.imageArray.remove(at: indexPath.section == 0 ? 0 : indexPath.row + 1)
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+            }
+            
+                return cell
+            } else if indexPath.section == 2 {
+            if indexPath.row < 7 {
+                guard let customViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomViewCollectionViewCell", for: indexPath) as? CustomViewCollectionViewCell else {
+                    return UICollectionViewCell()
+                }
+                if indexPath.row == 0 {
+                    customViewCell.view.titleLabel.text = "Product Name"
+                    customViewCell.view.inputTextField.placeholder = "Enter your product name"
+                    customViewCell.view.inputTextField.backgroundColor = .white
+                }
+                
+                return customViewCell
             } else {
-                cell.photoImageView.image = imageArray.first
-                cell.removeImageButton.isHidden = false
-                cell.photoImageView.isUserInteractionEnabled = false
-            }
-        } else {
-            if indexPath.row < imageArray.count - 1 {
-                cell.photoImageView.image = imageArray[indexPath.row + 1]
-                cell.removeImageButton.isHidden = false
-                cell.photoImageView.isUserInteractionEnabled = false
-            } else {
-                cell.photoImageView.image = UIImage(systemName: "plus")
-                cell.removeImageButton.isHidden = true
-                cell.photoImageView.isUserInteractionEnabled = true
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(uploadButtonTapped))
-                cell.photoImageView.addGestureRecognizer(tapGesture)
-            }
-        }
-        
-        cell.photoImageView.contentMode = .scaleAspectFill
-        
-        cell.onRemoveButtonTapped = { [weak self] in
-            self?.imageArray.remove(at: indexPath.section == 0 ? 0 : indexPath.row + 1)
-            DispatchQueue.main.async {
-                self?.collectionView.reloadData()
+                guard let customButtonCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomButtonCollectionViewCell", for: indexPath) as? CustomButtonCollectionViewCell else {
+                    return UICollectionViewCell()
+                }
+                
+                if indexPath.row == 7 {
+                    customButtonCell.onButtonTapped = { [weak self] in
+                        print("Ouch")
+                    }
+                } else if indexPath.row == 8 {
+                    customButtonCell.onButtonTapped = { [weak self] in
+                        print("it hurts")
+                    }
+                }
+                
+                return customButtonCell
             }
         }
-        
-        return cell
+        return UICollectionViewCell()
     }
     
 }
@@ -128,9 +155,15 @@ extension CreateListingTestViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
             return CGSize(width: collectionView.frame.size.width, height: 283)
-        } else {
+        } else if indexPath.section == 1 {
             let itemWidth = collectionView.frame.size.width / 3
             return CGSize(width: itemWidth, height: itemWidth)
+        } else {
+            if indexPath.row < 7 {
+                return CGSize(width: collectionView.frame.size.width, height: 80)
+            } else {
+                return CGSize(width: collectionView.frame.size.width, height: 51)
+            }
         }
     }
     
