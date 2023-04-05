@@ -22,7 +22,7 @@ struct User: Codable {
 struct Search: Codable {
     let search: String
     let city: String
-    let category: String
+    var category: String? = nil
 }
 
 // MARK: - Catergory

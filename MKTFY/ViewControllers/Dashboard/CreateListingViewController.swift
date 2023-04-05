@@ -8,7 +8,7 @@
 import PhotosUI
 import UIKit
 
-class CreateListingViewController: MainViewController, DashboardStoryboard {
+class CreateListingViewController: MainViewController, DashboardStoryboard, UITextViewDelegate {
     
     var imageArray = [UIImage]()
     
@@ -66,6 +66,20 @@ class CreateListingViewController: MainViewController, DashboardStoryboard {
         } else {
             // Photo library access denied, show an alert to the user
             showAlert(title: "Photo Library Access Denied", message: "Please grant MKTFY access to your photo library in Settings to upload photos.", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.appColor(LPColor.TextGray40) {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Your message"
+            textView.textColor = UIColor.appColor(LPColor.TextGray40)
         }
     }
 }
@@ -126,11 +140,11 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
             
             if shouldDisplayAddButton {
                 if indexPath.section == 0 {
-                        cell.plusButton?.isHidden = false
-                        cell.smallPlusButton?.isHidden = true
+                    cell.plusButton?.isHidden = false
+                    cell.smallPlusButton?.isHidden = true
                 } else if indexPath.section == 1 {
-                        cell.plusButton?.isHidden = true
-                        cell.smallPlusButton?.isHidden = false
+                    cell.plusButton?.isHidden = true
+                    cell.smallPlusButton?.isHidden = false
                 } else {
                     cell.plusButton?.isHidden = true
                     cell.smallPlusButton?.isHidden = true
@@ -165,10 +179,6 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                     return UICollectionViewCell()
                 }
                 
-                guard let customTextViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomTextViewCollectionViewCell", for: indexPath) as? CustomTextViewCollectionViewCell else {
-                    return UICollectionViewCell()
-                }
-                
                 customViewCell.TextFieldView.inputTextField.delegate = self
                 
                 if indexPath.row == 0 {
@@ -176,7 +186,18 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                     customViewCell.TextFieldView.inputTextField.placeholder = "Enter your product name"
                     customViewCell.TextFieldView.inputTextField.backgroundColor = .white
                 } else if indexPath.row == 1 {
-                    // TODO: Implement editable textview
+                    guard let customTextViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomTextViewCollectionViewCell", for: indexPath) as? CustomTextViewCollectionViewCell else {
+                        return UICollectionViewCell()
+                    }
+                    
+                    customTextViewCell.textView.delegate = self
+                    
+                    customTextViewCell.titleLabel.text = "Description"
+                    customTextViewCell.textView.delegate = self
+                    customTextViewCell.textView.text = "Enter the details of your product"
+                    customTextViewCell.textView.font = UIFont(name: "OpenSans-Regular", size: 14)
+                    customTextViewCell.textView.textColor = UIColor.appColor(LPColor.TextGray40)
+                    
                     return customTextViewCell
                 } else if indexPath.row == 2 {
                     // TODO: Implement dropDownField
@@ -247,6 +268,9 @@ extension CreateListingViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: itemWidth, height: itemWidth)
         } else {
             if indexPath.row < 7 {
+                if indexPath.row == 1 {
+                    return CGSize(width: collectionView.frame.size.width, height: 150)
+                }
                 return CGSize(width: collectionView.frame.size.width, height: 80)
             } else {
                 return CGSize(width: collectionView.frame.size.width, height: 51)
