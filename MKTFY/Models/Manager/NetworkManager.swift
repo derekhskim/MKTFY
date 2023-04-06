@@ -23,6 +23,8 @@ class NetworkManager {
         request.httpMethod = endpoint.httpMethod.rawValue
         request.allHTTPHeaderFields = endpoint.headers
         
+        print("Request: \(request)\nHeaders: \(request.allHTTPHeaderFields ?? [:])\nBody: \(String(data: request.httpBody ?? Data(), encoding: .utf8) ?? "Unable to convert data to string")")
+        
         if let body = endpoint.body {
             request.httpBody = body
         }
@@ -43,6 +45,8 @@ class NetworkManager {
                 return
             }
             
+            print("Received JSON data: \(String(data: data, encoding: .utf8) ?? "Unable to convert data to string")")
+
             do {
                 let responseObject = try JSONDecoder().decode(T.self, from: data)
                 userDefaultsSaving?(responseObject)

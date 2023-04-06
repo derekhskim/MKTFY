@@ -249,6 +249,20 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                     
                     customButtonCell.onButtonTapped = { [weak self] in
                         print("Publish Listing Button Tapped")
+                        
+                        let images: [UIImage] = self!.imageArray
+                        let uploadImageEndpoint = UploadImageEndpoint(images: images)
+                        
+                        NetworkManager.shared.request(endpoint: uploadImageEndpoint){ (result: Result<[ImageResponse], Error>) in
+                            switch result {
+                            case .success(let imageResponse):
+                                let imageIDs = imageResponse.map {$0.id}
+                                print("Image uploaded successfully, imageId: \(imageIDs)")
+                            case .failure(let error):
+                                print("Image upload failed with error: \(error.localizedDescription)")
+                            }
+                        }
+                        
                     }
                 } else if indexPath.row == 8 {
                     customButtonCell.button.setTitle("Cancel Listing", for: .normal)

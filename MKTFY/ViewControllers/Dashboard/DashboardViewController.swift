@@ -15,10 +15,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     var dropDownView: UIView!
     
     let vm = FlowLayoutViewModel()
-    let leftPadding: CGFloat = 8
-    let rightPadding: CGFloat = 8
-    let width = UIScreen.main.bounds.width
-    let height: CGFloat = 270
     
     // MARK: - @IBOutlet
     @IBOutlet weak var navigationWhiteBackgroundView: UIView!
@@ -76,7 +72,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         
         let layout = LPCollectionViewLayout()
         layout.delegate = self
-        layout.headerReferenceSize = CGSize(width: width, height: 44)
+        layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 44)
         collectionView.collectionViewLayout = layout
         
         let tapOutsideDropDown = UITapGestureRecognizer(target: self, action: #selector(handleOutsideTap))
