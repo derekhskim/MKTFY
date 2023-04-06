@@ -7,9 +7,12 @@
 
 import UIKit
 
-class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard, UIScrollViewDelegate, UISearchBarDelegate {
+class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard, UIScrollViewDelegate, UISearchBarDelegate, DropDownSelectionDelegate {
+    func setDropDownSelectedOption(_ option: String) {
+        cityField.inputTextField.text = option
+        cityField.inputTextField.sendActions(for: .editingChanged)
+    }
     
-    var customDropDownView: UIView?
     var dropDownView: UIView!
     
     // MARK: - @IBOutlet
@@ -49,7 +52,8 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
         super.viewDidLoad()
         
         initializeHideKeyboard()
-        initializeImageDropDown()
+        initializeImageDropDown(with: cityField.inputTextField)
+        selectionDelegate = self
         
         self.firstNameField.inputTextField.delegate = self
         self.lastNameField.inputTextField.delegate = self
@@ -84,27 +88,10 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
         if let dropDownView = customDropDownView {
             let point = sender.location(in: dropDownView)
             if !dropDownView.bounds.contains(point) {
-                dropDownView.removeFromSuperview()
-                customDropDownView = nil
+                hideCustomDropDownView()
             }
         }
     }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let options = ["Calgary", "Camrose", "Brooks"]
-        let filteredOptions = searchText.isEmpty ? options : options.filter { $0.lowercased().contains(searchText.lowercased()) }
-        
-        for (index, button) in dropDownView.subviews.compactMap({ $0 as? UIButton }).enumerated() {
-            if filteredOptions.indices.contains(index) {
-                let option = filteredOptions[index]
-                button.setTitle(option, for: .normal)
-                button.isHidden = false
-            } else {
-                button.isHidden = true
-            }
-        }
-    }
-    
 }
 
 // MARK: - Extension
@@ -118,101 +105,6 @@ extension CreateAccountViewController {
             nextButton.setBackgroundColor(UIColor.appColor(LPColor.OccasionalPurple), forState: .normal)
         }
         
-    }
-    
-    func initializeImageDropDown() {
-        let imgViewForDropDown = UIImageView()
-        imgViewForDropDown.frame = CGRect(x: 0, y: 0, width: 30, height: 48)
-        imgViewForDropDown.image = UIImage(named: "drop_down_arrow")
-        imgViewForDropDown.isUserInteractionEnabled = true
-        
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imgViewForDropDown.frame.width + 10, height: imgViewForDropDown.frame.height))
-        containerView.addSubview(imgViewForDropDown)
-        
-        cityField.inputTextField.rightView = containerView
-        cityField.inputTextField.rightViewMode = .always
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showCustomDropDownView))
-        imgViewForDropDown.addGestureRecognizer(tapGesture)
-        
-        imgViewForDropDown.contentMode = .right
-    }
-    
-    @objc func showCustomDropDownView() {
-        if let dropDownView = customDropDownView {
-            dropDownView.removeFromSuperview()
-            customDropDownView = nil
-        } else {
-            dropDownView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-            dropDownView.backgroundColor = .white
-            dropDownView.layer.shadowColor = UIColor.black.cgColor
-            dropDownView.layer.shadowOpacity = 0.5
-            dropDownView.layer.shadowOffset = CGSize(width: 0, height: 1)
-            dropDownView.layer.shadowRadius = 5
-            dropDownView.clipsToBounds = false
-            
-            let triangleView = UIImageView()
-            triangleView.image = UIImage(named: "white_triangle")
-            triangleView.translatesAutoresizingMaskIntoConstraints = false
-            dropDownView.addSubview(triangleView)
-            
-            NSLayoutConstraint.activate([
-                
-            ])
-            
-            let options = ["Calgary", "Camrose", "Brooks"]
-            
-            for (index, option) in options.enumerated() {
-                let button = UIButton(type: .system)
-                button.setTitle(option, for: .normal)
-                button.contentHorizontalAlignment = .left
-                button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-                button.setTitleColor(.black, for: .normal)
-                button.setTitleColor(UIColor.appColor(LPColor.OccasionalPurple), for: .highlighted)
-                button.addTarget(self, action: #selector(dropDownOptionSelected(_:)), for: .touchUpInside)
-                button.frame = CGRect(x: 0, y: 44 + CGFloat(index) * 50, width: 200, height: 50)
-                button.backgroundColor = .white
-                button.setBackgroundImage(UIImage(color: UIColor.appColor(LPColor.VerySubtleGray), alpha: 0.25), for: .highlighted)
-                dropDownView.addSubview(button)
-            }
-            
-            let searchBar = UISearchBar()
-            searchBar.translatesAutoresizingMaskIntoConstraints = false
-            searchBar.placeholder = "Search City"
-            searchBar.delegate = self
-            searchBar.searchTextField.backgroundColor = .clear
-            searchBar.searchTextField.layer.borderWidth = 1
-            searchBar.searchTextField.layer.borderColor = UIColor.appColor(LPColor.SubtleGray).cgColor
-            
-            searchBar.backgroundImage = UIImage()
-            
-            dropDownView.addSubview(searchBar)
-            
-            NSLayoutConstraint.activate([
-                triangleView.bottomAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 0),
-                triangleView.trailingAnchor.constraint(equalTo: dropDownView.trailingAnchor, constant: -3.5),
-                triangleView.heightAnchor.constraint(equalToConstant: 11),
-                triangleView.widthAnchor.constraint(equalToConstant: 24.5),
-                
-                searchBar.topAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 10),
-                searchBar.leadingAnchor.constraint(equalTo: dropDownView.leadingAnchor),
-                searchBar.trailingAnchor.constraint(equalTo: dropDownView.trailingAnchor),
-                searchBar.heightAnchor.constraint(equalToConstant: 44)
-            ])
-            
-            let rect = cityField.convert(cityField.bounds, to: view)
-            dropDownView.frame.origin = CGPoint(x: rect.maxX - dropDownView.frame.width, y: rect.maxY)
-            view.addSubview(dropDownView)
-            customDropDownView = dropDownView
-        }
-    }
-    
-    @objc func dropDownOptionSelected(_ sender: UIButton) {
-        if let option = sender.title(for: .normal) {
-            cityField.inputTextField.text = option
-            cityField.inputTextField.sendActions(for: .editingChanged)
-        }
-        sender.superview?.removeFromSuperview()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -308,3 +200,4 @@ extension CreateAccountViewController: UITextFieldDelegate, UINavigationBarDeleg
         }
     }
 }
+

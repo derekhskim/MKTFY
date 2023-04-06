@@ -11,7 +11,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     
     weak var coordinator: MainCoordinator?
     
-    var customDropDownView: UIView?
+//    var customDropDownView: UIView?
     var dropDownView: UIView!
     
     let vm = FlowLayoutViewModel()
@@ -118,8 +118,8 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         imgViewForDropDown.image = UIImage(named: "drop_down_arrow")
         imgViewForDropDown.isUserInteractionEnabled = true
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showCustomDropDownView))
-        imgViewForDropDown.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showCustomDropDownView))
+//        imgViewForDropDown.addGestureRecognizer(tapGesture)
         
         imgViewForDropDown.contentMode = .right
     }
@@ -186,7 +186,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
             let xOffset = (imgViewForDropDown.frame.width - triangleView.frame.width)
             dropDownView.frame.origin = CGPoint(x: rect.maxX - dropDownView.frame.width + xOffset, y: rect.maxY + imgViewForDropDown.frame.height / 2)
             view.addSubview(dropDownView)
-            customDropDownView = dropDownView
+//            customDropDownView = dropDownView
         }
     }
     

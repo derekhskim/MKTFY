@@ -270,7 +270,7 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                                           let category = categoryCell.TextFieldView.inputTextField.text,
                                           let condition = conditionCell.TextFieldView.inputTextField.text,
                                           let priceString = priceCell.TextFieldView.inputTextField.text,
-                                          let price = Int(priceString),
+                                          let price = Double(priceString),
                                           let address = addressCell.TextFieldView.inputTextField.text,
                                           let city = cityCell.TextFieldView.inputTextField.text else {
                                         return
@@ -285,10 +285,14 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                                         switch result {
                                         case .success(let createListingResponse):
                                             print("Create Listing success with id: \(createListingResponse.id)")
-                                            self?.navigationController?.popViewController(animated: true)
+                                            DispatchQueue.main.async {
+                                                self?.navigationController?.popViewController(animated: true)
+                                            }
                                         case .failure(let error):
                                             print("Create Listing failure with error: \(error.localizedDescription)")
-                                            self?.showAlert(title: "Something went wrong", message: "Sorry, for strange reason, your listing has not been posted. Please try again", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
+                                            DispatchQueue.main.async {
+                                                self?.showAlert(title: "Something went wrong", message: "Sorry, for strange reason, your listing has not been posted. Please try again", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
+                                            }
                                         }
                                     }
                                 }

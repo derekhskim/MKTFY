@@ -20,35 +20,28 @@ struct User: Codable {
 
 // MARK: - Search
 struct Search: Codable {
-    let search: String
-    let city: String
+    let search, city: String
     var category: String? = nil
 }
 
 // MARK: - Catergory
 struct Catergory: Codable {
-    let category: String
-    let city: String
+    let category, city: String
 }
 
 // MARK: - CreateListing
 struct CreateListing: Codable {
     let productName, description: String
-    let price: Int
+    let price: Double
     let category, condition, address, city: String
-    let images: [String]
+    let images: [String?]
 }
 
 // MARK: - ListingUpdate
 struct ListingUpdate: Codable {
-    let id: String
-    let productName: String
-    let description: String
-    let price: Int
-    let category: String
-    let condition: String
-    let address: String
-    let city: String
-    let images: [String]
+    let id, productName, description: String
+    let price: Double
+    let category, condition, address, city: String
+    let images: [String?]
 }
 

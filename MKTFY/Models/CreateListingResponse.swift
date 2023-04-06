@@ -10,12 +10,12 @@ import Foundation
 // MARK: - CreateListingResponse
 struct CreateListingResponse: Codable {
     let id, productName, description: String
-    let price: Int
+    let price: Double
     let category, condition, status, address: String
     let city: String
-    let sellerListingCount: Int
+    let sellerListingCount: Int?
     let created, userID: String
-    let sellerProfile: SellerProfile
+    let sellerProfile: SellerProfile?
     let images: [String]
 
     enum CodingKeys: String, CodingKey {
@@ -27,6 +27,6 @@ struct CreateListingResponse: Codable {
 
 // MARK: - SellerProfile
 struct SellerProfile: Codable {
-    let id, firstName, lastName, email: String
-    let phone, address, city: String
+    let id, firstName, lastName, email: String?
+    let phone, address, city: String?
 }

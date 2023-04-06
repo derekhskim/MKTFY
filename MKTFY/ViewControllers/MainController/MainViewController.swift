@@ -7,11 +7,18 @@
 
 import UIKit
 
+protocol DropDownSelectionDelegate: AnyObject {
+    func setDropDownSelectedOption(_ option: String)
+}
+
 class MainViewController: UIViewController {
     
+    weak var selectionDelegate: DropDownSelectionDelegate?
+    
+    var customDropDownView: CustomDropDown?
     var originalFrame: CGRect = .zero
     var shiftFactor: CGFloat = 0.25
-
+    
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +46,49 @@ class MainViewController: UIViewController {
         UserDefaults.standard.set(user.address, forKey: "address")
         UserDefaults.standard.set(user.city, forKey: "city")
     }
+    
+    func setupCustomDropDown(with uiView: UIView) {
+        let rect = uiView.convert(uiView.bounds, to: view)
+        customDropDownView = CustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
+        customDropDownView?.options = ["Calgary", "Camrose", "Brooks"]
+        customDropDownView?.searchBarPlaceholder = "Search options"
+        customDropDownView?.delegate = self
+        self.view.addSubview(customDropDownView!)
+    }
+    
+    func initializeImageDropDown(with textField: UITextField) {
+        let imgViewForDropDown = UIImageView()
+        imgViewForDropDown.frame = CGRect(x: 0, y: 0, width: 30, height: 48)
+        imgViewForDropDown.image = UIImage(named: "drop_down_arrow")
+        imgViewForDropDown.isUserInteractionEnabled = true
+        
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imgViewForDropDown.frame.width + 10, height: imgViewForDropDown.frame.height))
+        containerView.addSubview(imgViewForDropDown)
+        
+        textField.rightView = containerView
+        textField.rightViewMode = .always
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showCustomDropDownView(_:)))
+        containerView.addGestureRecognizer(tapGesture)
+
+        imgViewForDropDown.contentMode = .right
+    }
+    
+    @objc func showCustomDropDownView(_ sender: UITapGestureRecognizer) {
+        if let dropDownView = customDropDownView {
+            hideCustomDropDownView()
+        } else {
+            if let textField = sender.view?.superview as? UITextField {
+                setupCustomDropDown(with: textField)
+            }
+            
+        }
+    }
+    
+    func hideCustomDropDownView() {
+        customDropDownView?.removeFromSuperview()
+        customDropDownView = nil
+    }
 }
 
 // MARK: - Extension
@@ -57,5 +107,12 @@ extension MainViewController {
         view.frame = originalFrame
         
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+}
+
+extension MainViewController: CustomDropDownDelegate {
+    func customDropDown(_ customDropDown: CustomDropDown, didSelectOption option: String) {
+        selectionDelegate?.setDropDownSelectedOption(option)
+        hideCustomDropDownView()
     }
 }

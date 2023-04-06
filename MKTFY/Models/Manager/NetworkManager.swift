@@ -51,7 +51,6 @@ class NetworkManager {
                 let responseObject = try JSONDecoder().decode(T.self, from: data)
                 userDefaultsSaving?(responseObject)
                 completion(.success(responseObject))
-                print("Received JSON: \(responseObject)")
             } catch {
                 print("Failed to decode JSON: \(error)")
             }
