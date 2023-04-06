@@ -31,6 +31,14 @@ struct Catergory: Codable {
     let city: String
 }
 
+// MARK: - CreateListing
+struct CreateListing: Codable {
+    let productName, description: String
+    let price: Int
+    let category, condition, address, city: String
+    let images: [String]
+}
+
 // MARK: - ListingUpdate
 struct ListingUpdate: Codable {
     let id: String

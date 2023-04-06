@@ -257,12 +257,45 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                             switch result {
                             case .success(let imageResponse):
                                 let imageIDs = imageResponse.map {$0.id}
-                                print("Image uploaded successfully, imageId: \(imageIDs)")
+                                DispatchQueue.main.async {
+                                    guard let productNameCell = self?.collectionView.cellForItem(at: IndexPath(row: 0, section: 2)) as? CustomViewCollectionViewCell,
+                                          let descriptionCell = self?.collectionView.cellForItem(at: IndexPath(row: 1, section: 2)) as? CustomTextViewCollectionViewCell,
+                                          let categoryCell = self?.collectionView.cellForItem(at: IndexPath(row: 2, section: 2)) as? CustomViewCollectionViewCell,
+                                          let conditionCell = self?.collectionView.cellForItem(at: IndexPath(row: 3, section: 2)) as? CustomViewCollectionViewCell,
+                                          let priceCell = self?.collectionView.cellForItem(at: IndexPath(row: 4, section: 2)) as? CustomViewCollectionViewCell,
+                                          let addressCell = self?.collectionView.cellForItem(at: IndexPath(row: 5, section: 2)) as? CustomViewCollectionViewCell,
+                                          let cityCell = self?.collectionView.cellForItem(at: IndexPath(row: 6, section: 2)) as? CustomViewCollectionViewCell,
+                                          let productName = productNameCell.TextFieldView.inputTextField.text,
+                                          let description = descriptionCell.textView.text,
+                                          let category = categoryCell.TextFieldView.inputTextField.text,
+                                          let condition = conditionCell.TextFieldView.inputTextField.text,
+                                          let priceString = priceCell.TextFieldView.inputTextField.text,
+                                          let price = Int(priceString),
+                                          let address = addressCell.TextFieldView.inputTextField.text,
+                                          let city = cityCell.TextFieldView.inputTextField.text else {
+                                        return
+                                    }
+                                    
+                                    let images = imageIDs
+                                    
+                                    let createListing = CreateListing(productName: productName, description: description, price: price, category: category, condition: condition, address: address, city: city, images: images)
+                                    let createListingEndpoint = CreateListingEndpoint(createLisitng: createListing)
+                                    
+                                    NetworkManager.shared.request(endpoint: createListingEndpoint) { (result: Result<CreateListingResponse, Error>) in
+                                        switch result {
+                                        case .success(let createListingResponse):
+                                            print("Create Listing success with id: \(createListingResponse.id)")
+                                            self?.navigationController?.popViewController(animated: true)
+                                        case .failure(let error):
+                                            print("Create Listing failure with error: \(error.localizedDescription)")
+                                            self?.showAlert(title: "Something went wrong", message: "Sorry, for strange reason, your listing has not been posted. Please try again", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
+                                        }
+                                    }
+                                }
                             case .failure(let error):
                                 print("Image upload failed with error: \(error.localizedDescription)")
                             }
                         }
-                        
                     }
                 } else if indexPath.row == 8 {
                     customButtonCell.button.setTitle("Cancel Listing", for: .normal)
