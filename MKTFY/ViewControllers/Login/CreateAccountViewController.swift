@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard, UIScrollViewDelegate, UISearchBarDelegate, DropDownSelectionDelegate {
+class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard, UIScrollViewDelegate, DropDownSelectionDelegate {
     
     var dropDownView: UIView!
     

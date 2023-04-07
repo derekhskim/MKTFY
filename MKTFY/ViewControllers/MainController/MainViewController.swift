@@ -56,6 +56,17 @@ class MainViewController: UIViewController {
         self.view.addSubview(customDropDownView!)
     }
     
+    func setupCustomDropDownWithStackView(with uiView: UIView) {
+        if let stackView = uiView.superview as? UIStackView {
+            let rect = stackView.convert(uiView.bounds, to: view)
+            customDropDownView = CustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
+            customDropDownView?.options = ["Calgary", "Camrose", "Brooks"]
+            customDropDownView?.searchBarPlaceholder = "Search options"
+            customDropDownView?.delegate = self
+            self.view.addSubview(customDropDownView!)
+        }
+    }
+    
     func initializeImageDropDown(with textField: UITextField) {
         let imgViewForDropDown = UIImageView()
         imgViewForDropDown.frame = CGRect(x: 0, y: 0, width: 30, height: 48)
@@ -73,7 +84,7 @@ class MainViewController: UIViewController {
 
         imgViewForDropDown.contentMode = .right
     }
-    
+
     @objc func showCustomDropDownView(_ sender: UITapGestureRecognizer) {
         if let dropDownView = customDropDownView {
             hideCustomDropDownView()
@@ -82,6 +93,16 @@ class MainViewController: UIViewController {
                 setupCustomDropDown(with: textField)
             }
             
+        }
+    }
+    
+    @objc func showCustomDropDownViewForStackView(_ sender: UITapGestureRecognizer) {
+        if let dropDownView = customDropDownView {
+            hideCustomDropDownView()
+        } else {
+            if let uiView = sender.view {
+                setupCustomDropDownWithStackView(with: uiView)
+            }
         }
     }
     

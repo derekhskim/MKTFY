@@ -10,10 +10,7 @@ import UIKit
 class DashboardViewController: MainViewController, DashboardStoryboard, UISearchBarDelegate {
     
     weak var coordinator: MainCoordinator?
-    
-//    var customDropDownView: UIView?
-    var dropDownView: UIView!
-    
+        
     let vm = FlowLayoutViewModel()
     
     // MARK: - @IBOutlet
@@ -42,7 +39,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         getUsers()
         
         navigationWhiteBackgroundView.layer.cornerRadius = 10
@@ -50,7 +47,11 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         
         menuButton()
         floatingButton()
-        initializeImageDropDown()
+        
+        selectionDelegate = self
+        let tapImg = UITapGestureRecognizer(target: self, action: #selector(dropdownTapped))
+        imgViewForDropDown.addGestureRecognizer(tapImg)
+        imgViewForDropDown.isUserInteractionEnabled = true
         
         horizontalDropShadow()
         horizontalScrollView.bounces = false
@@ -112,122 +113,28 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         horizontalView.layer.addSublayer(topShadow)
         horizontalView.layer.addSublayer(bottomShadow)
     }
-    
-    func initializeImageDropDown() {
-        imgViewForDropDown.frame = CGRect(x: 0, y: 0, width: 30, height: 48)
-        imgViewForDropDown.image = UIImage(named: "drop_down_arrow")
-        imgViewForDropDown.isUserInteractionEnabled = true
-        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showCustomDropDownView))
-//        imgViewForDropDown.addGestureRecognizer(tapGesture)
-        
-        imgViewForDropDown.contentMode = .right
-    }
-    
-    @objc func showCustomDropDownView() {
-        if let dropDownView = customDropDownView {
-            dropDownView.removeFromSuperview()
-            customDropDownView = nil
-        } else {
-            dropDownView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-            dropDownView.backgroundColor = .white
-            dropDownView.layer.shadowColor = UIColor.black.cgColor
-            dropDownView.layer.shadowOpacity = 0.5
-            dropDownView.layer.shadowOffset = CGSize(width: 0, height: 1)
-            dropDownView.layer.shadowRadius = 5
-            dropDownView.clipsToBounds = false
-            
-            let triangleView = UIImageView()
-            triangleView.image = UIImage(named: "white_triangle")
-            triangleView.translatesAutoresizingMaskIntoConstraints = false
-            dropDownView.addSubview(triangleView)
-            
-            let options = ["Calgary", "Camrose", "Brooks"]
-            
-            for (index, option) in options.enumerated() {
-                let button = UIButton(type: .system)
-                button.setTitle(option, for: .normal)
-                button.contentHorizontalAlignment = .left
-                button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-                button.setTitleColor(.black, for: .normal)
-                button.setTitleColor(UIColor.appColor(LPColor.OccasionalPurple), for: .highlighted)
-                button.addTarget(self, action: #selector(dropDownOptionSelected(_:)), for: .touchUpInside)
-                button.frame = CGRect(x: 0, y: 44 + CGFloat(index) * 50, width: 200, height: 50)
-                button.backgroundColor = .white
-                button.setBackgroundImage(UIImage(color: UIColor.appColor(LPColor.VerySubtleGray), alpha: 0.25), for: .highlighted)
-                dropDownView.addSubview(button)
-            }
-            
-            let searchBar = UISearchBar()
-            searchBar.translatesAutoresizingMaskIntoConstraints = false
-            searchBar.placeholder = "Search City"
-            searchBar.delegate = self
-            searchBar.searchTextField.backgroundColor = .clear
-            searchBar.searchTextField.layer.borderWidth = 1
-            searchBar.searchTextField.layer.borderColor = UIColor.appColor(LPColor.SubtleGray).cgColor
-            
-            searchBar.backgroundImage = UIImage()
-            
-            dropDownView.addSubview(searchBar)
-            
-            NSLayoutConstraint.activate([
-                triangleView.bottomAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 0),
-                triangleView.trailingAnchor.constraint(equalTo: dropDownView.trailingAnchor, constant: -3.5),
-                triangleView.heightAnchor.constraint(equalToConstant: 11),
-                triangleView.widthAnchor.constraint(equalToConstant: 24.5),
-                
-                searchBar.topAnchor.constraint(equalTo: dropDownView.topAnchor, constant: 10),
-                searchBar.leadingAnchor.constraint(equalTo: dropDownView.leadingAnchor),
-                searchBar.trailingAnchor.constraint(equalTo: dropDownView.trailingAnchor),
-                searchBar.heightAnchor.constraint(equalToConstant: 44)
-            ])
-            
-            let rect = imgViewForDropDown.convert(imgViewForDropDown.bounds, to: view)
-            let xOffset = (imgViewForDropDown.frame.width - triangleView.frame.width)
-            dropDownView.frame.origin = CGPoint(x: rect.maxX - dropDownView.frame.width + xOffset, y: rect.maxY + imgViewForDropDown.frame.height / 2)
-            view.addSubview(dropDownView)
-//            customDropDownView = dropDownView
-        }
-    }
-    
-    @objc func dropDownOptionSelected(_ sender: UIButton) {
-        if let option = sender.title(for: .normal) {
-            if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
-                headerView.cityLabel.text = option
-            }
-            cityLabel.text = option
-        }
-        sender.superview?.removeFromSuperview()
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let options = ["Calgary", "Camrose", "Brooks"]
-        let filteredOptions = searchText.isEmpty ? options : options.filter { $0.lowercased().contains(searchText.lowercased()) }
-        
-        for (index, button) in dropDownView.subviews.compactMap({ $0 as? UIButton }).enumerated() {
-            if filteredOptions.indices.contains(index) {
-                let option = filteredOptions[index]
-                button.setTitle(option, for: .normal)
-                button.isHidden = false
-            } else {
-                button.isHidden = true
-            }
-        }
-    }
-    
+
     @objc func handleOutsideTap(_ sender: UITapGestureRecognizer) {
-        let pointInCustomDropDownView = sender.location(in: customDropDownView)
-        let pointInSearchTextField = sender.location(in: searchTextField)
-        
-        if searchTextField.bounds.contains(pointInSearchTextField) == false {
-            view.endEditing(true)
-        }
-        
-        if let customDropDownView = customDropDownView, let convertedCustomDropDownViewFrame = customDropDownView.superview?.convert(customDropDownView.frame, to: view) {
-            if !convertedCustomDropDownViewFrame.contains(sender.location(in: view)) {
-                customDropDownView.removeFromSuperview()
-                self.customDropDownView = nil
+        if let dropDownView = customDropDownView {
+            let point = sender.location(in: dropDownView)
+            if !dropDownView.bounds.contains(point) {
+                hideCustomDropDownView()
             }
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let dropDownView = customDropDownView {
+            let rect = cityLabel.convert(cityLabel.bounds, to: view)
+            dropDownView.frame.origin = CGPoint(x: rect.maxX - dropDownView.frame.width, y: rect.maxY)
+        }
+    }
+    
+    @objc func dropdownTapped(_ sender: UITapGestureRecognizer) {
+        if customDropDownView == nil {
+            showCustomDropDownViewForStackView(sender)
+        } else {
+            hideCustomDropDownView()
         }
     }
     
@@ -350,7 +257,7 @@ extension DashboardViewController {
             }
         }
     }
-
+    
 }
 
 extension DashboardViewController: LPCollectionViewLayoutDelegate {
@@ -359,5 +266,15 @@ extension DashboardViewController: LPCollectionViewLayoutDelegate {
         let height = vm.items[heightForAtIndexPath.row].height(cellWidth: cellWidth)
         return height
         
+    }
+}
+
+extension DashboardViewController: DropDownSelectionDelegate {
+    func setDropDownSelectedOption(_ option: String) {
+        cityLabel.text = option
+        
+        if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
+            headerView.updateCityLabel(city: option)
+        }
     }
 }
