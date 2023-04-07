@@ -278,7 +278,7 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                                     
                                     let images = imageIDs
                                     
-                                    let createListing = CreateListing(productName: productName, description: description, price: price, category: category, condition: condition, address: address, city: city, images: images)
+                                    let createListing = CreateListing(productName: productName, description: description, price: price, category: category.uppercased(), condition: condition, address: address, city: city, images: images)
                                     let createListingEndpoint = CreateListingEndpoint(createLisitng: createListing)
                                     
                                     NetworkManager.shared.request(endpoint: createListingEndpoint) { (result: Result<CreateListingResponse, Error>) in

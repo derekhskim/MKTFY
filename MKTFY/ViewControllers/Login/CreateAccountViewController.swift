@@ -8,10 +8,6 @@
 import UIKit
 
 class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard, UIScrollViewDelegate, UISearchBarDelegate, DropDownSelectionDelegate {
-    func setDropDownSelectedOption(_ option: String) {
-        cityField.inputTextField.text = option
-        cityField.inputTextField.sendActions(for: .editingChanged)
-    }
     
     var dropDownView: UIView!
     
@@ -62,7 +58,7 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
         self.addressField.inputTextField.delegate = self
         self.cityField.inputTextField.delegate = self
         
-        /// Check if all textfields are not empty
+        // Check if all textfields are not empty
         [firstNameField.inputTextField, lastNameField.inputTextField, emailField.inputTextField, phoneField.inputTextField, addressField.inputTextField, cityField.inputTextField].forEach {
             $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
@@ -96,17 +92,7 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
 
 // MARK: - Extension
 extension CreateAccountViewController {
-    func changeButtonColor(){
-        let textField = TextFieldWithError()
-        
-        if textField.inputTextField.text!.isEmpty {
-            nextButton.setBackgroundColor(UIColor.appColor(LPColor.DisabledGray), forState: .normal)
-        } else {
-            nextButton.setBackgroundColor(UIColor.appColor(LPColor.OccasionalPurple), forState: .normal)
-        }
-        
-    }
-    
+    // MARK: - CustomDropDown Setting
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let dropDownView = customDropDownView {
             let rect = cityField.convert(cityField.bounds, to: view)
@@ -114,6 +100,12 @@ extension CreateAccountViewController {
         }
     }
     
+    func setDropDownSelectedOption(_ option: String) {
+        cityField.inputTextField.text = option
+        cityField.inputTextField.sendActions(for: .editingChanged)
+    }
+    
+    // MARK: - Extension Functions
     func passwordCreated(_ password: String) {
         
         guard let firstName = firstNameField.inputTextField.text,
