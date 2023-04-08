@@ -11,7 +11,7 @@ protocol DropDownSelectionDelegate: AnyObject {
     func setDropDownSelectedOption(_ option: String)
 }
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextViewDelegate {
     
     weak var selectionDelegate: DropDownSelectionDelegate?
     
@@ -47,13 +47,29 @@ class MainViewController: UIViewController {
         UserDefaults.standard.set(user.city, forKey: "city")
     }
     
-    func setupCustomDropDown(with uiView: UIView) {
+    func setupCustomDropDown(with uiView: UIView, options: [String]) {
         let rect = uiView.convert(uiView.bounds, to: view)
         customDropDownView = CustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
-        customDropDownView?.options = ["Calgary", "Camrose", "Brooks"]
+        customDropDownView?.options = options
         customDropDownView?.searchBarPlaceholder = "Search options"
         customDropDownView?.delegate = self
+        customDropDownView?.tag = uiView.tag
         self.view.addSubview(customDropDownView!)
+    }
+    
+    @objc func showCustomDropDownView(_ sender: UITapGestureRecognizer) {
+        if let dropDownView = customDropDownView {
+            hideCustomDropDownView()
+        } else {
+            if let containerView = sender.view {
+                if let textField = containerView.superview as? UITextField {
+                    if let optionsString = containerView.accessibilityValue {
+                        let options = optionsString.components(separatedBy: ",")
+                        setupCustomDropDown(with: textField, options: options)
+                    }
+                }
+            }
+        }
     }
     
     func setupCustomDropDownWithStackView(with uiView: UIView) {
@@ -67,35 +83,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    func initializeImageDropDown(with textField: UITextField) {
-        let imgViewForDropDown = UIImageView()
-        imgViewForDropDown.frame = CGRect(x: 0, y: 0, width: 30, height: 48)
-        imgViewForDropDown.image = UIImage(named: "drop_down_arrow")
-        imgViewForDropDown.isUserInteractionEnabled = true
-        
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imgViewForDropDown.frame.width + 10, height: imgViewForDropDown.frame.height))
-        containerView.addSubview(imgViewForDropDown)
-        
-        textField.rightView = containerView
-        textField.rightViewMode = .always
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showCustomDropDownView(_:)))
-        containerView.addGestureRecognizer(tapGesture)
-
-        imgViewForDropDown.contentMode = .right
-    }
-
-    @objc func showCustomDropDownView(_ sender: UITapGestureRecognizer) {
-        if let dropDownView = customDropDownView {
-            hideCustomDropDownView()
-        } else {
-            if let textField = sender.view?.superview as? UITextField {
-                setupCustomDropDown(with: textField)
-            }
-            
-        }
-    }
-    
     @objc func showCustomDropDownViewForStackView(_ sender: UITapGestureRecognizer) {
         if let dropDownView = customDropDownView {
             hideCustomDropDownView()
@@ -106,9 +93,45 @@ class MainViewController: UIViewController {
         }
     }
     
+    // Manually adding ImageView "drop_down_arrow"
+    func initializeImageDropDown(with textField: UITextField, options: [String]) {
+        let imgViewForDropDown = UIImageView()
+        imgViewForDropDown.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        imgViewForDropDown.image = UIImage(named: "drop_down_arrow")
+        imgViewForDropDown.isUserInteractionEnabled = true
+        
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imgViewForDropDown.frame.width + 10, height: imgViewForDropDown.frame.height))
+        containerView.addSubview(imgViewForDropDown)
+        containerView.tag = textField.tag
+        containerView.accessibilityLabel = "Options"
+        containerView.accessibilityValue = options.joined(separator: ",")
+        
+        textField.rightView = containerView
+        textField.rightViewMode = .always
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showCustomDropDownView(_:)))
+        containerView.addGestureRecognizer(tapGesture)
+        
+        imgViewForDropDown.contentMode = .right
+    }
+    
     func hideCustomDropDownView() {
         customDropDownView?.removeFromSuperview()
         customDropDownView = nil
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.appColor(LPColor.TextGray40) {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Your message"
+            textView.textColor = UIColor.appColor(LPColor.TextGray40)
+        }
     }
 }
 

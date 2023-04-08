@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomViewCollectionViewCell: UICollectionViewCell {
+class CustomViewCollectionViewCell: UICollectionViewCell, DropDownSelectionDelegate {
     
     var TextFieldView: TextFieldWithError!
     
@@ -35,6 +35,11 @@ class CustomViewCollectionViewCell: UICollectionViewCell {
         TextFieldView.inputTextField.backgroundColor = .clear
         TextFieldView.view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
         TextFieldView.errorLabel.text = ""
+    }
+    
+    func setDropDownSelectedOption(_ option: String) {
+        TextFieldView.inputTextField.text = option
+        TextFieldView.inputTextField.sendActions(for: .editingChanged)
     }
     
 }

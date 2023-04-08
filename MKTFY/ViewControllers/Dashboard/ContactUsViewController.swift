@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactUsViewController: MainViewController, DashboardStoryboard, UITextViewDelegate {
+class ContactUsViewController: MainViewController, DashboardStoryboard {
 
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
@@ -55,20 +55,6 @@ class ContactUsViewController: MainViewController, DashboardStoryboard, UITextVi
         messageTextView.delegate = self
         messageTextView.text = "Your message"
         messageTextView.textColor = UIColor.appColor(LPColor.TextGray40)
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.appColor(LPColor.TextGray40) {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    }
-
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "Your message"
-            textView.textColor = UIColor.appColor(LPColor.TextGray40)
-        }
     }
 }
 

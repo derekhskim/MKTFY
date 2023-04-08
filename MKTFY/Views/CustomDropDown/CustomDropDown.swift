@@ -14,6 +14,7 @@ protocol CustomDropDownDelegate: AnyObject {
 class CustomDropDown: UIView {
     
     weak var delegate: CustomDropDownDelegate?
+    weak var relatedTextField: UITextField?
     
     private(set) var dropDownView: UIView!
     

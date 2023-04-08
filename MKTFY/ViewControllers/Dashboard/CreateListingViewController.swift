@@ -8,7 +8,7 @@
 import PhotosUI
 import UIKit
 
-class CreateListingViewController: MainViewController, DashboardStoryboard, UITextViewDelegate {
+class CreateListingViewController: MainViewController, DashboardStoryboard, DropDownSelectionDelegate {
     
     var imageArray = [UIImage]()
     
@@ -70,20 +70,6 @@ class CreateListingViewController: MainViewController, DashboardStoryboard, UITe
         }
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.appColor(LPColor.TextGray40) {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "Your message"
-            textView.textColor = UIColor.appColor(LPColor.TextGray40)
-        }
-    }
-    
     func initializeHideKeyboard(){
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
@@ -136,190 +122,184 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 || indexPath.section == 1 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoCell else {
+        switch indexPath.section {
+        case 0, 1:
+            return configurePhotoCell(for: indexPath)
+        case 2:
+            return configureCustomViewCell(for: indexPath)
+        default:
+            return UICollectionViewCell()
+        }
+    }
+    
+    private func configurePhotoCell(for indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.photoImageView.gestureRecognizers?.forEach(cell.photoImageView.removeGestureRecognizer)
+        
+        let isFirstCell = indexPath.section == 0 && imageArray.isEmpty
+        let isLastCell = indexPath.section == 1 && indexPath.row == imageArray.count - 1
+        let shouldDisplayAddButton = isFirstCell || isLastCell
+        
+        cell.plusButton?.isHidden = indexPath.section != 0 || !shouldDisplayAddButton
+        cell.smallPlusButton?.isHidden = indexPath.section != 1 || !shouldDisplayAddButton
+        
+        if shouldDisplayAddButton {
+            cell.photoImageView.image = UIImage()
+            cell.onUploadImageButtonTapped = { [weak self] in
+                self?.uploadButtonTapped()
+            }
+            cell.removeImageButton.isHidden = true
+            cell.photoImageView.isUserInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(uploadButtonTapped))
+            cell.photoImageView.addGestureRecognizer(tapGesture)
+        } else {
+            let imageIndex = indexPath.section == 0 ? 0 : indexPath.row + 1
+            cell.photoImageView.image = imageArray[imageIndex]
+            cell.removeImageButton.isHidden = false
+            cell.photoImageView.isUserInteractionEnabled = false
+        }
+        
+        cell.onRemoveButtonTapped = { [weak self] in
+            self?.imageArray.remove(at: indexPath.section == 0 ? 0 : indexPath.row + 1)
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
+        
+        return cell
+    }
+    
+    private func configureCustomViewCell(for indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row < 7 {
+            return configureTextFieldViewCell(for: indexPath)
+        } else {
+            return configureCustomButtonCell(for: indexPath)
+        }
+    }
+    
+    private func configureTextFieldViewCell(for indexPath: IndexPath) -> UICollectionViewCell {
+        guard let customViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomViewCollectionViewCell", for: indexPath) as? CustomViewCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        customViewCell.TextFieldView.inputTextField.delegate = self
+        
+        let fieldTitles = ["Product Name", "Description", "Category", "Condition", "Price", "Address", "City"]
+        let fieldPlaceholders = ["Enter your product name", "Enter the details of your product", "Choose your category", "Choose the condition of your item", "Enter your desired price", "Enter your address", "Choose your city"]
+        
+        customViewCell.TextFieldView.titleLabel.text = fieldTitles[indexPath.row]
+        customViewCell.TextFieldView.inputTextField.placeholder = fieldPlaceholders[indexPath.row]
+        customViewCell.TextFieldView.inputTextField.backgroundColor = .white
+        
+        customViewCell.TextFieldView.inputTextField.tag = indexPath.row
+        
+        if indexPath.row == 1 {
+            guard let customTextViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomTextViewCollectionViewCell", for: indexPath) as? CustomTextViewCollectionViewCell else {
                 return UICollectionViewCell()
             }
             
-            cell.photoImageView.gestureRecognizers?.forEach(cell.photoImageView.removeGestureRecognizer)
+            customTextViewCell.textView.delegate = self
+            customTextViewCell.titleLabel.text = "Description"
+            customTextViewCell.textView.delegate = self
+            customTextViewCell.textView.text = "Enter the details of your product"
+            customTextViewCell.textView.font = UIFont(name: "OpenSans-Regular", size: 14)
+            customTextViewCell.textView.textColor = UIColor.appColor(LPColor.TextGray40)
             
-            let isFirstCell = indexPath.section == 0 && imageArray.isEmpty
-            let isLastCell = indexPath.section == 1 && indexPath.row == imageArray.count - 1
-            let shouldDisplayAddButton = isFirstCell || isLastCell
-            
-            cell.plusButton?.isHidden = true
-            cell.smallPlusButton?.isHidden = true
-            
-            if shouldDisplayAddButton {
-                if indexPath.section == 0 {
-                    cell.plusButton?.isHidden = false
-                    cell.smallPlusButton?.isHidden = true
-                } else if indexPath.section == 1 {
-                    cell.plusButton?.isHidden = true
-                    cell.smallPlusButton?.isHidden = false
-                } else {
-                    cell.plusButton?.isHidden = true
-                    cell.smallPlusButton?.isHidden = true
-                }
-                
-                cell.photoImageView.image = UIImage()
-                cell.onUploadImageButtonTapped = { [weak self] in
-                    self?.uploadButtonTapped()
-                }
-                cell.removeImageButton.isHidden = true
-                cell.photoImageView.isUserInteractionEnabled = true
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(uploadButtonTapped))
-                cell.photoImageView.addGestureRecognizer(tapGesture)
-            } else {
-                let imageIndex = indexPath.section == 0 ? 0 : indexPath.row + 1
-                cell.photoImageView.image = imageArray[imageIndex]
-                cell.removeImageButton.isHidden = false
-                cell.photoImageView.isUserInteractionEnabled = false
-            }
-            
-            cell.onRemoveButtonTapped = { [weak self] in
-                self?.imageArray.remove(at: indexPath.section == 0 ? 0 : indexPath.row + 1)
-                DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
-                }
-            }
-            
-            return cell
-        } else if indexPath.section == 2 {
-            if indexPath.row < 7 {
-                guard let customViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomViewCollectionViewCell", for: indexPath) as? CustomViewCollectionViewCell else {
-                    return UICollectionViewCell()
-                }
-                
-                customViewCell.TextFieldView.inputTextField.delegate = self
-                
-                if indexPath.row == 0 {
-                    customViewCell.TextFieldView.titleLabel.text = "Product Name"
-                    customViewCell.TextFieldView.inputTextField.placeholder = "Enter your product name"
-                    customViewCell.TextFieldView.inputTextField.backgroundColor = .white
-                } else if indexPath.row == 1 {
-                    guard let customTextViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomTextViewCollectionViewCell", for: indexPath) as? CustomTextViewCollectionViewCell else {
-                        return UICollectionViewCell()
-                    }
-                    
-                    customTextViewCell.textView.delegate = self
-                    
-                    customTextViewCell.titleLabel.text = "Description"
-                    customTextViewCell.textView.delegate = self
-                    customTextViewCell.textView.text = "Enter the details of your product"
-                    customTextViewCell.textView.font = UIFont(name: "OpenSans-Regular", size: 14)
-                    customTextViewCell.textView.textColor = UIColor.appColor(LPColor.TextGray40)
-                    
-                    return customTextViewCell
-                } else if indexPath.row == 2 {
-                    // TODO: Implement dropDownField
-                    customViewCell.TextFieldView.titleLabel.text = "Category"
-                    customViewCell.TextFieldView.inputTextField.placeholder = "Choose your category"
-                    customViewCell.TextFieldView.inputTextField.backgroundColor = .white
-                } else if indexPath.row == 3 {
-                    // TODO: Implement dropDownField
-                    customViewCell.TextFieldView.titleLabel.text = "Condition"
-                    customViewCell.TextFieldView.inputTextField.placeholder = "Choose the condition of your item"
-                    customViewCell.TextFieldView.inputTextField.backgroundColor = .white
-                } else if indexPath.row == 4 {
-                    customViewCell.TextFieldView.titleLabel.text = "Price"
-                    customViewCell.TextFieldView.inputTextField.placeholder = "Enter your desired price"
-                    customViewCell.TextFieldView.inputTextField.backgroundColor = .white
-                } else if indexPath.row == 5 {
-                    customViewCell.TextFieldView.titleLabel.text = "Address"
-                    customViewCell.TextFieldView.inputTextField.placeholder = "Enter your address"
-                    customViewCell.TextFieldView.inputTextField.backgroundColor = .white
-                } else if indexPath.row == 6 {
-                    // TODO: Implement dropDownField
-                    customViewCell.TextFieldView.titleLabel.text = "City"
-                    customViewCell.TextFieldView.inputTextField.placeholder = "Choose your city"
-                    customViewCell.TextFieldView.inputTextField.backgroundColor = .white
-                }
-                
-                return customViewCell
-            } else {
-                guard let customButtonCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomButtonCollectionViewCell", for: indexPath) as? CustomButtonCollectionViewCell else {
-                    return UICollectionViewCell()
-                }
-                
-                if indexPath.row == 7 {
-                    customButtonCell.button.setTitle("Publish Listing", for: .normal)
-                    customButtonCell.button.setTitleColor(UIColor.appColor(LPColor.VoidWhite), for: .normal)
-                    customButtonCell.button.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
-                    
-                    customButtonCell.onButtonTapped = { [weak self] in
-                        print("Publish Listing Button Tapped")
-                        
-                        let images: [UIImage] = self!.imageArray
-                        let uploadImageEndpoint = UploadImageEndpoint(images: images)
-                        
-                        NetworkManager.shared.request(endpoint: uploadImageEndpoint){ (result: Result<[ImageResponse], Error>) in
-                            switch result {
-                            case .success(let imageResponse):
-                                let imageIDs = imageResponse.map {$0.id}
-                                DispatchQueue.main.async {
-                                    guard let productNameCell = self?.collectionView.cellForItem(at: IndexPath(row: 0, section: 2)) as? CustomViewCollectionViewCell,
-                                          let descriptionCell = self?.collectionView.cellForItem(at: IndexPath(row: 1, section: 2)) as? CustomTextViewCollectionViewCell,
-                                          let categoryCell = self?.collectionView.cellForItem(at: IndexPath(row: 2, section: 2)) as? CustomViewCollectionViewCell,
-                                          let conditionCell = self?.collectionView.cellForItem(at: IndexPath(row: 3, section: 2)) as? CustomViewCollectionViewCell,
-                                          let priceCell = self?.collectionView.cellForItem(at: IndexPath(row: 4, section: 2)) as? CustomViewCollectionViewCell,
-                                          let addressCell = self?.collectionView.cellForItem(at: IndexPath(row: 5, section: 2)) as? CustomViewCollectionViewCell,
-                                          let cityCell = self?.collectionView.cellForItem(at: IndexPath(row: 6, section: 2)) as? CustomViewCollectionViewCell,
-                                          let productName = productNameCell.TextFieldView.inputTextField.text,
-                                          let description = descriptionCell.textView.text,
-                                          let category = categoryCell.TextFieldView.inputTextField.text,
-                                          let condition = conditionCell.TextFieldView.inputTextField.text,
-                                          let priceString = priceCell.TextFieldView.inputTextField.text,
-                                          let price = Double(priceString),
-                                          let address = addressCell.TextFieldView.inputTextField.text,
-                                          let city = cityCell.TextFieldView.inputTextField.text else {
-                                        return
-                                    }
-                                    
-                                    let images = imageIDs
-                                    
-                                    let createListing = CreateListing(productName: productName, description: description, price: price, category: category.uppercased(), condition: condition, address: address, city: city, images: images)
-                                    let createListingEndpoint = CreateListingEndpoint(createLisitng: createListing)
-                                    
-                                    NetworkManager.shared.request(endpoint: createListingEndpoint) { (result: Result<CreateListingResponse, Error>) in
-                                        switch result {
-                                        case .success(let createListingResponse):
-                                            print("Create Listing success with id: \(createListingResponse.id)")
-                                            DispatchQueue.main.async {
-                                                self?.navigationController?.popViewController(animated: true)
-                                            }
-                                        case .failure(let error):
-                                            print("Create Listing failure with error: \(error.localizedDescription)")
-                                            DispatchQueue.main.async {
-                                                self?.showAlert(title: "Something went wrong", message: "Sorry, for strange reason, your listing has not been posted. Please try again", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
-                                            }
-                                        }
-                                    }
-                                }
-                            case .failure(let error):
-                                print("Image upload failed with error: \(error.localizedDescription)")
-                            }
-                        }
-                    }
-                } else if indexPath.row == 8 {
-                    customButtonCell.button.setTitle("Cancel Listing", for: .normal)
-                    customButtonCell.button.setTitleColor(UIColor.appColor(LPColor.GrayButtonGray), for: .normal)
-                    customButtonCell.button.backgroundColor = .clear
-                    customButtonCell.button.layer.borderWidth = 1
-                    customButtonCell.button.layer.borderColor = UIColor.appColor(LPColor.GrayButtonGray).cgColor
-                    
-                    customButtonCell.onButtonTapped = { [weak self] in
-                        self?.navigationController?.popViewController(animated: true)
-                        print("Cancel Sale Button Tapped")
-                    }
-                }
-                
-                return customButtonCell
-            }
+            return customTextViewCell
         }
-        return UICollectionViewCell()
+        
+        if indexPath.row == 2 {
+            initializeImageDropDown(with: customViewCell.TextFieldView.inputTextField, options: ["Deals", "Cars and Vehicles", "Furniture", "Electronics", "Real Estate"])
+        } else if indexPath.row == 3 {
+            initializeImageDropDown(with: customViewCell.TextFieldView.inputTextField, options: ["New", "Used"])
+        } else if indexPath.row == 6 {
+            initializeImageDropDown(with: customViewCell.TextFieldView.inputTextField, options: ["Calgary", "Camrose", "Brooks"])
+        }
+        
+        return customViewCell
     }
     
+    private func configureCustomButtonCell(for indexPath: IndexPath) -> UICollectionViewCell {
+        guard let customButtonCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomButtonCollectionViewCell", for: indexPath) as? CustomButtonCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        let buttonTitles = ["Publish Listing", "Cancel Listing"]
+        let buttonColors: [UIColor] = [.appColor(LPColor.VoidWhite), .appColor(LPColor.GrayButtonGray)]
+        let buttonBackgroundColors: [UIColor] = [.appColor(LPColor.OccasionalPurple), .clear]
+        let buttonBorderWidths: [CGFloat] = [0, 1]
+        let buttonBorderColors: [CGColor] = [UIColor.clear.cgColor, UIColor.appColor(LPColor.GrayButtonGray).cgColor]
+        
+        customButtonCell.button.setTitle(buttonTitles[indexPath.row - 7], for: .normal)
+        customButtonCell.button.setTitleColor(buttonColors[indexPath.row - 7], for: .normal)
+        customButtonCell.button.backgroundColor = buttonBackgroundColors[indexPath.row - 7]
+        customButtonCell.button.layer.borderWidth = buttonBorderWidths[indexPath.row - 7]
+        customButtonCell.button.layer.borderColor = buttonBorderColors[indexPath.row - 7]
+        
+        if indexPath.row == 7 {
+            customButtonCell.onButtonTapped = { [weak self] in
+                print("Publish Listing Button Tapped")
+                
+                let images: [UIImage] = self!.imageArray
+                let uploadImageEndpoint = UploadImageEndpoint(images: images)
+                
+                NetworkManager.shared.request(endpoint: uploadImageEndpoint){ (result: Result<[ImageResponse], Error>) in
+                    switch result {
+                    case .success(let imageResponse):
+                        let imageIDs = imageResponse.map {$0.id}
+                        DispatchQueue.main.async {
+                            guard let productNameCell = self?.collectionView.cellForItem(at: IndexPath(row: 0, section: 2)) as? CustomViewCollectionViewCell,
+                                  let descriptionCell = self?.collectionView.cellForItem(at: IndexPath(row: 1, section: 2)) as? CustomTextViewCollectionViewCell,
+                                  let categoryCell = self?.collectionView.cellForItem(at: IndexPath(row: 2, section: 2)) as? CustomViewCollectionViewCell,
+                                  let conditionCell = self?.collectionView.cellForItem(at: IndexPath(row: 3, section: 2)) as? CustomViewCollectionViewCell,
+                                  let priceCell = self?.collectionView.cellForItem(at: IndexPath(row: 4, section: 2)) as? CustomViewCollectionViewCell,
+                                  let addressCell = self?.collectionView.cellForItem(at: IndexPath(row: 5, section: 2)) as? CustomViewCollectionViewCell,
+                                  let cityCell = self?.collectionView.cellForItem(at: IndexPath(row: 6, section: 2)) as? CustomViewCollectionViewCell,
+                                  let productName = productNameCell.TextFieldView.inputTextField.text,
+                                  let description = descriptionCell.textView.text,
+                                  let category = categoryCell.TextFieldView.inputTextField.text,
+                                  let condition = conditionCell.TextFieldView.inputTextField.text,
+                                  let priceString = priceCell.TextFieldView.inputTextField.text,
+                                  let price = Double(priceString),
+                                  let address = addressCell.TextFieldView.inputTextField.text,
+                                  let city = cityCell.TextFieldView.inputTextField.text else { return }
+                            
+                            let images = imageIDs
+                            
+                            let createListing = CreateListing(productName: productName, description: description, price: price, category: category.uppercased(), condition: condition, address: address, city: city, images: images)
+                            let createListingEndpoint = CreateListingEndpoint(createLisitng: createListing)
+                            
+                            NetworkManager.shared.request(endpoint: createListingEndpoint) { (result: Result<CreateListingResponse, Error>) in
+                                switch result {
+                                case .success(let createListingResponse):
+                                    print("Create Listing success with id: \(createListingResponse.id)")
+                                    DispatchQueue.main.async {
+                                        self?.navigationController?.popViewController(animated: true)
+                                    }
+                                case .failure(let error):
+                                    print("Create Listing failure with error: \(error.localizedDescription)")
+                                    DispatchQueue.main.async {
+                                        self?.showAlert(title: "Something went wrong", message: "Sorry, for strange reason, your listing has not been posted. Please try again", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
+                                    }
+                                }
+                            }
+                        }
+                    case .failure(let error):
+                        print("Image upload failed with error: \(error.localizedDescription)")
+                    }
+                }            }
+        } else if indexPath.row == 8 {
+            customButtonCell.onButtonTapped = { [weak self] in
+                print("Cancel Listing Button Tapped")
+                self?.navigationController?.popViewController(animated: true)
+            }
+        }
+        
+        return customButtonCell
+    }
 }
 
 extension CreateListingViewController: UICollectionViewDelegateFlowLayout {
@@ -370,4 +350,17 @@ extension CreateListingViewController: UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
+}
+
+extension CreateListingViewController {
+    func setDropDownSelectedOption(_ option: String) {
+        for cell in collectionView.visibleCells {
+            if let customViewCell = cell as? CustomViewCollectionViewCell {
+                if customViewCell.TextFieldView.inputTextField.tag == customDropDownView?.tag {
+                    customViewCell.TextFieldView.inputTextField.text = option
+                }
+            }
+        }
+    }
+
 }

@@ -113,30 +113,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         horizontalView.layer.addSublayer(topShadow)
         horizontalView.layer.addSublayer(bottomShadow)
     }
-
-    @objc func handleOutsideTap(_ sender: UITapGestureRecognizer) {
-        if let dropDownView = customDropDownView {
-            let point = sender.location(in: dropDownView)
-            if !dropDownView.bounds.contains(point) {
-                hideCustomDropDownView()
-            }
-        }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if let dropDownView = customDropDownView {
-            let rect = cityLabel.convert(cityLabel.bounds, to: view)
-            dropDownView.frame.origin = CGPoint(x: rect.maxX - dropDownView.frame.width, y: rect.maxY)
-        }
-    }
-    
-    @objc func dropdownTapped(_ sender: UITapGestureRecognizer) {
-        if customDropDownView == nil {
-            showCustomDropDownViewForStackView(sender)
-        } else {
-            hideCustomDropDownView()
-        }
-    }
     
     func floatingButton() {
         let floatingButton = FloatingButton(action: #selector(floatingButtonTapped), target: self)
@@ -167,7 +143,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func searchProducts(search: Search, completion: @escaping (Result<[SearchResult], Error>) -> Void) {
+    func searchProducts(search: Search, completion: @escaping (Result<[SearchResponse], Error>) -> Void) {
         let searchEndpoint = SearchEndpoint(search: search)
         NetworkManager.shared.request(endpoint: searchEndpoint, completion: completion)
     }
@@ -247,7 +223,7 @@ extension DashboardViewController {
         guard let searchText = searchTextField.text, let cityText = cityLabel.text else { return }
         
         let search = Search(search: searchText, city: cityText)
-        searchProducts(search: search) { (result: Result<[SearchResult], Error>) in
+        searchProducts(search: search) { (result: Result<[SearchResponse], Error>) in
             switch result {
             case .success(let searchResults):
                 // TODO: Display data after search
@@ -275,6 +251,30 @@ extension DashboardViewController: DropDownSelectionDelegate {
         
         if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
             headerView.updateCityLabel(city: option)
+        }
+    }
+    
+    @objc func handleOutsideTap(_ sender: UITapGestureRecognizer) {
+        if let dropDownView = customDropDownView {
+            let point = sender.location(in: dropDownView)
+            if !dropDownView.bounds.contains(point) {
+                hideCustomDropDownView()
+            }
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let dropDownView = customDropDownView {
+            let rect = cityLabel.convert(cityLabel.bounds, to: view)
+            dropDownView.frame.origin = CGPoint(x: rect.maxX - dropDownView.frame.width, y: rect.maxY)
+        }
+    }
+    
+    @objc func dropdownTapped(_ sender: UITapGestureRecognizer) {
+        if customDropDownView == nil {
+            showCustomDropDownViewForStackView(sender)
+        } else {
+            hideCustomDropDownView()
         }
     }
 }

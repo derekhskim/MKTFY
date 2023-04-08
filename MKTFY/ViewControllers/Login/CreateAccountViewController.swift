@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard, UIScrollViewDelegate, DropDownSelectionDelegate {
+class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard, DropDownSelectionDelegate {
     
     var dropDownView: UIView!
     
@@ -48,7 +48,7 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
         super.viewDidLoad()
         
         initializeHideKeyboard()
-        initializeImageDropDown(with: cityField.inputTextField)
+        initializeImageDropDown(with: cityField.inputTextField, options: ["Calgary", "Camrose", "Brooks"])
         selectionDelegate = self
         
         self.firstNameField.inputTextField.delegate = self

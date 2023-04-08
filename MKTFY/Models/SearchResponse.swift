@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - SearchResult
-struct SearchResult: Codable {
+struct SearchResponse: Codable {
     let id, productName, description: String
     let price: Int
     let category, condition, status, address: String
