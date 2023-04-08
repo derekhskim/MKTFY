@@ -42,6 +42,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         
         getUsers()
 //        getAllListing()
+//        getListingByCategory() // set to get vehicles for testing
         
         navigationWhiteBackgroundView.layer.cornerRadius = 10
         navigationWhiteBackgroundView.clipsToBounds = true
@@ -106,6 +107,23 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
                 print("Failed to fetch all listings: \(error.localizedDescription)")
             }
         }
+    }
+    
+    func getListingByCategory() {
+        guard let city = cityLabel.text else { return }
+        
+        let listingCategory = ListingCatergory(category: "VEHICLES", city: city)
+        let getListingByCategoryEndpoint = GetListingByCategoryEndpoint(category: listingCategory)
+        
+        NetworkManager.shared.request(endpoint: getListingByCategoryEndpoint) {(result: Result<ListingResponses, Error>) in
+            switch result {
+            case .success(let response):
+                print("Listing fetch by category success!: \(response)")
+            case .failure(let error):
+                print("Listing fetch by category fail: \(error.localizedDescription)")
+            }
+        }
+        
     }
     
     func horizontalDropShadow() {

@@ -25,7 +25,7 @@ struct Search: Codable {
 }
 
 // MARK: - Catergory
-struct Catergory: Codable {
+struct ListingCatergory: Codable {
     let category, city: String
 }
 

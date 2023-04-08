@@ -12,6 +12,7 @@
 		6502B4E729E1372F00CFA8C9 /* GetSpecificFAQEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502B4E629E1372F00CFA8C9 /* GetSpecificFAQEndpoint.swift */; };
 		6502B4E929E1389A00CFA8C9 /* FAQResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502B4E829E1389900CFA8C9 /* FAQResponse.swift */; };
 		6502B4EB29E13BA000CFA8C9 /* GetAllListingEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502B4EA29E13BA000CFA8C9 /* GetAllListingEndpoint.swift */; };
+		6502B4ED29E13DA500CFA8C9 /* GetListingByCategoryEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502B4EC29E13DA500CFA8C9 /* GetListingByCategoryEndpoint.swift */; };
 		6506DA7029CA398400038AF8 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506DA6F29CA398400038AF8 /* FloatingButton.swift */; };
 		6506DA7229CA45F800038AF8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506DA7129CA45F800038AF8 /* Notification.swift */; };
 		6506DA7529CA54B300038AF8 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506DA7329CA54B300038AF8 /* NotificationTableViewCell.swift */; };
@@ -127,6 +128,7 @@
 		6502B4E629E1372F00CFA8C9 /* GetSpecificFAQEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSpecificFAQEndpoint.swift; sourceTree = "<group>"; };
 		6502B4E829E1389900CFA8C9 /* FAQResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQResponse.swift; sourceTree = "<group>"; };
 		6502B4EA29E13BA000CFA8C9 /* GetAllListingEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllListingEndpoint.swift; sourceTree = "<group>"; };
+		6502B4EC29E13DA500CFA8C9 /* GetListingByCategoryEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListingByCategoryEndpoint.swift; sourceTree = "<group>"; };
 		6506DA6F29CA398400038AF8 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		6506DA7129CA45F800038AF8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		6506DA7329CA54B300038AF8 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				65D8877B29DDF8B100A7F408 /* SearchEndpoint.swift */,
 				6512531C29DE8CA900E592FC /* CreateListingEndpoint.swift */,
 				6502B4EA29E13BA000CFA8C9 /* GetAllListingEndpoint.swift */,
+				6502B4EC29E13DA500CFA8C9 /* GetListingByCategoryEndpoint.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				65DC4A3C29BFADF700DCD554 /* HeaderCollectionReusableView.swift in Sources */,
 				659DF60D29B6FC1E00FEF0F3 /* AccountInformationViewController.swift in Sources */,
 				65CCAFC229D76FF00088338B /* RegisterUserEndpoint.swift in Sources */,
+				6502B4ED29E13DA500CFA8C9 /* GetListingByCategoryEndpoint.swift in Sources */,
 				6568E1142988AF50001482AB /* UIColor+.swift in Sources */,
 				65D1AF6529B45D3B00B4581D /* DashboardMenuViewController.swift in Sources */,
 				6512531F29DE8D8800E592FC /* ListingResponse.swift in Sources */,
