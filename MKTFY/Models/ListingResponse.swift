@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - CreateListingResponse
-struct CreateListingResponse: Codable {
+struct ListingResponse: Codable {
     let id, productName, description: String
     let price: Double
     let category, condition, status, address: String
@@ -30,3 +30,5 @@ struct SellerProfile: Codable {
     let id, firstName, lastName, email: String?
     let phone, address, city: String?
 }
+
+typealias ListingResponses = [ListingResponse]

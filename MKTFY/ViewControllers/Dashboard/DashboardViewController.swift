@@ -41,6 +41,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         super.viewDidLoad()
         
         getUsers()
+//        getAllListing()
         
         navigationWhiteBackgroundView.layer.cornerRadius = 10
         navigationWhiteBackgroundView.clipsToBounds = true
@@ -91,6 +92,18 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
                 print("User data successfully fetched: \(user)")
             case .failure(let error):
                 print("Error fetching user data: \(error)")
+            }
+        }
+    }
+    
+    func getAllListing() {
+        let getAllListingEndpoint = GetAllListingEndpoint()
+        NetworkManager.shared.request(endpoint: getAllListingEndpoint) { (result: Result<ListingResponses, Error>) in
+            switch result {
+            case .success(let response):
+                print("Successfully received all listings: \(response)")
+            case .failure(let error):
+                print("Failed to fetch all listings: \(error.localizedDescription)")
             }
         }
     }

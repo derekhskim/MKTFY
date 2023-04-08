@@ -272,7 +272,7 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                             let createListing = CreateListing(productName: productName, description: description, price: price, category: category.uppercased(), condition: condition, address: address, city: city, images: images)
                             let createListingEndpoint = CreateListingEndpoint(createLisitng: createListing)
                             
-                            NetworkManager.shared.request(endpoint: createListingEndpoint) { (result: Result<CreateListingResponse, Error>) in
+                            NetworkManager.shared.request(endpoint: createListingEndpoint) { (result: Result<ListingResponse, Error>) in
                                 switch result {
                                 case .success(let createListingResponse):
                                     print("Create Listing success with id: \(createListingResponse.id)")
