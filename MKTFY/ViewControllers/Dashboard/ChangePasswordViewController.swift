@@ -11,7 +11,6 @@ class ChangePasswordViewController: MainViewController, DashboardStoryboard {
     
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var currentPasswordView: SecureTextField!
     @IBOutlet weak var passwordView: SecureTextFieldWithLabel!
     @IBOutlet weak var confirmPasswordView: SecureTextField!
     @IBOutlet weak var characterLengthValidationImage: UIImageView!
@@ -21,14 +20,25 @@ class ChangePasswordViewController: MainViewController, DashboardStoryboard {
     
     // MARK: - @IBAction
     @IBAction func updateButtonTapped(_ sender: Any) {
-        guard let currentPassword = currentPasswordView.isSecureTextField.text, let password = passwordView.isSecureTextField.text else { return }
+        guard let password = passwordView.isSecureTextField.text, let confirmPassword = confirmPasswordView.isSecureTextField.text else { return }
         
-        // TODO: password should be replaced with password from auth0 as it requires current password which is stored in auth0 database
-        
-        if currentPassword == password {
+        if password == confirmPassword {
             print("Update Password Button tapped")
-            self.navigationController?.popViewController(animated: true)
-        } else if currentPassword != password {
+            
+            let password = Password(newPassword: password, confirmPassword: confirmPassword)
+            let changePasswordEndpoint = ChangePasswordEndpoint(password: password)
+            NetworkManager.shared.request(endpoint: changePasswordEndpoint) { (result: Result<NetworkManager.EmptyResponse, Error>) in
+                switch result {
+                case .success:
+                    print("Password changed!")
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                case .failure(let error):
+                    print("Password change failed: \(error.localizedDescription)")
+                }
+            }
+        } else if password != confirmPassword {
             showAlert(title: "Heads up!", message: "Something happened and your password hasn't been changed.", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
         } else {
             showAlert(title: "Heads up!", message: "Something happened and your password hasn't been changed.", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
@@ -45,7 +55,6 @@ class ChangePasswordViewController: MainViewController, DashboardStoryboard {
         
         updateButton.isEnabled = false
         
-        self.currentPasswordView.isSecureTextField.delegate = self
         self.passwordView.isSecureTextField.delegate = self
         self.confirmPasswordView.isSecureTextField.delegate = self
     }
@@ -67,10 +76,8 @@ extension ChangePasswordViewController: UITextFieldDelegate {
     }
     
     func allRequiredFieldsAreFilledOut() -> Bool {
-        guard let currentPassword = currentPasswordView.isSecureTextField.text, let password = passwordView.isSecureTextField.text, let confirmPassword = confirmPasswordView.isSecureTextField.text else { return false }
-        
-        let currentPasswordIsNotEmpty = !currentPassword.isEmpty
-        
+        guard let password = passwordView.isSecureTextField.text, let confirmPassword = confirmPasswordView.isSecureTextField.text else { return false }
+                
         let passwordsMatch = (password == confirmPassword)
         
         let isLongEnough = (password.count >= 6)
@@ -108,7 +115,7 @@ extension ChangePasswordViewController: UITextFieldDelegate {
             passwordView.showIndicator = false
         }
         
-        if currentPasswordIsNotEmpty && isLongEnough && hasCapitalLetter && hasNumber && passwordsMatch {
+        if isLongEnough && hasCapitalLetter && hasNumber && passwordsMatch {
             updateButton.isEnabled = true
             updateButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
             return true

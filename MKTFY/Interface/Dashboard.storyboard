@@ -1271,13 +1271,13 @@ The information provided on the Site is not intended for distribution to or use 
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-w5-tz4">
-                                        <rect key="frame" x="21" y="246" width="351" height="18.666666666666686"/>
+                                        <rect key="frame" x="21" y="246" width="351" height="22"/>
                                         <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" name="TitleGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rZn-Fi-Bz7">
-                                        <rect key="frame" x="21" y="270.66666666666669" width="351" height="140"/>
+                                        <rect key="frame" x="21" y="274" width="351" height="140"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="Bf8-QO-1Bn"/>
@@ -1487,28 +1487,14 @@ The information provided on the Site is not intended for distribution to or use 
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84p-MG-dmY" userLabel="backgroundView">
                                 <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqV-ge-F5z" customClass="SecureTextField" customModule="MKTFY" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="38" width="351" height="80"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="E4V-a8-Uib"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Current Password"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Insert your current password"/>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="viewBackgroundColor">
-                                                <color key="value" name="VerySubtleGray"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="The password must have at least 6 characters  and must contain 1 uppercase and 1 number." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kn1-Dg-HNa">
-                                        <rect key="frame" x="18" y="142" width="357" height="38.333333333333343"/>
+                                        <rect key="frame" x="18" y="38" width="357" height="38.333333333333343"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                         <color key="textColor" name="TextGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yf-xD-V4z" customClass="SecureTextFieldWithLabel" customModule="MKTFY" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="200.33333333333331" width="357" height="80"/>
+                                        <rect key="frame" x="18" y="96.333333333333343" width="357" height="80"/>
                                         <color key="backgroundColor" name="VerySubtleGray"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="5d3-Td-hkI"/>
@@ -1523,7 +1509,7 @@ The information provided on the Site is not intended for distribution to or use 
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zI-Br-Wuj" customClass="SecureTextField" customModule="MKTFY" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="300.33333333333331" width="357" height="80"/>
+                                        <rect key="frame" x="18" y="196.33333333333334" width="357" height="80.000000000000028"/>
                                         <color key="backgroundColor" name="VerySubtleGray"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="kQg-ee-3ql"/>
@@ -1537,7 +1523,7 @@ The information provided on the Site is not intended for distribution to or use 
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0ws-BR-tLW" userLabel="6Characters StackView">
-                                        <rect key="frame" x="40" y="420.33333333333331" width="313" height="20"/>
+                                        <rect key="frame" x="40" y="316.33333333333331" width="313" height="20"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password_validation_unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="JDh-sq-jPo">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -1555,7 +1541,7 @@ The information provided on the Site is not intended for distribution to or use 
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nlA-j6-8jX" userLabel="Uppercase StackView">
-                                        <rect key="frame" x="40" y="470.33333333333337" width="313" height="20"/>
+                                        <rect key="frame" x="40" y="366.33333333333331" width="313" height="20"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password_validation_unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="tKn-wQ-W5X">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -1573,7 +1559,7 @@ The information provided on the Site is not intended for distribution to or use 
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="knM-Yg-wY3" userLabel="Number StackView">
-                                        <rect key="frame" x="40" y="520.33333333333337" width="313" height="20"/>
+                                        <rect key="frame" x="40" y="416.33333333333331" width="313" height="20"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password_validation_unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="nAz-a2-CLB">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -1618,19 +1604,16 @@ The information provided on the Site is not intended for distribution to or use 
                                     <constraint firstItem="nlA-j6-8jX" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="40" id="70z-m9-PbV"/>
                                     <constraint firstItem="5zI-Br-Wuj" firstAttribute="top" secondItem="6yf-xD-V4z" secondAttribute="bottom" constant="20" id="KYn-DJ-vxW"/>
                                     <constraint firstItem="6yf-xD-V4z" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="18" id="OIP-G7-Kdc"/>
-                                    <constraint firstItem="qqV-ge-F5z" firstAttribute="top" secondItem="84p-MG-dmY" secondAttribute="top" constant="38" id="OnG-oZ-msC"/>
-                                    <constraint firstAttribute="trailing" secondItem="qqV-ge-F5z" secondAttribute="trailing" constant="21" id="Pqw-qu-5tq"/>
                                     <constraint firstItem="6yf-xD-V4z" firstAttribute="top" secondItem="Kn1-Dg-HNa" secondAttribute="bottom" constant="20" id="QCc-S0-dLy"/>
                                     <constraint firstAttribute="trailing" secondItem="Kn1-Dg-HNa" secondAttribute="trailing" constant="18" id="RE6-zx-byk"/>
                                     <constraint firstAttribute="trailing" secondItem="0ws-BR-tLW" secondAttribute="trailing" constant="40" id="Yjo-JI-t1T"/>
                                     <constraint firstAttribute="bottom" secondItem="B9D-Sy-ac5" secondAttribute="bottom" constant="42" id="YvX-bT-ua8"/>
                                     <constraint firstAttribute="trailing" secondItem="B9D-Sy-ac5" secondAttribute="trailing" constant="15" id="ZxT-Ey-VTX"/>
                                     <constraint firstItem="B9D-Sy-ac5" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="15" id="bxo-3T-VIX"/>
-                                    <constraint firstItem="Kn1-Dg-HNa" firstAttribute="top" secondItem="qqV-ge-F5z" secondAttribute="bottom" constant="24" id="c1E-Bc-TOg"/>
                                     <constraint firstItem="0ws-BR-tLW" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="40" id="dLm-Xu-7UC"/>
-                                    <constraint firstItem="qqV-ge-F5z" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="21" id="ehu-g6-NZS"/>
                                     <constraint firstAttribute="trailing" secondItem="nlA-j6-8jX" secondAttribute="trailing" constant="40" id="esa-2k-Q0y"/>
                                     <constraint firstItem="5zI-Br-Wuj" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="18" id="gI8-h5-5Px"/>
+                                    <constraint firstItem="Kn1-Dg-HNa" firstAttribute="top" secondItem="84p-MG-dmY" secondAttribute="top" constant="38" id="i1P-44-9oN"/>
                                     <constraint firstItem="Kn1-Dg-HNa" firstAttribute="leading" secondItem="84p-MG-dmY" secondAttribute="leading" constant="18" id="m9B-e3-Jsk"/>
                                     <constraint firstItem="nlA-j6-8jX" firstAttribute="top" secondItem="0ws-BR-tLW" secondAttribute="bottom" constant="30" id="mIo-Uh-yB2"/>
                                     <constraint firstItem="knM-Yg-wY3" firstAttribute="top" secondItem="nlA-j6-8jX" secondAttribute="bottom" constant="30" id="mTE-Os-6z8"/>
@@ -1654,7 +1637,6 @@ The information provided on the Site is not intended for distribution to or use 
                         <outlet property="backgroundView" destination="84p-MG-dmY" id="HSA-ek-5BU"/>
                         <outlet property="characterLengthValidationImage" destination="JDh-sq-jPo" id="QqS-Pd-Cr5"/>
                         <outlet property="confirmPasswordView" destination="5zI-Br-Wuj" id="hgr-b3-YdR"/>
-                        <outlet property="currentPasswordView" destination="qqV-ge-F5z" id="SPn-DG-Uwk"/>
                         <outlet property="numberValidationImage" destination="nAz-a2-CLB" id="sCK-kJ-zeG"/>
                         <outlet property="passwordView" destination="6yf-xD-V4z" id="1Sg-ga-Lo8"/>
                         <outlet property="updateButton" destination="B9D-Sy-ac5" id="v85-Yk-ohr"/>
@@ -1671,7 +1653,7 @@ The information provided on the Site is not intended for distribution to or use 
             <size key="intrinsicContentSize" width="135" height="31"/>
         </designable>
         <designable name="yuD-GJ-c46">
-            <size key="intrinsicContentSize" width="61.666666666666664" height="32.666666666666664"/>
+            <size key="intrinsicContentSize" width="63" height="36"/>
         </designable>
     </designables>
     <resources>

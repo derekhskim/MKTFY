@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Auth0
 
 class LoginViewController: MainViewController, LoginStoryboard {
     
@@ -27,20 +26,32 @@ class LoginViewController: MainViewController, LoginStoryboard {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-            
+        
         guard let email = emailView.inputTextField.text,
               let password = passwordView.isSecureTextField.text else { return }
+        
+        loginButton.isUserInteractionEnabled = false
+        loginButton.setTitle("", for: .normal)
+        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        indicator.startAnimating()
+        loginButton.addSubview(indicator)
+        indicator.center = loginButton.center
         
         Auth0Manager.shared.loginWithEmail(email, password: password) { success, userId, error in
             if success {
                 DispatchQueue.main.async {
                     self.coordinator?.goToDashboardVC()
-                }
+                    indicator.removeFromSuperview()
+                    self.loginButton.setTitle("Login", for: .normal)
+                    self.loginButton.isUserInteractionEnabled = true                }
             } else {
-                    DispatchQueue.main.async {
-                        self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
-                    }
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
+                    indicator.removeFromSuperview()
+                    self.loginButton.setTitle("Login", for: .normal)
+                    self.loginButton.isUserInteractionEnabled = true
                 }
+            }
         }
     }
     
@@ -146,10 +157,6 @@ extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
     }
 }
 

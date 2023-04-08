@@ -35,7 +35,8 @@ class Auth0Manager {
                 UserDefaults.standard.set(credentials.accessToken, forKey: "authenticationAPI")
                 self.getUserInfo(accessToken: credentials.accessToken, completion: completion)
             case .failure(let error):
-                print(error.localizedDescription)
+                print("Login Error: \(error.localizedDescription)")
+                completion(false, nil, error)
             }
         }
     }
