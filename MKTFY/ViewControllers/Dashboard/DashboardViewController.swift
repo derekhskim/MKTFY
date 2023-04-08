@@ -202,10 +202,6 @@ extension DashboardViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-    }
-    
 }
 
 extension DashboardViewController {
@@ -260,13 +256,6 @@ extension DashboardViewController: DropDownSelectionDelegate {
             if !dropDownView.bounds.contains(point) {
                 hideCustomDropDownView()
             }
-        }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if let dropDownView = customDropDownView {
-            let rect = cityLabel.convert(cityLabel.bounds, to: view)
-            dropDownView.frame.origin = CGPoint(x: rect.maxX - dropDownView.frame.width, y: rect.maxY)
         }
     }
     

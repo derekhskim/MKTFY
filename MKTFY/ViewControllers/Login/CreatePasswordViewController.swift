@@ -154,8 +154,6 @@ extension CreatePasswordViewController: UITextFieldDelegate {
         } else {
             return false
         }
-
-
     }
 
     private func configureView(withMessage message: String, withColor color: UIColor) {

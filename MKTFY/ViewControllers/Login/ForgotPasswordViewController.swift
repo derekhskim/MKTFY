@@ -107,10 +107,6 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-    }
 }
 
 // Extension to customize border color to indicate whether a textfield is empty or not

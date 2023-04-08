@@ -26,6 +26,9 @@ class FAQViewController: MainViewController, DashboardStoryboard {
         
         setupNavigationBarWithBackButton()
         
+        // TODO: Re-implement this view as UITableView and show data as per endpoint
+        getFAQ()
+        
         configureVCPath()
     }
     
@@ -59,6 +62,21 @@ class FAQViewController: MainViewController, DashboardStoryboard {
             if index < tapGestures.count {
                 tapGestures[index]()
             }
+        }
+    }
+    
+    func getFAQ(){
+        let getFAQEndpoint = GetFAQEndpoint()
+        NetworkManager.shared.request(endpoint: getFAQEndpoint) { (result: Result<FAQResponses, Error>) in
+            switch result {
+            case .success(let response):
+                for faqResponse in response {
+                    print("FAQ Successfully received - id: \(faqResponse.id), question: \(faqResponse.question)")
+                }
+            case .failure(let error):
+                print("Failde to get FAQ data: \(error.localizedDescription)")
+            }
+            
         }
     }
 }
