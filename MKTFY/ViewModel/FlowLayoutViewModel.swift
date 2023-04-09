@@ -6,11 +6,17 @@
 //
 
 import Foundation
+import UIKit
 
 class FlowLayoutViewModel {
     var items: [CollectionViewItems]
     
-    init() {
-        self.items = CollectionViewItems.mockData()
-    }
+    init(items: [CollectionViewItems]) {
+            self.items = items
+        }
+
+    
+//    init() {
+//        self.items = CollectionViewItems.mockData()
+//    }
 }

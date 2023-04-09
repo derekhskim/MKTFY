@@ -10,8 +10,8 @@ import UIKit
 class DashboardViewController: MainViewController, DashboardStoryboard, UISearchBarDelegate {
     
     weak var coordinator: MainCoordinator?
-        
-    let vm = FlowLayoutViewModel()
+    
+    var vm = FlowLayoutViewModel(items: [])
     
     // MARK: - @IBOutlet
     @IBOutlet weak var navigationWhiteBackgroundView: UIView!
@@ -41,8 +41,8 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         super.viewDidLoad()
         
         getUsers()
-//        getAllListing()
-//        getListingByCategory() // set to get vehicles for testing
+        getAllListing()
+        //        getListingByCategory() // set to get vehicles for testing
         
         navigationWhiteBackgroundView.layer.cornerRadius = 10
         navigationWhiteBackgroundView.clipsToBounds = true
@@ -103,10 +103,35 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
             switch result {
             case .success(let response):
                 print("Successfully received all listings: \(response)")
+                
+                DispatchQueue.main.async {
+                    guard let city = self.cityLabel.text else {
+                        return
+                    }
+                    
+                    let collectionViewItems = self.createCollectionViewItems(from: response, for: city)
+                    self.vm = FlowLayoutViewModel(items: collectionViewItems)
+                    print("Number of items for city \(city): \(self.vm.items.count)")
+                    self.collectionView.collectionViewLayout.invalidateLayout()
+                    self.collectionView.reloadData()
+                }
             case .failure(let error):
                 print("Failed to fetch all listings: \(error.localizedDescription)")
             }
         }
+    }
+    
+    func createCollectionViewItems(from listingResponses: [ListingResponse], for city: String) -> [CollectionViewItems] {
+        return listingResponses
+            .filter { $0.city.lowercased() == city.lowercased() }
+            .map { listingResponse in
+                let id = Int(listingResponse.id)
+                let title = listingResponse.productName
+                let imageURL = listingResponse.images.first.flatMap { URL(string: $0) }
+                let price = listingResponse.price
+                
+                return CollectionViewItems(id: id, title: title, imageURL: imageURL, price: price)
+            }
     }
     
     func getListingByCategory() {
@@ -199,17 +224,21 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.layer.shadowOpacity = 0.5
         cell.layer.masksToBounds = false
         
-        let item = vm.items[indexPath.row]
-        cell.updateData(data: item)
+        let item = vm.items[indexPath.item]
+        cell.titleLabel.text = item.title
+        cell.priceLabel.text = String(format: "%.2f", item.price)
+        cell.imageViewItem.loadImage(from: item.imageURL)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath)
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
         
-        return cell
+        headerView.updateCityLabel(city: cityLabel.text!)
+        
+        return headerView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -279,6 +308,10 @@ extension DashboardViewController: DropDownSelectionDelegate {
         if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
             headerView.updateCityLabel(city: option)
         }
+        
+        getAllListing()
+        self.collectionView.reloadData()
+        self.collectionView.collectionViewLayout.invalidateLayout()
     }
     
     @objc func handleOutsideTap(_ sender: UITapGestureRecognizer) {

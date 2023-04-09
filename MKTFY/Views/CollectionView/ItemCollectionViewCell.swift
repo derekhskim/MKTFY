@@ -8,7 +8,7 @@
 import UIKit
 
 class ItemCollectionViewCell: UICollectionViewCell {
-
+    
     // MARK: - @IBOutlet
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var imageViewItem: UIImageView!
@@ -26,10 +26,33 @@ class ItemCollectionViewCell: UICollectionViewCell {
         titleLabel.font = titleFont
         priceLabel.font = priceFont
     }
-
+    
     func updateData(data: CollectionViewItems) {
         self.priceLabel.text = "$ \(String(describing: data.price!))"
         self.titleLabel.text = data.title
-        self.imageViewItem.image = data.imageName
+        
+        if let imageURL = data.imageURL {
+            downloadImage(from: imageURL) { [weak self] image in
+                DispatchQueue.main.async {
+                    self?.imageViewItem.image = image
+                }
+            }
+        } else {
+            self.imageViewItem.image = nil
+        }
+        
     }
+    
+    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error downloading image: \(String(describing: error))")
+                completion(nil)
+                return
+            }
+            let image = UIImage(data: data)
+            completion(image)
+        }.resume()
+    }
+    
 }
