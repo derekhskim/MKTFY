@@ -41,8 +41,8 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         super.viewDidLoad()
         
         getUsers()
-        getAllListing()
-        //        getListingByCategory() // set to get vehicles for testing
+        //        getAllListing()
+        getListingByCategory()
         
         navigationWhiteBackgroundView.layer.cornerRadius = 10
         navigationWhiteBackgroundView.clipsToBounds = true
@@ -143,6 +143,18 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         NetworkManager.shared.request(endpoint: getListingByCategoryEndpoint) {(result: Result<ListingResponses, Error>) in
             switch result {
             case .success(let response):
+                DispatchQueue.main.async {
+                    guard let city = self.cityLabel.text else {
+                        return
+                    }
+                    
+                    let collectionViewItems = self.createCollectionViewItems(from: response, for: city)
+                    self.vm = FlowLayoutViewModel(items: collectionViewItems)
+                    print("Number of items for city \(city): \(self.vm.items.count)")
+                    self.collectionView.collectionViewLayout.invalidateLayout()
+                    self.collectionView.reloadData()
+                }
+                
                 print("Listing fetch by category success!: \(response)")
             case .failure(let error):
                 print("Listing fetch by category fail: \(error.localizedDescription)")
@@ -309,7 +321,8 @@ extension DashboardViewController: DropDownSelectionDelegate {
             headerView.updateCityLabel(city: option)
         }
         
-        getAllListing()
+        //        getAllListing()
+        getListingByCategory()
         self.collectionView.reloadData()
         self.collectionView.collectionViewLayout.invalidateLayout()
     }
