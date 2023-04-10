@@ -41,8 +41,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         super.viewDidLoad()
         
         getUsers()
-        //        getAllListing()
-        getListingByCategory()
+        getAllListing()
         
         navigationWhiteBackgroundView.layer.cornerRadius = 10
         navigationWhiteBackgroundView.clipsToBounds = true
@@ -78,9 +77,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 44)
         collectionView.collectionViewLayout = layout
         
-        let tapOutsideDropDown = UITapGestureRecognizer(target: self, action: #selector(handleOutsideTap))
-        view.addGestureRecognizer(tapOutsideDropDown)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -101,9 +97,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         let getAllListingEndpoint = GetAllListingEndpoint()
         NetworkManager.shared.request(endpoint: getAllListingEndpoint) { (result: Result<ListingResponses, Error>) in
             switch result {
-            case .success(let response):
-                print("Successfully received all listings: \(response)")
-                
+            case .success(let response):                
                 DispatchQueue.main.async {
                     guard let city = self.cityLabel.text else {
                         return
@@ -111,8 +105,12 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
                     
                     let collectionViewItems = self.createCollectionViewItems(from: response, for: city)
                     self.vm = FlowLayoutViewModel(items: collectionViewItems)
-                    print("Number of items for city \(city): \(self.vm.items.count)")
-                    self.collectionView.collectionViewLayout.invalidateLayout()
+                    
+                    if let layout = self.collectionView.collectionViewLayout as? LPCollectionViewLayout {
+                        layout.clearCache()
+                        layout.invalidateLayout()
+                    }
+                    
                     self.collectionView.reloadData()
                 }
             case .failure(let error):
@@ -150,8 +148,12 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
                     
                     let collectionViewItems = self.createCollectionViewItems(from: response, for: city)
                     self.vm = FlowLayoutViewModel(items: collectionViewItems)
-                    print("Number of items for city \(city): \(self.vm.items.count)")
-                    self.collectionView.collectionViewLayout.invalidateLayout()
+                    
+                    if let layout = self.collectionView.collectionViewLayout as? LPCollectionViewLayout {
+                        layout.clearCache()
+                        layout.invalidateLayout()
+                    }
+                    
                     self.collectionView.reloadData()
                 }
                 
@@ -321,19 +323,10 @@ extension DashboardViewController: DropDownSelectionDelegate {
             headerView.updateCityLabel(city: option)
         }
         
-        //        getAllListing()
-        getListingByCategory()
+        // TODO: Need to reload collectionView completely when cityLabel has changed.
+        getAllListing()
         self.collectionView.reloadData()
         self.collectionView.collectionViewLayout.invalidateLayout()
-    }
-    
-    @objc func handleOutsideTap(_ sender: UITapGestureRecognizer) {
-        if let dropDownView = customDropDownView {
-            let point = sender.location(in: dropDownView)
-            if !dropDownView.bounds.contains(point) {
-                hideCustomDropDownView()
-            }
-        }
     }
     
     @objc func dropdownTapped(_ sender: UITapGestureRecognizer) {

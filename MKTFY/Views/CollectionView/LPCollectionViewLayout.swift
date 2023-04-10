@@ -40,7 +40,7 @@ class LPCollectionViewLayout: UICollectionViewFlowLayout {
         let headerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: headerIndexPath)
         headerAttributes.frame = CGRect(x: 0, y: 0, width: contentWidth, height: headerReferenceSize.height)
         headerLayoutAttributes = headerAttributes
-                
+        
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         var xOffset: [CGFloat] = []
         for column in 0..<numberOfColumns {
@@ -48,7 +48,7 @@ class LPCollectionViewLayout: UICollectionViewFlowLayout {
         }
         var column = 0
         var yOffset: [CGFloat] = .init(repeating: headerReferenceSize.height, count: numberOfColumns)
-
+        
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
             
@@ -89,6 +89,11 @@ class LPCollectionViewLayout: UICollectionViewFlowLayout {
             return headerLayoutAttributes
         }
         return nil
+    }
+    
+    func clearCache() {
+        cache.removeAll()
+        contentHeight = 0
     }
     
 }
