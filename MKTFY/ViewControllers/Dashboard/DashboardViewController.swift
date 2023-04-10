@@ -213,7 +213,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func searchProducts(search: Search, completion: @escaping (Result<[SearchResponse], Error>) -> Void) {
+    func searchProducts(search: Search, completion: @escaping (Result<[ListingResponse], Error>) -> Void) {
         let searchEndpoint = SearchEndpoint(search: search)
         NetworkManager.shared.request(endpoint: searchEndpoint, completion: completion)
     }
@@ -290,20 +290,28 @@ extension DashboardViewController {
     }
     
     @objc func searchButtonTapped() {
-        guard let searchText = searchTextField.text, let cityText = cityLabel.text else { return }
+        guard let searchText = searchTextField.text, let city = cityLabel.text else { return }
         
-        let search = Search(search: searchText, city: cityText)
-        searchProducts(search: search) { (result: Result<[SearchResponse], Error>) in
+        let search = Search(search: searchText, city: city)
+        searchProducts(search: search) { (result: Result<[ListingResponse], Error>) in
             switch result {
             case .success(let searchResults):
-                // TODO: Display data after search
-                print("Search results: \(searchResults)")
+                DispatchQueue.main.async {
+                    let collectionViewItems = self.createCollectionViewItems(from: searchResults, for: city)
+                    self.vm = FlowLayoutViewModel(items: collectionViewItems)
+                    
+                    if let layout = self.collectionView.collectionViewLayout as? LPCollectionViewLayout {
+                        layout.clearCache()
+                        layout.invalidateLayout()
+                    }
+                    
+                    self.collectionView.reloadData()
+                }
             case .failure(let error):
                 print("Error: \(error)")
             }
         }
     }
-    
 }
 
 extension DashboardViewController: LPCollectionViewLayoutDelegate {
