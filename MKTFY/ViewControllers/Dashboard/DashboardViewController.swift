@@ -97,7 +97,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         let getAllListingEndpoint = GetAllListingEndpoint()
         NetworkManager.shared.request(endpoint: getAllListingEndpoint) { (result: Result<ListingResponses, Error>) in
             switch result {
-            case .success(let response):                
+            case .success(let response):
                 DispatchQueue.main.async {
                     guard let city = self.cityLabel.text else {
                         return
@@ -240,7 +240,7 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
         
         let item = vm.items[indexPath.item]
         cell.titleLabel.text = item.title
-        cell.priceLabel.text = String(format: "%.2f", item.price)
+        cell.priceLabel.text = String(format: "$%.2f", item.price)
         cell.imageViewItem.loadImage(from: item.imageURL)
         
         return cell
@@ -323,10 +323,7 @@ extension DashboardViewController: DropDownSelectionDelegate {
             headerView.updateCityLabel(city: option)
         }
         
-        // TODO: Need to reload collectionView completely when cityLabel has changed.
         getAllListing()
-        self.collectionView.reloadData()
-        self.collectionView.collectionViewLayout.invalidateLayout()
     }
     
     @objc func dropdownTapped(_ sender: UITapGestureRecognizer) {

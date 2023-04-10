@@ -22,25 +22,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
         
         self.mainView.layer.cornerRadius = 10
         self.mainView.layer.masksToBounds = true
-        
-        titleLabel.font = titleFont
-        priceLabel.font = priceFont
-    }
-    
-    func updateData(data: CollectionViewItems) {
-        self.priceLabel.text = "$ \(String(describing: data.price!))"
-        self.titleLabel.text = data.title
-        
-        if let imageURL = data.imageURL {
-            downloadImage(from: imageURL) { [weak self] image in
-                DispatchQueue.main.async {
-                    self?.imageViewItem.image = image
-                }
-            }
-        } else {
-            self.imageViewItem.image = nil
-        }
-        
     }
     
     func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
