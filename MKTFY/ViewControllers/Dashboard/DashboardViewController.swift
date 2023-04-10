@@ -92,11 +92,10 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
             .map { listingResponse in
                 let id = listingResponse.id
                 let title = listingResponse.productName
-                let description = listingResponse.description
                 let imageURL = listingResponse.images.first.flatMap { URL(string: $0) }
                 let price = listingResponse.price
                 
-                return CollectionViewItems(id: id, title: title, description: description, imageURL: imageURL, price: price)
+                return CollectionViewItems(id: id, title: title, imageURL: imageURL, price: price)
             }
     }
     
@@ -186,15 +185,11 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: Push ViewController to ProductDetailsViewController when selected and pass following values: [images], productName, price, description, sellerProfile firstName & lastName, sellerListingCount. MUST use getListingByID to populate sellerProfile
-        
         let selectedItem = vm.items[indexPath.item]
         
-        guard let id = selectedItem.id, let title = selectedItem.title, let description = selectedItem.description else { return }
-
-        print("Selected id: \(id)")
-        print("Selected title: \(title)")
-        print("Selected Description: \(description)")
+        guard let id = selectedItem.id else { return }
+        
+        coordinator?.goToProductDetailsVC(listingId: id)
     }
 }
 

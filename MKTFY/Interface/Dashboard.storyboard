@@ -580,6 +580,22 @@
             </objects>
             <point key="canvasLocation" x="963" y="-32"/>
         </scene>
+        <!--Product Details-->
+        <scene sceneID="gE6-Jn-ccu">
+            <objects>
+                <viewController storyboardIdentifier="ProductDetailsViewController" id="rah-WN-Si5" userLabel="Product Details" customClass="ProductDetailsViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fD1-AA-cp0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="WXA-Xz-dOQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Product Details" style="editor" id="5cR-wR-MIB" userLabel="Product Details"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OKf-bn-0lK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1752" y="-32"/>
+        </scene>
         <!--Account Information-->
         <scene sceneID="hb3-kj-p8B">
             <objects>

@@ -17,6 +17,8 @@
 		6506DA7229CA45F800038AF8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506DA7129CA45F800038AF8 /* Notification.swift */; };
 		6506DA7529CA54B300038AF8 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506DA7329CA54B300038AF8 /* NotificationTableViewCell.swift */; };
 		6506DA7629CA54B300038AF8 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6506DA7429CA54B300038AF8 /* NotificationTableViewCell.xib */; };
+		650D634729E471B200F2B0E1 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D634629E471B200F2B0E1 /* ProductDetailsViewController.swift */; };
+		650D634929E4722200F2B0E1 /* GetListingByIDEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D634829E4722200F2B0E1 /* GetListingByIDEndpoint.swift */; };
 		650F3E9F29D9267F00111E8F /* UserListingEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F3E9E29D9267F00111E8F /* UserListingEndpoint.swift */; };
 		650F3EA229D9323B00111E8F /* UserPurchasesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F3EA129D9323B00111E8F /* UserPurchasesEndpoint.swift */; };
 		651218BC298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651218BB298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift */; };
@@ -133,6 +135,8 @@
 		6506DA7129CA45F800038AF8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		6506DA7329CA54B300038AF8 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		6506DA7429CA54B300038AF8 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		650D634629E471B200F2B0E1 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		650D634829E4722200F2B0E1 /* GetListingByIDEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListingByIDEndpoint.swift; sourceTree = "<group>"; };
 		650F3E9E29D9267F00111E8F /* UserListingEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListingEndpoint.swift; sourceTree = "<group>"; };
 		650F3EA129D9323B00111E8F /* UserPurchasesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPurchasesEndpoint.swift; sourceTree = "<group>"; };
 		651218BB298AE30D000CEE52 /* ForgotPasswordVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVerificationViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 				6512531C29DE8CA900E592FC /* CreateListingEndpoint.swift */,
 				6502B4EA29E13BA000CFA8C9 /* GetAllListingEndpoint.swift */,
 				6502B4EC29E13DA500CFA8C9 /* GetListingByCategoryEndpoint.swift */,
+				650D634829E4722200F2B0E1 /* GetListingByIDEndpoint.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 				656F3C4B29C8298700DFAAEC /* ChangePasswordViewController.swift */,
 				656F3C4D29C829B100DFAAEC /* MyPurchasesViewController.swift */,
 				656F3C4F29C829CA00DFAAEC /* MyListingViewController.swift */,
+				650D634629E471B200F2B0E1 /* ProductDetailsViewController.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				65DC4A3C29BFADF700DCD554 /* HeaderCollectionReusableView.swift in Sources */,
 				659DF60D29B6FC1E00FEF0F3 /* AccountInformationViewController.swift in Sources */,
 				65CCAFC229D76FF00088338B /* RegisterUserEndpoint.swift in Sources */,
+				650D634729E471B200F2B0E1 /* ProductDetailsViewController.swift in Sources */,
 				6502B4ED29E13DA500CFA8C9 /* GetListingByCategoryEndpoint.swift in Sources */,
 				6568E1142988AF50001482AB /* UIColor+.swift in Sources */,
 				65D1AF6529B45D3B00B4581D /* DashboardMenuViewController.swift in Sources */,
@@ -753,6 +760,7 @@
 				654444CB29AF1F3E00E61F69 /* DashboardStoryboard.swift in Sources */,
 				650F3EA229D9323B00111E8F /* UserPurchasesEndpoint.swift in Sources */,
 				65E90FEB2988CD8000ACDC0C /* Button.swift in Sources */,
+				650D634929E4722200F2B0E1 /* GetListingByIDEndpoint.swift in Sources */,
 				65D8878029DE07E200A7F408 /* UploadImageEndpoint.swift in Sources */,
 				65EFDFF329C6C6B5000F3E7E /* FAQ5ViewController.swift in Sources */,
 				6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */,
