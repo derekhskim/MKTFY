@@ -36,4 +36,9 @@ class ItemCollectionViewCell: UICollectionViewCell {
         }.resume()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.imageViewItem.image = nil
+    }
 }
