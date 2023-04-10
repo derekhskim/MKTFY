@@ -8,20 +8,22 @@
 import Foundation
 import UIKit
 
-let titleFont: UIFont = .systemFont(ofSize: 14, weight: .regular)
-let priceFont: UIFont = .systemFont(ofSize: 14, weight: .bold)
-
 class CollectionViewItems {
-    var id: Int!
+    var id: String!
     var title: String!
+    var description: String!
     var imageURL: URL?
     var price: Double!
     var imageWidth: CGFloat = 1
     var imageHeight: CGFloat = 1
     
-    init(id: Int!, title: String!, imageURL: URL?, price: Double!) {
+    let titleFont: UIFont = .systemFont(ofSize: 14, weight: .regular)
+    let priceFont: UIFont = .systemFont(ofSize: 14, weight: .bold)
+    
+    init(id: String!, title: String!, description: String!, imageURL: URL?, price: Double!) {
         self.id = id
         self.title = title
+        self.description = description
         self.imageURL = imageURL
         self.price = price
     }

@@ -13,6 +13,8 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     
     var vm = FlowLayoutViewModel(items: [])
     
+    // TODO: either add actions to UIStackView or embed in UIView and add actions to allow selection for category. Call GetListingByCategory when pressed and pass category and city value
+    
     // MARK: - @IBOutlet
     @IBOutlet weak var navigationWhiteBackgroundView: UIView!
     @IBOutlet weak var menuImageView: UIImageView!
@@ -41,6 +43,8 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         super.viewDidLoad()
         
         getUsers()
+        
+        // TODO: Need to change this to getListingByCategory and default to Deals?
         getAllListing()
         
         navigationWhiteBackgroundView.layer.cornerRadius = 10
@@ -82,87 +86,18 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     }
     
     // MARK: - Function
-    func getUsers() {
-        getUser { result in
-            switch result {
-            case .success(let user):
-                print("User data successfully fetched: \(user)")
-            case .failure(let error):
-                print("Error fetching user data: \(error)")
-            }
-        }
-    }
-    
-    func getAllListing() {
-        let getAllListingEndpoint = GetAllListingEndpoint()
-        NetworkManager.shared.request(endpoint: getAllListingEndpoint) { (result: Result<ListingResponses, Error>) in
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    guard let city = self.cityLabel.text else {
-                        return
-                    }
-                    
-                    let collectionViewItems = self.createCollectionViewItems(from: response, for: city)
-                    self.vm = FlowLayoutViewModel(items: collectionViewItems)
-                    
-                    if let layout = self.collectionView.collectionViewLayout as? LPCollectionViewLayout {
-                        layout.clearCache()
-                        layout.invalidateLayout()
-                    }
-                    
-                    self.collectionView.reloadData()
-                }
-            case .failure(let error):
-                print("Failed to fetch all listings: \(error.localizedDescription)")
-            }
-        }
-    }
-    
     func createCollectionViewItems(from listingResponses: [ListingResponse], for city: String) -> [CollectionViewItems] {
         return listingResponses
             .filter { $0.city.lowercased() == city.lowercased() }
             .map { listingResponse in
-                let id = Int(listingResponse.id)
+                let id = listingResponse.id
                 let title = listingResponse.productName
+                let description = listingResponse.description
                 let imageURL = listingResponse.images.first.flatMap { URL(string: $0) }
                 let price = listingResponse.price
                 
-                return CollectionViewItems(id: id, title: title, imageURL: imageURL, price: price)
+                return CollectionViewItems(id: id, title: title, description: description, imageURL: imageURL, price: price)
             }
-    }
-    
-    func getListingByCategory() {
-        guard let city = cityLabel.text else { return }
-        
-        let listingCategory = ListingCatergory(category: "VEHICLES", city: city)
-        let getListingByCategoryEndpoint = GetListingByCategoryEndpoint(category: listingCategory)
-        
-        NetworkManager.shared.request(endpoint: getListingByCategoryEndpoint) {(result: Result<ListingResponses, Error>) in
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    guard let city = self.cityLabel.text else {
-                        return
-                    }
-                    
-                    let collectionViewItems = self.createCollectionViewItems(from: response, for: city)
-                    self.vm = FlowLayoutViewModel(items: collectionViewItems)
-                    
-                    if let layout = self.collectionView.collectionViewLayout as? LPCollectionViewLayout {
-                        layout.clearCache()
-                        layout.invalidateLayout()
-                    }
-                    
-                    self.collectionView.reloadData()
-                }
-                
-                print("Listing fetch by category success!: \(response)")
-            case .failure(let error):
-                print("Listing fetch by category fail: \(error.localizedDescription)")
-            }
-        }
-        
     }
     
     func horizontalDropShadow() {
@@ -212,11 +147,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    func searchProducts(search: Search, completion: @escaping (Result<[ListingResponse], Error>) -> Void) {
-        let searchEndpoint = SearchEndpoint(search: search)
-        NetworkManager.shared.request(endpoint: searchEndpoint, completion: completion)
-    }
 }
 
 // MARK: - Extension
@@ -256,7 +186,15 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected: \(indexPath)")
+        // TODO: Push ViewController to ProductDetailsViewController when selected and pass following values: [images], productName, price, description, sellerProfile firstName & lastName, sellerListingCount. MUST use getListingByID to populate sellerProfile
+        
+        let selectedItem = vm.items[indexPath.item]
+        
+        guard let id = selectedItem.id, let title = selectedItem.title, let description = selectedItem.description else { return }
+
+        print("Selected id: \(id)")
+        print("Selected title: \(title)")
+        print("Selected Description: \(description)")
     }
 }
 
@@ -289,6 +227,48 @@ extension DashboardViewController {
         coordinator?.goToDashboardMenuVC()
     }
     
+    func getUsers() {
+        getUser { result in
+            switch result {
+            case .success(let user):
+                print("User data successfully fetched: \(user)")
+            case .failure(let error):
+                print("Error fetching user data: \(error)")
+            }
+        }
+    }
+    
+    func getAllListing() {
+        let getAllListingEndpoint = GetAllListingEndpoint()
+        NetworkManager.shared.request(endpoint: getAllListingEndpoint) { (result: Result<ListingResponses, Error>) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    guard let city = self.cityLabel.text else {
+                        return
+                    }
+                    
+                    let collectionViewItems = self.createCollectionViewItems(from: response, for: city)
+                    self.vm = FlowLayoutViewModel(items: collectionViewItems)
+                    
+                    if let layout = self.collectionView.collectionViewLayout as? LPCollectionViewLayout {
+                        layout.clearCache()
+                        layout.invalidateLayout()
+                    }
+                    
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print("Failed to fetch all listings: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func searchProducts(search: Search, completion: @escaping (Result<[ListingResponse], Error>) -> Void) {
+        let searchEndpoint = SearchEndpoint(search: search)
+        NetworkManager.shared.request(endpoint: searchEndpoint, completion: completion)
+    }
+    
     @objc func searchButtonTapped() {
         guard let searchText = searchTextField.text, let city = cityLabel.text else { return }
         
@@ -311,6 +291,39 @@ extension DashboardViewController {
                 print("Error: \(error)")
             }
         }
+    }
+    
+    func getListingByCategory() {
+        guard let city = cityLabel.text else { return }
+        
+        let listingCategory = ListingCatergory(category: "VEHICLES", city: city)
+        let getListingByCategoryEndpoint = GetListingByCategoryEndpoint(category: listingCategory)
+        
+        NetworkManager.shared.request(endpoint: getListingByCategoryEndpoint) {(result: Result<ListingResponses, Error>) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    guard let city = self.cityLabel.text else {
+                        return
+                    }
+                    
+                    let collectionViewItems = self.createCollectionViewItems(from: response, for: city)
+                    self.vm = FlowLayoutViewModel(items: collectionViewItems)
+                    
+                    if let layout = self.collectionView.collectionViewLayout as? LPCollectionViewLayout {
+                        layout.clearCache()
+                        layout.invalidateLayout()
+                    }
+                    
+                    self.collectionView.reloadData()
+                }
+                
+                print("Listing fetch by category success!: \(response)")
+            case .failure(let error):
+                print("Listing fetch by category fail: \(error.localizedDescription)")
+            }
+        }
+        
     }
 }
 

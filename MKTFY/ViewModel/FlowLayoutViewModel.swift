@@ -14,9 +14,4 @@ class FlowLayoutViewModel {
     init(items: [CollectionViewItems]) {
             self.items = items
         }
-
-    
-//    init() {
-//        self.items = CollectionViewItems.mockData()
-//    }
 }
