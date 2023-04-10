@@ -24,18 +24,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
         self.mainView.layer.masksToBounds = true
     }
     
-    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                print("Error downloading image: \(String(describing: error))")
-                completion(nil)
-                return
-            }
-            let image = UIImage(data: data)
-            completion(image)
-        }.resume()
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         

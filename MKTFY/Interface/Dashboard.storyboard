@@ -587,10 +587,25 @@
                     <view key="view" contentMode="scaleToFill" id="fD1-AA-cp0">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-Zd-f10">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="WXA-Xz-dOQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Yzu-Zd-f10" firstAttribute="top" secondItem="WXA-Xz-dOQ" secondAttribute="top" id="IrP-rW-Uyi"/>
+                            <constraint firstAttribute="bottom" secondItem="Yzu-Zd-f10" secondAttribute="bottom" id="RCf-ha-YqK"/>
+                            <constraint firstItem="WXA-Xz-dOQ" firstAttribute="trailing" secondItem="Yzu-Zd-f10" secondAttribute="trailing" id="SF3-a6-QGA"/>
+                            <constraint firstItem="Yzu-Zd-f10" firstAttribute="leading" secondItem="WXA-Xz-dOQ" secondAttribute="leading" id="xHA-ma-dgk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Product Details" style="editor" id="5cR-wR-MIB" userLabel="Product Details"/>
+                    <connections>
+                        <outlet property="tableView" destination="Yzu-Zd-f10" id="npb-As-DW4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKf-bn-0lK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
