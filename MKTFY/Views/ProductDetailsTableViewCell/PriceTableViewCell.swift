@@ -13,6 +13,7 @@ class PriceTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configurePriceLabel()
+        selectionStyle = .none
     }
 
     required init?(coder: NSCoder) {
