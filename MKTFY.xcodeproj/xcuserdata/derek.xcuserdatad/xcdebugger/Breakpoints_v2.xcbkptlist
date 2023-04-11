@@ -3,4 +3,54 @@
    uuid = "0775C144-7F9D-4B68-816C-06D73AB54DCC"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7205CCCF-071D-43EF-B8BF-F03CE5117396"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MKTFY/Views/CollectionView/CreateLising/CustomViewCollectionViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "setDropDownSelectedOption(_:forRow:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7205CCCF-071D-43EF-B8BF-F03CE5117396 - 4a52b33f4353ab9a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MKTFY.CustomViewCollectionViewCell.setDropDownSelectedOption(_: Swift.String, forRow: Swift.Int) -&gt; ()"
+                  moduleName = "MKTFY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/derek/Desktop/Launchpad%20by%20Vog/MKTFY/MKTFY/Views/CollectionView/CreateLising/CustomViewCollectionViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "7205CCCF-071D-43EF-B8BF-F03CE5117396 - 4a52b33f4353ab9a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MKTFY.CustomViewCollectionViewCell.setDropDownSelectedOption(_: Swift.String, forRow: Swift.Int) -&gt; ()"
+                  moduleName = "MKTFY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/derek/Desktop/Launchpad%20by%20Vog/MKTFY/MKTFY/Views/CollectionView/CreateLising/CustomViewCollectionViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

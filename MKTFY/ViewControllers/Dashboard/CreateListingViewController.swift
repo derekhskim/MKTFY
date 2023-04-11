@@ -8,9 +8,18 @@
 import PhotosUI
 import UIKit
 
-class CreateListingViewController: MainViewController, DashboardStoryboard, DropDownSelectionDelegate {
+class CreateListingViewController: MainViewController, DashboardStoryboard, DropDownDelegate {
+    func setDropDownSelectedOption(_ option: String, forRow row: Int) {
+        guard let cell = collectionView.cellForItem(at: IndexPath(row: row, section: 2)) as? CustomViewCollectionViewCell else {
+            return
+        }
+        
+        cell.TextFieldView.inputTextField.text = option
+        print("selected option: \(option)")
+    }
     
     var imageArray = [UIImage]()
+    lazy var dropDownHelper = DropDownHelper(delegate: self)
     
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
@@ -22,7 +31,7 @@ class CreateListingViewController: MainViewController, DashboardStoryboard, Drop
         initializeHideKeyboard()
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
-        
+                
         collectionView.register(CustomViewCollectionViewCell.self, forCellWithReuseIdentifier: "CustomViewCollectionViewCell")
         collectionView.register(CustomTextViewCollectionViewCell.self, forCellWithReuseIdentifier: "CustomTextViewCollectionViewCell")
         collectionView.register(CustomButtonCollectionViewCell.self, forCellWithReuseIdentifier: "CustomButtonCollectionViewCell")
@@ -106,7 +115,6 @@ extension CreateListingViewController: PHPickerViewControllerDelegate {
 }
 
 extension CreateListingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
@@ -172,7 +180,7 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
-    private func configureCustomViewCell(for indexPath: IndexPath) -> UICollectionViewCell {
+    func configureCustomViewCell(for indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row < 7 {
             return configureTextFieldViewCell(for: indexPath)
         } else {
@@ -180,7 +188,7 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
         }
     }
     
-    private func configureTextFieldViewCell(for indexPath: IndexPath) -> UICollectionViewCell {
+    func configureTextFieldViewCell(for indexPath: IndexPath) -> UICollectionViewCell {
         guard let customViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomViewCollectionViewCell", for: indexPath) as? CustomViewCollectionViewCell else {
             return UICollectionViewCell()
         }
@@ -203,20 +211,33 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
             
             customTextViewCell.textView.delegate = self
             customTextViewCell.titleLabel.text = "Description"
-            customTextViewCell.textView.delegate = self
             customTextViewCell.textView.text = "Enter the details of your product"
             customTextViewCell.textView.font = UIFont(name: "OpenSans-Regular", size: 14)
             customTextViewCell.textView.textColor = UIColor.appColor(LPColor.TextGray40)
             
             return customTextViewCell
-        }
-        
-        if indexPath.row == 2 {
-            initializeImageDropDown(with: customViewCell.TextFieldView.inputTextField, options: ["Deals", "Cars and Vehicles", "Furniture", "Electronics", "Real Estate"])
-        } else if indexPath.row == 3 {
-            initializeImageDropDown(with: customViewCell.TextFieldView.inputTextField, options: ["New", "Used"])
-        } else if indexPath.row == 6 {
-            initializeImageDropDown(with: customViewCell.TextFieldView.inputTextField, options: ["Calgary", "Camrose", "Brooks"])
+        } else {
+            var dropDownOptions = customViewCell.dropDownOptions
+            
+            switch indexPath.row {
+            case 2:
+                dropDownOptions = ["Deals", "Cars and Vehicles", "Furniture", "Electronics", "Real Estate"]
+            case 3:
+                dropDownOptions = ["New", "Used"]
+            case 6:
+                dropDownOptions = ["Calgary", "Camrose", "Brooks"]
+            default:
+                break
+            }
+            
+            if let options = dropDownOptions {
+                customViewCell.dropDownOptions = options
+                customViewCell.TextFieldView.inputTextField.tag = indexPath.row
+                dropDownHelper.initializeImageDropDown(with: customViewCell.TextFieldView.inputTextField, options: options)
+                dropDownHelper.selectionDelegate = customViewCell
+            } else {
+                customViewCell.dropDownOptions = nil
+            }
         }
         
         return customViewCell
@@ -350,17 +371,4 @@ extension CreateListingViewController: UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
-}
-
-extension CreateListingViewController {
-    func setDropDownSelectedOption(_ option: String) {
-        for cell in collectionView.visibleCells {
-            if let customViewCell = cell as? CustomViewCollectionViewCell {
-                if customViewCell.TextFieldView.inputTextField.tag == customDropDownView?.tag {
-                    customViewCell.TextFieldView.inputTextField.text = option
-                }
-            }
-        }
-    }
-
 }

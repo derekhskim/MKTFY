@@ -7,13 +7,28 @@
 
 import UIKit
 
-class CustomViewCollectionViewCell: UICollectionViewCell, DropDownSelectionDelegate {
+class CustomViewCollectionViewCell: UICollectionViewCell, DropDownDelegate {
+    func setDropDownSelectedOption(_ option: String, forRow row: Int) {
+        TextFieldView.inputTextField.text = option
+        print("Options Selected: \(option)")
+    }
     
     var TextFieldView: TextFieldWithError!
+    var dropDownOptions: [String]? {
+        didSet {
+            if let options = dropDownOptions {
+                let dropDownHelper = DropDownHelper(delegate: self)
+                dropDownHelper.initializeImageDropDown(with: TextFieldView.inputTextField, options: options)
+            } else {
+                TextFieldView.inputTextField.rightView = nil
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        TextFieldView.inputTextField.rightViewMode = .always
     }
     
     override init(frame: CGRect) {
@@ -35,11 +50,6 @@ class CustomViewCollectionViewCell: UICollectionViewCell, DropDownSelectionDeleg
         TextFieldView.inputTextField.backgroundColor = .clear
         TextFieldView.view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
         TextFieldView.errorLabel.text = ""
+        TextFieldView.inputTextField.rightViewMode = .never
     }
-    
-    func setDropDownSelectedOption(_ option: String) {
-        TextFieldView.inputTextField.text = option
-        TextFieldView.inputTextField.sendActions(for: .editingChanged)
-    }
-    
 }

@@ -8,24 +8,24 @@
 import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Properties
     lazy var imageView = UIImageView()
-        
-        // MARK: - Properties
-        static let cellId = "CarouselCell"
-        
-        // MARK: - Initializer
-        
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            setupUI()
-        }
-        
-        required init?(coder: NSCoder) {
-            super.init(coder: coder)
-            setupUI()
-        }
+    static let cellId = "CarouselCell"
+    
+    // MARK: - Initializer
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupUI()
+    }
 }
 
+// MARK: - Extension
 private extension ImageCollectionViewCell {
     func setupUI() {
         backgroundColor = .clear

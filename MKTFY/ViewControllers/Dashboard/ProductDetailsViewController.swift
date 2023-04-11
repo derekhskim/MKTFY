@@ -22,9 +22,15 @@ class ProductDetailsViewController: MainViewController, DashboardStoryboard {
         setupNavigationBarWithBackButton()
         getListingByID()
         
+        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ImageCarouselTableViewCell.self, forCellReuseIdentifier: "ImageCarouselTableViewCell")
+        tableView.register(ProductNameTableViewCell.self, forCellReuseIdentifier: "ProductNameTableViewCell")
+        tableView.register(PriceTableViewCell.self, forCellReuseIdentifier: "PriceTableViewCell")
+        tableView.register(ButtonTableViewCell.self, forCellReuseIdentifier: "ButtonTableViewCell")
+        tableView.register(DetailsLabelTableViewCell.self, forCellReuseIdentifier: "DetailsLabelTableViewCell")
+        tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: "DescriptionTableViewCell")
     }
     
     func getListingByID() {
@@ -59,6 +65,25 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCarouselTableViewCell", for: indexPath) as! ImageCarouselTableViewCell
             cell.listingResponse = listingResponse
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProductNameTableViewCell", for: indexPath) as! ProductNameTableViewCell
+            cell.titleLabel.text = listingResponse?.productName
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PriceTableViewCell", for: indexPath) as! PriceTableViewCell
+            cell.priceLabel.text = String(format: "$%.2f", listingResponse?.price ?? 0)
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsLabelTableViewCell", for: indexPath) as! DetailsLabelTableViewCell
+            cell.detailsLabel.text = "Details"
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell", for: indexPath) as! DescriptionTableViewCell
+            cell.descriptionLabel.text = listingResponse?.description
             return cell
         default:
             return UITableViewCell()
