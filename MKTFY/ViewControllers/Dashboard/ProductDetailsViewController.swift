@@ -78,6 +78,8 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
+            cell.coordinator = coordinator
+            cell.listingResponse = listingResponse
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsLabelTableViewCell", for: indexPath) as! DetailsLabelTableViewCell

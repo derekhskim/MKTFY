@@ -31,7 +31,6 @@ class NotificationViewController: MainViewController, DashboardStoryboard {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
     }
     

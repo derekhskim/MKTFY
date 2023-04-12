@@ -8,20 +8,23 @@
 import UIKit
 
 class ButtonTableViewCell: UITableViewCell {
-
+    
     let customView = UIView()
     let customButton = Button()
-
+    
+    weak var coordinator: MainCoordinator?
+    var listingResponse: ListingResponse?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureCustomView()
         configureCustomButton()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func configureCustomView() {
         contentView.addSubview(customView)
         customView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,8 +61,10 @@ class ButtonTableViewCell: UITableViewCell {
     }
     
     @objc func customButtonTapped() {
-        print("Custom Button Tapped")
+        if let listingResponse = listingResponse {
+            coordinator?.goToCheckoutVC(listingResponse: listingResponse)
+        }
     }
-
+    
 }
 

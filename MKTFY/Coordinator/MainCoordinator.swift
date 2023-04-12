@@ -132,6 +132,13 @@ class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToCheckoutVC(listingResponse: ListingResponse) {
+        let vc = CheckoutViewController.instantiate()
+        vc.coordinator = self
+        vc.listingResponse = listingResponse
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+    
     // MARK: - FAQ VCs
     func goToFAQ1VC() {
         let vc = FAQ1ViewController.instantiate()
