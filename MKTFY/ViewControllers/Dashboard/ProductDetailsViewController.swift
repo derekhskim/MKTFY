@@ -31,6 +31,7 @@ class ProductDetailsViewController: MainViewController, DashboardStoryboard {
         tableView.register(ButtonTableViewCell.self, forCellReuseIdentifier: "ButtonTableViewCell")
         tableView.register(DetailsLabelTableViewCell.self, forCellReuseIdentifier: "DetailsLabelTableViewCell")
         tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: "DescriptionTableViewCell")
+        tableView.register(ConditionTableViewCell.self, forCellReuseIdentifier: "ConditionTableViewCell")
     }
     
     func getListingByID() {
@@ -84,6 +85,14 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell", for: indexPath) as! DescriptionTableViewCell
             cell.descriptionLabel.text = listingResponse?.description
+            return cell
+        case 6:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ConditionTableViewCell", for: indexPath) as! ConditionTableViewCell
+            
+            cell.listingResponse = listingResponse
+            cell.conditionLabel.text = listingResponse?.condition.uppercased()
+            cell.setupView()
+            
             return cell
         default:
             return UITableViewCell()
