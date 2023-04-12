@@ -163,6 +163,24 @@
                                     <action selector="myListingsButtonTapped:" destination="b56-lf-MvU" eventType="touchUpInside" id="bLv-WI-BW1"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9C-Z7-BwM" userLabel="ListingCountContainerView">
+                                <rect key="frame" x="111.33333333333331" y="429.66666666666669" width="40" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okT-Nz-iCI">
+                                        <rect key="frame" x="15.333333333333343" y="9" width="9.3333333333333357" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                        <color key="textColor" name="VoidWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="OccasionalPurple"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="AAH-lR-WVU"/>
+                                    <constraint firstAttribute="width" constant="40" id="K2d-f9-o9t"/>
+                                    <constraint firstItem="okT-Nz-iCI" firstAttribute="centerY" secondItem="a9C-Z7-BwM" secondAttribute="centerY" id="YgT-PS-aJn"/>
+                                    <constraint firstItem="okT-Nz-iCI" firstAttribute="centerX" secondItem="a9C-Z7-BwM" secondAttribute="centerX" id="m4y-EJ-6gI"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vv9-Df-CVK">
                                 <rect key="frame" x="5" y="486.33333333333331" width="106.66666666666667" height="33.333333333333314"/>
                                 <state key="normal" title="Button"/>
@@ -181,6 +199,24 @@
                                     <action selector="notificationButtonTapped:" destination="b56-lf-MvU" eventType="touchUpInside" id="6de-to-PyH"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlc-NG-67z" userLabel="NotificationsCountContainerView">
+                                <rect key="frame" x="121.66666666666669" y="483" width="40" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykv-jL-CUn">
+                                        <rect key="frame" x="15.333333333333329" y="9" width="9.3333333333333357" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                        <color key="textColor" name="VoidWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="OccasionalPurple"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Ft2-NP-l6m"/>
+                                    <constraint firstItem="ykv-jL-CUn" firstAttribute="centerX" secondItem="mlc-NG-67z" secondAttribute="centerX" id="KSd-Fz-fuY"/>
+                                    <constraint firstAttribute="width" constant="40" id="gsz-bT-zX7"/>
+                                    <constraint firstItem="ykv-jL-CUn" firstAttribute="centerY" secondItem="mlc-NG-67z" secondAttribute="centerY" id="qqD-gl-BjG"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux1-Px-RuR">
                                 <rect key="frame" x="15" y="549.66666666666663" width="37" height="22"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
@@ -264,15 +300,19 @@
                             <constraint firstAttribute="trailing" secondItem="B3O-75-VXF" secondAttribute="trailing" constant="22" id="CIw-pN-zXB"/>
                             <constraint firstItem="ft7-ue-bTd" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" id="Eyn-e6-BlK"/>
                             <constraint firstItem="tSy-Wn-PDd" firstAttribute="top" secondItem="TEW-zo-7VO" secondAttribute="bottom" constant="20" id="Gjo-n5-iIR"/>
+                            <constraint firstItem="mlc-NG-67z" firstAttribute="leading" secondItem="vv9-Df-CVK" secondAttribute="trailing" constant="10" id="HPd-5H-P3E"/>
                             <constraint firstItem="vv9-Df-CVK" firstAttribute="top" secondItem="hu8-Q2-BrG" secondAttribute="bottom" constant="20" id="Kxh-fJ-sbo"/>
                             <constraint firstItem="gjA-Yh-IEp" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="5" id="LP1-57-sJ4"/>
+                            <constraint firstItem="a9C-Z7-BwM" firstAttribute="centerY" secondItem="hu8-Q2-BrG" secondAttribute="centerY" id="Lb2-Bw-aEV"/>
                             <constraint firstItem="gjA-Yh-IEp" firstAttribute="top" secondItem="Ux1-Px-RuR" secondAttribute="bottom" constant="30" id="MlS-wV-IFH"/>
+                            <constraint firstItem="mlc-NG-67z" firstAttribute="centerY" secondItem="vv9-Df-CVK" secondAttribute="centerY" id="Phh-fs-qyX"/>
                             <constraint firstItem="hu8-Q2-BrG" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="5" id="R8d-Dd-f52"/>
                             <constraint firstItem="hu8-Q2-BrG" firstAttribute="top" secondItem="GaV-H7-Tc7" secondAttribute="bottom" constant="20" id="c71-Q4-g67"/>
                             <constraint firstItem="GaV-H7-Tc7" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="5" id="eG2-pt-WUJ"/>
                             <constraint firstItem="WpF-hl-Byz" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" id="jQq-bo-lWp"/>
                             <constraint firstItem="WpF-hl-Byz" firstAttribute="trailing" secondItem="lIG-f1-b84" secondAttribute="trailing" id="nBe-xa-acD"/>
                             <constraint firstItem="ft7-ue-bTd" firstAttribute="bottom" secondItem="lIG-f1-b84" secondAttribute="bottom" id="oob-3Z-8aX"/>
+                            <constraint firstItem="a9C-Z7-BwM" firstAttribute="leading" secondItem="hu8-Q2-BrG" secondAttribute="trailing" constant="10" id="q8Z-1I-65Z"/>
                             <constraint firstItem="lIG-f1-b84" firstAttribute="trailing" secondItem="ft7-ue-bTd" secondAttribute="trailing" id="qgk-yH-BOr"/>
                             <constraint firstItem="B3O-75-VXF" firstAttribute="centerY" secondItem="ft7-ue-bTd" secondAttribute="centerY" id="wOk-SF-iJ4"/>
                             <constraint firstItem="H13-7h-God" firstAttribute="leading" secondItem="lIG-f1-b84" secondAttribute="leading" constant="5" id="wVp-hh-KgT"/>
@@ -283,7 +323,11 @@
                     </view>
                     <connections>
                         <outlet property="initialLabel" destination="fsI-dK-OvC" id="5pW-7X-1Dy"/>
+                        <outlet property="listingCountContainerView" destination="a9C-Z7-BwM" id="0ey-6g-SSD"/>
+                        <outlet property="listingCountLabel" destination="okT-Nz-iCI" id="aAx-q0-thg"/>
                         <outlet property="nameLabel" destination="8qd-5d-5gk" id="ZON-QQ-7eb"/>
+                        <outlet property="notificationsCountContainerView" destination="mlc-NG-67z" id="Ahc-qw-Z2A"/>
+                        <outlet property="notificationsCountLabel" destination="ykv-jL-CUn" id="j5D-zw-5EE"/>
                         <outlet property="profileInitialView" destination="oxX-5Q-17a" id="fiA-aE-A4d"/>
                         <outlet property="signOutButton" destination="ft7-ue-bTd" id="FvL-ef-dgv"/>
                     </connections>
