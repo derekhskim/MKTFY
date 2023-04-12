@@ -209,6 +209,10 @@ extension DashboardViewController: UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
 }
 
 extension DashboardViewController {

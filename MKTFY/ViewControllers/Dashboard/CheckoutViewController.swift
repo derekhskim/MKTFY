@@ -12,6 +12,12 @@ class CheckoutViewController: MainViewController, DashboardStoryboard {
     weak var coordinator: MainCoordinator?
     var listingResponse: ListingResponse?
     
+    // MARK: - View Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     // MARK: - @IBOutlet
     @IBOutlet var tableView: UITableView!
     
