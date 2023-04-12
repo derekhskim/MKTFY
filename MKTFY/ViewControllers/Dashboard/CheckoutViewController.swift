@@ -55,10 +55,12 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let firstImageURL = listingResponse.images.first {
                 cell.imageHoldingView.loadImage(from: URL(string: firstImageURL))
+            } else {
+                cell.imageHoldingView.image = UIImage(named: "no-image")
             }
         }
-        
-        cell.configureSeparatorShadow()
+                
+        cell.setupShadowView()
         
         return cell
     }

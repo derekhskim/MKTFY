@@ -55,10 +55,10 @@
                             </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Yg8-le-NZ3" secondAttribute="bottom" id="CrH-pR-ilq"/>
                             <constraint firstAttribute="trailing" secondItem="lzy-aL-bBe" secondAttribute="trailing" constant="10" id="E5h-br-doe"/>
                             <constraint firstItem="Yg8-le-NZ3" firstAttribute="leading" secondItem="Con-am-81Z" secondAttribute="leading" id="TRS-Yi-MBA"/>
                             <constraint firstAttribute="bottom" secondItem="lzy-aL-bBe" secondAttribute="bottom" constant="35.5" id="Ur8-IY-91B"/>
-                            <constraint firstAttribute="bottom" secondItem="Yg8-le-NZ3" secondAttribute="bottom" id="aYd-mF-sJs"/>
                             <constraint firstItem="lzy-aL-bBe" firstAttribute="top" secondItem="Con-am-81Z" secondAttribute="top" constant="35.5" id="hQc-fi-KcD"/>
                             <constraint firstItem="lzy-aL-bBe" firstAttribute="leading" secondItem="Yg8-le-NZ3" secondAttribute="trailing" constant="10" id="isP-hh-6kk"/>
                             <constraint firstItem="Yg8-le-NZ3" firstAttribute="top" secondItem="Con-am-81Z" secondAttribute="top" id="ugu-zW-fvD"/>
@@ -66,10 +66,10 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Con-am-81Z" secondAttribute="bottom" id="8Qs-XT-r22"/>
-                    <constraint firstItem="Con-am-81Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Cgh-Y0-iXi"/>
-                    <constraint firstItem="Con-am-81Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Qxs-bQ-h3A"/>
-                    <constraint firstAttribute="trailing" secondItem="Con-am-81Z" secondAttribute="trailing" id="xEc-hI-55g"/>
+                    <constraint firstAttribute="bottom" secondItem="Con-am-81Z" secondAttribute="bottom" id="2DI-hI-t53"/>
+                    <constraint firstItem="Con-am-81Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YbS-5C-htY"/>
+                    <constraint firstItem="Con-am-81Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="brM-W5-vu3"/>
+                    <constraint firstAttribute="trailing" secondItem="Con-am-81Z" secondAttribute="trailing" id="thd-gT-SU0"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

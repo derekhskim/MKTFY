@@ -8,8 +8,6 @@
 import UIKit
 
 class CheckoutTableViewCell: UITableViewCell {
-
-    let shadowLayer = CAGradientLayer()
     
     // MARK: - @IBOutlet
     @IBOutlet weak var imageHoldingView: UIImageView!
@@ -19,25 +17,21 @@ class CheckoutTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        configureSeparatorShadow()
+        setupShadowView()
         selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    func configureSeparatorShadow() {
-        contentView.layer.insertSublayer(shadowLayer, at: 0)
-        shadowLayer.colors = [UIColor.black.withAlphaComponent(0.25).cgColor, UIColor.clear.cgColor]
+    func setupShadowView() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 1
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowRadius = 2
+        layer.masksToBounds = false
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let shadowHeight: CGFloat = 3
-        shadowLayer.frame = CGRect(x: 0, y: contentView.bounds.height - shadowHeight, width: contentView.bounds.width, height: shadowHeight)
+        let shadowRect = CGRect(x: 0, y: bounds.height - 3, width: bounds.width, height: 3)
+        layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
     }
-    
 }

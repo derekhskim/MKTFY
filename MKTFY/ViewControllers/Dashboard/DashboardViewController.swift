@@ -202,6 +202,7 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
 extension DashboardViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        searchButtonTapped()
         return false
     }
     
