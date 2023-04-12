@@ -26,7 +26,7 @@ class DetailsLabelTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             detailsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            detailsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            detailsLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
         ])
         
         detailsLabel.font = UIFont(name: "OpenSans-Bold", size: 16)

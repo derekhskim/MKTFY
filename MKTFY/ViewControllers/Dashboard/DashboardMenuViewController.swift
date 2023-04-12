@@ -80,6 +80,11 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
     
     func configureProfileView() {
         profileInitialView.layer.cornerRadius = profileInitialView.layer.bounds.width / 2
-        profileInitialView.clipsToBounds = true
+        profileInitialView.clipsToBounds = false
+        
+        profileInitialView.layer.shadowColor = UIColor.black.cgColor
+        profileInitialView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        profileInitialView.layer.shadowOpacity = 0.25
+        profileInitialView.layer.shadowRadius = 6
     }
 }

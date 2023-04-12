@@ -11,13 +11,14 @@ class ConditionTableViewCell: UITableViewCell {
     
     let conditionLabel = UILabel()
     let containerView = UIView()
+    let shadowLayer = CAGradientLayer()
     var listingResponse: ListingResponse?
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureConditionLabel()
         setupView()
+        configureSeparatorShadow()
         selectionStyle = .none
     }
     
@@ -31,13 +32,15 @@ class ConditionTableViewCell: UITableViewCell {
         contentView.addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         
+        backgroundView.backgroundColor = .clear
+        
         NSLayoutConstraint.activate([
             backgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             backgroundView.topAnchor.constraint(equalTo: contentView.topAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-                
+        
         containerView.clipsToBounds = true
         containerView.layer.cornerRadius = 10
         containerView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
@@ -80,4 +83,14 @@ class ConditionTableViewCell: UITableViewCell {
         }
     }
     
+    func configureSeparatorShadow() {
+        contentView.layer.insertSublayer(shadowLayer, at: 0)
+        shadowLayer.colors = [UIColor.black.withAlphaComponent(0.1).cgColor, UIColor.clear.cgColor]
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let shadowHeight: CGFloat = 3
+        shadowLayer.frame = CGRect(x: 0, y: contentView.bounds.height - shadowHeight, width: contentView.bounds.width, height: shadowHeight)
+    }
 }

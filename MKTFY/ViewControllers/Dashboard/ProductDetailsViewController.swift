@@ -32,6 +32,7 @@ class ProductDetailsViewController: MainViewController, DashboardStoryboard {
         tableView.register(DetailsLabelTableViewCell.self, forCellReuseIdentifier: "DetailsLabelTableViewCell")
         tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: "DescriptionTableViewCell")
         tableView.register(ConditionTableViewCell.self, forCellReuseIdentifier: "ConditionTableViewCell")
+        tableView.register(UINib(nibName: "SellerProfileTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "SellerProfileTableViewCell")
     }
     
     func getListingByID() {
@@ -92,6 +93,16 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
             cell.listingResponse = listingResponse
             cell.conditionLabel.text = listingResponse?.condition.uppercased()
             cell.setupView()
+            cell.configureSeparatorShadow()
+            
+            return cell
+        case 7:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SellerProfileTableViewCell", for: indexPath) as! SellerProfileTableViewCell
+            
+            cell.listingResponse = listingResponse
+            cell.changeNameAndPrefix()
+            cell.configureSellerProfile()
+            cell.configureProfileHoldingView()
             
             return cell
         default:
