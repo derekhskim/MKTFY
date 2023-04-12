@@ -92,6 +92,16 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func footerButtonTapped() {
         print("Ouch")
         
+        let purchaseListingEndpoint = PurchaseListingEndpoint(id: listingResponse?.id)
+        NetworkManager.shared.request(endpoint: purchaseListingEndpoint) { (result: Result<ListingResponse, Error>) in
+            switch result {
+            case .success(let listingResponse):
+                print("Checkout success: \(listingResponse)")
+            case .failure(let error):
+                print("Error, checkout failed: \(error.localizedDescription)")
+            }
+            
+        }
         
     }
 }

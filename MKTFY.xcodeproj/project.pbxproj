@@ -57,6 +57,7 @@
 		6549E05F29E6632100FFE871 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6549E05E29E6632100FFE871 /* CheckoutViewController.swift */; };
 		6549E06329E665A600FFE871 /* CheckoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6549E06129E665A600FFE871 /* CheckoutTableViewCell.swift */; };
 		6549E06429E665A600FFE871 /* CheckoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6549E06229E665A600FFE871 /* CheckoutTableViewCell.xib */; };
+		6549E06929E6785E00FFE871 /* PurchaseListingEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6549E06829E6785E00FFE871 /* PurchaseListingEndpoint.swift */; };
 		655365C429DCAFAB00D7592D /* CreateListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655365C329DCAFAB00D7592D /* CreateListingViewController.swift */; };
 		65613AEF29A56DD30002B90F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65613AEE29A56DD30002B90F /* DashboardViewController.swift */; };
 		65613B1129A5E04A0002B90F /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65613B1029A5E04A0002B90F /* Dashboard.storyboard */; };
@@ -190,6 +191,7 @@
 		6549E05E29E6632100FFE871 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		6549E06129E665A600FFE871 /* CheckoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewCell.swift; sourceTree = "<group>"; };
 		6549E06229E665A600FFE871 /* CheckoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckoutTableViewCell.xib; sourceTree = "<group>"; };
+		6549E06829E6785E00FFE871 /* PurchaseListingEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseListingEndpoint.swift; sourceTree = "<group>"; };
 		655365C329DCAFAB00D7592D /* CreateListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingViewController.swift; sourceTree = "<group>"; };
 		65613AEE29A56DD30002B90F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		65613B1029A5E04A0002B90F /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				6502B4EA29E13BA000CFA8C9 /* GetAllListingEndpoint.swift */,
 				6502B4EC29E13DA500CFA8C9 /* GetListingByCategoryEndpoint.swift */,
 				650D634829E4722200F2B0E1 /* GetListingByIDEndpoint.swift */,
+				6549E06829E6785E00FFE871 /* PurchaseListingEndpoint.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				6512531F29DE8D8800E592FC /* ListingResponse.swift in Sources */,
 				654444C729AF07BD00E61F69 /* Constant.swift in Sources */,
 				65D8877029DCD96300A7F408 /* CustomUploadImageButton.swift in Sources */,
+				6549E06929E6785E00FFE871 /* PurchaseListingEndpoint.swift in Sources */,
 				6587F35B298AF37200EF5100 /* LoadingConfirmationViewController.swift in Sources */,
 				65CE01112991971F00772FCA /* CreateAccountViewController.swift in Sources */,
 				6506DA7029CA398400038AF8 /* FloatingButton.swift in Sources */,
