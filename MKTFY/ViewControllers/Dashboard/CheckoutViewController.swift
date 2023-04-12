@@ -90,8 +90,7 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func footerButtonTapped() {
-        print("Ouch")
-        
+        // TODO: if success, show loadingConfirmation (success) VC then redirect to DashboardVC, if failure, showalert
         let purchaseListingEndpoint = PurchaseListingEndpoint(id: listingResponse?.id)
         NetworkManager.shared.request(endpoint: purchaseListingEndpoint) { (result: Result<ListingResponse, Error>) in
             switch result {

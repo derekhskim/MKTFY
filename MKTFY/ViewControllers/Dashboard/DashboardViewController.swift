@@ -272,6 +272,7 @@ extension DashboardViewController {
             switch result {
             case .success(let searchResults):
                 DispatchQueue.main.async {
+                    
                     let collectionViewItems = self.createCollectionViewItems(from: searchResults, for: city)
                     self.vm = FlowLayoutViewModel(items: collectionViewItems)
                     
