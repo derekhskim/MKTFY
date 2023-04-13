@@ -54,5 +54,9 @@
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>MKTFY needs access to your photo library to let you choose photos.</string>
+    <key>NSUserActivityTypes</key>
+    <array>
+        <string>INSendMessageIntent</string>
+    </array>
 </dict>
 </plist>

@@ -135,6 +135,7 @@
 		65E8A0D4299EA523009D70A0 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E8A0D3299EA523009D70A0 /* String+.swift */; };
 		65E90FEB2988CD8000ACDC0C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E90FEA2988CD8000ACDC0C /* Button.swift */; };
 		65EBA0BE298A1E5200202C02 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EBA0BD298A1E5200202C02 /* ForgotPasswordViewController.swift */; };
+		65EE2FE129E7C0A100F7EAB2 /* PickupInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EE2FE029E7C0A100F7EAB2 /* PickupInformationViewController.swift */; };
 		65EFDFED29C6C67A000F3E7E /* FAQ2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EFDFEC29C6C67A000F3E7E /* FAQ2ViewController.swift */; };
 		65EFDFEF29C6C694000F3E7E /* FAQ3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EFDFEE29C6C694000F3E7E /* FAQ3ViewController.swift */; };
 		65EFDFF129C6C6A6000F3E7E /* FAQ4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EFDFF029C6C6A6000F3E7E /* FAQ4ViewController.swift */; };
@@ -274,6 +275,7 @@
 		65E8A0D3299EA523009D70A0 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		65E90FEA2988CD8000ACDC0C /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		65EBA0BD298A1E5200202C02 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		65EE2FE029E7C0A100F7EAB2 /* PickupInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupInformationViewController.swift; sourceTree = "<group>"; };
 		65EFDFEC29C6C67A000F3E7E /* FAQ2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ2ViewController.swift; sourceTree = "<group>"; };
 		65EFDFEE29C6C694000F3E7E /* FAQ3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ3ViewController.swift; sourceTree = "<group>"; };
 		65EFDFF029C6C6A6000F3E7E /* FAQ4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ4ViewController.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				656F3C4F29C829CA00DFAAEC /* MyListingViewController.swift */,
 				650D634629E471B200F2B0E1 /* ProductDetailsViewController.swift */,
 				6549E05E29E6632100FFE871 /* CheckoutViewController.swift */,
+				65EE2FE029E7C0A100F7EAB2 /* PickupInformationViewController.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -834,6 +837,7 @@
 				6506DA7029CA398400038AF8 /* FloatingButton.swift in Sources */,
 				6502B4EB29E13BA000CFA8C9 /* GetAllListingEndpoint.swift in Sources */,
 				65E3220C29E72DBB0044C3AE /* GetListingsAndNotificationsCountsEndpoint.swift in Sources */,
+				65EE2FE129E7C0A100F7EAB2 /* PickupInformationViewController.swift in Sources */,
 				654444C929AF18DC00E61F69 /* Auth0Error.swift in Sources */,
 				6534471129E47A650056D67B /* ImageCarouselTableViewCell.swift in Sources */,
 				655365C429DCAFAB00D7592D /* CreateListingViewController.swift in Sources */,

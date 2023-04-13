@@ -59,7 +59,7 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.imageHoldingView.image = UIImage(named: "no-image")
             }
         }
-                
+        
         cell.setupShadowView()
         
         return cell
@@ -68,7 +68,7 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()
         footerView.backgroundColor = .clear
-
+        
         let footerButton = Button()
         footerButton.setTitle("Confirm", for: .normal)
         footerButton.titleLabel!.font = UIFont(name: "OpenSans-bold", size: 16) ?? UIFont.systemFont(ofSize: 16)
@@ -77,19 +77,19 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
         footerButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
         footerButton.translatesAutoresizingMaskIntoConstraints = false
         footerButton.addTarget(self, action: #selector(footerButtonTapped), for: .touchUpInside)
-
+        
         footerView.addSubview(footerButton)
-
+        
         NSLayoutConstraint.activate([
             footerButton.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -27),
             footerButton.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 15),
             footerButton.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -15),
             footerButton.heightAnchor.constraint(equalToConstant: 51)
         ])
-
+        
         return footerView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let totalContentHeight = tableView.contentSize.height
         let availableSpace = max(tableView.frame.height - totalContentHeight - 90, 0)
@@ -104,6 +104,9 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
             switch result {
             case .success(let listingResponse):
                 print("Checkout success: \(listingResponse)")
+                DispatchQueue.main.async {
+                    self.coordinator?.goToPickupInformationVC(listingResponse: listingResponse)
+                }
             case .failure(let error):
                 print("Error, checkout failed: \(error.localizedDescription)")
             }
