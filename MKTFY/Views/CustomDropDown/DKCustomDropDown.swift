@@ -1,5 +1,5 @@
 //
-//  CustomDropDown.swift
+//  DKCustomDropDown.swift
 //  MKTFY
 //
 //  Created by Derek Kim on 2023-04-06.
@@ -8,10 +8,10 @@
 import UIKit
 
 protocol CustomDropDownDelegate: AnyObject {
-    func customDropDown(_ customDropDown: CustomDropDown, didSelectOption option: String)
+    func customDropDown(_ customDropDown: DKCustomDropDown, didSelectOption option: String)
 }
 
-class CustomDropDown: UIView {
+class DKCustomDropDown: UIView {
     
     weak var delegate: CustomDropDownDelegate?
     weak var relatedTextField: UITextField?
@@ -92,7 +92,7 @@ class CustomDropDown: UIView {
     }
 }
 
-extension CustomDropDown: UISearchBarDelegate {
+extension DKCustomDropDown: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let filteredOptions = searchText.isEmpty ? options : options.filter { $0.lowercased().contains(searchText.lowercased()) }
         

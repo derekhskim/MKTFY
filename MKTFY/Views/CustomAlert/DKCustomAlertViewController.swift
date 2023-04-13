@@ -7,8 +7,13 @@
 
 import UIKit
 
-class CustomAlertViewController: UIViewController {
-    init(title: String, description: String, purpleButtonTitle: String, whiteButtonTitle: String) {
+class DKCustomAlertViewController: UIViewController {
+    var purpleButtonAction: (() -> Void)?
+    var whiteButtonAction: (() -> Void)?
+    
+    init(title: String, description: String, purpleButtonTitle: String, whiteButtonTitle: String, purpleButtonAction: @escaping () -> Void, whiteButtonAction: @escaping () -> Void) {
+        self.purpleButtonAction = purpleButtonAction
+        self.whiteButtonAction = whiteButtonAction
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .overFullScreen
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -94,11 +99,15 @@ class CustomAlertViewController: UIViewController {
     }
     
     @objc private func purpleButtonTapped() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.purpleButtonAction?()
+        }
     }
     
     @objc private func whiteButtonTapped() {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.whiteButtonAction?()
+        }
     }
     
 }

@@ -103,7 +103,11 @@ class AccountInformationViewController: MainViewController, DashboardStoryboard 
                 print("Error Updating user: \(error.localizedDescription)")
                 
                 DispatchQueue.main.async {
-                    self.showAlert(title: "Something went wrong", message: "Account inforamtion could not be saved. Please try again.", purpleButtonTitle: "OK", whiteButtonTitle: "Try Again")
+                    self.showAlert(title: "Something went wrong", message: "Account inforamtion could not be saved. Please try again.", purpleButtonTitle: "OK", whiteButtonTitle: "Try Again", purpleButtonAction: {
+                        self.navigationController?.popViewController(animated: true)
+                    }, whiteButtonAction: {
+                        self.dismiss(animated: true, completion: nil)
+                    })
                 }
             }
         }
@@ -124,5 +128,5 @@ extension AccountInformationViewController: UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
-    }    
+    }
 }

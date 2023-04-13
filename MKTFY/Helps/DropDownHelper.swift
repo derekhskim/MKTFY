@@ -12,9 +12,8 @@ protocol DropDownDelegate: AnyObject {
 }
 
 class DropDownHelper {
-    
     var selectionDelegate: DropDownDelegate?
-    var customDropDownView: CustomDropDown?
+    var customDropDownView: DKCustomDropDown?
     
     init(delegate: DropDownDelegate) {
         self.selectionDelegate = delegate
@@ -22,7 +21,7 @@ class DropDownHelper {
     
     func setupCustomDropDown(in viewController: UIViewController, with uiView: UIView, options: [String]) {
         let rect = uiView.convert(uiView.bounds, to: viewController.view)
-        customDropDownView = CustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
+        customDropDownView = DKCustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
         customDropDownView?.options = options
         customDropDownView?.searchBarPlaceholder = "Search options"
         customDropDownView?.delegate = viewController as? CustomDropDownDelegate

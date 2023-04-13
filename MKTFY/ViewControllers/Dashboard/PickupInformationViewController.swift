@@ -36,7 +36,11 @@ class PickupInformationViewController: MainViewController, DashboardStoryboard, 
             present(mailComposeViewController, animated: true, completion: nil)
         } else {
             DispatchQueue.main.async {
-                self.showAlert(title: "Email error!", message: "Unable to send email. Please check your email settings and try again.", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
+                self.showAlert(title: "Email error!", message: "Unable to send email. Please check your email settings and try again.", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel", purpleButtonAction: {
+                    self.dismiss(animated: true, completion: nil)
+                }, whiteButtonAction: {
+                    self.dismiss(animated: true, completion: nil)
+                })
             }
         }
     }
@@ -49,21 +53,10 @@ class PickupInformationViewController: MainViewController, DashboardStoryboard, 
         }
     }
     
+    // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureContactSellerButton()
-    }
-    
-    func configureContactSellerButton() {
-        let normalBackgroundColor = UIColor.appColor(LPColor.LightestPurple).withAlphaComponent(0.2)
-        let highlightedBackgroundColor = UIColor.appColor(LPColor.LightestPurple).withAlphaComponent(0.4)
-        
-        contactSellerButton.layer.cornerRadius = 20
-        contactSellerButton.clipsToBounds = true
-        contactSellerButton.layer.masksToBounds = true
-        contactSellerButton.setTitleColor(UIColor.appColor(LPColor.LightestPurple), for: .normal)
-        
-        contactSellerButton.backgroundColor = normalBackgroundColor
     }
     
     override func viewDidLoad() {
@@ -74,7 +67,6 @@ class PickupInformationViewController: MainViewController, DashboardStoryboard, 
         
         configureProfileView()
         configureSellerProfileView()
-        
     }
     
     func configureProfileView() {
@@ -113,6 +105,17 @@ class PickupInformationViewController: MainViewController, DashboardStoryboard, 
         sellerPhoneNumber.text = phoneNumber
         
         sellerAddressLabel.text = "Please pick up your purchased item at \(address), \(city), Alberta"
+    }
+    
+    func configureContactSellerButton() {
+        let normalBackgroundColor = UIColor.appColor(LPColor.LightestPurple).withAlphaComponent(0.2)
+        
+        contactSellerButton.layer.cornerRadius = 20
+        contactSellerButton.clipsToBounds = true
+        contactSellerButton.layer.masksToBounds = true
+        contactSellerButton.setTitleColor(UIColor.appColor(LPColor.LightestPurple), for: .normal)
+        
+        contactSellerButton.backgroundColor = normalBackgroundColor
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {

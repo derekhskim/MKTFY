@@ -1,5 +1,5 @@
 //
-//  FloatingButton.swift
+//  DKFloatingButton.swift
 //  MKTFY
 //
 //  Created by Derek Kim on 2023-03-21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FloatingButton: UIButton {
+class DKFloatingButton: UIButton {
     init(action: Selector, target: AnyObject) {
         super.init(frame: .zero)
         

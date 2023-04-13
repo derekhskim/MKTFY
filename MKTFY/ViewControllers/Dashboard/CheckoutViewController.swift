@@ -109,6 +109,11 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             case .failure(let error):
                 print("Error, checkout failed: \(error.localizedDescription)")
+                self.showAlert(title: "Something went wrong", message: "\(error.localizedDescription). Please try again later.", purpleButtonTitle: "OK", whiteButtonTitle: "Try Again", purpleButtonAction: {
+                    self.navigationController?.popViewController(animated: true)
+                }, whiteButtonAction: {
+                    self.dismiss(animated: true, completion: nil)
+                })
             }
             
         }

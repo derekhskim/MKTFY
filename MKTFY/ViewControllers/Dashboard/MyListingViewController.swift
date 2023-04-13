@@ -25,7 +25,7 @@ class MyListingViewController: MainViewController, DashboardStoryboard {
     }
     
     func floatingButton() {
-        let floatingButton = FloatingButton(action: #selector(floatingButtonTapped), target: self)
+        let floatingButton = DKFloatingButton(action: #selector(floatingButtonTapped), target: self)
         view.addSubview(floatingButton)
         
         NSLayoutConstraint.activate([

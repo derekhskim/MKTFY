@@ -46,7 +46,11 @@ class LoginViewController: MainViewController, LoginStoryboard {
                     self.loginButton.isUserInteractionEnabled = true                }
             } else {
                 DispatchQueue.main.async {
-                    self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
+                    self.showAlert(title: "Login Failed", message: "Please double check your email or password", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel", purpleButtonAction: {
+                        self.dismiss(animated: true)
+                    }, whiteButtonAction: {
+                        self.dismiss(animated: true)
+                    })
                     indicator.removeFromSuperview()
                     self.loginButton.setTitle("Login", for: .normal)
                     self.loginButton.isUserInteractionEnabled = true

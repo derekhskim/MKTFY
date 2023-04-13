@@ -23,8 +23,6 @@ class ChangePasswordViewController: MainViewController, DashboardStoryboard {
         guard let password = passwordView.isSecureTextField.text, let confirmPassword = confirmPasswordView.isSecureTextField.text else { return }
         
         if password == confirmPassword {
-            print("Update Password Button tapped")
-            
             let password = Password(newPassword: password, confirmPassword: confirmPassword)
             let changePasswordEndpoint = ChangePasswordEndpoint(password: password)
             NetworkManager.shared.request(endpoint: changePasswordEndpoint) { (result: Result<NetworkManager.EmptyResponse, Error>) in
@@ -39,9 +37,17 @@ class ChangePasswordViewController: MainViewController, DashboardStoryboard {
                 }
             }
         } else if password != confirmPassword {
-            showAlert(title: "Heads up!", message: "Something happened and your password hasn't been changed.", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
+            showAlert(title: "Heads up!", message: "Something happened and your password hasn't been changed.", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel", purpleButtonAction: {
+                self.dismiss(animated: true, completion: nil)
+            }, whiteButtonAction: {
+                self.navigationController?.popViewController(animated: true)
+            })
         } else {
-            showAlert(title: "Heads up!", message: "Something happened and your password hasn't been changed.", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel")
+            showAlert(title: "Heads up!", message: "Something happened and your password hasn't been changed.", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel", purpleButtonAction: {
+                self.dismiss(animated: true, completion: nil)
+            }, whiteButtonAction: {
+                self.navigationController?.popViewController(animated: true)
+            })
         }
     }
     
@@ -77,7 +83,7 @@ extension ChangePasswordViewController: UITextFieldDelegate {
     
     func allRequiredFieldsAreFilledOut() -> Bool {
         guard let password = passwordView.isSecureTextField.text, let confirmPassword = confirmPasswordView.isSecureTextField.text else { return false }
-                
+        
         let passwordsMatch = (password == confirmPassword)
         
         let isLongEnough = (password.count >= 6)
@@ -139,7 +145,7 @@ extension ChangePasswordViewController {
             action: #selector(dismissMyKeyboard))
         view.addGestureRecognizer(tap)
     }
-
+    
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
     }

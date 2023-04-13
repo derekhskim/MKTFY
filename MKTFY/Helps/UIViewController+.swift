@@ -99,10 +99,11 @@ extension UIViewController {
 
 // MARK: - Show Custom Alert
 extension UIViewController {
-    func showAlert(title: String, message: String, purpleButtonTitle: String, whiteButtonTitle: String) {
-        let customAlert = CustomAlertViewController(title: title, description: message, purpleButtonTitle: purpleButtonTitle, whiteButtonTitle: whiteButtonTitle)
+    func showAlert(title: String, message: String, purpleButtonTitle: String, whiteButtonTitle: String, purpleButtonAction: @escaping () -> Void, whiteButtonAction: @escaping () -> Void) {
+        let customAlert = DKCustomAlertViewController(title: title, description: message, purpleButtonTitle: purpleButtonTitle, whiteButtonTitle: whiteButtonTitle, purpleButtonAction: purpleButtonAction, whiteButtonAction: whiteButtonAction)
         customAlert.modalPresentationStyle = .overCurrentContext
         customAlert.modalTransitionStyle = .crossDissolve
         self.present(customAlert, animated: true, completion: nil)
     }
 }
+

@@ -18,6 +18,7 @@ class CreateListingViewController: MainViewController, DashboardStoryboard, Drop
         print("selected option: \(option)")
     }
     
+    weak var coordinator: MainCoordinator?
     var imageArray = [UIImage]()
     lazy var dropDownHelper = DropDownHelper(delegate: self)
     
@@ -31,7 +32,7 @@ class CreateListingViewController: MainViewController, DashboardStoryboard, Drop
         initializeHideKeyboard()
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
-                
+        
         collectionView.register(CustomViewCollectionViewCell.self, forCellWithReuseIdentifier: "CustomViewCollectionViewCell")
         collectionView.register(CustomTextViewCollectionViewCell.self, forCellWithReuseIdentifier: "CustomTextViewCollectionViewCell")
         collectionView.register(CustomButtonCollectionViewCell.self, forCellWithReuseIdentifier: "CustomButtonCollectionViewCell")
@@ -64,7 +65,13 @@ class CreateListingViewController: MainViewController, DashboardStoryboard, Drop
                 } else {
                     // Access denied, show an alert to the user
                     DispatchQueue.main.async {
-                        self?.showAlert(title: "Photo Library Access Denied", message: "Please grant MKTFY access to your photo library in Settings to upload photos.", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
+                        self?.showAlert(title: "Photo Library Access Denied", message: "Please grant MKTFY access to your photo library in Settings to upload photos.", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel", purpleButtonAction: {
+                            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                            }
+                        }, whiteButtonAction: {
+                            self?.dismiss(animated: true, completion: nil)
+                        })
                     }
                 }
             }
@@ -75,7 +82,12 @@ class CreateListingViewController: MainViewController, DashboardStoryboard, Drop
             self.present(phPickerVC, animated: true)
         } else {
             // Photo library access denied, show an alert to the user
-            showAlert(title: "Photo Library Access Denied", message: "Please grant MKTFY access to your photo library in Settings to upload photos.", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
+            showAlert(title: "Photo Library Access Denied", message: "Please grant MKTFY access to your photo library in Settings to upload photos.", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel", purpleButtonAction: {
+                if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                }}, whiteButtonAction: {
+                    self.dismiss(animated: true, completion: nil)
+                })
         }
     }
     
@@ -287,7 +299,7 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                                   let price = Double(priceString),
                                   let address = addressCell.TextFieldView.inputTextField.text,
                                   let city = cityCell.TextFieldView.inputTextField.text else { return }
-                                                        
+                            
                             let createListing = CreateListing(productName: productName, description: description, price: price, category: category.uppercased(), condition: condition, address: address, city: city, images: imageIDs)
                             let createListingEndpoint = CreateListingEndpoint(createLisitng: createListing)
                             
@@ -295,13 +307,19 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                                 switch result {
                                 case .success(let createListingResponse):
                                     print("Create Listing success with id: \(createListingResponse.id)")
-                                    DispatchQueue.main.async {
-                                        self?.navigationController?.popViewController(animated: true)
+                                    self?.coordinator?.goToLoadingConfirmationVC()
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+                                        self?.coordinator?.goToDashboardVC()
                                     }
                                 case .failure(let error):
                                     print("Create Listing failure with error: \(error.localizedDescription)")
                                     DispatchQueue.main.async {
-                                        self?.showAlert(title: "Something went wrong", message: "Sorry, for strange reason, your listing has not been posted. Please try again", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel")
+                                        self?.showAlert(title: "Something went wrong", message: "Sorry, for strange reason, your listing has not been posted. Please try again", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel", purpleButtonAction: {
+                                            self?.dismiss(animated: true, completion: nil)
+                                        }, whiteButtonAction: {
+                                            self?.navigationController?.popViewController(animated: true)
+                                        })
                                     }
                                 }
                             }

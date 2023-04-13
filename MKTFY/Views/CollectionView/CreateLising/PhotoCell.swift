@@ -12,8 +12,8 @@ class PhotoCell: UICollectionViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     
     let removeImageButton = UIButton()
-    var plusButton: CustomPlusButton?
-    var smallPlusButton: CustomPlusButton?
+    var plusButton: DKCustomPlusButton?
+    var smallPlusButton: DKCustomPlusButton?
     var onRemoveButtonTapped: (() -> Void)?
     var onUploadImageButtonTapped: (() -> Void)?
     
@@ -27,7 +27,7 @@ class PhotoCell: UICollectionViewCell {
         removeImageButton.translatesAutoresizingMaskIntoConstraints = false
         removeImageButton.addTarget(self, action: #selector(removeButtonTapped), for: .touchUpInside)
         
-        plusButton = CustomPlusButton(frame: photoImageView.bounds)
+        plusButton = DKCustomPlusButton(frame: photoImageView.bounds)
         if let plusButton = plusButton {
             plusButton.translatesAutoresizingMaskIntoConstraints = false
             plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
@@ -42,7 +42,7 @@ class PhotoCell: UICollectionViewCell {
             ])
         }
         
-        smallPlusButton = CustomPlusButton(frame: photoImageView.bounds)
+        smallPlusButton = DKCustomPlusButton(frame: photoImageView.bounds)
         if let smallPlusButton = smallPlusButton {
             smallPlusButton.translatesAutoresizingMaskIntoConstraints = false
             smallPlusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)

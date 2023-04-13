@@ -15,7 +15,7 @@ class MainViewController: UIViewController, UITextViewDelegate {
     
     weak var selectionDelegate: DropDownSelectionDelegate?
     
-    var customDropDownView: CustomDropDown?
+    var customDropDownView: DKCustomDropDown?
     var originalFrame: CGRect = .zero
     var shiftFactor: CGFloat = 0.25
     
@@ -49,7 +49,7 @@ class MainViewController: UIViewController, UITextViewDelegate {
     
     func setupCustomDropDown(with uiView: UIView, options: [String]) {
         let rect = uiView.convert(uiView.bounds, to: view)
-        customDropDownView = CustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
+        customDropDownView = DKCustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
         customDropDownView?.options = options
         customDropDownView?.searchBarPlaceholder = "Search options"
         customDropDownView?.delegate = self
@@ -75,7 +75,7 @@ class MainViewController: UIViewController, UITextViewDelegate {
     func setupCustomDropDownWithStackView(with uiView: UIView) {
         if let stackView = uiView.superview as? UIStackView {
             let rect = stackView.convert(uiView.bounds, to: view)
-            customDropDownView = CustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
+            customDropDownView = DKCustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
             customDropDownView?.options = ["Calgary", "Camrose", "Brooks"]
             customDropDownView?.searchBarPlaceholder = "Search options"
             customDropDownView?.delegate = self
@@ -155,7 +155,7 @@ extension MainViewController {
 }
 
 extension MainViewController: CustomDropDownDelegate {
-    func customDropDown(_ customDropDown: CustomDropDown, didSelectOption option: String) {
+    func customDropDown(_ customDropDown: DKCustomDropDown, didSelectOption option: String) {
         selectionDelegate?.setDropDownSelectedOption(option)
         hideCustomDropDownView()
     }

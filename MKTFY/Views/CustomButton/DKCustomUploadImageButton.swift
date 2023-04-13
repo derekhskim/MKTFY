@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomPlusButton: UIButton {
+class DKCustomPlusButton: UIButton {
     
     let addImageIcon = UIImageView()
     let instructionLabel = UILabel()
