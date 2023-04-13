@@ -16,8 +16,8 @@ class CollectionViewItems {
     var imageWidth: CGFloat = 1
     var imageHeight: CGFloat = 1
     
-    let titleFont: UIFont = .systemFont(ofSize: 14, weight: .regular)
-    let priceFont: UIFont = .systemFont(ofSize: 14, weight: .bold)
+    let titleFont: UIFont = UIFont(name: "OpenSans-Regular", size: 14)!
+    let priceFont: UIFont = UIFont(name: "OpenSans-Bold", size: 14)!
     
     init(id: String!, title: String!, imageURL: URL?, price: Double!) {
         self.id = id
@@ -40,7 +40,7 @@ class CollectionViewItems {
         let imageScale = cellWidth / imageWidth
         
         let imageHeight = imageHeight * imageScale
-        return 25 + titleHeight + priceHeight + imageHeight
+        return 20 + titleHeight + priceHeight + imageHeight
     }
     
 }

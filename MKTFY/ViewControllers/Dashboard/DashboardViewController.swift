@@ -88,7 +88,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     // MARK: - Function
     func createCollectionViewItems(from listingResponses: [ListingResponse], for city: String) -> [CollectionViewItems] {
         return listingResponses
-            .filter { $0.city.lowercased() == city.lowercased() }
+            .filter { $0.city.lowercased() == city.lowercased() && $0.status.lowercased() == "active" }
             .map { listingResponse in
                 let id = listingResponse.id
                 let title = listingResponse.productName

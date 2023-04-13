@@ -28,5 +28,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         
         self.imageViewItem.image = nil
+        self.titleLabel.text = nil
+        self.priceLabel.text = nil
     }
 }

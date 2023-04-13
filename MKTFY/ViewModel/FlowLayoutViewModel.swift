@@ -12,6 +12,6 @@ class FlowLayoutViewModel {
     var items: [CollectionViewItems]
     
     init(items: [CollectionViewItems]) {
-            self.items = items
-        }
+        self.items = items
+    }
 }

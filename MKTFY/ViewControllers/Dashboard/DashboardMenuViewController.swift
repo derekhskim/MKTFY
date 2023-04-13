@@ -119,7 +119,7 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
                     UIUtility.updateVisibility(response.unreadNotifications, threshold: 0, label: self.notificationsCountLabel, containerView: self.notificationsCountContainerView)
                 }
                 
-                print("Retrieved successfully \(response)")
+                print("Retrieved successfully: \(response)")
             case .failure(let error):
                 print("Failed to retrieve: \(error.localizedDescription)")
             }

@@ -287,10 +287,8 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                                   let price = Double(priceString),
                                   let address = addressCell.TextFieldView.inputTextField.text,
                                   let city = cityCell.TextFieldView.inputTextField.text else { return }
-                            
-                            let images = imageIDs
-                            
-                            let createListing = CreateListing(productName: productName, description: description, price: price, category: category.uppercased(), condition: condition, address: address, city: city, images: images)
+                                                        
+                            let createListing = CreateListing(productName: productName, description: description, price: price, category: category.uppercased(), condition: condition, address: address, city: city, images: imageIDs)
                             let createListingEndpoint = CreateListingEndpoint(createLisitng: createListing)
                             
                             NetworkManager.shared.request(endpoint: createListingEndpoint) { (result: Result<ListingResponse, Error>) in
