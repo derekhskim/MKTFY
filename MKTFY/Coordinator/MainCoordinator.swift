@@ -100,8 +100,9 @@ class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToFAQSpecificVC() {
+    func goToFAQSpecificVC(faqResponse: FAQResponse) {
         let vc = FAQSpecificViewController.instantiate()
+        vc.faqResponse = faqResponse
         self.navigationController.present(vc, animated: true)
     }
     

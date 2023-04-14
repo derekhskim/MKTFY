@@ -82,6 +82,8 @@ extension FAQViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+        let selectedFAQResponse = faqResponses[indexPath.row]
+        coordinator?.goToFAQSpecificVC(faqResponse: selectedFAQResponse)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
