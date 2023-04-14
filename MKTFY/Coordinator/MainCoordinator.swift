@@ -117,6 +117,7 @@ class MainCoordinator: Coordinator {
     
     func goToMyPurchasesVC() {
         let vc = MyPurchasesViewController.instantiate()
+        vc.coordinator = self
         self.navigationController.pushViewController(vc, animated: true)
     }
     
