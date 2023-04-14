@@ -86,35 +86,38 @@ extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ListingViewTableViewCell", for: indexPath) as! ListingViewTableViewCell
-            
-            let listings = listingResponse[indexPath.row]
-            
-            cell.cellView.layer.cornerRadius = 20
-            cell.cellView.layer.masksToBounds = false
-            cell.cellView.layer.shadowColor = UIColor.black.cgColor
-            cell.cellView.layer.shadowOffset = CGSize.zero
-            cell.cellView.layer.shadowOpacity = 0.3
-            cell.cellView.layer.shadowRadius = 2
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            if let dateObject = dateFormatter.date(from: listings.created) {
-                dateFormatter.dateFormat = "MMMM d, yyyy"
-                let formattedDate = dateFormatter.string(from: dateObject)
-                cell.dateLabel.text = formattedDate
-            }
-            
-            cell.titleLabel.text = listings.productName
-            cell.priceLabel.text = String(format: "$%.2f", listings.price)
-            
-            cell.itemImageView.loadImage(from: URL(string: listings.images.first ?? "")) { [weak cell] in
-                guard let cell = cell else { return }
-                cell.itemImageView.image = cell.itemImageView.image ?? UIImage(named: "no-image")
-            }
-            
-            return cell
+        // TODO: Fix Spacing
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListingViewTableViewCell", for: indexPath) as! ListingViewTableViewCell
+        
+        let listings = listingResponse[indexPath.row]
+        
+        // TODO: DropShadow is only affecting corners ATM
+        
+        cell.cellView.layer.cornerRadius = 20
+        cell.cellView.layer.masksToBounds = false
+        cell.cellView.layer.shadowColor = UIColor.black.cgColor
+        cell.cellView.layer.shadowOffset = CGSize.zero
+        cell.cellView.layer.shadowOpacity = 0.3
+        cell.cellView.layer.shadowRadius = 2
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        if let dateObject = dateFormatter.date(from: listings.created) {
+            dateFormatter.dateFormat = "MMMM d, yyyy"
+            let formattedDate = dateFormatter.string(from: dateObject)
+            cell.dateLabel.text = formattedDate
+        }
+        
+        cell.titleLabel.text = listings.productName
+        cell.priceLabel.text = String(format: "$%.2f", listings.price)
+        
+        cell.itemImageView.loadImage(from: URL(string: listings.images.first ?? "")) { [weak cell] in
+            guard let cell = cell else { return }
+            cell.itemImageView.image = cell.itemImageView.image ?? UIImage(named: "no-image")
+        }
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
