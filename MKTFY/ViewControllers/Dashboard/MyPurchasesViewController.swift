@@ -9,6 +9,9 @@ import UIKit
 
 class MyPurchasesViewController: MainViewController, DashboardStoryboard {
     
+    weak var coordinator: MainCoordinator?
+    var listingResponse: ListingResponse?
+    
     var myPurchases: [Purchases] = [
         Purchases(image: UIImage(named: "pearl_the_christmas")!, date: "September 7, 2020", title: "Pearl the Cat: Christmas Edition", price: "$340.00"),
         Purchases(image: UIImage(named: "pearl_the_halloween")!, date: "September 7, 2020", title: "Pearl the Cat: Halloween Edition", price: "$340.00")
@@ -22,21 +25,16 @@ class MyPurchasesViewController: MainViewController, DashboardStoryboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBarWithBackButton()
+        setupBackgroundView(view: backgroundView)
+        setupTableViewBackground()
+        
+        getUsersPurchases()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ListingViewTableViewCell", bundle: nil), forCellReuseIdentifier: "ListingViewTableViewCell")
         
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 38),
-            tableView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 0),
-            tableView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: 0),
-            tableView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: 0)
-        ])
-        
-        setupNavigationBarWithBackButton()
-        setupBackgroundView(view: backgroundView)
-        setupTableViewBackground()
     }
     
     func setupTableViewBackground() {
@@ -47,9 +45,22 @@ class MyPurchasesViewController: MainViewController, DashboardStoryboard {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
     }
+    
+    func getUsersPurchases() {
+        let getUsersPurchasesEndpoint = GetUsersPurchasesEndpoint()
+        NetworkManager.shared.request(endpoint: getUsersPurchasesEndpoint) { (result: Result<[ListingResponse], Error>) in
+            switch result {
+            case .success(let listingResponse):
+                print("User's purchases retrieved: \(listingResponse)")
+            case .failure(let error):
+                print("Failed to retrieve user's purchases: \(error.localizedDescription)")
+            }
+        }
+    }
+    
 }
 
-extension MyPurchasesViewController: UITableViewDataSource {
+extension MyPurchasesViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return myPurchases.count
     }
@@ -70,9 +81,6 @@ extension MyPurchasesViewController: UITableViewDataSource {
         
         return cell
     }
-}
-
-extension MyPurchasesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension

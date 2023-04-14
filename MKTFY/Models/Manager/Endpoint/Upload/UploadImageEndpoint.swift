@@ -41,7 +41,6 @@ struct UploadImageEndpoint: Endpoint {
         for (index, image) in images.enumerated() {
             if let imageData = image.jpegData(compressionQuality: 0.1) {
                 print("Processing image \(index) \(image)")
-                // Add boundary to separate image data
                 data.append("--\(boundary)\r\n")
                 data.append("Content-Disposition: form-data; name=\"image\(index)\"; filename=\"image\(index).jpg\"\r\n")
                 data.append("Content-Type: image/jpeg\r\n\r\n")

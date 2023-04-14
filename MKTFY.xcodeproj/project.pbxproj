@@ -101,6 +101,9 @@
 		65A951D729E284BB0007B523 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A951D629E284BB0007B523 /* UIImageView+.swift */; };
 		65AB118929DB3323007E6D05 /* Auth0Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7DE1E299D4ADE00926A1F /* Auth0Manager.swift */; };
 		65AB2A6329AB083B002B3D1B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 65AB2A6229AB083B002B3D1B /* .gitignore */; };
+		65B23D6529E8F4CF0041230E /* GetUsersListingsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B23D6429E8F4CF0041230E /* GetUsersListingsEndpoint.swift */; };
+		65B23D6729E8F6410041230E /* GetUsersPurchasesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B23D6629E8F6410041230E /* GetUsersPurchasesEndpoint.swift */; };
+		65B23D6929E921C50041230E /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B23D6829E921C50041230E /* EmptyTableViewCell.swift */; };
 		65C28FC72988BA1D00A3BBEE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C28FC62988BA1D00A3BBEE /* LoginViewController.swift */; };
 		65C28FCC2988BB6500A3BBEE /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C28FCB2988BB6500A3BBEE /* UIViewController+.swift */; };
 		65CCAFB829D76C200088338B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CCAFB729D76C200088338B /* NetworkManager.swift */; };
@@ -239,6 +242,9 @@
 		65A646FA299C85AC00262DB8 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		65A951D629E284BB0007B523 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		65AB2A6229AB083B002B3D1B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		65B23D6429E8F4CF0041230E /* GetUsersListingsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersListingsEndpoint.swift; sourceTree = "<group>"; };
+		65B23D6629E8F6410041230E /* GetUsersPurchasesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersPurchasesEndpoint.swift; sourceTree = "<group>"; };
+		65B23D6829E921C50041230E /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		65C28FC62988BA1D00A3BBEE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		65C28FCB2988BB6500A3BBEE /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		65CCAFB729D76C200088338B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -420,6 +426,7 @@
 			children = (
 				65629A4729CAC5E20056F748 /* ListingViewTableViewCell.swift */,
 				65629A4829CAC5E20056F748 /* ListingViewTableViewCell.xib */,
+				65B23D6829E921C50041230E /* EmptyTableViewCell.swift */,
 			);
 			path = ListingViewTile;
 			sourceTree = "<group>";
@@ -627,6 +634,8 @@
 				650F3EA129D9323B00111E8F /* UserPurchasesEndpoint.swift */,
 				65CCAFC129D76FF00088338B /* RegisterUserEndpoint.swift */,
 				65CCAFC329D770530088338B /* GetUserEndpoint.swift */,
+				65B23D6429E8F4CF0041230E /* GetUsersListingsEndpoint.swift */,
+				65B23D6629E8F6410041230E /* GetUsersPurchasesEndpoint.swift */,
 				65CCAFC529D770F10088338B /* UpdateUserEndpoint.swift */,
 			);
 			path = User;
@@ -833,6 +842,7 @@
 				6568E1142988AF50001482AB /* UIColor+.swift in Sources */,
 				65D1AF6529B45D3B00B4581D /* DashboardMenuViewController.swift in Sources */,
 				6512531F29DE8D8800E592FC /* ListingResponse.swift in Sources */,
+				65B23D6529E8F4CF0041230E /* GetUsersListingsEndpoint.swift in Sources */,
 				654444C729AF07BD00E61F69 /* Constant.swift in Sources */,
 				65D8877029DCD96300A7F408 /* DKCustomUploadImageButton.swift in Sources */,
 				6549E06929E6785E00FFE871 /* PurchaseListingEndpoint.swift in Sources */,
@@ -889,6 +899,7 @@
 				65EBA0BE298A1E5200202C02 /* ForgotPasswordViewController.swift in Sources */,
 				6549E06329E665A600FFE871 /* CheckoutTableViewCell.swift in Sources */,
 				6584B28829C6AB4300E3AD7E /* FAQ1ViewController.swift in Sources */,
+				65B23D6729E8F6410041230E /* GetUsersPurchasesEndpoint.swift in Sources */,
 				65C28FC72988BA1D00A3BBEE /* LoginViewController.swift in Sources */,
 				653F2401298CBE7A0053C5E1 /* UIImage+.swift in Sources */,
 				6538FB7A29E0C3E70004A152 /* ProductModels.swift in Sources */,
@@ -896,6 +907,7 @@
 				65E0B3022996E48000A85CBB /* EmailVerificationSentViewController.swift in Sources */,
 				656F3C5029C829CA00DFAAEC /* MyListingViewController.swift in Sources */,
 				650F3E9F29D9267F00111E8F /* UserListingEndpoint.swift in Sources */,
+				65B23D6929E921C50041230E /* EmptyTableViewCell.swift in Sources */,
 				65385B5A29DCBF160030B558 /* PhotoCell.swift in Sources */,
 				656F3C4A29C8282400DFAAEC /* NotificationViewController.swift in Sources */,
 				6506DA7229CA45F800038AF8 /* Notification.swift in Sources */,

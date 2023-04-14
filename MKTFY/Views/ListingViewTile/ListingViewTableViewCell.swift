@@ -18,24 +18,26 @@ class ListingViewTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        addDropShadow()
         cellView.layer.cornerRadius = 20
         cellView.clipsToBounds = true
+        itemImageView.layer.cornerRadius = 20
+        itemImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        itemImageView.clipsToBounds = true
+        selectionStyle = .none
+        backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 21),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -21)
+        ])
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
-    }
-    
-    func addDropShadow() {
-        cellView.layer.shadowColor = UIColor.black.cgColor
-        cellView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        cellView.layer.shadowOpacity = 0.3
-        cellView.layer.shadowRadius = 2
-        cellView.layer.masksToBounds = false
-        cellView.layer.cornerRadius = 20
     }
     
     func updateNotificationCell(image: UIImage, date: String, title: String, price: String) {

@@ -276,6 +276,14 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
             customButtonCell.onButtonTapped = { [weak self] in
                 print("Publish Listing Button Tapped")
                 
+                customButtonCell.button.isUserInteractionEnabled = false
+                customButtonCell.button.setTitle("", for: .normal)
+                let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+                indicator.startAnimating()
+                indicator.color = .white
+                customButtonCell.button.addSubview(indicator)
+                indicator.center = customButtonCell.button.center
+                
                 let images: [UIImage] = self!.imageArray
                 let uploadImageEndpoint = UploadImageEndpoint(images: images)
                 
@@ -284,6 +292,10 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                     case .success(let imageResponse):
                         let imageIDs = imageResponse.map {$0.id}
                         DispatchQueue.main.async {
+                            indicator.removeFromSuperview()
+                            customButtonCell.button.setTitle("Publish Listing", for: .normal)
+                            customButtonCell.button.isUserInteractionEnabled = true
+                            
                             guard let productNameCell = self?.collectionView.cellForItem(at: IndexPath(row: 0, section: 2)) as? CustomViewCollectionViewCell,
                                   let descriptionCell = self?.collectionView.cellForItem(at: IndexPath(row: 1, section: 2)) as? CustomTextViewCollectionViewCell,
                                   let categoryCell = self?.collectionView.cellForItem(at: IndexPath(row: 2, section: 2)) as? CustomViewCollectionViewCell,
@@ -299,15 +311,18 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                                   let price = Double(priceString),
                                   let address = addressCell.TextFieldView.inputTextField.text,
                                   let city = cityCell.TextFieldView.inputTextField.text else { return }
-                            
-                            let createListing = CreateListing(productName: productName, description: description, price: price, category: category.uppercased(), condition: condition, address: address, city: city, images: imageIDs)
+                                                        
+                            let createListing = CreateListing(productName: productName, description: description, price: price, category: category.uppercased(), condition: condition.uppercased(), address: address, city: city, images: imageIDs)
                             let createListingEndpoint = CreateListingEndpoint(createLisitng: createListing)
                             
                             NetworkManager.shared.request(endpoint: createListingEndpoint) { (result: Result<ListingResponse, Error>) in
                                 switch result {
                                 case .success(let createListingResponse):
                                     print("Create Listing success with id: \(createListingResponse.id)")
-                                    self?.coordinator?.goToLoadingConfirmationVC()
+                                    
+                                    DispatchQueue.main.async {
+                                        self?.coordinator?.goToLoadingConfirmationVC()
+                                    }
                                     
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
                                         self?.coordinator?.goToDashboardVC()
@@ -326,12 +341,29 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                         }
                     case .failure(let error):
                         print("Image upload failed with error: \(error.localizedDescription)")
+                        DispatchQueue.main.async {
+                            indicator.removeFromSuperview()
+                            customButtonCell.button.setTitle("Publish Listing", for: .normal)
+                            customButtonCell.button.isUserInteractionEnabled = true
+                            
+                            self?.showAlert(title: "Image Upload Error!", message: "\(error.localizedDescription)", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel", purpleButtonAction: {
+                                self?.dismiss(animated: true)
+                            }, whiteButtonAction: {
+                                self?.navigationController?.popViewController(animated: true)
+                            })
+                        }
                     }
-                }            }
+                }
+            }
         } else if indexPath.row == 8 {
             customButtonCell.onButtonTapped = { [weak self] in
-                print("Cancel Listing Button Tapped")
-                self?.navigationController?.popViewController(animated: true)
+                DispatchQueue.main.async {
+                    self?.showAlert(title: "Heads up!", message: "Are you sure you want to cancel your listing?", purpleButtonTitle: "Yes", whiteButtonTitle: "No", purpleButtonAction: {
+                        self?.navigationController?.popViewController(animated: true)
+                    }, whiteButtonAction: {
+                        self?.dismiss(animated: true, completion: nil)
+                    })
+                }
             }
         }
         

@@ -35,7 +35,6 @@ extension String {
 }
 
 extension String {
-    
     func height(constraintedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let label =  UILabel(frame: CGRect(x: 0, y: 0, width: width, height: .greatestFiniteMagnitude))
         label.numberOfLines = 0
@@ -44,6 +43,5 @@ extension String {
         label.sizeToFit()
 
         return label.frame.height
-     }
-    
+     } 
 }
