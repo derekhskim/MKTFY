@@ -983,191 +983,48 @@
             </objects>
             <point key="canvasLocation" x="964" y="-1599"/>
         </scene>
-        <!--FAQ1 View Controller-->
+        <!--FAQ Specific View Controller-->
         <scene sceneID="aSU-Lm-hHC">
             <objects>
-                <viewController storyboardIdentifier="FAQ1ViewController" id="fFf-74-9zV" userLabel="FAQ1 View Controller" customClass="FAQ1ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FAQSpecificViewController" id="fFf-74-9zV" userLabel="FAQ Specific View Controller" customClass="FAQSpecificViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WvH-yD-ZHJ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="1100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6do-do-pfS">
-                                <rect key="frame" x="0.0" y="59" width="393" height="1007"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNo-LW-XTE">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtV-bc-iRW" userLabel="backgroundView">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1000"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How MKTFY works?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEM-0m-OMJ">
-                                                <rect key="frame" x="20.999999999999986" y="38" width="231.66666666666663" height="33"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="24"/>
-                                                <color key="textColor" name="OccasionalPurple"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yL-3y-asV">
-                                                <rect key="frame" x="21" y="95" width="351" height="801"/>
-                                                <string key="text">These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [business entity name] (“we,” “us” or “our”), concerning your access to and use of the [website name.com] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
-
-You agree that by accessing the Site, you have read, understood, and agree to be bound by all of these Terms of Service. If you do not agree with all of these Terms of Service, then you are expressly prohibited from using the Site and you must discontinue use immediately.
-
-Supplemental Terms of Service or documents that may be posted on the Site from time to time are hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make changes or modifications to these Terms of Service at any time and for any reason.
-
-We will alert you about any changes by updating the “Last updated” date of these Terms of Service, and you waive any right to receive specific notice of each such change.
-
-It is your responsibility to periodically review these Terms of Service to stay informed of updates. You will be subject to, and will be deemed to have been made aware of and to have accepted, the changes in any revised Terms of Service by your continued use of the Site after the date such revised Terms of Service are posted.
-
-The information provided on the Site is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country.</string>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" name="VerySubtleGray"/>
-                                        <constraints>
-                                            <constraint firstItem="UEM-0m-OMJ" firstAttribute="leading" secondItem="xtV-bc-iRW" secondAttribute="leading" constant="21" id="2h4-1n-TQb"/>
-                                            <constraint firstAttribute="height" constant="1000" id="7Mm-Gi-piN"/>
-                                            <constraint firstItem="3yL-3y-asV" firstAttribute="leading" secondItem="xtV-bc-iRW" secondAttribute="leading" constant="21" id="NUM-fa-xXa"/>
-                                            <constraint firstAttribute="trailing" secondItem="3yL-3y-asV" secondAttribute="trailing" constant="21" id="ScS-Lg-5po"/>
-                                            <constraint firstItem="3yL-3y-asV" firstAttribute="top" secondItem="UEM-0m-OMJ" secondAttribute="bottom" constant="24" id="ZXU-rw-n1d"/>
-                                            <constraint firstItem="UEM-0m-OMJ" firstAttribute="top" secondItem="xtV-bc-iRW" secondAttribute="top" constant="38" id="czR-1r-L3m"/>
-                                        </constraints>
-                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SWc-V8-B4b">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
                                 </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="xtV-bc-iRW" firstAttribute="bottom" secondItem="Grx-jA-PD4" secondAttribute="bottom" id="6io-A1-88x"/>
-                                    <constraint firstItem="xtV-bc-iRW" firstAttribute="top" secondItem="Grx-jA-PD4" secondAttribute="top" id="AOp-zo-o7O"/>
-                                    <constraint firstItem="xtV-bc-iRW" firstAttribute="leading" secondItem="Grx-jA-PD4" secondAttribute="leading" id="CZl-ov-MKs"/>
-                                    <constraint firstItem="xtV-bc-iRW" firstAttribute="width" secondItem="RV1-rY-JM7" secondAttribute="width" id="cBO-rp-UvJ"/>
-                                    <constraint firstItem="xtV-bc-iRW" firstAttribute="trailing" secondItem="Grx-jA-PD4" secondAttribute="trailing" id="mIx-yO-DSV"/>
+                                    <constraint firstItem="SWc-V8-B4b" firstAttribute="leading" secondItem="KNo-LW-XTE" secondAttribute="leading" id="Pvg-ua-arO"/>
+                                    <constraint firstAttribute="trailing" secondItem="SWc-V8-B4b" secondAttribute="trailing" id="RCB-7k-Zoz"/>
+                                    <constraint firstItem="SWc-V8-B4b" firstAttribute="top" secondItem="KNo-LW-XTE" secondAttribute="top" id="SJc-HV-HVj"/>
+                                    <constraint firstAttribute="bottom" secondItem="SWc-V8-B4b" secondAttribute="bottom" id="oiK-Iy-G83"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="Grx-jA-PD4"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="RV1-rY-JM7"/>
-                            </scrollView>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ydd-Vw-zeM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ydd-Vw-zeM" firstAttribute="trailing" secondItem="6do-do-pfS" secondAttribute="trailing" id="5jM-aN-ewM"/>
-                            <constraint firstItem="6do-do-pfS" firstAttribute="leading" secondItem="Ydd-Vw-zeM" secondAttribute="leading" id="XvS-iy-wUZ"/>
-                            <constraint firstItem="6do-do-pfS" firstAttribute="top" secondItem="Ydd-Vw-zeM" secondAttribute="top" id="cgy-yT-H6X"/>
-                            <constraint firstItem="Ydd-Vw-zeM" firstAttribute="bottom" secondItem="6do-do-pfS" secondAttribute="bottom" id="hJ0-yO-E1T"/>
+                            <constraint firstAttribute="bottom" secondItem="KNo-LW-XTE" secondAttribute="bottom" id="Fkk-Wf-KsY"/>
+                            <constraint firstItem="KNo-LW-XTE" firstAttribute="leading" secondItem="Ydd-Vw-zeM" secondAttribute="leading" id="goR-zy-JoA"/>
+                            <constraint firstItem="KNo-LW-XTE" firstAttribute="top" secondItem="Ydd-Vw-zeM" secondAttribute="top" id="jsr-8w-aiQ"/>
+                            <constraint firstItem="Ydd-Vw-zeM" firstAttribute="trailing" secondItem="KNo-LW-XTE" secondAttribute="trailing" id="uT7-8I-ERF"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="393" height="1100"/>
                     <connections>
-                        <outlet property="backgroundView" destination="xtV-bc-iRW" id="SrI-M0-RLy"/>
+                        <outlet property="backgroundView" destination="KNo-LW-XTE" id="B19-2i-G1p"/>
+                        <outlet property="tableView" destination="SWc-V8-B4b" id="6um-Kl-cHM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Hu-Rp-9hU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="-1513"/>
-        </scene>
-        <!--FAQ2 View Controller-->
-        <scene sceneID="YhG-nh-t8g">
-            <objects>
-                <viewController storyboardIdentifier="FAQ2ViewController" id="Afb-5K-ART" userLabel="FAQ2 View Controller" customClass="FAQ2ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rGt-gU-bSS">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VC2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0I-32-6tv">
-                                <rect key="frame" x="180.33333333333334" y="415.66666666666669" width="32.333333333333343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="heU-8t-CQL"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="J0I-32-6tv" firstAttribute="centerY" secondItem="rGt-gU-bSS" secondAttribute="centerY" id="3fd-oX-kV0"/>
-                            <constraint firstItem="J0I-32-6tv" firstAttribute="centerX" secondItem="rGt-gU-bSS" secondAttribute="centerX" id="KMk-hA-VNI"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Iry-yX-o84" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2474" y="-1600"/>
-        </scene>
-        <!--FAQ3 View Controller-->
-        <scene sceneID="u0b-sV-BnZ">
-            <objects>
-                <viewController storyboardIdentifier="FAQ3ViewController" id="zDx-UO-8qM" userLabel="FAQ3 View Controller" customClass="FAQ3ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hP5-18-fLu">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VC3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kba-qr-BWB">
-                                <rect key="frame" x="180.33333333333334" y="415.66666666666669" width="32.666666666666657" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="P66-Qj-eAK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="kba-qr-BWB" firstAttribute="centerX" secondItem="hP5-18-fLu" secondAttribute="centerX" id="Ao2-Kb-DiA"/>
-                            <constraint firstItem="kba-qr-BWB" firstAttribute="centerY" secondItem="hP5-18-fLu" secondAttribute="centerY" id="WJj-gr-xs3"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dmR-8O-Aul" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3181" y="-1600"/>
-        </scene>
-        <!--FAQ4 View Controller-->
-        <scene sceneID="x6d-kX-F0d">
-            <objects>
-                <viewController storyboardIdentifier="FAQ4ViewController" id="WWu-6O-P2B" userLabel="FAQ4 View Controller" customClass="FAQ4ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bh-yw-aq9">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VC4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUV-ac-wgt">
-                                <rect key="frame" x="180" y="415.66666666666669" width="33" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="cNP-Vn-7e3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="iUV-ac-wgt" firstAttribute="centerY" secondItem="8bh-yw-aq9" secondAttribute="centerY" id="OGF-7M-QuO"/>
-                            <constraint firstItem="iUV-ac-wgt" firstAttribute="centerX" secondItem="8bh-yw-aq9" secondAttribute="centerX" id="fr9-2M-e6C"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z0b-aZ-n9t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3912" y="-1600"/>
-        </scene>
-        <!--FAQ5 View Controller-->
-        <scene sceneID="7aQ-hX-WV1">
-            <objects>
-                <viewController storyboardIdentifier="FAQ5ViewController" id="ypD-bE-UeR" userLabel="FAQ5 View Controller" customClass="FAQ5ViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Fpx-cI-8NV">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VC5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="br1-B8-bbi">
-                                <rect key="frame" x="180.33333333333334" y="415.66666666666669" width="32.666666666666657" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="EPf-fL-w7m"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="br1-B8-bbi" firstAttribute="centerX" secondItem="Fpx-cI-8NV" secondAttribute="centerX" id="Ask-LV-cdU"/>
-                            <constraint firstItem="br1-B8-bbi" firstAttribute="centerY" secondItem="Fpx-cI-8NV" secondAttribute="centerY" id="KXD-DJ-SaW"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Eof-KX-uGD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4636" y="-1600"/>
+            <point key="canvasLocation" x="1752" y="-1599"/>
         </scene>
         <!--Pickup Information-->
         <scene sceneID="n1P-VF-aPU">
@@ -1184,7 +1041,7 @@ The information provided on the Site is not intended for distribution to or use 
                                         <rect key="frame" x="21" y="38" width="351" height="78"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sN-bj-ssP">
-                                                <rect key="frame" x="0.0" y="9.9999999999999982" width="85" height="19.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="9.9999999999999982" width="80.666666666666671" height="16.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="TextGray"/>
                                                 <nil key="highlightedColor"/>
@@ -1211,19 +1068,19 @@ The information provided on the Site is not intended for distribution to or use 
                                         <rect key="frame" x="21" y="140" width="351" height="254"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2c-qr-cCC">
-                                                <rect key="frame" x="20" y="20" width="47" height="19.333333333333329"/>
+                                                <rect key="frame" x="20" y="20" width="47" height="16.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="GoodGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9Sr-CC-UIM">
-                                                <rect key="frame" x="20" y="43.333333333333343" width="311" height="50"/>
+                                                <rect key="frame" x="20" y="40.333333333333343" width="311" height="50"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfV-ce-TRl">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDy-ec-LgR">
-                                                                <rect key="frame" x="20" y="13.999999999999972" width="10.333333333333336" height="22"/>
+                                                                <rect key="frame" x="19.666666666666664" y="15.666666666666659" width="10.666666666666664" height="18.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                                                 <color key="textColor" name="VoidWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -1241,13 +1098,13 @@ The information provided on the Site is not intended for distribution to or use 
                                                         <rect key="frame" x="60" y="0.0" width="251" height="50"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Seller Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41b-sb-mx4">
-                                                                <rect key="frame" x="0.0" y="0.0" width="251" height="27.666666666666668"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="251" height="30.666666666666668"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                                                 <color key="textColor" name="TextGray"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seller Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARd-qD-ZiK">
-                                                                <rect key="frame" x="0.0" y="30.666666666666657" width="251" height="19.333333333333329"/>
+                                                                <rect key="frame" x="0.0" y="33.666666666666657" width="251" height="16.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                                 <color key="textColor" name="OccasionalPurple"/>
                                                                 <nil key="highlightedColor"/>
@@ -1262,13 +1119,13 @@ The information provided on the Site is not intended for distribution to or use 
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please pick up your purchase at this address, city, Alberta" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qil-61-RXU">
-                                                <rect key="frame" x="20" y="119.3333333333333" width="311" height="38.333333333333329"/>
+                                                <rect key="frame" x="20" y="116.33333333333333" width="311" height="32.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4H8-sn-5SP">
-                                                <rect key="frame" x="20" y="183.66666666666669" width="311" height="51"/>
+                                                <rect key="frame" x="20" y="175" width="311" height="51"/>
                                                 <color key="backgroundColor" name="LightestPurple"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="51" id="syC-VJ-dfH"/>
@@ -1416,13 +1273,13 @@ The information provided on the Site is not intended for distribution to or use 
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-w5-tz4">
-                                        <rect key="frame" x="21" y="246" width="351" height="22"/>
+                                        <rect key="frame" x="21" y="246" width="351" height="18.666666666666686"/>
                                         <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" name="TitleGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rZn-Fi-Bz7">
-                                        <rect key="frame" x="21" y="274" width="351" height="140"/>
+                                        <rect key="frame" x="21" y="270.66666666666669" width="351" height="140"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="Bf8-QO-1Bn"/>
@@ -1811,10 +1668,10 @@ The information provided on the Site is not intended for distribution to or use 
             <size key="intrinsicContentSize" width="135" height="31"/>
         </designable>
         <designable name="qhU-dV-Npa">
-            <size key="intrinsicContentSize" width="66.666666666666671" height="36"/>
+            <size key="intrinsicContentSize" width="65" height="32.666666666666664"/>
         </designable>
         <designable name="yuD-GJ-c46">
-            <size key="intrinsicContentSize" width="63" height="36"/>
+            <size key="intrinsicContentSize" width="61.666666666666664" height="32.666666666666664"/>
         </designable>
     </designables>
     <resources>

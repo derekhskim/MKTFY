@@ -100,6 +100,11 @@ class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToFAQSpecificVC() {
+        let vc = FAQSpecificViewController.instantiate()
+        self.navigationController.present(vc, animated: true)
+    }
+    
     func goToContactUsVC() {
         let vc = ContactUsViewController.instantiate()
         self.navigationController.pushViewController(vc, animated: true)
@@ -147,31 +152,4 @@ class MainCoordinator: Coordinator {
         vc.listingResponse = listingResponse
         self.navigationController.pushViewController(vc, animated: true)
     }
-    
-    // MARK: - FAQ VCs
-    func goToFAQ1VC() {
-        let vc = FAQ1ViewController.instantiate()
-        self.navigationController.present(vc, animated: true)
-    }
-    
-    func goToFAQ2VC() {
-        let vc = FAQ2ViewController.instantiate()
-        self.navigationController.present(vc, animated: true)
-    }
-    
-    func goToFAQ3VC() {
-        let vc = FAQ3ViewController.instantiate()
-        self.navigationController.present(vc, animated: true)
-    }
-    
-    func goToFAQ4VC() {
-        let vc = FAQ4ViewController.instantiate()
-        self.navigationController.present(vc, animated: true)
-    }
-    
-    func goToFAQ5VC() {
-        let vc = FAQ5ViewController.instantiate()
-        self.navigationController.present(vc, animated: true)
-    }
-    
 }

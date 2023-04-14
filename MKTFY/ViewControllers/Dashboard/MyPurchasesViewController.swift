@@ -23,23 +23,14 @@ class MyPurchasesViewController: MainViewController, DashboardStoryboard {
         
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
-        setupTableViewBackground()
-        
+        setupTableViewBackground(view: backgroundView, talbeView: tableView)
+
         getUsersPurchases()
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ListingViewTableViewCell", bundle: nil), forCellReuseIdentifier: "ListingViewTableViewCell")
         
-    }
-    
-    func setupTableViewBackground() {
-        backgroundView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
-        backgroundView.layer.cornerRadius = 20
-        backgroundView.clipsToBounds = true
-        
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .clear
     }
     
     func getUsersPurchases() {

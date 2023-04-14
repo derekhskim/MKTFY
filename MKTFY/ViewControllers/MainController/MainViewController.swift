@@ -133,6 +133,16 @@ class MainViewController: UIViewController, UITextViewDelegate {
             textView.textColor = UIColor.appColor(LPColor.TextGray40)
         }
     }
+    
+    func setupTableViewBackground(view: UIView, talbeView: UITableView) {
+        view.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.layer.cornerRadius = 20
+        view.clipsToBounds = true
+        
+        talbeView.separatorStyle = .none
+        talbeView.backgroundColor = .clear
+    }
 }
 
 // MARK: - Extension

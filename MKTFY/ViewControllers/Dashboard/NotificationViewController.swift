@@ -27,22 +27,13 @@ class NotificationViewController: MainViewController, DashboardStoryboard {
         super.viewDidLoad()
         
         setupNavigationBarWithBackButton()
-        setupTableViewBackground()
+        setupTableViewBackground(view: backgroundView, talbeView: tableView)
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
     }
     
-    func setupTableViewBackground() {
-        backgroundView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
-        backgroundView.layer.cornerRadius = 20
-        backgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        backgroundView.clipsToBounds = true
-        
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .clear
-    }
 }
 
 extension NotificationViewController: UITableViewDelegate, UITableViewDataSource {

@@ -21,7 +21,7 @@ class FAQViewController: MainViewController, DashboardStoryboard {
         super.viewDidLoad()
         
         setupNavigationBarWithBackButton()
-        setupTableViewBackground()
+        setupTableViewBackground(view: backgroundView, talbeView: tableView)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -30,16 +30,7 @@ class FAQViewController: MainViewController, DashboardStoryboard {
         getFAQ()
     }
     
-    // MARK: - Function
-    func setupTableViewBackground() {
-        backgroundView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
-        backgroundView.layer.cornerRadius = 20
-        backgroundView.clipsToBounds = true
-        
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .clear
-    }
-    
+    // MARK: - Function    
     func getFAQ(){
         let getFAQEndpoint = GetFAQEndpoint()
         NetworkManager.shared.request(endpoint: getFAQEndpoint) { (result: Result<FAQResponses, Error>) in
