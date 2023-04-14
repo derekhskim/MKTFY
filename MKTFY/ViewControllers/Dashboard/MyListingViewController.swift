@@ -10,7 +10,8 @@ import UIKit
 class MyListingViewController: MainViewController, DashboardStoryboard {
     
     weak var coordinator: MainCoordinator?
-    var listingResponse: [ListingResponse] = []
+    var listingResponses: [ListingResponse] = []
+    var listingResponse: ListingResponse?
     
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
@@ -65,7 +66,7 @@ class MyListingViewController: MainViewController, DashboardStoryboard {
             case .success(let listingResponse):
                 print("User's listings retrieved: \(listingResponse)")
                 print("listingResponse count: \(listingResponse.count)")
-                self.listingResponse = listingResponse
+                self.listingResponses = listingResponse
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -82,14 +83,14 @@ extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listingResponse.count
+        return listingResponses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: Fix Spacing
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListingViewTableViewCell", for: indexPath) as! ListingViewTableViewCell
         
-        let listings = listingResponse[indexPath.row]
+        let listings = listingResponses[indexPath.row]
         
         // TODO: DropShadow is only affecting corners ATM
         
@@ -118,6 +119,40 @@ extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: Link each item to show on ProductDetailsEditableViewController if active, ProductDetailsNotEditableViewController if pending or completed
+        let selectedListingResponse = listingResponses[indexPath.row]
+        let getListingByIDEndpoint = GetListingByIDEndpoint(id: selectedListingResponse.id)
+        
+        NetworkManager.shared.request(endpoint: getListingByIDEndpoint) { (result: Result<ListingResponse, Error>) in
+            switch result {
+            case .success(let listingResponse):
+                print("ListingResponse by ID retrieved: \(listingResponse)")
+                self.listingResponse = listingResponse
+                if listingResponse.status.lowercased() == "active" {
+                    DispatchQueue.main.async {
+                        //                    self.coordinator?.goToPickupInformationVC(listingResponse: listingResponse)
+                        print("This item's status is: \(listingResponse.status)")
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print("This item's status is: \(listingResponse.status)")
+                        //                    self.coordinator?.goToPickupInformationVC(listingResponse: listingResponse)
+                    }
+                }
+            case .failure(let error):
+                print("ListingResponse by ID Failed to Retrieve: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Something Happened!", message: "Unable to see details of your purchase. Please try again.", purpleButtonTitle: "OK", whiteButtonTitle: "Go Back", purpleButtonAction: {
+                        self.dismiss(animated: true, completion: nil)
+                    }, whiteButtonAction: {
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
