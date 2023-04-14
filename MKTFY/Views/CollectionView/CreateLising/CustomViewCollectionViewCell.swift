@@ -14,11 +14,13 @@ class CustomViewCollectionViewCell: UICollectionViewCell, DropDownDelegate {
     }
     
     var TextFieldView: TextFieldWithError!
+    var dropDownHelper: DropDownHelper?
     var dropDownOptions: [String]? {
         didSet {
             if let options = dropDownOptions {
-                let dropDownHelper = DropDownHelper(delegate: self)
-                dropDownHelper.initializeImageDropDown(with: TextFieldView.inputTextField, options: options)
+                self.dropDownHelper = DropDownHelper(delegate: self)
+//                let dropDownHelper = DropDownHelper(delegate: self)
+                dropDownHelper?.initializeImageDropDown(with: TextFieldView.inputTextField, options: options)
             } else {
                 TextFieldView.inputTextField.rightView = nil
             }
