@@ -41,7 +41,6 @@ class FAQViewController: MainViewController, DashboardStoryboard {
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
-                    print("FAQ Successfully received - id: \(faqResponse.id), question: \(faqResponse.question)")
                 }
             case .failure(let error):
                 print("Failde to get FAQ data: \(error.localizedDescription)")

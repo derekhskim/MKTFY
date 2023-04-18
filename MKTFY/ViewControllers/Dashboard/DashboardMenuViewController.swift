@@ -59,6 +59,7 @@ class DashboardMenuViewController: MainViewController, DashboardStoryboard {
     // MARK: - View Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         changeNameAndPrefix()
+        GetListingsAndNotificationsCounts()
     }
     
     // MARK: - viewDidLoad()

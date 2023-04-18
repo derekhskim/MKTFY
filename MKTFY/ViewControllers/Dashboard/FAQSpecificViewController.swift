@@ -38,7 +38,6 @@ class FAQSpecificViewController: MainViewController, DashboardStoryboard {
             switch result {
             case .success(let faqResponse):
                 self.faqResponse = faqResponse
-                print("Received FAQ Response: \(faqResponse)")
             case .failure(let error):
                 print("Failed to fetch FAQ Response: \(error.localizedDescription)")
             }
@@ -70,7 +69,6 @@ extension FAQSpecificViewController: UITableViewDelegate, UITableViewDataSource 
             let decodedString = String(htmlEncodedString: escapedString!)
             let stringWithNewlines = decodedString!.replacingOccurrences(of: "\n", with: "\n\n")
             cell.answerTextView.text = stringWithNewlines
-            print(stringWithNewlines)
             
             return cell
         }

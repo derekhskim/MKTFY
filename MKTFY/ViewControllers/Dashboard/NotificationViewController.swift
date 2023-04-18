@@ -9,14 +9,9 @@ import UIKit
 
 class NotificationViewController: MainViewController, DashboardStoryboard {
     
-    var newNotifications: [Notification] = [
-        Notification(title: "Hey Pearl, welcome to MKTFY", date: "September 7, 2020"),
-    ]
-    
-    var oldNotifications: [Notification] = [
-        Notification(title: "Let's create your first offer!", date: "September 5, 2020"),
-        Notification(title: "Our Terms of Service has been updated!", date: "September 3, 2020"),
-    ]
+    // MARK: - Properties
+    var newNotifications: [Notification] = []
+    var oldNotifications: [Notification] = []
     
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
@@ -29,11 +24,31 @@ class NotificationViewController: MainViewController, DashboardStoryboard {
         setupNavigationBarWithBackButton()
         setupTableViewBackground(view: backgroundView, talbeView: tableView)
         
+        getNotification()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
     }
     
+    // MARK: - Function
+    func getNotification() {
+        let getUsersNotificationEndpoint = GetUsersNotificationEndpoint()
+        NetworkManager.shared.request(endpoint: getUsersNotificationEndpoint) {(result: Result<NotificationResponse, Error>) in
+            switch result {
+            case .success(let notificationResponse):
+                print("Notifications received: \(notificationResponse)")
+                self.newNotifications = notificationResponse.new.map { Notification(from: $0) }
+                self.oldNotifications = notificationResponse.seen.map { Notification(from: $0) }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            case .failure(let error):
+                print("Error receiving notifications: \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 extension NotificationViewController: UITableViewDelegate, UITableViewDataSource {
@@ -67,7 +82,7 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
         
         return headerView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 44 : 59
     }
@@ -109,31 +124,31 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
         }
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        if indexPath.section == 1 {
-            let unreadAction = UIContextualAction(style: .normal, title: "Unread") { (_, _, completionHandler) in
-                let unSeenNotification = self.oldNotifications.remove(at: indexPath.row)
-                self.newNotifications.append(unSeenNotification)
-                
-                let destinationIndexPath = IndexPath(row: self.newNotifications.count - 1, section: 0)
-                tableView.beginUpdates()
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-                tableView.insertRows(at: [destinationIndexPath], with: .automatic)
-                tableView.endUpdates()
-                
-                if let cell = tableView.cellForRow(at: destinationIndexPath) as? NotificationTableViewCell {
-                    cell.viewBackgroundColor = .white
-                }
-                
-                completionHandler(true)
-            }
-            unreadAction.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
-            
-            let configuration = UISwipeActionsConfiguration(actions: [unreadAction])
-            configuration.performsFirstActionWithFullSwipe = false
-            return configuration
-        } else {
-            return nil
-        }
-    }
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        if indexPath.section == 1 {
+//            let unreadAction = UIContextualAction(style: .normal, title: "Unread") { (_, _, completionHandler) in
+//                let unSeenNotification = self.oldNotifications.remove(at: indexPath.row)
+//                self.newNotifications.append(unSeenNotification)
+//
+//                let destinationIndexPath = IndexPath(row: self.newNotifications.count - 1, section: 0)
+//                tableView.beginUpdates()
+//                tableView.deleteRows(at: [indexPath], with: .automatic)
+//                tableView.insertRows(at: [destinationIndexPath], with: .automatic)
+//                tableView.endUpdates()
+//
+//                if let cell = tableView.cellForRow(at: destinationIndexPath) as? NotificationTableViewCell {
+//                    cell.viewBackgroundColor = .white
+//                }
+//
+//                completionHandler(true)
+//            }
+//            unreadAction.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
+//
+//            let configuration = UISwipeActionsConfiguration(actions: [unreadAction])
+//            configuration.performsFirstActionWithFullSwipe = false
+//            return configuration
+//        } else {
+//            return nil
+//        }
+//    }
 }

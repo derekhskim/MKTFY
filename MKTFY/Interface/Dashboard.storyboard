@@ -981,7 +981,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u23-me-OZA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="-1599"/>
+            <point key="canvasLocation" x="963" y="-1488"/>
         </scene>
         <!--FAQ Specific View Controller-->
         <scene sceneID="aSU-Lm-hHC">
@@ -1024,7 +1024,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Hu-Rp-9hU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1752" y="-1599"/>
+            <point key="canvasLocation" x="1752" y="-1488"/>
         </scene>
         <!--Pickup Information-->
         <scene sceneID="n1P-VF-aPU">
@@ -1041,7 +1041,7 @@
                                         <rect key="frame" x="21" y="38" width="351" height="78"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sN-bj-ssP">
-                                                <rect key="frame" x="0.0" y="9.9999999999999982" width="80.666666666666671" height="16.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="9.9999999999999982" width="85" height="19.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="TextGray"/>
                                                 <nil key="highlightedColor"/>
@@ -1068,19 +1068,19 @@
                                         <rect key="frame" x="21" y="140" width="351" height="254"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2c-qr-cCC">
-                                                <rect key="frame" x="20" y="20" width="47" height="16.333333333333329"/>
+                                                <rect key="frame" x="20" y="20" width="47" height="19.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="GoodGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9Sr-CC-UIM">
-                                                <rect key="frame" x="20" y="40.333333333333343" width="311" height="50"/>
+                                                <rect key="frame" x="20" y="43.333333333333343" width="311" height="50"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfV-ce-TRl">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDy-ec-LgR">
-                                                                <rect key="frame" x="19.666666666666664" y="15.666666666666659" width="10.666666666666664" height="18.666666666666671"/>
+                                                                <rect key="frame" x="20" y="13.999999999999972" width="10.333333333333336" height="22"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                                                 <color key="textColor" name="VoidWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -1098,13 +1098,13 @@
                                                         <rect key="frame" x="60" y="0.0" width="251" height="50"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Seller Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41b-sb-mx4">
-                                                                <rect key="frame" x="0.0" y="0.0" width="251" height="30.666666666666668"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="251" height="27.666666666666668"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                                                 <color key="textColor" name="TextGray"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seller Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARd-qD-ZiK">
-                                                                <rect key="frame" x="0.0" y="33.666666666666657" width="251" height="16.333333333333329"/>
+                                                                <rect key="frame" x="0.0" y="30.666666666666657" width="251" height="19.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                                 <color key="textColor" name="OccasionalPurple"/>
                                                                 <nil key="highlightedColor"/>
@@ -1119,13 +1119,13 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please pick up your purchase at this address, city, Alberta" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qil-61-RXU">
-                                                <rect key="frame" x="20" y="116.33333333333333" width="311" height="32.666666666666671"/>
+                                                <rect key="frame" x="20" y="119.3333333333333" width="311" height="38.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4H8-sn-5SP">
-                                                <rect key="frame" x="20" y="175" width="311" height="51"/>
+                                                <rect key="frame" x="20" y="183.66666666666669" width="311" height="51"/>
                                                 <color key="backgroundColor" name="LightestPurple"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="51" id="syC-VJ-dfH"/>
@@ -1273,13 +1273,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-w5-tz4">
-                                        <rect key="frame" x="21" y="246" width="351" height="18.666666666666686"/>
+                                        <rect key="frame" x="21" y="246" width="351" height="22"/>
                                         <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" name="TitleGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rZn-Fi-Bz7">
-                                        <rect key="frame" x="21" y="270.66666666666669" width="351" height="140"/>
+                                        <rect key="frame" x="21" y="274" width="351" height="140"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="Bf8-QO-1Bn"/>
@@ -1446,6 +1446,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2T-CJ-aFw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2473" y="-741"/>
+        </scene>
+        <!--My Listings View Controller-->
+        <scene sceneID="HbK-MR-HfQ">
+            <objects>
+                <viewController storyboardIdentifier="ListingDetailsViewController" id="jw0-a5-V23" userLabel="My Listings View Controller" customClass="ListingDetailsViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rfG-tQ-HtL">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnS-RR-G3W" userLabel="Background View">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jWX-mn-rOT">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="jWX-mn-rOT" secondAttribute="trailing" id="2w3-SJ-uK7"/>
+                                    <constraint firstItem="jWX-mn-rOT" firstAttribute="top" secondItem="rnS-RR-G3W" secondAttribute="top" id="EUV-yV-qro"/>
+                                    <constraint firstAttribute="bottom" secondItem="jWX-mn-rOT" secondAttribute="bottom" id="N2S-l1-SAw"/>
+                                    <constraint firstItem="jWX-mn-rOT" firstAttribute="leading" secondItem="rnS-RR-G3W" secondAttribute="leading" id="zcB-RL-36b"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ekn-X4-IFe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rnS-RR-G3W" firstAttribute="top" secondItem="ekn-X4-IFe" secondAttribute="top" id="0yM-Nm-zCG"/>
+                            <constraint firstItem="rnS-RR-G3W" firstAttribute="leading" secondItem="ekn-X4-IFe" secondAttribute="leading" id="Gia-dd-wIg"/>
+                            <constraint firstItem="ekn-X4-IFe" firstAttribute="trailing" secondItem="rnS-RR-G3W" secondAttribute="trailing" id="LGj-z8-r6u"/>
+                            <constraint firstAttribute="bottom" secondItem="rnS-RR-G3W" secondAttribute="bottom" id="hlj-CG-qW4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Listings" style="editor" id="TEo-Zi-6n1"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="rnS-RR-G3W" id="lFT-oH-hAA"/>
+                        <outlet property="tableView" destination="jWX-mn-rOT" id="mRc-Jm-JPY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lTz-5N-6GK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3181" y="-1488"/>
         </scene>
         <!--My Listings View Controller-->
         <scene sceneID="a4b-8u-YR1">
@@ -1668,10 +1712,10 @@
             <size key="intrinsicContentSize" width="135" height="31"/>
         </designable>
         <designable name="qhU-dV-Npa">
-            <size key="intrinsicContentSize" width="65" height="32.666666666666664"/>
+            <size key="intrinsicContentSize" width="66.666666666666671" height="36"/>
         </designable>
         <designable name="yuD-GJ-c46">
-            <size key="intrinsicContentSize" width="61.666666666666664" height="32.666666666666664"/>
+            <size key="intrinsicContentSize" width="63" height="36"/>
         </designable>
     </designables>
     <resources>

@@ -25,6 +25,7 @@
 		6512531D29DE8CA900E592FC /* CreateListingEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6512531C29DE8CA900E592FC /* CreateListingEndpoint.swift */; };
 		6512531F29DE8D8800E592FC /* ListingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6512531E29DE8D8800E592FC /* ListingResponse.swift */; };
 		6512532229DF425A00E592FC /* DKCustomDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6512532129DF425A00E592FC /* DKCustomDropDown.swift */; };
+		6513AE1529EF19FD00B7CB6E /* GetUsersNotificationEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513AE1429EF19FD00B7CB6E /* GetUsersNotificationEndpoint.swift */; };
 		6534471129E47A650056D67B /* ImageCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6534471029E47A650056D67B /* ImageCarouselTableViewCell.swift */; };
 		6534471329E47AE00056D67B /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6534471229E47AE00056D67B /* ImageCollectionViewCell.swift */; };
 		6534471729E516610056D67B /* DropDownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6534471629E516610056D67B /* DropDownHelper.swift */; };
@@ -62,6 +63,8 @@
 		65629A4929CAC5E20056F748 /* ListingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65629A4729CAC5E20056F748 /* ListingViewTableViewCell.swift */; };
 		65629A4A29CAC5E20056F748 /* ListingViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65629A4829CAC5E20056F748 /* ListingViewTableViewCell.xib */; };
 		65629A4C29CB6A1E0056F748 /* Purchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65629A4B29CB6A1E0056F748 /* Purchases.swift */; };
+		6566880829EDCAA7003A0CD3 /* ListingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6566880729EDCAA7003A0CD3 /* ListingDetailsViewController.swift */; };
+		6566880B29EDD820003A0CD3 /* CustomViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6566880A29EDD820003A0CD3 /* CustomViewTableViewCell.swift */; };
 		6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E0FE2988AACF001482AB /* AppDelegate.swift */; };
 		6568E1012988AACF001482AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6568E1002988AACF001482AB /* SceneDelegate.swift */; };
 		6568E1082988AACF001482AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6568E1072988AACF001482AB /* Assets.xcassets */; };
@@ -168,6 +171,7 @@
 		6512531C29DE8CA900E592FC /* CreateListingEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingEndpoint.swift; sourceTree = "<group>"; };
 		6512531E29DE8D8800E592FC /* ListingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingResponse.swift; sourceTree = "<group>"; };
 		6512532129DF425A00E592FC /* DKCustomDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKCustomDropDown.swift; sourceTree = "<group>"; };
+		6513AE1429EF19FD00B7CB6E /* GetUsersNotificationEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersNotificationEndpoint.swift; sourceTree = "<group>"; };
 		6534471029E47A650056D67B /* ImageCarouselTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarouselTableViewCell.swift; sourceTree = "<group>"; };
 		6534471229E47AE00056D67B /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		6534471629E516610056D67B /* DropDownHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownHelper.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 		65629A4729CAC5E20056F748 /* ListingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewTableViewCell.swift; sourceTree = "<group>"; };
 		65629A4829CAC5E20056F748 /* ListingViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListingViewTableViewCell.xib; sourceTree = "<group>"; };
 		65629A4B29CB6A1E0056F748 /* Purchases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchases.swift; sourceTree = "<group>"; };
+		6566880729EDCAA7003A0CD3 /* ListingDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailsViewController.swift; sourceTree = "<group>"; };
+		6566880A29EDD820003A0CD3 /* CustomViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewTableViewCell.swift; sourceTree = "<group>"; };
 		6568E0FB2988AACF001482AB /* MKTFY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKTFY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6568E0FE2988AACF001482AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6568E1002988AACF001482AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -444,6 +450,14 @@
 			path = NotificationViewTile;
 			sourceTree = "<group>";
 		};
+		6566880929EDD726003A0CD3 /* ListingDetailsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6566880A29EDD820003A0CD3 /* CustomViewTableViewCell.swift */,
+			);
+			path = ListingDetailsTableViewCell;
+			sourceTree = "<group>";
+		};
 		6568E0F22988AACF001482AB = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +632,7 @@
 				650D634629E471B200F2B0E1 /* ProductDetailsViewController.swift */,
 				6549E05E29E6632100FFE871 /* CheckoutViewController.swift */,
 				65EE2FE029E7C0A100F7EAB2 /* PickupInformationViewController.swift */,
+				6566880729EDCAA7003A0CD3 /* ListingDetailsViewController.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -642,6 +657,7 @@
 				65B23D6429E8F4CF0041230E /* GetUsersListingsEndpoint.swift */,
 				65B23D6629E8F6410041230E /* GetUsersPurchasesEndpoint.swift */,
 				65CCAFC529D770F10088338B /* UpdateUserEndpoint.swift */,
+				6513AE1429EF19FD00B7CB6E /* GetUsersNotificationEndpoint.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -690,6 +706,7 @@
 		65E90FE92988CD5F00ACDC0C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6566880929EDD726003A0CD3 /* ListingDetailsTableViewCell */,
 				659085DD29E9CE6B00DBCF1D /* FAQListingViewTile */,
 				6549E06029E6658900FFE871 /* CheckoutTableViewCell */,
 				6534471829E5339E0056D67B /* ProductDetailsTableViewCell */,
@@ -868,6 +885,7 @@
 				6534471129E47A650056D67B /* ImageCarouselTableViewCell.swift in Sources */,
 				655365C429DCAFAB00D7592D /* CreateListingViewController.swift in Sources */,
 				654444D429AFBF7700E61F69 /* PrivacyPolicyViewController.swift in Sources */,
+				6566880829EDCAA7003A0CD3 /* ListingDetailsViewController.swift in Sources */,
 				6512531D29DE8CA900E592FC /* CreateListingEndpoint.swift in Sources */,
 				65CCAFB829D76C200088338B /* NetworkManager.swift in Sources */,
 				65E8A0D4299EA523009D70A0 /* String+.swift in Sources */,
@@ -891,6 +909,7 @@
 				656F3C4E29C829B100DFAAEC /* MyPurchasesViewController.swift in Sources */,
 				65F9BF8329AD167800FADB2B /* SecureTextFieldWithLabel.swift in Sources */,
 				65DE1B5129BD97A900C7D3E8 /* ItemCollectionViewCell.swift in Sources */,
+				6566880B29EDD820003A0CD3 /* CustomViewTableViewCell.swift in Sources */,
 				6543315129C230D3008D7728 /* DKCustomAlertViewController.swift in Sources */,
 				6534472229E53DCF0056D67B /* DescriptionTableViewCell.swift in Sources */,
 				65CCAFC629D770F10088338B /* UpdateUserEndpoint.swift in Sources */,
@@ -918,6 +937,7 @@
 				65B23D6929E921C50041230E /* EmptyTableViewCell.swift in Sources */,
 				65385B5A29DCBF160030B558 /* PhotoCell.swift in Sources */,
 				656F3C4A29C8282400DFAAEC /* NotificationViewController.swift in Sources */,
+				6513AE1529EF19FD00B7CB6E /* GetUsersNotificationEndpoint.swift in Sources */,
 				6506DA7229CA45F800038AF8 /* Notification.swift in Sources */,
 				6534471C29E535C20056D67B /* PriceTableViewCell.swift in Sources */,
 				65D9039829E86E4B009EB7A1 /* ChangePasswordEndpoint.swift in Sources */,
