@@ -5,7 +5,6 @@
 //  Created by Derek Kim on 2023/01/30.
 //
 
-import Foundation
 import UIKit
 
 enum LPColor: String {

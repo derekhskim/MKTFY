@@ -133,6 +133,13 @@ class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(vc, animated: true)
     }
     
+    func goToListingDetailsVC(listingResponse: ListingResponse) {
+        let vc = ListingDetailsViewController.instantiate()
+        vc.coordinator = self
+        vc.listingResponse = listingResponse
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+    
     func goToProductDetailsVC(listingId: String) {
         let vc = ProductDetailsViewController.instantiate()
         vc.coordinator = self
