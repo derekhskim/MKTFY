@@ -38,12 +38,10 @@ class MyPurchasesViewController: MainViewController, DashboardStoryboard {
         NetworkManager.shared.request(endpoint: getUsersPurchasesEndpoint) { (result: Result<[ListingResponse], Error>) in
             switch result {
             case .success(let listingResponses):
-                print("User's listings retrieved: \(listingResponses)")
-                print("listingResponse count: \(listingResponses.count)")
-                self.listingResponses = listingResponses
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                self.listingResponses = listingResponses.filter { $0.status != "COMPLETE" }
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
             case .failure(let error):
                 print("Failed to retrieve user's purchases: \(error.localizedDescription)")
             }
