@@ -108,6 +108,7 @@ class MainCoordinator: Coordinator {
     
     func goToContactUsVC() {
         let vc = ContactUsViewController.instantiate()
+        vc.coordinator = self
         self.navigationController.pushViewController(vc, animated: true)
     }
     

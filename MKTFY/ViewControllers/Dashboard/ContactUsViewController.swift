@@ -8,7 +8,9 @@
 import UIKit
 
 class ContactUsViewController: MainViewController, DashboardStoryboard {
-
+    
+    weak var coordinator: MainCoordinator?
+    
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var nameView: TextFieldWithError!
@@ -18,7 +20,11 @@ class ContactUsViewController: MainViewController, DashboardStoryboard {
     
     // MARK: - @IBAction
     @IBAction func sendButtonTapped(_ sender: Any) {
-        print("Send Button Tapped!")
+        coordinator?.goToLoadingConfirmationVC()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+            self.coordinator?.goToDashboardVC()
+        }
     }
     
     // MARK: - viewDidLoad()
@@ -26,13 +32,13 @@ class ContactUsViewController: MainViewController, DashboardStoryboard {
         super.viewDidLoad()
         
         initializeHideKeyboard()
-        nameView.inputTextField.delegate = self
-        emailView.inputTextField.delegate = self
-        messageTextView.delegate = self
+        configureUserDetailFields()
         
-        emailView.inputTextField.keyboardType = .emailAddress
+        messageTextView.delegate = self
+        messageTextView.autocorrectionType = .no
         
         sendButton.isEnabled = false
+        
         allFieldsFilled()
         
         setupNavigationBarWithBackButton()
@@ -42,12 +48,28 @@ class ContactUsViewController: MainViewController, DashboardStoryboard {
     }
     
     // MARK: - Function
-    func allFieldsFilled() {
-        // TODO: Validation to enable button is not working atm
-        guard let nameViewText = nameView.inputTextField.text, let validEmail = nameView.inputTextField.text?.isValidEmail, let emailViewText = emailView.inputTextField.text, let messageText = messageTextView.text else { return }
+    func configureUserDetailFields() {
+        guard let firstName = UserDefaults.standard.string(forKey: "firstName"), let email = UserDefaults.standard.string(forKey: "email") else { return }
         
-        if !nameViewText.isEmpty && validEmail && !emailViewText.isEmpty && !messageText.isEmpty {
+        nameView.inputTextField.text = firstName
+        emailView.inputTextField.text = email
+        
+        nameView.inputTextField.textColor = UIColor.appColor(LPColor.TextGray40)
+        emailView.inputTextField.textColor = UIColor.appColor(LPColor.TextGray40)
+        
+        nameView.inputTextField.isUserInteractionEnabled = false
+        emailView.inputTextField.isUserInteractionEnabled = false
+    }
+    
+    func allFieldsFilled() {
+        let messageText = messageTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if !messageText.isEmpty && messageText != "Your message" {
             sendButton.isEnabled = true
+            sendButton.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
+        } else {
+            sendButton.isEnabled = false
+            sendButton.backgroundColor = UIColor.appColor(LPColor.DisabledGray)
         }
     }
     
@@ -72,25 +94,4 @@ extension ContactUsViewController {
         view.endEditing(true)
         allFieldsFilled()
     }
-}
-
-extension ContactUsViewController: UITextFieldDelegate, UINavigationBarDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        allFieldsFilled()
-        return false
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-   
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        allFieldsFilled()
-    }
-
-    func textViewDidChange(_ textView: UITextView) {
-        allFieldsFilled()
-    }
-
 }
