@@ -123,32 +123,4 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
             tableView.endUpdates()
         }
     }
-    
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        if indexPath.section == 1 {
-//            let unreadAction = UIContextualAction(style: .normal, title: "Unread") { (_, _, completionHandler) in
-//                let unSeenNotification = self.oldNotifications.remove(at: indexPath.row)
-//                self.newNotifications.append(unSeenNotification)
-//
-//                let destinationIndexPath = IndexPath(row: self.newNotifications.count - 1, section: 0)
-//                tableView.beginUpdates()
-//                tableView.deleteRows(at: [indexPath], with: .automatic)
-//                tableView.insertRows(at: [destinationIndexPath], with: .automatic)
-//                tableView.endUpdates()
-//
-//                if let cell = tableView.cellForRow(at: destinationIndexPath) as? NotificationTableViewCell {
-//                    cell.viewBackgroundColor = .white
-//                }
-//
-//                completionHandler(true)
-//            }
-//            unreadAction.backgroundColor = UIColor.appColor(LPColor.OccasionalPurple)
-//
-//            let configuration = UISwipeActionsConfiguration(actions: [unreadAction])
-//            configuration.performsFirstActionWithFullSwipe = false
-//            return configuration
-//        } else {
-//            return nil
-//        }
-//    }
 }

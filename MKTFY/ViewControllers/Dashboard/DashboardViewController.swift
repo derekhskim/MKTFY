@@ -9,11 +9,9 @@ import UIKit
 
 class DashboardViewController: MainViewController, DashboardStoryboard, UISearchBarDelegate {
     
+    // MARK: - Properties
     weak var coordinator: MainCoordinator?
-    
     var vm = FlowLayoutViewModel(items: [])
-    
-    // TODO: either add actions to UIStackView or embed in UIView and add actions to allow selection for category. Call GetListingByCategory when pressed and pass category and city value
     
     // MARK: - @IBOutlet
     @IBOutlet weak var navigationWhiteBackgroundView: UIView!
@@ -26,6 +24,11 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     @IBOutlet weak var horizontalScrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var cstTopCollectionView: NSLayoutConstraint!
+    @IBOutlet weak var dealsCategoryView: UIView!
+    @IBOutlet weak var carsCategoryView: UIView!
+    @IBOutlet weak var furnitureCategoryView: UIView!
+    @IBOutlet weak var electronicsCategoryView: UIView!
+    @IBOutlet weak var realEstateCategoryView: UIView!
     
     // MARK: - View Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -43,9 +46,8 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         super.viewDidLoad()
         
         getUsers()
-        
-        // TODO: Need to change this to getListingByCategory and default to Deals?
-        getAllListing()
+        getDeals()
+        tapGestureCategoryView()
         
         navigationWhiteBackgroundView.layer.cornerRadius = 10
         navigationWhiteBackgroundView.clipsToBounds = true
@@ -54,9 +56,14 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         floatingButton()
         
         selectionDelegate = self
+        
         let tapImg = UITapGestureRecognizer(target: self, action: #selector(dropdownTapped))
         imgViewForDropDown.addGestureRecognizer(tapImg)
         imgViewForDropDown.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchButtonTapped))
+        searchImageView.addGestureRecognizer(tapGesture)
+        searchImageView.isUserInteractionEnabled = true
         
         horizontalDropShadow()
         horizontalScrollView.bounces = false
@@ -64,10 +71,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         
         searchTextField.borderStyle = .none
         searchTextField.delegate = self
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchButtonTapped))
-        searchImageView.addGestureRecognizer(tapGesture)
-        searchImageView.isUserInteractionEnabled = true
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -86,6 +89,73 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     }
     
     // MARK: - Function
+    func tapGestureCategoryView() {
+        let dealsTapGesture = UITapGestureRecognizer(target: self, action: #selector(dealsCategoryViewTapped))
+        let carsTapGesture = UITapGestureRecognizer(target: self, action: #selector(carsCategoryViewTapped))
+        let furnitureTapGesture = UITapGestureRecognizer(target: self, action: #selector(furnitureCategoryViewTapped))
+        let electronicsTapGesture = UITapGestureRecognizer(target: self, action: #selector(electronicsCategoryViewTapped))
+        let realEstateTapGesture = UITapGestureRecognizer(target: self, action: #selector(realEstateCategoryViewTapped))
+        
+        dealsCategoryView.addGestureRecognizer(dealsTapGesture)
+        carsCategoryView.addGestureRecognizer(carsTapGesture)
+        furnitureCategoryView.addGestureRecognizer(furnitureTapGesture)
+        electronicsCategoryView.addGestureRecognizer(electronicsTapGesture)
+        realEstateCategoryView.addGestureRecognizer(realEstateTapGesture)
+    }
+    
+    @objc func dealsCategoryViewTapped(_ sender: UITapGestureRecognizer) {
+        resetAllViewBackgroundColors()
+        dealsCategoryView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        getDeals()
+        if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
+            headerView.updateTitleLabel(title: "Deals for you")
+        }
+    }
+
+    @objc func carsCategoryViewTapped(_ sender: UITapGestureRecognizer) {
+        resetAllViewBackgroundColors()
+        carsCategoryView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        getListingByCategory(category: "VEHICLES")
+        if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
+            headerView.updateTitleLabel(title: "Showing Results for Vehicles")
+        }
+    }
+
+    @objc func furnitureCategoryViewTapped(_ sender: UITapGestureRecognizer) {
+        resetAllViewBackgroundColors()
+        furnitureCategoryView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        getListingByCategory(category: "FURNITURE")
+        if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
+            headerView.updateTitleLabel(title: "Showing Results for Furniture")
+        }
+    }
+
+    @objc func electronicsCategoryViewTapped(_ sender: UITapGestureRecognizer) {
+        resetAllViewBackgroundColors()
+        electronicsCategoryView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        getListingByCategory(category: "ELECTRONICS")
+        if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
+            headerView.updateTitleLabel(title: "Showing Results for Electronics")
+        }
+    }
+
+    @objc func realEstateCategoryViewTapped(_ sender: UITapGestureRecognizer) {
+        resetAllViewBackgroundColors()
+        realEstateCategoryView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
+        getListingByCategory(category: "REAL_ESTATE")
+        if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
+            headerView.updateTitleLabel(title: "Showing Results for Real Estate")
+        }
+    }
+    
+    func resetAllViewBackgroundColors() {
+        dealsCategoryView.backgroundColor = UIColor.clear
+        carsCategoryView.backgroundColor = UIColor.clear
+        furnitureCategoryView.backgroundColor = UIColor.clear
+        electronicsCategoryView.backgroundColor = UIColor.clear
+        realEstateCategoryView.backgroundColor = UIColor.clear
+    }
+    
     func createCollectionViewItems(from listingResponses: [ListingResponse], for city: String) -> [CollectionViewItems] {
         return listingResponses
             .filter { $0.city.lowercased() == city.lowercased() && $0.status.lowercased() == "active" }
@@ -150,7 +220,6 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
 
 // MARK: - Extension
 extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return vm.items.count
     }
@@ -233,7 +302,33 @@ extension DashboardViewController {
             case .success(let user):
                 print("User data successfully fetched: \(user)")
             case .failure(let error):
-                print("Error fetching user data: \(error)")
+                print("Error fetching user data: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func getDeals() {
+        let getDealsEndpoint = GetDealsEndpoint()
+        NetworkManager.shared.request(endpoint: getDealsEndpoint) { (result: Result<ListingResponses, Error>) in
+            switch result {
+            case .success(let listingResponse):
+                DispatchQueue.main.async {
+                    guard let city = self.cityLabel.text else {
+                        return
+                    }
+                    
+                    let collectionViewItems = self.createCollectionViewItems(from: listingResponse, for: city)
+                    self.vm = FlowLayoutViewModel(items: collectionViewItems)
+                    
+                    if let layout = self.collectionView.collectionViewLayout as? LPCollectionViewLayout {
+                        layout.clearCache()
+                        layout.invalidateLayout()
+                    }
+                    
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print("Failed to retrieve Deals: \(error.localizedDescription)")
             }
         }
     }
@@ -294,10 +389,10 @@ extension DashboardViewController {
         }
     }
     
-    func getListingByCategory() {
+    func getListingByCategory(category: String) {
         guard let city = cityLabel.text else { return }
         
-        let listingCategory = ListingCatergory(category: "VEHICLES", city: city)
+        let listingCategory = ListingCatergory(category: category, city: city)
         let getListingByCategoryEndpoint = GetListingByCategoryEndpoint(category: listingCategory)
         
         NetworkManager.shared.request(endpoint: getListingByCategoryEndpoint) {(result: Result<ListingResponses, Error>) in
@@ -318,13 +413,10 @@ extension DashboardViewController {
                     
                     self.collectionView.reloadData()
                 }
-                
-                print("Listing fetch by category success!: \(response)")
             case .failure(let error):
                 print("Listing fetch by category fail: \(error.localizedDescription)")
             }
         }
-        
     }
 }
 
@@ -345,7 +437,12 @@ extension DashboardViewController: DropDownSelectionDelegate {
             headerView.updateCityLabel(city: option)
         }
         
+        if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
+            headerView.updateTitleLabel(title: "Showing all results for city:")
+        }
+        
         getAllListing()
+        resetAllViewBackgroundColors()
     }
     
     @objc func dropdownTapped(_ sender: UITapGestureRecognizer) {

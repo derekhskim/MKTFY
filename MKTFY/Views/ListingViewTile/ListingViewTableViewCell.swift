@@ -25,13 +25,6 @@ class ListingViewTableViewCell: UITableViewCell {
         itemImageView.clipsToBounds = true
         selectionStyle = .none
         backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
-        
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 21),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -21)
-        ])
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

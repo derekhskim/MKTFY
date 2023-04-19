@@ -65,6 +65,7 @@
             </constraints>
             <connections>
                 <outlet property="cityLabel" destination="sPf-cO-3JH" id="RKL-bO-srq"/>
+                <outlet property="headerTitle" destination="eL9-T0-Ez1" id="OBM-VH-chV"/>
             </connections>
             <point key="canvasLocation" x="63" y="-99"/>
         </collectionReusableView>

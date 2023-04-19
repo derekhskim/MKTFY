@@ -55,9 +55,9 @@ class MyListingViewController: MainViewController, DashboardStoryboard {
         NetworkManager.shared.request(endpoint: getUsersListingsEndpoint) { (result: Result<[ListingResponse], Error>) in
             switch result {
             case .success(let listingResponse):
-                print("User's listings retrieved: \(listingResponse)")
-                print("listingResponse count: \(listingResponse.count)")
-                self.listingResponses = listingResponse
+                self.listingResponses = listingResponse.filter { $0.status != "CANCELLED" }
+                print("User's filtered listings retrieved: \(self.listingResponses)")
+                print("Filtered listingResponse count: \(self.listingResponses.count)")
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -127,9 +127,10 @@ extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
                         //                    self.coordinator?.goToPickupInformationVC(listingResponse: listingResponse)
                         print("This item's status is: \(listingResponse.status)")
                     }
-                } else {
+                } else if listingResponse.status.lowercased() == "pending" {
                     DispatchQueue.main.async {
                         print("This item's status is: \(listingResponse.status)")
+                        self.coordinator?.goToListingDetailsVC(listingResponse: listingResponse)
                         //                    self.coordinator?.goToPickupInformationVC(listingResponse: listingResponse)
                     }
                 }
