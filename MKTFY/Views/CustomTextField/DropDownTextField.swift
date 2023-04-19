@@ -10,6 +10,8 @@ import UIKit
 @IBDesignable
 class DropDownTextField: UIView, DropDownDelegate {
     
+    weak var textFieldDelegate: UITextFieldDelegate?
+    
     // MARK: - Properties
     var view: UIView!
     var dropDownHelper: DropDownHelper!
@@ -84,9 +86,16 @@ class DropDownTextField: UIView, DropDownDelegate {
         
     }
     
+//    func setDropDownSelectedOption(_ option: String, forRow row: Int) {
+//        if inputTextField.tag == row {
+//            inputTextField.text = option
+//        }
+//    }
+    
     func setDropDownSelectedOption(_ option: String, forRow row: Int) {
         if inputTextField.tag == row {
             inputTextField.text = option
+            textFieldDelegate?.textFieldDidEndEditing?(inputTextField)
         }
     }
 }

@@ -13,8 +13,8 @@ protocol DropDownSelectionDelegate: AnyObject {
 
 class MainViewController: UIViewController, UITextViewDelegate {
     
+    // MARK: - Properties
     weak var selectionDelegate: DropDownSelectionDelegate?
-    
     var customDropDownView: DKCustomDropDown?
     var originalFrame: CGRect = .zero
     var shiftFactor: CGFloat = 0.25
@@ -47,31 +47,6 @@ class MainViewController: UIViewController, UITextViewDelegate {
         UserDefaults.standard.set(user.city, forKey: "city")
     }
     
-    func setupCustomDropDown(with uiView: UIView, options: [String]) {
-        let rect = uiView.convert(uiView.bounds, to: view)
-        customDropDownView = DKCustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
-        customDropDownView?.options = options
-        customDropDownView?.searchBarPlaceholder = "Search options"
-        customDropDownView?.delegate = self
-        customDropDownView?.tag = uiView.tag
-        self.view.addSubview(customDropDownView!)
-    }
-    
-    @objc func showCustomDropDownView(_ sender: UITapGestureRecognizer) {
-        if let dropDownView = customDropDownView {
-            hideCustomDropDownView()
-        } else {
-            if let containerView = sender.view {
-                if let textField = containerView.superview as? UITextField {
-                    if let optionsString = containerView.accessibilityValue {
-                        let options = optionsString.components(separatedBy: ",")
-                        setupCustomDropDown(with: textField, options: options)
-                    }
-                }
-            }
-        }
-    }
-    
     func setupCustomDropDownWithStackView(with uiView: UIView) {
         if let stackView = uiView.superview as? UIStackView {
             let rect = stackView.convert(uiView.bounds, to: view)
@@ -91,28 +66,6 @@ class MainViewController: UIViewController, UITextViewDelegate {
                 setupCustomDropDownWithStackView(with: uiView)
             }
         }
-    }
-    
-    // Manually adding ImageView "drop_down_arrow"
-    func initializeImageDropDown(with textField: UITextField, options: [String]) {
-        let imgViewForDropDown = UIImageView()
-        imgViewForDropDown.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        imgViewForDropDown.image = UIImage(named: "drop_down_arrow")
-        imgViewForDropDown.isUserInteractionEnabled = true
-        
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: imgViewForDropDown.frame.width + 10, height: imgViewForDropDown.frame.height))
-        containerView.addSubview(imgViewForDropDown)
-        containerView.tag = textField.tag
-        containerView.accessibilityLabel = "Options"
-        containerView.accessibilityValue = options.joined(separator: ",")
-        
-        textField.rightView = containerView
-        textField.rightViewMode = .always
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showCustomDropDownView(_:)))
-        containerView.addGestureRecognizer(tapGesture)
-        
-        imgViewForDropDown.contentMode = .right
     }
     
     func hideCustomDropDownView() {

@@ -54,4 +54,11 @@ class CustomTextViewCollectionViewCell: UICollectionViewCell {
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        textView.text = ""
+        titleLabel.text = ""
+    }
 }

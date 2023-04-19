@@ -7,30 +7,13 @@
 
 import UIKit
 
-class CustomViewCollectionViewCell: UICollectionViewCell, DropDownDelegate {
-    func setDropDownSelectedOption(_ option: String, forRow row: Int) {
-        TextFieldView.inputTextField.text = option
-        print("Options Selected: \(option)")
-    }
+class CustomViewCollectionViewCell: UICollectionViewCell {
     
     var TextFieldView: TextFieldWithError!
-    var dropDownHelper: DropDownHelper?
-    var dropDownOptions: [String]? {
-        didSet {
-            if let options = dropDownOptions {
-                self.dropDownHelper = DropDownHelper(delegate: self)
-//                let dropDownHelper = DropDownHelper(delegate: self)
-                dropDownHelper?.initializeImageDropDown(with: TextFieldView.inputTextField, options: options)
-            } else {
-                TextFieldView.inputTextField.rightView = nil
-            }
-        }
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        TextFieldView.inputTextField.rightViewMode = .always
     }
     
     override init(frame: CGRect) {

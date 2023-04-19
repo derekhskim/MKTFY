@@ -25,6 +25,7 @@
 		652FC6BB29EF93EC006121FE /* GetDealsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652FC6BA29EF93EC006121FE /* GetDealsEndPoint.swift */; };
 		652FC6BD29EFB8C5006121FE /* DropDownTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652FC6BC29EFB8C5006121FE /* DropDownTextField.swift */; };
 		652FC6BF29EFB8CF006121FE /* DropDownTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652FC6BE29EFB8CF006121FE /* DropDownTextField.xib */; };
+		652FC6C329EFC61D006121FE /* DropDownCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652FC6C229EFC61D006121FE /* DropDownCollectionViewCell.swift */; };
 		6534471129E47A650056D67B /* ImageCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6534471029E47A650056D67B /* ImageCarouselTableViewCell.swift */; };
 		6534471329E47AE00056D67B /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6534471229E47AE00056D67B /* ImageCollectionViewCell.swift */; };
 		6534471729E516610056D67B /* DropDownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6534471629E516610056D67B /* DropDownHelper.swift */; };
@@ -165,6 +166,7 @@
 		652FC6BA29EF93EC006121FE /* GetDealsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDealsEndPoint.swift; sourceTree = "<group>"; };
 		652FC6BC29EFB8C5006121FE /* DropDownTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextField.swift; sourceTree = "<group>"; };
 		652FC6BE29EFB8CF006121FE /* DropDownTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownTextField.xib; sourceTree = "<group>"; };
+		652FC6C229EFC61D006121FE /* DropDownCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCollectionViewCell.swift; sourceTree = "<group>"; };
 		6534471029E47A650056D67B /* ImageCarouselTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarouselTableViewCell.swift; sourceTree = "<group>"; };
 		6534471229E47AE00056D67B /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		6534471629E516610056D67B /* DropDownHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownHelper.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				65D8877129DD072F00A7F408 /* CustomViewCollectionViewCell.swift */,
 				65D8877529DD07CE00A7F408 /* CustomButtonCollectionViewCell.swift */,
 				65D8877729DD07F100A7F408 /* CustomTextViewCollectionViewCell.swift */,
+				652FC6C229EFC61D006121FE /* DropDownCollectionViewCell.swift */,
 			);
 			path = CreateLising;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				650D634929E4722200F2B0E1 /* GetListingByIDEndpoint.swift in Sources */,
 				6549E05F29E6632100FFE871 /* CheckoutViewController.swift in Sources */,
 				65D8878029DE07E200A7F408 /* UploadImageEndpoint.swift in Sources */,
+				652FC6C329EFC61D006121FE /* DropDownCollectionViewCell.swift in Sources */,
 				6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */,
 				6512532229DF425A00E592FC /* DKCustomDropDown.swift in Sources */,
 				65F102BD29E7269D006295C1 /* UIView+.swift in Sources */,

@@ -8,19 +8,13 @@
 import PhotosUI
 import UIKit
 
-class CreateListingViewController: MainViewController, DashboardStoryboard, DropDownDelegate {
-    func setDropDownSelectedOption(_ option: String, forRow row: Int) {
-        guard let cell = collectionView.cellForItem(at: IndexPath(row: row, section: 2)) as? CustomViewCollectionViewCell else {
-            return
-        }
-        
-        cell.TextFieldView.inputTextField.text = option
-        print("selected option: \(option)")
-    }
+class CreateListingViewController: MainViewController, DashboardStoryboard {
     
+    // MARK: - Properties
     weak var coordinator: MainCoordinator?
     var imageArray = [UIImage]()
-    lazy var dropDownHelper = DropDownHelper(delegate: self)
+    var textFieldValues: [Int: String] = [:]
+    let textViewDefaultText = "Enter the details of your product"
     
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
@@ -36,11 +30,30 @@ class CreateListingViewController: MainViewController, DashboardStoryboard, Drop
         collectionView.register(CustomViewCollectionViewCell.self, forCellWithReuseIdentifier: "CustomViewCollectionViewCell")
         collectionView.register(CustomTextViewCollectionViewCell.self, forCellWithReuseIdentifier: "CustomTextViewCollectionViewCell")
         collectionView.register(CustomButtonCollectionViewCell.self, forCellWithReuseIdentifier: "CustomButtonCollectionViewCell")
+        collectionView.register(DropDownCollectionViewCell.self, forCellWithReuseIdentifier: "DropDownCollectionViewCell")
         
         collectionView.reloadData()
     }
     
     // MARK: - Function
+    override func textViewDidEndEditing(_ textView: UITextView) {
+        textFieldValues[textView.tag] = textView.text
+        
+        if textView.text == "" {
+            textView.text = textViewDefaultText
+            textView.textColor = UIColor.appColor(LPColor.TextGray40)
+        }
+    }
+    
+    override func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == textViewDefaultText {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        } else if textView.text != textViewDefaultText && textView.textColor == UIColor.appColor(LPColor.TextGray40) {
+            textView.textColor = UIColor.black
+        }
+    }
+    
     @objc private func uploadButtonTapped() {
         var config = PHPickerConfiguration()
         if imageArray.count == 2 {
@@ -141,6 +154,14 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
         }
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        for cell in collectionView.visibleCells {
+            if let customDropDownViewCell = cell as? DropDownCollectionViewCell {
+                customDropDownViewCell.dropDownTextField.dropDownHelper.updateDropDownPosition()
+            }
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0, 1:
@@ -192,7 +213,7 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
-    func configureCustomViewCell(for indexPath: IndexPath) -> UICollectionViewCell {
+    private func configureCustomViewCell(for indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row < 7 {
             return configureTextFieldViewCell(for: indexPath)
         } else {
@@ -200,7 +221,7 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
         }
     }
     
-    func configureTextFieldViewCell(for indexPath: IndexPath) -> UICollectionViewCell {
+    private func configureTextFieldViewCell(for indexPath: IndexPath) -> UICollectionViewCell {
         guard let customViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomViewCollectionViewCell", for: indexPath) as? CustomViewCollectionViewCell else {
             return UICollectionViewCell()
         }
@@ -213,8 +234,10 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
         customViewCell.TextFieldView.titleLabel.text = fieldTitles[indexPath.row]
         customViewCell.TextFieldView.inputTextField.placeholder = fieldPlaceholders[indexPath.row]
         customViewCell.TextFieldView.inputTextField.backgroundColor = .white
-        
         customViewCell.TextFieldView.inputTextField.tag = indexPath.row
+        customViewCell.TextFieldView.inputTextField.autocorrectionType = .no
+        
+        customViewCell.TextFieldView.inputTextField.text = textFieldValues[indexPath.row] ?? ""
         
         if indexPath.row == 1 {
             guard let customTextViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomTextViewCollectionViewCell", for: indexPath) as? CustomTextViewCollectionViewCell else {
@@ -222,33 +245,44 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
             }
             
             customTextViewCell.textView.delegate = self
+            customTextViewCell.textView.tag = indexPath.row
             customTextViewCell.titleLabel.text = "Description"
-            customTextViewCell.textView.text = "Enter the details of your product"
             customTextViewCell.textView.font = UIFont(name: "OpenSans-Regular", size: 14)
-            customTextViewCell.textView.textColor = UIColor.appColor(LPColor.TextGray40)
+            customTextViewCell.textView.text = textFieldValues[indexPath.row] ?? textViewDefaultText
+            customTextViewCell.textView.autocorrectionType = .no
+            
+            if customTextViewCell.textView.text == textViewDefaultText {
+                customTextViewCell.textView.textColor = UIColor.appColor(LPColor.TextGray40)
+            } else {
+                customTextViewCell.textView.textColor = UIColor.black
+            }
             
             return customTextViewCell
         } else {
-            var dropDownOptions = customViewCell.dropDownOptions
-            
             switch indexPath.row {
-            case 2:
-                dropDownOptions = ["Deals", "Cars and Vehicles", "Furniture", "Electronics", "Real Estate"]
-            case 3:
-                dropDownOptions = ["New", "Used"]
-            case 6:
-                dropDownOptions = ["Calgary", "Camrose", "Brooks"]
+            case 2, 3, 6:
+                guard let customDropDownViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "DropDownCollectionViewCell", for: indexPath) as? DropDownCollectionViewCell else {
+                    return UICollectionViewCell()
+                }
+                
+                switch indexPath.row {
+                case 2:
+                    customDropDownViewCell.configureCell(tag: indexPath.row, title: fieldTitles[indexPath.row], placeHolder: fieldPlaceholders[indexPath.row], options: ["Vehicles", "Furniture", "Electronics", "Real Estate"])
+                case 3:
+                    customDropDownViewCell.configureCell(tag: indexPath.row, title: fieldTitles[indexPath.row], placeHolder: fieldPlaceholders[indexPath.row], options: ["New", "Used"])
+                case 6:
+                    customDropDownViewCell.configureCell(tag: indexPath.row, title: fieldTitles[indexPath.row], placeHolder: fieldPlaceholders[indexPath.row], options: ["Calgary", "Camrose", "Brooks"])
+                default:
+                    break
+                }
+                customDropDownViewCell.dropDownTextField.inputTextField.autocorrectionType = .no
+                customDropDownViewCell.dropDownTextField.inputTextField.delegate = self
+                customDropDownViewCell.dropDownTextField.textFieldDelegate = self
+                customDropDownViewCell.dropDownTextField.inputTextField.text = textFieldValues[indexPath.row] ?? ""
+                
+                return customDropDownViewCell
             default:
                 break
-            }
-            
-            if let options = dropDownOptions {
-                customViewCell.dropDownOptions = options
-                customViewCell.TextFieldView.inputTextField.tag = indexPath.row
-                dropDownHelper.initializeImageDropDown(with: customViewCell.TextFieldView.inputTextField, options: options)
-                dropDownHelper.selectionDelegate = customViewCell
-            } else {
-                customViewCell.dropDownOptions = nil
             }
         }
         
@@ -298,21 +332,21 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
                             
                             guard let productNameCell = self?.collectionView.cellForItem(at: IndexPath(row: 0, section: 2)) as? CustomViewCollectionViewCell,
                                   let descriptionCell = self?.collectionView.cellForItem(at: IndexPath(row: 1, section: 2)) as? CustomTextViewCollectionViewCell,
-                                  let categoryCell = self?.collectionView.cellForItem(at: IndexPath(row: 2, section: 2)) as? CustomViewCollectionViewCell,
-                                  let conditionCell = self?.collectionView.cellForItem(at: IndexPath(row: 3, section: 2)) as? CustomViewCollectionViewCell,
+                                  let categoryCell = self?.collectionView.cellForItem(at: IndexPath(row: 2, section: 2)) as? DropDownCollectionViewCell,
+                                  let conditionCell = self?.collectionView.cellForItem(at: IndexPath(row: 3, section: 2)) as? DropDownCollectionViewCell,
                                   let priceCell = self?.collectionView.cellForItem(at: IndexPath(row: 4, section: 2)) as? CustomViewCollectionViewCell,
                                   let addressCell = self?.collectionView.cellForItem(at: IndexPath(row: 5, section: 2)) as? CustomViewCollectionViewCell,
-                                  let cityCell = self?.collectionView.cellForItem(at: IndexPath(row: 6, section: 2)) as? CustomViewCollectionViewCell,
+                                  let cityCell = self?.collectionView.cellForItem(at: IndexPath(row: 6, section: 2)) as? DropDownCollectionViewCell,
                                   let productName = productNameCell.TextFieldView.inputTextField.text,
                                   let description = descriptionCell.textView.text,
-                                  let category = categoryCell.TextFieldView.inputTextField.text,
-                                  let condition = conditionCell.TextFieldView.inputTextField.text,
+                                  let category = categoryCell.dropDownTextField.inputTextField.text,
+                                  let condition = conditionCell.dropDownTextField.inputTextField.text,
                                   let priceString = priceCell.TextFieldView.inputTextField.text,
                                   let price = Double(priceString),
                                   let address = addressCell.TextFieldView.inputTextField.text,
-                                  let city = cityCell.TextFieldView.inputTextField.text else { return }
-                                                        
-                            let createListing = CreateListing(productName: productName, description: description, price: price, category: category.uppercased().replacingOccurrences(of: " ", with: "_"), condition: condition.uppercased(), address: address, city: city, images: imageIDs)
+                                  let city = cityCell.dropDownTextField.inputTextField.text else { return }
+                            
+                            let createListing = CreateListing(productName: productName, description: description, price: price, category: category.uppercased().replacingOccurrences(of: " ", with: "_"), condition: condition.uppercased(), address: address, city: city.capitalized, images: imageIDs)
                             let createListingEndpoint = CreateListingEndpoint(createLisitng: createListing)
                             
                             NetworkManager.shared.request(endpoint: createListingEndpoint) { (result: Result<ListingResponse, Error>) in
@@ -418,5 +452,9 @@ extension CreateListingViewController: UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textFieldValues[textField.tag] = textField.text
     }
 }
