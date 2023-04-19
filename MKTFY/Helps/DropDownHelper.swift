@@ -88,6 +88,15 @@ class DropDownHelper: CustomDropDownDelegate {
             }
         }
     }
+    
+    func setupDropDownWithLabel(in viewController: UIViewController, label: UILabel, options: [String]) {
+        let rect = label.convert(label.bounds, to: viewController.view)
+        customDropDownView = DKCustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
+        customDropDownView?.options = options
+        customDropDownView?.searchBarPlaceholder = "Search options"
+        customDropDownView?.delegate = self
+        viewController.view.addSubview(customDropDownView!)
+    }
 }
 
 extension DropDownHelper: DropDownDelegate {

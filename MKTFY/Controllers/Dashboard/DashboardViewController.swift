@@ -9,6 +9,10 @@ import UIKit
 
 class DashboardViewController: MainViewController, DashboardStoryboard, UISearchBarDelegate {
     
+    private lazy var dropDownHelper: DropDownHelper = {
+        return DropDownHelper(delegate: self)
+    }()
+
     // MARK: - Properties
     weak var coordinator: MainCoordinator?
     var vm = FlowLayoutViewModel(items: [])
@@ -55,7 +59,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         menuButton()
         floatingButton()
         
-        selectionDelegate = self
+        dropDownHelper = DropDownHelper(delegate: self)
         
         let tapImg = UITapGestureRecognizer(target: self, action: #selector(dropdownTapped))
         imgViewForDropDown.addGestureRecognizer(tapImg)
@@ -429,8 +433,8 @@ extension DashboardViewController: LPCollectionViewLayoutDelegate {
     }
 }
 
-extension DashboardViewController: DropDownSelectionDelegate {
-    func setDropDownSelectedOption(_ option: String) {
+extension DashboardViewController: DropDownDelegate {
+    func setDropDownSelectedOption(_ option: String, forRow row: Int) {
         cityLabel.text = option
         
         if let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
@@ -446,10 +450,11 @@ extension DashboardViewController: DropDownSelectionDelegate {
     }
     
     @objc func dropdownTapped(_ sender: UITapGestureRecognizer) {
-        if customDropDownView == nil {
-            showCustomDropDownViewForStackView(sender)
+        if dropDownHelper.customDropDownView == nil {
+            dropDownHelper.setupDropDownWithLabel(in: self, label: cityLabel, options: ["Calgary", "Camrose", "Brooks"])
         } else {
-            hideCustomDropDownView()
+            dropDownHelper.hideCustomDropDownView()
         }
     }
+
 }

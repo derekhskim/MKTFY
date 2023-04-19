@@ -7,15 +7,9 @@
 
 import UIKit
 
-protocol DropDownSelectionDelegate: AnyObject {
-    func setDropDownSelectedOption(_ option: String)
-}
-
 class MainViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Properties
-    weak var selectionDelegate: DropDownSelectionDelegate?
-    var customDropDownView: DKCustomDropDown?
     var originalFrame: CGRect = .zero
     var shiftFactor: CGFloat = 0.25
     
@@ -45,32 +39,6 @@ class MainViewController: UIViewController, UITextViewDelegate {
         UserDefaults.standard.set(user.phone, forKey: "phone")
         UserDefaults.standard.set(user.address, forKey: "address")
         UserDefaults.standard.set(user.city, forKey: "city")
-    }
-    
-    func setupCustomDropDownWithStackView(with uiView: UIView) {
-        if let stackView = uiView.superview as? UIStackView {
-            let rect = stackView.convert(uiView.bounds, to: view)
-            customDropDownView = DKCustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
-            customDropDownView?.options = ["Calgary", "Camrose", "Brooks"]
-            customDropDownView?.searchBarPlaceholder = "Search options"
-            customDropDownView?.delegate = self
-            self.view.addSubview(customDropDownView!)
-        }
-    }
-    
-    @objc func showCustomDropDownViewForStackView(_ sender: UITapGestureRecognizer) {
-        if let dropDownView = customDropDownView {
-            hideCustomDropDownView()
-        } else {
-            if let uiView = sender.view {
-                setupCustomDropDownWithStackView(with: uiView)
-            }
-        }
-    }
-    
-    func hideCustomDropDownView() {
-        customDropDownView?.removeFromSuperview()
-        customDropDownView = nil
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -114,12 +82,5 @@ extension MainViewController {
         view.frame = originalFrame
         
         navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-}
-
-extension MainViewController: CustomDropDownDelegate {
-    func customDropDown(_ customDropDown: DKCustomDropDown, didSelectOption option: String) {
-        selectionDelegate?.setDropDownSelectedOption(option)
-        hideCustomDropDownView()
     }
 }
