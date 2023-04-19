@@ -9,6 +9,7 @@ import UIKit
 
 class ContactUsViewController: MainViewController, DashboardStoryboard {
     
+    // MARK: - Properties
     weak var coordinator: MainCoordinator?
     
     // MARK: - @IBOutlet

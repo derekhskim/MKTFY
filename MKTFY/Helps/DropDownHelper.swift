@@ -11,7 +11,12 @@ protocol DropDownDelegate: AnyObject {
     func setDropDownSelectedOption(_ option: String, forRow row: Int)
 }
 
-class DropDownHelper {
+class DropDownHelper: CustomDropDownDelegate {
+    func customDropDown(_ customDropDown: DKCustomDropDown, didSelectOption option: String) {
+        setDropDownSelectedOption(option, forRow: customDropDownView?.tag ?? 0)
+    }
+    
+    weak var scrollView: UIScrollView?
     var selectionDelegate: DropDownDelegate?
     var customDropDownView: DKCustomDropDown?
     
@@ -24,7 +29,7 @@ class DropDownHelper {
         customDropDownView = DKCustomDropDown(frame: CGRect(x: rect.maxX - 200, y: rect.maxY, width: 200, height: 300))
         customDropDownView?.options = options
         customDropDownView?.searchBarPlaceholder = "Search options"
-        customDropDownView?.delegate = viewController as? CustomDropDownDelegate
+        customDropDownView?.delegate = self
         customDropDownView?.tag = uiView.tag
         viewController.view.addSubview(customDropDownView!)
     }
@@ -67,6 +72,18 @@ class DropDownHelper {
                         setupCustomDropDown(in: viewController, with: textField, options: options)
                         print(options)
                     }
+                }
+            }
+        }
+    }
+    
+    func updateDropDownPosition() {
+        if let customDropDownView = customDropDownView, let viewController = customDropDownView.findViewController() {
+            if let textField = viewController.view.viewWithTag(customDropDownView.tag) as? UITextField {
+                let rect = textField.convert(textField.bounds, to: viewController.view)
+                let newOrigin = CGPoint(x: rect.maxX - customDropDownView.frame.width, y: rect.maxY)
+                if customDropDownView.frame.origin != newOrigin {
+                    customDropDownView.frame.origin = newOrigin
                 }
             }
         }

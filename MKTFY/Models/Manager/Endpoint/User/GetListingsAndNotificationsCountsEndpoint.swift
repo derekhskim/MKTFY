@@ -1,16 +1,15 @@
 //
-//  GetUserSpecificPurchasesEndpoint.swift
+//  GetListingAndNotificationsCountsEndpoint.swift
 //  MKTFY
 //
-//  Created by Derek Kim on 2023-04-01.
+//  Created by Derek Kim on 2023-04-12.
 //
 
 import Foundation
 
-struct UserPurchasesEndpoint: Endpoint {
-        
+class GetListingsAndNotificationsCountsEndpoint: Endpoint {
     var path: String {
-        return "/User/purchases"
+        return "/user/notifications/count"
     }
     
     var httpMethod: HttpMethod {

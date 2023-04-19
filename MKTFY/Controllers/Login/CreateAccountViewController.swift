@@ -7,9 +7,7 @@
 
 import UIKit
 
-class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard, DropDownSelectionDelegate {
-    
-    var dropDownView: UIView!
+class CreateAccountViewController: MainViewController, CreatePasswordDelegate, LoginStoryboard, DropDownDelegate {
     
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
@@ -18,7 +16,7 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
     @IBOutlet weak var emailField: TextFieldWithError!
     @IBOutlet weak var phoneField: TextFieldWithError!
     @IBOutlet weak var addressField: TextFieldWithError!
-    @IBOutlet weak var cityField: TextFieldWithError!
+    @IBOutlet weak var cityField: DropDownTextField!
     @IBOutlet var wholeView: UIView!
     @IBOutlet weak var nextButton: Button!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -48,8 +46,10 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
         super.viewDidLoad()
         
         initializeHideKeyboard()
-        initializeImageDropDown(with: cityField.inputTextField, options: ["Calgary", "Camrose", "Brooks"])
-        selectionDelegate = self
+        
+        cityField.textFieldTag = 1
+        cityField.options = ["Calgary", "Camrose", "Brooks"]
+        cityField.dropDownHelper.scrollView = scrollView
         
         self.firstNameField.inputTextField.delegate = self
         self.lastNameField.inputTextField.delegate = self
@@ -81,10 +81,10 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
     
     // MARK: - Function
     @objc func handleOutsideTap(_ sender: UITapGestureRecognizer) {
-        if let dropDownView = customDropDownView {
+        if let dropDownView = cityField.dropDownHelper.customDropDownView {
             let point = sender.location(in: dropDownView)
             if !dropDownView.bounds.contains(point) {
-                hideCustomDropDownView()
+                cityField.dropDownHelper.hideCustomDropDownView()
             }
         }
     }
@@ -94,15 +94,14 @@ class CreateAccountViewController: MainViewController, CreatePasswordDelegate, L
 extension CreateAccountViewController {
     // MARK: - DKCustomDropDown Setting
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if let dropDownView = customDropDownView {
-            let rect = cityField.convert(cityField.bounds, to: view)
-            dropDownView.frame.origin = CGPoint(x: rect.maxX - dropDownView.frame.width, y: rect.maxY)
-        }
+        cityField.dropDownHelper.updateDropDownPosition()
     }
     
-    func setDropDownSelectedOption(_ option: String) {
-        cityField.inputTextField.text = option
-        cityField.inputTextField.sendActions(for: .editingChanged)
+    func setDropDownSelectedOption(_ option: String, forRow row: Int) {
+        if cityField.inputTextField.tag == row {
+            cityField.inputTextField.text = option
+            cityField.inputTextField.sendActions(for: .editingChanged)
+        }
     }
     
     // MARK: - Extension Functions
@@ -158,8 +157,8 @@ extension CreateAccountViewController: UITextFieldDelegate, UINavigationBarDeleg
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        let allFieldsFilled = ![firstNameField, lastNameField, emailField, phoneField, addressField, cityField].contains { $0.inputTextField.text?.isEmpty ?? true }
-        
+        let allFieldsFilled = ![firstNameField.inputTextField, lastNameField.inputTextField, emailField.inputTextField, phoneField.inputTextField, addressField.inputTextField, cityField.inputTextField].contains { $0.text?.isEmpty ?? true }
+
         nextButton.isEnabled = allFieldsFilled
         nextButton.setBackgroundColor(allFieldsFilled && emailField.inputTextField.text!.isValidEmail ? UIColor.appColor(LPColor.OccasionalPurple) : UIColor.appColor(LPColor.DisabledGray), forState: .normal)
     }
