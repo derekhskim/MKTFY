@@ -1502,50 +1502,6 @@
             </objects>
             <point key="canvasLocation" x="2473" y="-741"/>
         </scene>
-        <!--Pending Listing Details View Controller-->
-        <scene sceneID="HbK-MR-HfQ">
-            <objects>
-                <viewController storyboardIdentifier="PendingListingDetailsViewController" id="jw0-a5-V23" userLabel="Pending Listing Details View Controller" customClass="PendingListingDetailsViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rfG-tQ-HtL">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnS-RR-G3W" userLabel="Background View">
-                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jWX-mn-rOT">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" name="VerySubtleGray"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="jWX-mn-rOT" secondAttribute="trailing" id="2w3-SJ-uK7"/>
-                                    <constraint firstItem="jWX-mn-rOT" firstAttribute="top" secondItem="rnS-RR-G3W" secondAttribute="top" id="EUV-yV-qro"/>
-                                    <constraint firstAttribute="bottom" secondItem="jWX-mn-rOT" secondAttribute="bottom" id="N2S-l1-SAw"/>
-                                    <constraint firstItem="jWX-mn-rOT" firstAttribute="leading" secondItem="rnS-RR-G3W" secondAttribute="leading" id="zcB-RL-36b"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="ekn-X4-IFe"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="rnS-RR-G3W" firstAttribute="top" secondItem="ekn-X4-IFe" secondAttribute="top" id="0yM-Nm-zCG"/>
-                            <constraint firstItem="rnS-RR-G3W" firstAttribute="leading" secondItem="ekn-X4-IFe" secondAttribute="leading" id="Gia-dd-wIg"/>
-                            <constraint firstItem="ekn-X4-IFe" firstAttribute="trailing" secondItem="rnS-RR-G3W" secondAttribute="trailing" id="LGj-z8-r6u"/>
-                            <constraint firstAttribute="bottom" secondItem="rnS-RR-G3W" secondAttribute="bottom" id="hlj-CG-qW4"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="My Listings" style="editor" id="TEo-Zi-6n1"/>
-                    <connections>
-                        <outlet property="backgroundView" destination="rnS-RR-G3W" id="lFT-oH-hAA"/>
-                        <outlet property="tableView" destination="jWX-mn-rOT" id="mRc-Jm-JPY"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lTz-5N-6GK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3181" y="-1488"/>
-        </scene>
         <!--My Listings View Controller-->
         <scene sceneID="a4b-8u-YR1">
             <objects>
@@ -1838,6 +1794,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09x-MB-GFk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3911" y="-1488"/>
+        </scene>
+        <!--Active Listing Details View-->
+        <scene sceneID="ian-TF-Wfb">
+            <objects>
+                <viewController storyboardIdentifier="PendingListingDetailsViewController" id="JBq-rB-dSW" userLabel="Active Listing Details View" customClass="PendingListingDetailsViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qHd-In-EOE">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTN-PG-HGB">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m3y-sL-2dQ">
+                                        <rect key="frame" x="14" y="0.0" width="365" height="793"/>
+                                        <color key="backgroundColor" name="VerySubtleGray"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QMa-fu-pv5">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="LF2-Nf-Uzu" customClass="PhotoCell" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lWW-pd-u5N">
+                                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c4m-NA-W7u">
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="c4m-NA-W7u" firstAttribute="top" secondItem="lWW-pd-u5N" secondAttribute="top" id="bNX-lj-ijw"/>
+                                                        <constraint firstAttribute="bottom" secondItem="c4m-NA-W7u" secondAttribute="bottom" id="bYv-10-cVu"/>
+                                                        <constraint firstAttribute="trailing" secondItem="c4m-NA-W7u" secondAttribute="trailing" id="eMK-PR-wGe"/>
+                                                        <constraint firstItem="c4m-NA-W7u" firstAttribute="leading" secondItem="lWW-pd-u5N" secondAttribute="leading" id="xGz-V3-iUh"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <connections>
+                                                    <outlet property="photoImageView" destination="c4m-NA-W7u" id="YlL-Ee-S2A"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="JBq-rB-dSW" id="yHM-Rc-Z6v"/>
+                                            <outlet property="delegate" destination="JBq-rB-dSW" id="oJT-fm-6V2"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="m3y-sL-2dQ" secondAttribute="trailing" constant="14" id="SGs-3S-swb"/>
+                                    <constraint firstItem="m3y-sL-2dQ" firstAttribute="leading" secondItem="NTN-PG-HGB" secondAttribute="leading" constant="14" id="UIm-cU-urN"/>
+                                    <constraint firstAttribute="bottom" secondItem="m3y-sL-2dQ" secondAttribute="bottom" id="don-Ec-cCv"/>
+                                    <constraint firstItem="m3y-sL-2dQ" firstAttribute="top" secondItem="NTN-PG-HGB" secondAttribute="top" id="tNB-Ba-eNo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SLm-pc-aqa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="NTN-PG-HGB" secondAttribute="bottom" id="hTv-uJ-IoF"/>
+                            <constraint firstItem="NTN-PG-HGB" firstAttribute="leading" secondItem="SLm-pc-aqa" secondAttribute="leading" id="sfS-Nr-9Tl"/>
+                            <constraint firstItem="NTN-PG-HGB" firstAttribute="top" secondItem="SLm-pc-aqa" secondAttribute="top" id="slp-jU-BTM"/>
+                            <constraint firstItem="SLm-pc-aqa" firstAttribute="trailing" secondItem="NTN-PG-HGB" secondAttribute="trailing" id="wix-va-b8B"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Listings" id="GC6-Jt-fCh" userLabel="My Listings"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="NTN-PG-HGB" id="RAS-b0-OeQ"/>
+                        <outlet property="collectionView" destination="m3y-sL-2dQ" id="rjt-iS-7f6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zos-wm-MXb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3181" y="-1488"/>
         </scene>
     </scenes>
     <designables>

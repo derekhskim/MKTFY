@@ -76,6 +76,7 @@
 		656F3C5029C829CA00DFAAEC /* MyListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F3C4F29C829CA00DFAAEC /* MyListingViewController.swift */; };
 		6573B21929F102AB00D829FC /* UpdateListingEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6573B21829F102AB00D829FC /* UpdateListingEndpoint.swift */; };
 		6573B21B29F1056200D829FC /* CancelListingEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6573B21A29F1056200D829FC /* CancelListingEndpoint.swift */; };
+		6573B21D29F1DED000D829FC /* ImageCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6573B21C29F1DED000D829FC /* ImageCarouselCollectionViewCell.swift */; };
 		658145A52991B13000BC9067 /* TextFieldWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658145A42991B13000BC9067 /* TextFieldWithError.swift */; };
 		658145A72991B13C00BC9067 /* TextFieldWithError.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658145A62991B13C00BC9067 /* TextFieldWithError.xib */; };
 		658145AA2991B27B00BC9067 /* LPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658145A92991B27B00BC9067 /* LPView.swift */; };
@@ -222,6 +223,7 @@
 		656F3C4F29C829CA00DFAAEC /* MyListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListingViewController.swift; sourceTree = "<group>"; };
 		6573B21829F102AB00D829FC /* UpdateListingEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateListingEndpoint.swift; sourceTree = "<group>"; };
 		6573B21A29F1056200D829FC /* CancelListingEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelListingEndpoint.swift; sourceTree = "<group>"; };
+		6573B21C29F1DED000D829FC /* ImageCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		658145A42991B13000BC9067 /* TextFieldWithError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithError.swift; sourceTree = "<group>"; };
 		658145A62991B13C00BC9067 /* TextFieldWithError.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldWithError.xib; sourceTree = "<group>"; };
 		658145A92991B27B00BC9067 /* LPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPView.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 			children = (
 				6534471029E47A650056D67B /* ImageCarouselTableViewCell.swift */,
 				6534471229E47AE00056D67B /* ImageCollectionViewCell.swift */,
+				6573B21C29F1DED000D829FC /* ImageCarouselCollectionViewCell.swift */,
 			);
 			path = ImageCarousel;
 			sourceTree = "<group>";
@@ -894,6 +897,7 @@
 				65E90FEB2988CD8000ACDC0C /* LPButton.swift in Sources */,
 				650D634929E4722200F2B0E1 /* GetListingByIDEndpoint.swift in Sources */,
 				6549E05F29E6632100FFE871 /* CheckoutViewController.swift in Sources */,
+				6573B21D29F1DED000D829FC /* ImageCarouselCollectionViewCell.swift in Sources */,
 				65D8878029DE07E200A7F408 /* UploadImageEndpoint.swift in Sources */,
 				652FC6C329EFC61D006121FE /* DropDownCollectionViewCell.swift in Sources */,
 				6568E0FF2988AACF001482AB /* AppDelegate.swift in Sources */,

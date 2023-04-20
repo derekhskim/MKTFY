@@ -14,97 +14,169 @@ class PendingListingDetailsViewController: MainViewController, DashboardStoryboa
     
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBarWithBackButton()
+        collectionView.register(ImageCarouselCollectionViewCell.self, forCellWithReuseIdentifier: "ImageCarouselCollectionViewCell")
+        collectionView.register(CustomViewCollectionViewCell.self, forCellWithReuseIdentifier: "CustomViewCollectionViewCell")
+        collectionView.register(CustomTextViewCollectionViewCell.self, forCellWithReuseIdentifier: "CustomTextViewCollectionViewCell")
+        collectionView.register(CustomButtonCollectionViewCell.self, forCellWithReuseIdentifier: "CustomButtonCollectionViewCell")
         
-        tableView.separatorStyle = .none
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.register(ImageCarouselTableViewCell.self, forCellReuseIdentifier: "ImageCarouselTableViewCell")
-        tableView.register(CustomViewTableViewCell.self, forCellReuseIdentifier: "CustomViewTableViewCell")
-        tableView.register(PriceTableViewCell.self, forCellReuseIdentifier: "PriceTableViewCell")
-        tableView.register(ButtonTableViewCell.self, forCellReuseIdentifier: "ButtonTableViewCell")
-        tableView.register(DetailsLabelTableViewCell.self, forCellReuseIdentifier: "DetailsLabelTableViewCell")
-        tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: "DescriptionTableViewCell")
-        tableView.register(ConditionTableViewCell.self, forCellReuseIdentifier: "ConditionTableViewCell")
-        tableView.register(UINib(nibName: "SellerProfileTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "SellerProfileTableViewCell")
     }
     
 }
 
 // MARK: - Extension
-extension PendingListingDetailsViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension PendingListingDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCarouselTableViewCell", for: indexPath) as! ImageCarouselTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCarouselCollectionViewCell", for: indexPath) as! ImageCarouselCollectionViewCell
             cell.listingResponse = listingResponse
             return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CustomViewTableViewCell", for: indexPath) as! CustomViewTableViewCell
-            cell.TextFieldView.title = "Product Name"
-            cell.TextFieldView.inputTextField.placeholder = listingResponse?.productName
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PriceTableViewCell", for: indexPath) as! PriceTableViewCell
-            cell.priceLabel.text = String(format: "$%.2f", listingResponse?.price ?? 0)
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
-            cell.coordinator = coordinator
-            cell.listingResponse = listingResponse
-            return cell
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsLabelTableViewCell", for: indexPath) as! DetailsLabelTableViewCell
-            cell.detailsLabel.text = "Details"
-            return cell
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell", for: indexPath) as! DescriptionTableViewCell
-            cell.descriptionLabel.text = listingResponse?.description
-            return cell
-        case 6:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ConditionTableViewCell", for: indexPath) as! ConditionTableViewCell
-            
-            cell.listingResponse = listingResponse
-            cell.conditionLabel.text = listingResponse?.condition.uppercased()
-            cell.setupView()
-            cell.configureSeparatorShadow()
-            
-            return cell
-        case 7:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SellerProfileTableViewCell", for: indexPath) as! SellerProfileTableViewCell
-            
-            cell.listingResponse = listingResponse
-            cell.changeNameAndPrefix()
-            cell.configureSellerProfile()
-            cell.configureProfileHoldingView()
-            
-            return cell
-        default:
-            return UITableViewCell()
+        } else if indexPath.row < 8 {
+            return configureTextFieldViewCell(for: indexPath)
+        } else {
+            return configureCustomButtonCell(for: indexPath)
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
+    private func configureTextFieldViewCell(for indexPath: IndexPath) -> UICollectionViewCell {
+        guard let customViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomViewCollectionViewCell", for: indexPath) as? CustomViewCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        let fieldTitles = ["Product Name", "Description", "Category", "Condition", "Price", "Address", "City"]
+        
+        customViewCell.TextFieldView.titleLabel.text = fieldTitles[indexPath.row - 1]
+        customViewCell.TextFieldView.inputTextField.backgroundColor = .white
+        customViewCell.TextFieldView.inputTextField.tag = indexPath.row
+        customViewCell.TextFieldView.inputTextField.isUserInteractionEnabled = false
+        customViewCell.TextFieldView.inputTextField.textColor = UIColor.appColor(LPColor.DisabledGray)
+        
+        if let listingResponse = listingResponse {
+            switch indexPath.row {
+            case 1:
+                customViewCell.TextFieldView.inputTextField.text = listingResponse.productName
+            case 3:
+                customViewCell.TextFieldView.inputTextField.text = listingResponse.category.lowercased().capitalized.replacingOccurrences(of: "_", with: " ")
+            case 4:
+                customViewCell.TextFieldView.inputTextField.text = listingResponse.condition.lowercased().capitalized
+            case 5:
+                customViewCell.TextFieldView.inputTextField.text = String(format: "%.2f", listingResponse.price)
+            case 6:
+                customViewCell.TextFieldView.inputTextField.text = listingResponse.address
+            case 7:
+                customViewCell.TextFieldView.inputTextField.text = listingResponse.city
+            default:
+                break
+            }
+        }
+        
+        if indexPath.row == 2 {
+            guard let customTextViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomTextViewCollectionViewCell", for: indexPath) as? CustomTextViewCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            
+            customTextViewCell.textView.tag = indexPath.row
+            customTextViewCell.titleLabel.text = "Description"
+            customTextViewCell.textView.font = UIFont(name: "OpenSans-Regular", size: 14)
+            customTextViewCell.textView.isEditable = false
+            customTextViewCell.textView.textColor = UIColor.appColor(LPColor.DisabledGray)
+            customTextViewCell.textView.text = listingResponse?.description
+            
+            return customTextViewCell
+        }
+        return customViewCell
+    }
+    
+    private func configureCustomButtonCell(for indexPath: IndexPath) -> UICollectionViewCell {
+        guard let customButtonCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomButtonCollectionViewCell", for: indexPath) as? CustomButtonCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        let buttonTitles = ["Save Changes", "Cancel Listing"]
+        let buttonColors: [UIColor] = [.appColor(LPColor.VoidWhite), .appColor(LPColor.GrayButtonGray)]
+        let buttonBackgroundColors: [UIColor] = [.appColor(LPColor.OccasionalPurple), .clear]
+        let buttonBorderWidths: [CGFloat] = [0, 1]
+        let buttonBorderColors: [CGColor] = [UIColor.clear.cgColor, UIColor.appColor(LPColor.GrayButtonGray).cgColor]
+        
+        customButtonCell.button.setTitle(buttonTitles[indexPath.row - 8], for: .normal)
+        customButtonCell.button.setTitleColor(buttonColors[indexPath.row - 8], for: .normal)
+        customButtonCell.button.backgroundColor = buttonBackgroundColors[indexPath.row - 8]
+        customButtonCell.button.layer.borderWidth = buttonBorderWidths[indexPath.row - 8]
+        customButtonCell.button.layer.borderColor = buttonBorderColors[indexPath.row - 8]
+        
+        if indexPath.row == 8 {
+            customButtonCell.onButtonTapped = { [weak self] in
+                customButtonCell.button.isUserInteractionEnabled = false
+                customButtonCell.button.setTitle("", for: .normal)
+                let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+                indicator.startAnimating()
+                indicator.color = .white
+                customButtonCell.button.addSubview(indicator)
+                indicator.center = customButtonCell.button.center
+                
+                
+            }
+        } else if indexPath.row == 9 {
+            customButtonCell.onButtonTapped = { [weak self] in
+                DispatchQueue.main.async {
+                    self?.showAlert(title: "Heads up!", message: "Are you sure you want to cancel listing?", purpleButtonTitle: "Yes", whiteButtonTitle: "No", purpleButtonAction: {
+                        let cancelListingEndpoint = CancelListingEndpoint(id: self?.listingResponse?.id ?? "")
+                        NetworkManager.shared.request(endpoint: cancelListingEndpoint) { (result: Result<NetworkManager.EmptyResponse, Error>) in
+                            switch result {
+                            case .success(_):
+                                DispatchQueue.main.async {
+                                    self?.coordinator?.goToLoadingConfirmationVC()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+                                        self?.coordinator?.goToDashboardVC()
+                                    }
+                                }
+                            case .failure(_):
+                                DispatchQueue.main.async {
+                                    self?.showAlert(title: "Error", message: "Something went wrong and your listing was not cancelled.", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel", purpleButtonAction: {
+                                        self?.dismiss(animated: true)
+                                    }, whiteButtonAction: {
+                                        self?.navigationController?.popViewController(animated: true)
+                                    })
+                                }
+                            }
+                        }
+                    }, whiteButtonAction: {
+                        self?.dismiss(animated: true, completion: nil)
+                    })
+                }
+            }
+        }
+        
+        return customButtonCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch indexPath.item {
         case 0:
-            return 415
+            return CGSize(width: collectionView.bounds.width, height: 415)
+        case 2:
+            return CGSize(width: collectionView.bounds.width, height: 150)
+        case 8:
+            return CGSize(width: collectionView.bounds.width, height: 51)
+        case 9:
+            return CGSize(width: collectionView.bounds.width, height: 51)
         default:
-            return UITableView.automaticDimension
+            return CGSize(width: collectionView.bounds.width, height: 80)
         }
     }
     
