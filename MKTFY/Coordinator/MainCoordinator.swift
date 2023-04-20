@@ -133,8 +133,15 @@ class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToListingDetailsVC(listingResponse: ListingResponse) {
-        let vc = ListingDetailsViewController.instantiate()
+    func goToPendingListingDetailsVC(listingResponse: ListingResponse) {
+        let vc = PendingListingDetailsViewController.instantiate()
+        vc.coordinator = self
+        vc.listingResponse = listingResponse
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToActiveListingDetailsVC(listingResponse: ListingResponse) {
+        let vc = ActiveListingDetailsViewController.instantiate()
         vc.coordinator = self
         vc.listingResponse = listingResponse
         self.navigationController.pushViewController(vc, animated: true)

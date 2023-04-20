@@ -9,6 +9,7 @@ import UIKit
 
 class MyPurchasesViewController: MainViewController, DashboardStoryboard {
     
+    // MARK: - Properties
     weak var coordinator: MainCoordinator?
     var listingResponses: [ListingResponse] = []
     var listingResponse: ListingResponse?

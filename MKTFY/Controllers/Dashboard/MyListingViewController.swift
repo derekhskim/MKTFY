@@ -124,14 +124,13 @@ extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
                 self.listingResponse = listingResponse
                 if listingResponse.status.lowercased() == "active" {
                     DispatchQueue.main.async {
-                        //                    self.coordinator?.goToPickupInformationVC(listingResponse: listingResponse)
                         print("This item's status is: \(listingResponse.status)")
+                        self.coordinator?.goToActiveListingDetailsVC(listingResponse: listingResponse)
                     }
                 } else if listingResponse.status.lowercased() == "pending" {
                     DispatchQueue.main.async {
                         print("This item's status is: \(listingResponse.status)")
-                        self.coordinator?.goToListingDetailsVC(listingResponse: listingResponse)
-                        //                    self.coordinator?.goToPickupInformationVC(listingResponse: listingResponse)
+                        self.coordinator?.goToPendingListingDetailsVC(listingResponse: listingResponse)
                     }
                 }
             case .failure(let error):

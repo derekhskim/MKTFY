@@ -1502,10 +1502,10 @@
             </objects>
             <point key="canvasLocation" x="2473" y="-741"/>
         </scene>
-        <!--My Listings View Controller-->
+        <!--Pending Listing Details View Controller-->
         <scene sceneID="HbK-MR-HfQ">
             <objects>
-                <viewController storyboardIdentifier="ListingDetailsViewController" id="jw0-a5-V23" userLabel="My Listings View Controller" customClass="ListingDetailsViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PendingListingDetailsViewController" id="jw0-a5-V23" userLabel="Pending Listing Details View Controller" customClass="PendingListingDetailsViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rfG-tQ-HtL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1760,6 +1760,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8n-M1-FIA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1753" y="-740"/>
+        </scene>
+        <!--Active Listing Details View-->
+        <scene sceneID="OjB-Bt-uDU">
+            <objects>
+                <viewController storyboardIdentifier="ActiveListingDetailsViewController" id="sH4-dt-QYS" userLabel="Active Listing Details View" customClass="ActiveListingDetailsViewController" customModule="MKTFY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SKx-47-oiN">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9g-HY-3QB">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="REX-UX-wqd">
+                                        <rect key="frame" x="14" y="0.0" width="365" height="793"/>
+                                        <color key="backgroundColor" name="VerySubtleGray"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hA3-xF-TPq">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="diW-gn-eWg" customClass="PhotoCell" customModule="MKTFY" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="PnD-Kn-uCj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="evU-Kp-4On">
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="evU-Kp-4On" secondAttribute="trailing" id="3Zp-JG-KzV"/>
+                                                        <constraint firstItem="evU-Kp-4On" firstAttribute="top" secondItem="PnD-Kn-uCj" secondAttribute="top" id="Tuh-2i-4Tr"/>
+                                                        <constraint firstAttribute="bottom" secondItem="evU-Kp-4On" secondAttribute="bottom" id="YRd-pY-1v8"/>
+                                                        <constraint firstItem="evU-Kp-4On" firstAttribute="leading" secondItem="PnD-Kn-uCj" secondAttribute="leading" id="pQs-TB-6Sy"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <connections>
+                                                    <outlet property="photoImageView" destination="evU-Kp-4On" id="NiZ-JN-dJ2"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="sH4-dt-QYS" id="Erx-Jz-I9j"/>
+                                            <outlet property="delegate" destination="sH4-dt-QYS" id="o5q-2G-CVo"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" name="VerySubtleGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="REX-UX-wqd" secondAttribute="trailing" constant="14" id="ec1-bb-6jC"/>
+                                    <constraint firstAttribute="bottom" secondItem="REX-UX-wqd" secondAttribute="bottom" id="m3B-Ox-ILr"/>
+                                    <constraint firstItem="REX-UX-wqd" firstAttribute="leading" secondItem="u9g-HY-3QB" secondAttribute="leading" constant="14" id="nqp-jm-ilr"/>
+                                    <constraint firstItem="REX-UX-wqd" firstAttribute="top" secondItem="u9g-HY-3QB" secondAttribute="top" id="sSg-cl-gDw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dtb-Us-aBT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="u9g-HY-3QB" firstAttribute="top" secondItem="dtb-Us-aBT" secondAttribute="top" id="Fmk-uh-zD9"/>
+                            <constraint firstItem="dtb-Us-aBT" firstAttribute="trailing" secondItem="u9g-HY-3QB" secondAttribute="trailing" id="Gv9-cd-5WF"/>
+                            <constraint firstItem="u9g-HY-3QB" firstAttribute="leading" secondItem="dtb-Us-aBT" secondAttribute="leading" id="n3D-Oc-qjQ"/>
+                            <constraint firstAttribute="bottom" secondItem="u9g-HY-3QB" secondAttribute="bottom" id="rOw-Rp-2Z5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Listings" id="Ys1-Iv-fog" userLabel="My Listings"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="u9g-HY-3QB" id="xVO-yO-dcD"/>
+                        <outlet property="collectionView" destination="REX-UX-wqd" id="RCR-mb-WDQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="09x-MB-GFk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3911" y="-1488"/>
         </scene>
     </scenes>
     <designables>

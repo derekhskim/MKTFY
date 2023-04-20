@@ -1,5 +1,5 @@
 //
-//  ListingDetailsViewController.swift
+//  PendingListingDetailsViewController.swift
 //  MKTFY
 //
 //  Created by Derek Kim on 2023-04-17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListingDetailsViewController: MainViewController, DashboardStoryboard {
+class PendingListingDetailsViewController: MainViewController, DashboardStoryboard {
     
     var listingResponse: ListingResponse?
     weak var coordinator: MainCoordinator?
@@ -39,7 +39,7 @@ class ListingDetailsViewController: MainViewController, DashboardStoryboard {
 }
 
 // MARK: - Extension
-extension ListingDetailsViewController: UITableViewDelegate, UITableViewDataSource {
+extension PendingListingDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
