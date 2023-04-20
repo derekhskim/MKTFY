@@ -55,7 +55,7 @@ class MyListingViewController: MainViewController, DashboardStoryboard {
         NetworkManager.shared.request(endpoint: getUsersListingsEndpoint) { (result: Result<[ListingResponse], Error>) in
             switch result {
             case .success(let listingResponse):
-                self.listingResponses = listingResponse.filter { $0.status != "CANCELLED" }
+                self.listingResponses = listingResponse.filter { $0.status != "CANCELLED" && $0.status != "COMPLETE" }
                 print("User's filtered listings retrieved: \(self.listingResponses)")
                 print("Filtered listingResponse count: \(self.listingResponses.count)")
                 DispatchQueue.main.async {

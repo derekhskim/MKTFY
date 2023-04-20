@@ -107,7 +107,7 @@ extension PendingListingDetailsViewController: UICollectionViewDelegate, UIColle
             return UICollectionViewCell()
         }
         
-        let buttonTitles = ["Save Changes", "Cancel Listing"]
+        let buttonTitles = ["Confirm Sold", "Cancel Sale"]
         let buttonColors: [UIColor] = [.appColor(LPColor.VoidWhite), .appColor(LPColor.GrayButtonGray)]
         let buttonBackgroundColors: [UIColor] = [.appColor(LPColor.OccasionalPurple), .clear]
         let buttonBorderWidths: [CGFloat] = [0, 1]
@@ -129,14 +129,37 @@ extension PendingListingDetailsViewController: UICollectionViewDelegate, UIColle
                 customButtonCell.button.addSubview(indicator)
                 indicator.center = customButtonCell.button.center
                 
-                
+                let completeSalesEndpoint = CompleteSaleEndpoint(id: self?.listingResponse?.id ?? "")
+                NetworkManager.shared.request(endpoint: completeSalesEndpoint) { (result: Result<NetworkManager.EmptyResponse, Error>) in
+                    switch result {
+                    case .success(_):
+                        print("Successfully Completed Sale")
+                        DispatchQueue.main.async {
+                            self?.coordinator?.goToLoadingConfirmationVC()
+                        }
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+                            self?.coordinator?.goToDashboardVC()
+                        }
+                    case .failure(let error):
+                        print("Failed to complete sale: \(error.localizedDescription)")
+                        DispatchQueue.main.async {
+                            self?.showAlert(title: "Heads Up!", message: "For unknown reason, we have failed to complete sales. Please try again.", purpleButtonTitle: "OK", whiteButtonTitle: "Cancel", purpleButtonAction: {
+                                self?.dismiss(animated: true)
+                            }, whiteButtonAction: {
+                                self?.navigationController?.popViewController(animated: true)
+                            })
+                        }
+                    }
+                }
             }
         } else if indexPath.row == 9 {
             customButtonCell.onButtonTapped = { [weak self] in
                 DispatchQueue.main.async {
-                    self?.showAlert(title: "Heads up!", message: "Are you sure you want to cancel listing?", purpleButtonTitle: "Yes", whiteButtonTitle: "No", purpleButtonAction: {
-                        let cancelListingEndpoint = CancelListingEndpoint(id: self?.listingResponse?.id ?? "")
-                        NetworkManager.shared.request(endpoint: cancelListingEndpoint) { (result: Result<NetworkManager.EmptyResponse, Error>) in
+                    self?.showAlert(title: "Heads up!", message: "Are you sure you want to cancel sale?", purpleButtonTitle: "Yes", whiteButtonTitle: "No", purpleButtonAction: {
+                        
+                        let cancelSaleEndpoint = CancelSaleEndpoint(id: self?.listingResponse?.id ?? "")
+                        NetworkManager.shared.request(endpoint: cancelSaleEndpoint) { (result: Result<NetworkManager.EmptyResponse, Error>) in
                             switch result {
                             case .success(_):
                                 DispatchQueue.main.async {
@@ -147,7 +170,7 @@ extension PendingListingDetailsViewController: UICollectionViewDelegate, UIColle
                                 }
                             case .failure(_):
                                 DispatchQueue.main.async {
-                                    self?.showAlert(title: "Error", message: "Something went wrong and your listing was not cancelled.", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel", purpleButtonAction: {
+                                    self?.showAlert(title: "Error", message: "Something went wrong and your sale has not cancelled.", purpleButtonTitle: "Try Again", whiteButtonTitle: "Cancel", purpleButtonAction: {
                                         self?.dismiss(animated: true)
                                     }, whiteButtonAction: {
                                         self?.navigationController?.popViewController(animated: true)
