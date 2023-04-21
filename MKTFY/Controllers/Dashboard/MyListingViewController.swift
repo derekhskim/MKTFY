@@ -10,7 +10,8 @@ import UIKit
 class MyListingViewController: MainViewController, DashboardStoryboard {
     
     weak var coordinator: MainCoordinator?
-    var listingResponses: [ListingResponse] = []
+    var pendingListingResponses: [ListingResponse] = []
+    var activeListingResponses: [ListingResponse] = []
     var listingResponse: ListingResponse?
     
     // MARK: - @IBOutlet
@@ -55,9 +56,8 @@ class MyListingViewController: MainViewController, DashboardStoryboard {
         NetworkManager.shared.request(endpoint: getUsersListingsEndpoint) { (result: Result<[ListingResponse], Error>) in
             switch result {
             case .success(let listingResponse):
-                self.listingResponses = listingResponse.filter { $0.status != "CANCELLED" && $0.status != "COMPLETE" }
-                print("User's filtered listings retrieved: \(self.listingResponses)")
-                print("Filtered listingResponse count: \(self.listingResponses.count)")
+                self.pendingListingResponses = listingResponse.filter({ $0.status == "PENDING" })
+                self.activeListingResponses = listingResponse.filter({ $0.status == "ACTIVE" })
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -70,21 +70,23 @@ class MyListingViewController: MainViewController, DashboardStoryboard {
 
 extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listingResponses.count
+        if section == 0 {
+            return pendingListingResponses.count
+        } else {
+            return activeListingResponses.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: Fix Spacing
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListingViewTableViewCell", for: indexPath) as! ListingViewTableViewCell
         
-        let listings = listingResponses[indexPath.row]
-        
-        // TODO: DropShadow is only affecting corners ATM
-        
+        let listings = indexPath.section == 0 ? pendingListingResponses[indexPath.row] : activeListingResponses[indexPath.row]
+
         cell.cellView.layer.cornerRadius = 20
         cell.cellView.layer.masksToBounds = false
         cell.cellView.layer.shadowColor = UIColor.black.cgColor
@@ -114,7 +116,7 @@ extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: Link each item to show on ProductDetailsEditableViewController if active, ProductDetailsNotEditableViewController if pending or completed
-        let selectedListingResponse = listingResponses[indexPath.row]
+        let selectedListingResponse = indexPath.section == 0 ? pendingListingResponses[indexPath.row] : activeListingResponses[indexPath.row]
         let getListingByIDEndpoint = GetListingByIDEndpoint(id: selectedListingResponse.id)
         
         NetworkManager.shared.request(endpoint: getListingByIDEndpoint) { (result: Result<ListingResponse, Error>) in
@@ -151,9 +153,21 @@ extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .clear
-        return headerView
+        if section == 1 {
+            let headerView = UIView()
+            headerView.backgroundColor = .clear
+            
+            let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 24))
+            headerLabel.font = UIFont(name: "OpenSans-SemiBold", size: 14)
+            headerLabel.textColor = UIColor.appColor(LPColor.TextGray)
+            headerLabel.text = "AVAILABLE ITEMS"
+            headerLabel.sizeToFit()
+            
+            headerView.addSubview(headerLabel)
+            
+            return headerView
+        }
+        return UIView()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
