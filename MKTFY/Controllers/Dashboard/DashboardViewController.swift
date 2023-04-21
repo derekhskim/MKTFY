@@ -12,7 +12,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
     private lazy var dropDownHelper: DropDownHelper = {
         return DropDownHelper(delegate: self)
     }()
-
+    
     // MARK: - Properties
     weak var coordinator: MainCoordinator?
     var vm = FlowLayoutViewModel(items: [])
@@ -115,7 +115,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
             headerView.updateTitleLabel(title: "Deals for you")
         }
     }
-
+    
     @objc func carsCategoryViewTapped(_ sender: UITapGestureRecognizer) {
         resetAllViewBackgroundColors()
         carsCategoryView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
@@ -124,7 +124,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
             headerView.updateTitleLabel(title: "Showing Results for Vehicles")
         }
     }
-
+    
     @objc func furnitureCategoryViewTapped(_ sender: UITapGestureRecognizer) {
         resetAllViewBackgroundColors()
         furnitureCategoryView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
@@ -133,7 +133,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
             headerView.updateTitleLabel(title: "Showing Results for Furniture")
         }
     }
-
+    
     @objc func electronicsCategoryViewTapped(_ sender: UITapGestureRecognizer) {
         resetAllViewBackgroundColors()
         electronicsCategoryView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
@@ -142,7 +142,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
             headerView.updateTitleLabel(title: "Showing Results for Electronics")
         }
     }
-
+    
     @objc func realEstateCategoryViewTapped(_ sender: UITapGestureRecognizer) {
         resetAllViewBackgroundColors()
         realEstateCategoryView.backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
@@ -456,5 +456,5 @@ extension DashboardViewController: DropDownDelegate {
             dropDownHelper.hideCustomDropDownView()
         }
     }
-
+    
 }

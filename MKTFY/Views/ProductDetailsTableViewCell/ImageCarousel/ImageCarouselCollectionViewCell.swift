@@ -105,6 +105,7 @@ extension ImageCarouselCollectionViewCell: UICollectionViewDataSource {
         let imageURL = imageURLString.isEmpty ? nil : URL(string: imageURLString)
         
         cell.imageView.image = nil
+        cell.imageView.contentMode = .scaleAspectFill
         cell.imageView.loadImage(from: imageURL)
         
         return cell

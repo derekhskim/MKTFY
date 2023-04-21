@@ -22,6 +22,12 @@ class ItemCollectionViewCell: UICollectionViewCell {
         
         self.mainView.layer.cornerRadius = 10
         self.mainView.layer.masksToBounds = true
+        self.imageViewItem.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            self.imageViewItem.heightAnchor.constraint(equalToConstant: 172),
+            self.imageViewItem.widthAnchor.constraint(equalToConstant: 172)
+        ])
     }
     
     override func prepareForReuse() {

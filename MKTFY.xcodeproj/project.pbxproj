@@ -150,6 +150,7 @@
 		65EE2FE129E7C0A100F7EAB2 /* PickupInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EE2FE029E7C0A100F7EAB2 /* PickupInformationViewController.swift */; };
 		65F102BD29E7269D006295C1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F102BC29E7269D006295C1 /* UIView+.swift */; };
 		65F41E0929BBA7D500C1C08A /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F41E0829BBA7D500C1C08A /* CreatePasswordViewController.swift */; };
+		65F4EB9D29F24B52001A70F6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 65F4EB9C29F24B52001A70F6 /* Kingfisher */; };
 		65F9BF8329AD167800FADB2B /* SecureTextFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F9BF8229AD167800FADB2B /* SecureTextFieldWithLabel.swift */; };
 /* End PBXBuildFile section */
 
@@ -306,6 +307,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65F4EB9D29F24B52001A70F6 /* Kingfisher in Frameworks */,
 				65A646F9299C854D00262DB8 /* Auth0 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,6 +764,7 @@
 			name = MKTFY;
 			packageProductDependencies = (
 				65A646F8299C854D00262DB8 /* Auth0 */,
+				65F4EB9C29F24B52001A70F6 /* Kingfisher */,
 			);
 			productName = MKTFY;
 			productReference = 6568E0FB2988AACF001482AB /* MKTFY.app */;
@@ -793,6 +796,7 @@
 			mainGroup = 6568E0F22988AACF001482AB;
 			packageReferences = (
 				65A646F7299C854D00262DB8 /* XCRemoteSwiftPackageReference "Auth0" */,
+				65F4EB9B29F24B52001A70F6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 6568E0FC2988AACF001482AB /* Products */;
 			projectDirPath = "";
@@ -1180,6 +1184,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		65F4EB9B29F24B52001A70F6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1187,6 +1199,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 65A646F7299C854D00262DB8 /* XCRemoteSwiftPackageReference "Auth0" */;
 			productName = Auth0;
+		};
+		65F4EB9C29F24B52001A70F6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65F4EB9B29F24B52001A70F6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

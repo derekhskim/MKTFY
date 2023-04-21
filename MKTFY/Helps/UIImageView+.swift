@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension UIImageView {
     func loadImage(from url: URL?, completionHandler: (() -> Void)? = nil) {
@@ -14,17 +15,15 @@ extension UIImageView {
             return
         }
 
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self?.image = image
-                    completionHandler?()
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self?.image = UIImage(named: "no-image")
-                }
+        let resource = ImageResource(downloadURL: url, cacheKey: url.absoluteString)
+        self.kf.indicatorType = .activity
+        self.kf.setImage(with: resource, placeholder: UIImage(named: "no-image"), completionHandler: { result in
+            switch result {
+            case .success(_):
+                completionHandler?()
+            case .failure(_):
+                self.image = UIImage(named: "no-image")
             }
-        }
+        })
     }
 }
