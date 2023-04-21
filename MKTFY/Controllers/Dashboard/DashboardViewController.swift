@@ -275,7 +275,11 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
 extension DashboardViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        searchButtonTapped()
+        if searchTextField.text?.isEmpty == true {
+            getAllListing()
+        } else {
+            searchButtonTapped()
+        }
         return false
     }
     
@@ -355,6 +359,10 @@ extension DashboardViewController {
                         layout.invalidateLayout()
                     }
                     
+                    if let headerView = self.collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
+                        headerView.updateTitleLabel(title: "Showing All Results")
+                    }
+                    
                     self.collectionView.reloadData()
                 }
             case .failure(let error):
@@ -383,6 +391,10 @@ extension DashboardViewController {
                     if let layout = self.collectionView.collectionViewLayout as? LPCollectionViewLayout {
                         layout.clearCache()
                         layout.invalidateLayout()
+                    }
+                    
+                    if let headerView = self.collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
+                        headerView.updateTitleLabel(title: "Showing Results for \(searchText)")
                     }
                     
                     self.collectionView.reloadData()
