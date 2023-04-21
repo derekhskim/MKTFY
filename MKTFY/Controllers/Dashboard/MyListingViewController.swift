@@ -9,14 +9,45 @@ import UIKit
 
 class MyListingViewController: MainViewController, DashboardStoryboard {
     
+    // MARK: - Properties
+    enum ListingState {
+        case pendingAndActive
+        case complete
+    }
+    
+    var currentState: ListingState = .pendingAndActive
     weak var coordinator: MainCoordinator?
     var pendingListingResponses: [ListingResponse] = []
     var activeListingResponses: [ListingResponse] = []
+    var completeListingResponses: [ListingResponse] = []
     var listingResponse: ListingResponse?
     
     // MARK: - @IBOutlet
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activeItemsButton: UIButton!
+    @IBOutlet weak var soldItemsButton: UIButton!
+    
+    // MARK: - @IBAction
+    @IBAction func activeItemsButtonTapped(_ sender: Any) {
+        getUsersPendingAndActiveListings()
+        activeItemsButton.tintColor = UIColor.appColor(LPColor.OccasionalPurple)
+        soldItemsButton.tintColor = UIColor.appColor(LPColor.TextGray)
+        activeItemsButton.isUserInteractionEnabled = false
+        soldItemsButton.isUserInteractionEnabled = true
+        currentState = .pendingAndActive
+        tableView.reloadData()
+    }
+    
+    @IBAction func soldItemsButtonTapped(_ sender: Any) {
+        getUsersCompletedListings()
+        activeItemsButton.tintColor = UIColor.appColor(LPColor.TextGray)
+        soldItemsButton.tintColor = UIColor.appColor(LPColor.OccasionalPurple)
+        activeItemsButton.isUserInteractionEnabled = true
+        soldItemsButton.isUserInteractionEnabled = false
+        currentState = .complete
+        tableView.reloadData()
+    }
     
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
@@ -25,8 +56,10 @@ class MyListingViewController: MainViewController, DashboardStoryboard {
         setupNavigationBarWithBackButton()
         setupBackgroundView(view: backgroundView)
         setupTableViewBackground(view: backgroundView, talbeView: tableView)
-
-        getUsersListings()
+        
+        getUsersPendingAndActiveListings()
+        activeItemsButton.tintColor = UIColor.appColor(LPColor.OccasionalPurple)
+        activeItemsButton.isUserInteractionEnabled = false
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -51,7 +84,7 @@ class MyListingViewController: MainViewController, DashboardStoryboard {
         coordinator?.goToCreateListingVC()
     }
     
-    func getUsersListings() {
+    func getUsersPendingAndActiveListings() {
         let getUsersListingsEndpoint = GetUsersListingsEndpoint()
         NetworkManager.shared.request(endpoint: getUsersListingsEndpoint) { (result: Result<[ListingResponse], Error>) in
             switch result {
@@ -66,18 +99,43 @@ class MyListingViewController: MainViewController, DashboardStoryboard {
             }
         }
     }
+    
+    func getUsersCompletedListings() {
+        let getUsersListingsEndpoint = GetUsersListingsEndpoint()
+        NetworkManager.shared.request(endpoint: getUsersListingsEndpoint) { (result: Result<[ListingResponse], Error>) in
+            switch result {
+            case .success(let listingResponse):
+                self.completeListingResponses = listingResponse.filter({ $0.status == "COMPLETE" })
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print("Failed to retrieve user's listings: \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        switch currentState {
+        case .pendingAndActive:
+            return 2
+        case .complete:
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return pendingListingResponses.count
-        } else {
-            return activeListingResponses.count
+        switch currentState {
+        case .pendingAndActive:
+            if section == 0 {
+                return pendingListingResponses.count
+            } else {
+                return activeListingResponses.count
+            }
+        case .complete:
+            return completeListingResponses.count
         }
     }
     
@@ -85,8 +143,14 @@ extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
         // TODO: Fix Spacing
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListingViewTableViewCell", for: indexPath) as! ListingViewTableViewCell
         
-        let listings = indexPath.section == 0 ? pendingListingResponses[indexPath.row] : activeListingResponses[indexPath.row]
-
+        let listings: ListingResponse
+        switch currentState {
+        case .pendingAndActive:
+            listings = indexPath.section == 0 ? pendingListingResponses[indexPath.row] : activeListingResponses[indexPath.row]
+        case .complete:
+            listings = completeListingResponses[indexPath.row]
+        }
+        
         cell.cellView.layer.cornerRadius = 20
         cell.cellView.layer.masksToBounds = false
         cell.cellView.layer.shadowColor = UIColor.black.cgColor
@@ -115,8 +179,13 @@ extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: Link each item to show on ProductDetailsEditableViewController if active, ProductDetailsNotEditableViewController if pending or completed
-        let selectedListingResponse = indexPath.section == 0 ? pendingListingResponses[indexPath.row] : activeListingResponses[indexPath.row]
+        let selectedListingResponse: ListingResponse
+        switch currentState {
+        case .pendingAndActive:
+            selectedListingResponse = indexPath.section == 0 ? pendingListingResponses[indexPath.row] : activeListingResponses[indexPath.row]
+        case .complete:
+            selectedListingResponse = completeListingResponses[indexPath.row]
+        }
         let getListingByIDEndpoint = GetListingByIDEndpoint(id: selectedListingResponse.id)
         
         NetworkManager.shared.request(endpoint: getListingByIDEndpoint) { (result: Result<ListingResponse, Error>) in
@@ -153,7 +222,7 @@ extension MyListingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 1 {
+        if currentState == .pendingAndActive && section == 1 {
             let headerView = UIView()
             headerView.backgroundColor = .clear
             

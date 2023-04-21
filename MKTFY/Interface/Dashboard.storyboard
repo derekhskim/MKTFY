@@ -1513,17 +1513,74 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d88-q8-vVt" userLabel="backgroundView">
                                 <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ItR-Gs-jeJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="53.333333333333336"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Ops-Xz-cWv">
+                                                <rect key="frame" x="39" y="10" width="315" height="33.333333333333336"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5MQ-Hh-H1w">
+                                                        <rect key="frame" x="0.0" y="0.0" width="115.33333333333333" height="33.333333333333336"/>
+                                                        <color key="tintColor" name="TextGray"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain">
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="ACTIVE ITEMS">
+                                                                    <attributes>
+                                                                        <font key="NSFont" size="14" name="OpenSans-SemiBold"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="activeItemsButtonTapped:" destination="U5Q-Fa-zlY" eventType="touchUpInside" id="qVa-gD-S8B"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9K-v5-Ya7">
+                                                        <rect key="frame" x="221.66666666666671" y="0.0" width="93.333333333333343" height="33.333333333333336"/>
+                                                        <color key="tintColor" name="TextGray"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain">
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="SOLD ITEMS">
+                                                                    <attributes>
+                                                                        <font key="NSFont" size="12" name="OpenSans-SemiBold"/>
+                                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="soldItemsButtonTapped:" destination="U5Q-Fa-zlY" eventType="touchUpInside" id="nu1-1v-jdD"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Ops-Xz-cWv" secondAttribute="trailing" constant="39" id="5uB-om-azH"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ops-Xz-cWv" secondAttribute="bottom" constant="10" id="C0f-Ny-Al6"/>
+                                            <constraint firstItem="Ops-Xz-cWv" firstAttribute="top" secondItem="ItR-Gs-jeJ" secondAttribute="top" constant="10" id="VuB-Q5-EUn"/>
+                                            <constraint firstItem="Ops-Xz-cWv" firstAttribute="leading" secondItem="ItR-Gs-jeJ" secondAttribute="leading" constant="39" id="goP-sZ-UEK"/>
+                                        </constraints>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tcF-fK-dqj">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                                        <rect key="frame" x="0.0" y="53.333333333333314" width="393" height="739.66666666666674"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" name="VerySubtleGray"/>
                                 <constraints>
                                     <constraint firstItem="tcF-fK-dqj" firstAttribute="leading" secondItem="d88-q8-vVt" secondAttribute="leading" id="3Se-iB-UVo"/>
+                                    <constraint firstItem="ItR-Gs-jeJ" firstAttribute="leading" secondItem="d88-q8-vVt" secondAttribute="leading" id="K42-GX-eXR"/>
+                                    <constraint firstItem="ItR-Gs-jeJ" firstAttribute="top" secondItem="d88-q8-vVt" secondAttribute="top" id="SdN-BV-4jd"/>
                                     <constraint firstAttribute="bottom" secondItem="tcF-fK-dqj" secondAttribute="bottom" id="Z9d-7Q-csR"/>
                                     <constraint firstAttribute="trailing" secondItem="tcF-fK-dqj" secondAttribute="trailing" id="d9G-Bj-fYM"/>
-                                    <constraint firstItem="tcF-fK-dqj" firstAttribute="top" secondItem="d88-q8-vVt" secondAttribute="top" id="f1L-bc-cUV"/>
+                                    <constraint firstItem="tcF-fK-dqj" firstAttribute="top" secondItem="ItR-Gs-jeJ" secondAttribute="bottom" id="f1L-bc-cUV"/>
+                                    <constraint firstItem="tcF-fK-dqj" firstAttribute="top" secondItem="ItR-Gs-jeJ" secondAttribute="bottom" id="gRa-qA-8fK"/>
+                                    <constraint firstAttribute="trailing" secondItem="ItR-Gs-jeJ" secondAttribute="trailing" id="r41-cV-uUw"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1538,7 +1595,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="My Listings" id="ebB-3J-Q2N"/>
                     <connections>
+                        <outlet property="activeItemsButton" destination="5MQ-Hh-H1w" id="HlN-TE-EXS"/>
                         <outlet property="backgroundView" destination="d88-q8-vVt" id="NBO-kK-yfl"/>
+                        <outlet property="soldItemsButton" destination="g9K-v5-Ya7" id="mnC-DZ-4mJ"/>
                         <outlet property="tableView" destination="tcF-fK-dqj" id="0NU-KU-LvM"/>
                     </connections>
                 </viewController>
