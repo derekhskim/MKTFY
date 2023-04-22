@@ -9,6 +9,7 @@ import UIKit
 
 class DashboardViewController: MainViewController, DashboardStoryboard, UISearchBarDelegate {
     
+    // MARK: - Properties
     private lazy var dropDownHelper: DropDownHelper = {
         return DropDownHelper(delegate: self)
     }()
@@ -58,9 +59,7 @@ class DashboardViewController: MainViewController, DashboardStoryboard, UISearch
         
         menuButton()
         floatingButton()
-        
-        dropDownHelper = DropDownHelper(delegate: self)
-        
+                
         let tapImg = UITapGestureRecognizer(target: self, action: #selector(dropdownTapped))
         imgViewForDropDown.addGestureRecognizer(tapImg)
         imgViewForDropDown.isUserInteractionEnabled = true
