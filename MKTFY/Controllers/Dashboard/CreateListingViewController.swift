@@ -308,7 +308,6 @@ extension CreateListingViewController: UICollectionViewDelegate, UICollectionVie
         
         if indexPath.row == 7 {
             customButtonCell.onButtonTapped = { [weak self] in
-                print("Publish Listing Button Tapped")
                 
                 customButtonCell.button.isUserInteractionEnabled = false
                 customButtonCell.button.setTitle("", for: .normal)

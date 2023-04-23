@@ -66,14 +66,6 @@ extension MyPurchasesViewController: UITableViewDelegate, UITableViewDataSource 
         
         let listings = listingResponses[indexPath.row]
         
-        // TODO: DropShadow is only affecting corners ATM
-        cell.cellView.layer.cornerRadius = 20
-        cell.cellView.layer.masksToBounds = false
-        cell.cellView.layer.shadowColor = UIColor.black.cgColor
-        cell.cellView.layer.shadowOffset = CGSize.zero
-        cell.cellView.layer.shadowOpacity = 0.3
-        cell.cellView.layer.shadowRadius = 2
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")

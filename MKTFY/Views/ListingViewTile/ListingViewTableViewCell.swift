@@ -9,6 +9,9 @@ import UIKit
 
 class ListingViewTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
+    private var shadowView: UIView!
+    
     // MARK: - @IBOutlet
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var itemImageView: UIImageView!
@@ -18,12 +21,26 @@ class ListingViewTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        shadowView = UIView()
+        cellView.addSubview(shadowView)
+        
         cellView.layer.cornerRadius = 20
         cellView.clipsToBounds = true
+        
+        shadowView.translatesAutoresizingMaskIntoConstraints = false
+        shadowView.layer.cornerRadius = 20
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowOffset = CGSize(width: 1, height: 4)
+        shadowView.layer.shadowOpacity = 1
+        shadowView.layer.shadowRadius = 1
+        
         itemImageView.layer.cornerRadius = 20
         itemImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         itemImageView.clipsToBounds = true
         selectionStyle = .none
+        separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 10)
         backgroundColor = UIColor.appColor(LPColor.VerySubtleGray)
     }
     
@@ -40,10 +57,12 @@ class ListingViewTableViewCell: UITableViewCell {
         priceLabel.text = price
     }
     
-    //    override func layoutSubviews() {
-    //        super.layoutSubviews()
-    //
-    //        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0))
-    //    }
-    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let insetFrame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 21, bottom: 20, right: 21))
+        contentView.frame = insetFrame
+        
+        shadowView.frame = cellView.frame
+    }
 }

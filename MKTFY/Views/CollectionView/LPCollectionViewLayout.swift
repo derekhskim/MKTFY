@@ -75,42 +75,6 @@ class LPCollectionViewLayout: UICollectionViewFlowLayout {
             yOffset[columnWithMinHeight] = yOffset[columnWithMinHeight] + height
         }
     }
-
-//    override func prepare() {
-//        guard cache.isEmpty, let collectionView = collectionView else { return }
-//
-//        let headerIndexPath = IndexPath(item: 0, section: 0)
-//        let headerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: headerIndexPath)
-//        headerAttributes.frame = CGRect(x: 0, y: 0, width: contentWidth, height: headerReferenceSize.height)
-//        headerLayoutAttributes = headerAttributes
-//
-//        let columnWidth = contentWidth / CGFloat(numberOfColumns)
-//        var xOffset: [CGFloat] = []
-//        for column in 0..<numberOfColumns {
-//            xOffset.append(CGFloat(column) * columnWidth)
-//        }
-//        var column = 0
-//        var yOffset: [CGFloat] = .init(repeating: headerReferenceSize.height, count: numberOfColumns)
-//
-//        for item in 0..<collectionView.numberOfItems(inSection: 0) {
-//            let indexPath = IndexPath(item: item, section: 0)
-//
-//            let cellHeight = delegate?.collectionView(collectionView, cellWidth: columnWidth, heightForAtIndexPath: indexPath) ?? 180
-//
-//            let height = cellPadding * 2 + cellHeight
-//            let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
-//            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-//
-//            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-//            attributes.frame = insetFrame
-//            cache.append(attributes)
-//
-//            contentHeight = max(contentHeight, frame.maxY)
-//            yOffset[column] = yOffset[column] + height
-//
-//            column = column < (numberOfColumns - 1) ? (column + 1) : 0
-//        }
-//    }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var visibleLayoutAttributes: [UICollectionViewLayoutAttributes] = []
