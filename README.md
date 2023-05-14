@@ -38,7 +38,7 @@ I'm a iOS/Flutter Developer...
 #### Account Information
 ![Account-Info](./Media/change-information.gif)
 
-####Change Password
+#### Change Password
 ![Change-PW](./Media/change-password.gif) 
 
 #### My Purchases
