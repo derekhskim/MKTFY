@@ -276,8 +276,10 @@ extension DashboardViewController: UITextFieldDelegate {
         self.view.endEditing(true)
         if searchTextField.text?.isEmpty == true {
             getAllListing()
+            resetAllViewBackgroundColors()
         } else {
             searchButtonTapped()
+            resetAllViewBackgroundColors()
         }
         return false
     }
