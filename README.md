@@ -21,6 +21,7 @@ I'm a iOS/Flutter Developer...
 - [@treasure3210](https://www.github.com/treasure3210)
 
 
+
 ## 💻 Demo
 ### Splash Screen 
 ![Splash Screen](./Media/Splash-Screen.gif)
@@ -29,9 +30,37 @@ I'm a iOS/Flutter Developer...
 #### Login | Sign Up | Forgot Password
 ![Login](./Media/Login.gif "Login") ![Sign Up](./Media/Sign-Up.gif "Sign Up") !["Forgot Password"](./Media/Forgot-Password.gif "Forgot Password")
 
+### Dashboard
+#### Dashboard | Search & Purchase | Search & Show Deals | Create Listing | Filter by Cities
+![Dashboard](./Media/login-dashboard.gif) ![Search-P](./Media/search-purchase.gif) ![Search-SD](./Media/search-deals.gif) ![Create-Listing](./Media/create-listing.gif) ![Filter-cities](./Media/filter-by-cities.gif)
+
+### Menu
+#### Account Information
+![Account-Info](./Media/change-information.gif)
+
+####Change Password
+![Change-PW](./Media/change-password.gif) 
+
+#### My Purchases
+![My-Purchases](./Media/my-purchases-sellerinfo.gif)
+
+#### My Listing
+![My-Listing-Avail](./Media/my-listing-available.gif) ![My-Listing-pending](./Media/my-listing-pending.gif) ![My-Listing-sold](./Media/my-listing-sold.gif)
+
+#### Notification
+![Notification](./Media/notification.gif)
+
+#### FAQ
+![faq](./Media/faq.gif)
+
+#### Contact Us
+![contact-us](./Media/contact-us.gif)
+
+#### Sign Out
+![sign-out](./Media/sign-out.gif)
+
 ## Badges
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-
 
 ## Feedback
 If you have any feedback, please reach out to us at treasure3210@gmail.com
